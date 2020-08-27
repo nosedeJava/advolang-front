@@ -1,0 +1,13 @@
+.container{
+  background-color: white;
+  height: 100vh;
+}
+
+.bigblue {
+  color: DodgerBlue;
+  padding: 40px;
+  font-family: Arial;
+  background-color: Azure;
+  height: 80%;
+  width: 10%;
+}

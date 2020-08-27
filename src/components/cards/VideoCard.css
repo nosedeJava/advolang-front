@@ -1,0 +1,35 @@
+.container {
+    position: flex;
+    width: 20%;
+    height: 20%;
+    padding-bottom: 35%;
+}
+
+.video {
+    position: absolute;
+    padding-top: 12%;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.video-responsive {
+position: relative;
+padding-bottom: 40%; /* 16/9 ratio */
+height: 0;
+overflow: hidden;
+
+}
+
+.video-responsive iframe,
+.video-responsive object,
+.video-responsive embed {
+position: absolute;
+top: 0;
+left: 0;
+width: 60%;
+height: 90%;
+}

@@ -1,0 +1,99 @@
+/* CARD STYLES
+   ----------------------------- */
+
+.mydiv{
+	background-color: pink;
+
+}
+
+.mycard{
+	background-color: black;
+
+}
+
+.card {
+	border-radius: 50;
+	border: 0;
+
+	hr {
+
+		border-color: #ebeef2;
+		text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+	}
+}
+
+
+
+/*.card-container:hover
+.card-header,
+.card-footer {
+	color: blue;
+	padding: 10 10;
+	border-color: transparent;
+	position: relative;
+	font-size: 10;
+	background-color: transparent;
+}*/
+
+.card-header {
+	color: blue;
+	padding: 10 10;
+	border-color: transparent;
+	position: relative;
+	font-size: 10;
+	background-color: yellow;
+}
+
+
+.card-footer {
+	background-color: yellow;
+	position: relative;
+	padding: 10 10;
+	font-size: 50;
+}
+
+.card-title {
+  font: 20px arial, sans-serif;
+  text-align: left;
+  padding: 0px 5px 5px 5px;
+}
+
+.card-container {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  /* Card look */
+  transition: 0.3s;
+  background-color: white;
+  border-radius: 4px;
+  /* Round corners */
+  border-left: 5px solid #5f37ff;
+  /* Blue left border */
+}
+
+.card-container:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  text-align: left;
+  /*padding: 10px 16px;*/
+	background-color: green;
+	text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  /* Card look */
+  transition: 0.3s;
+  border-radius: 4px;
+	border:"secondary";
+	width: 100%;
+  alignItems:"center";
+  justify:"center";
+	    display: 'flex',
+
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
