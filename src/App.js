@@ -1,14 +1,19 @@
 import React from 'react';
-import {ListRecommendationService} from './services/ListRecomendationService';
-import FilterSection from './components/FilterSection';
+
+import './App.css';
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import CreateRecommendation from "./components/createRecomendation/CreateRecommendation";
+import AddCategory from "./components/createRecomendation/AddCategory";
 
 function App() {
   return (
-    <div className="App" style={{backgroundColor:"#B3B8E0"}}>
-      <FilterSection />
-      <ListRecommendationService />
-    </div>
-  );
+      <BrowserRouter>
+          <Switch>
+              <Route path="/" exact component={CreateRecommendation}/>
+              <Route path="/cat" exact component={AddCategory}/>
+          </Switch>
+      </BrowserRouter>
+  )
 }
 
 export default App;
