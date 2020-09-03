@@ -20,7 +20,7 @@ const routes = [
   }
 ];
 
-export default class  App extends React.Component {
+export default class  Menu extends React.Component {
 
   constructor(props){
 
