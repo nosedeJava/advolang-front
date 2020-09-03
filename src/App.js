@@ -14,8 +14,10 @@ const testInfo= {
   link: "https://youtu.be/dQw4w9WgXcQ",
   author: {
     username: "Stilink",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum velit dui, in vehicula mi accumsan id. Suspendisse potenti. Duis id cursus velit. Praesent dapibus arcu eu dolor aliquet euismod. Sed congue nunc vehicula est molestie, a egestas lacus congue. Quisque finibus cursus justo, et scelerisque nibh. Suspendisse eget orci sit amet massa vehicula dictum. Curabitur et erat nunc. Vestibulum leo orci, dapibus eu finibus eget, ultrices non lectus. Etiam eu congue mi. Phasellus accumsan nisl vel vehicula tincidunt. Curabitur rhoncus arcu sed facilisis porttitor. Etiam tortor nisi, dictum ornare lorem id, ornare vulputate augue.",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    profileImg: "/img/profile_image.jpg"
   },
+  categories: ["gameplay","gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"],
 }
 function App() {
   return (

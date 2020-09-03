@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Box, Card, CardMedia, Typography, Button, Avatar } from '@material-ui/core';
 import HoverRating from './RatingRecommendation';
 import FormDialog from './ReportDialog';
+import ListCategories from '../ListCategories';
 
 const useStyles = makeStyles({
     boxClass: {
@@ -46,16 +47,21 @@ const useStyles = makeStyles({
         borderTop: "1px solid #f8f8f8",
         borderBottom: "1px solid rgba(0, 0, 0, 0.2)",
     },
+    profileBox: {
+        margin: "0.7rem",
+        padding: '0.5rem',
+        width: "auto",
+    }
 });
 
 function SpecificRecommendation(props) {
     const classes = useStyles();
-    const changeScore= (score) => {
-        props.score=score;
+    const changeScore = (score) => {
+        props.score = score;
     };
     return (
         <Grid container id="specificRecommendation">
-            <Grid item xs={8}>
+            <Grid container xs={8}>
                 <Box boxShadow={3} borderRadius="borderRadius" className={classes.boxClass} >
                     <Grid container xs={12}>
                         <Grid item xs={2} className={classes.boxClass}>
@@ -118,17 +124,19 @@ function SpecificRecommendation(props) {
                         </Grid>
                     </Grid>
                 </Box>
-
             </Grid>
-            <Grid container xs={4}>
-                <Grid item xs={12}>
-                    <Box boxShadow={3} borderRadius="borderRadius" className={classes.boxClass} >
+            <Grid container xs={4}
+                direction="row"
+                justify="flex-start"
+                alignItems="flex-start">
+                <Grid item xs={10}>
+                    <Box boxShadow={3} borderRadius="borderRadius" className={classes.profileBox} >
                         <Grid container spacing={0}
                             direction="column"
                             alignItems="center"
                             justify="center">
                             <Grid item>
-                                <Avatar alt="Stilink" src="/img/profile_image.jpg" className={classes.avatarSize} />
+                                <Avatar alt={props.author.username} src={props.author.profileImg} className={classes.avatarSize} />
                             </Grid>
                             <Grid item>
                                 <Typography variant="h4">
@@ -142,8 +150,10 @@ function SpecificRecommendation(props) {
                         </Grid>
                     </Box>
                 </Grid>
-                <Grid item xs={12}>
-                    
+                <Grid item xs={10}>
+                    <Box boxShadow={3} borderRadius="borderRadius" className={classes.boxClass} >
+                        <ListCategories content={props.categories} />
+                    </Box>
                 </Grid>
             </Grid>
         </Grid>
