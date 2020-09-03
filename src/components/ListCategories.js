@@ -1,24 +1,23 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Box, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import Chip from '@material-ui/core/Chip';
 
 const useStyles = makeStyles({
-    boxStyle: {
-        borderRadius: 5,
-    },
+    
     chipStyle: {
+        color: "#B3B8E0",
+        backgroundColor:"#242847",
     },
 
 });
 function ListCategories(props) {
-    const classes = useStyles();
+    const classes= useStyles()
     return (
         <Grid container spacing={1}>
-            {props.content.map((category) => (
-                <Grid item>
-                    <Chip label={category} component="a" href={"#"+category} clickable color="primary"/>
-
+            {props.content.map((category, i) => (
+                <Grid item key={category+"-"+i+"-"+props.content.length}>
+                    <Chip label={category}  component="a" href={"#"+category} clickable color="primary" className={classes.chipStyle}/>
                 </Grid>
             ))}
         </Grid>

@@ -8,7 +8,7 @@ export class ListRecommendations extends React.Component {
             return <Recommendation key={"recommendation-" + i} {...recommendation} />
         });
         return (
-            <Grid container xs={12}>
+            <Grid container >
                 {listContent}
             </Grid>
         );
