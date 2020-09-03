@@ -36,12 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-
-.generalContainer{
-   height: '100%';
-   position: 'absolute';
-   left: '0px';
-   width: '100%';
-   overflow: 'hidden';
-}
