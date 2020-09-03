@@ -1,9 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import SpecificRecommendation from './components/specificRecommendation/SpecificRecommendation';
-import {ListRecommendationService} from './services/ListRecomendationService';
-import FilterSection from './components/FilterSection';
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import CreateRecommendation from "./components/createRecomendation/CreateRecommendation";
+import AddCategory from "./components/createRecomendation/AddCategory";
 
 
 const testInfo= {
@@ -21,10 +20,13 @@ const testInfo= {
 }
 function App() {
   return (
-    <div className="App">
-      <SpecificRecommendation  {...testInfo} />
-    </div>
-  );
+      <BrowserRouter>
+          <Switch>
+              <Route path="/" exact component={CreateRecommendation}/>
+              <Route path="/cat" exact component={AddCategory}/>
+          </Switch>
+      </BrowserRouter>
+  )
 }
 
 export default App;
