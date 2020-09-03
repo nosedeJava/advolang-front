@@ -2,6 +2,9 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import SpecificRecommendation from './components/specificRecommendation/SpecificRecommendation';
+import {ListRecommendationService} from './services/ListRecomendationService';
+import FilterSection from './components/FilterSection';
+
 
 const testInfo= {
   title: "Las crónicas de Narnia: El león, la bruja y el ropero",
