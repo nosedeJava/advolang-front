@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Box, Card, CardMedia, Typography } from '@material-ui/core';
+import ListCategories from './ListCategories'
 const useStyles = makeStyles({
     generalClass: {
         margin: 10,
@@ -91,7 +92,7 @@ function Recommendation(props) {
                     <Grid container xs={12} >
                         <Grid item xs={12}>
                             <Box border={1} className={classes.generalClass}>
-                                <br />
+                                <ListCategories content={props.categories} />
                             </Box>
                         </Grid>
                     </Grid>
