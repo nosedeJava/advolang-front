@@ -4,10 +4,11 @@ import TextField from "@material-ui/core/TextField";
 import ContentFileUpload from "./ContentFileUpload";
 import ContentSelector from "./ContentSelector";
 import Button from "@material-ui/core/Button";
+import AddCategory from "./AddCategory";
 
 export default function CreateRecommendation() {
 
-    const [recommendation, setRecommendation] = useState({contentType: '', url: '', file: '', image:''});
+    const [recommendation, setRecommendation] = useState({contentType: '', url: '', file: '', image: ''});
     const [flag, setFlag] = useState(false);
 
     function handleChange(event) {
@@ -27,15 +28,15 @@ export default function CreateRecommendation() {
     }
 
     return (
-        <div id={'background'} className="body">
-            <div id={'Card'} className="card">
-                <div id={'Header'} className="header">
+        <div className="body">
+            <div className="container">
+                <div className="head">
                     <h1>New Recommendation</h1>
                 </div>
                 <form>
                     <TextField
                         name={'title'}
-                        className="textField"
+                        fullWidth
                         label={'Title'}
                         placeholder="Please set a title for your recommendation"
                         onChange={handleChange}
@@ -43,14 +44,13 @@ export default function CreateRecommendation() {
                     />
                     <TextField
                         name={'description'}
-                        className="textField"
+                        fullWidth
                         label={'Description'}
                         multiline
                         placeholder="Please set a description for your recommendation"
                         required
                         onChange={handleChange}
                     />
-
                     <ContentFileUpload flag={flag} type={'image'}/>
 
                     <ContentSelector handle={handleChange} recommendation={recommendation}/>
@@ -59,7 +59,7 @@ export default function CreateRecommendation() {
                         (
                             <TextField
                                 name={'url'}
-                                className="textField"
+                                fullWidth
                                 label={'url'}
                                 placeholder="Please set the url content"
                                 required
@@ -70,8 +70,9 @@ export default function CreateRecommendation() {
                         )
                     }
 
+                    <AddCategory/>
+
                     <Button
-                        // type="submit"
                         onClick={submit}
                         className="submit"
                         variant="contained"

@@ -5,13 +5,13 @@ import FormControl from "@material-ui/core/FormControl";
 import React from "react";
 
 const options = [
-    'File',
+    'Multimedia File',
     'Url'
 ]
 
 export default function ContentSelector(props) {
     return(
-        <FormControl className='textField' required>
+        <FormControl className='textField' required fullWidth>
             <InputLabel id="demo-simple-select-label">Content Type</InputLabel>
             <Select
                 labelId="demo-simple-select-label"
