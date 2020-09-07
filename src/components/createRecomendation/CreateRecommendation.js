@@ -1,30 +1,40 @@
 import React, {useState} from "react";
-import "./CreateRecomendation.css"
+import "./css/CreateRecomendation.css"
 import TextField from "@material-ui/core/TextField";
 import ContentFileUpload from "./ContentFileUpload";
 import ContentSelector from "./ContentSelector";
 import Button from "@material-ui/core/Button";
 import AddCategory from "./AddCategory";
+import {useDispatch, useSelector} from "react-redux";
+import AllActions from "../../redux/actions/AllActions";
 
 export default function CreateRecommendation() {
 
-    const [recommendation, setRecommendation] = useState({contentType: '', url: '', file: '', image: ''});
+    const recommendation = useSelector(state => state.newRecommendation);
+    const dispatch = useDispatch();
     const [flag, setFlag] = useState(false);
 
     function handleChange(event) {
-        setRecommendation({...recommendation, [event.target.name]: event.target.value});
+        dispatch(
+            AllActions
+                .CreateRecommendationActions
+                .updateRecommendation({[event.target.name]: event.target.value})
+        )
     }
 
     function submit() {
+        setFlag(true);
         const createRecommendation = {
             title: recommendation.title,
             description: recommendation.description,
             contentType: recommendation.contentType,
             url: recommendation.url,
+            file: recommendation.file,
+            image: recommendation.image,
+            categories: recommendation.categories,
             date: new Date()
         }
         localStorage.setItem('recommendation', JSON.stringify(createRecommendation));
-        setFlag(true);
     }
 
     return (
@@ -53,22 +63,22 @@ export default function CreateRecommendation() {
                     />
                     <ContentFileUpload flag={flag} type={'image'}/>
 
-                    <ContentSelector handle={handleChange} recommendation={recommendation}/>
+                    <ContentSelector handle={handleChange}/>
 
-                    {recommendation.contentType && recommendation.contentType === 'Url' ?
-                        (
-                            <TextField
-                                name={'url'}
-                                fullWidth
-                                label={'url'}
-                                placeholder="Please set the url content"
-                                required
-                                onChange={handleChange}
-                            />
-                        ) : !recommendation.contentType ? undefined : (
-                            <ContentFileUpload flag={flag} type={'file'}/>
-                        )
-                    }
+                    {recommendation.contentType === 'Url' && (
+                        <TextField
+                            name={'url'}
+                            fullWidth
+                            label={'url'}
+                            placeholder="Please set the url content"
+                            required
+                            onChange={handleChange}
+                        />
+                    )}
+
+                    {recommendation.contentType === "Multimedia File" && (
+                        <ContentFileUpload flag={flag} type={'file'}/>
+                    )}
 
                     <AddCategory/>
 
