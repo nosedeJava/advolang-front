@@ -1,28 +1,24 @@
 import React, {useState} from 'react';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
-import "./AddCategory.css";
+import "./css/AddCategory.css";
 import Button from "@material-ui/core/Button";
-import {Box, Heading, Layer} from "grommet";
+import {useDispatch} from "react-redux";
+import LayerCategory from "./LayerCategory";
+import AllActions from "../../redux/actions/AllActions";
 
 export default function AddCategory() {
 
     const [categories, setCategories] = useState(['Music']);
-    const [category, setCategory] = useState('');
     const [show, setShow] = useState(false);
-    const [selectedCategories, setSelectedCategories] = useState([]);
-
-    function handleAccept(){
-        setCategories(prevState => categories.concat(category));
-        setShow(false);
-    }
-
-    function handleChange(event){
-        setCategory(event.target.value);
-    }
+    const dispatch = useDispatch();
 
     function handleChangeInput(event, values){
-        setSelectedCategories(values);
+        dispatch(
+            AllActions
+                .CreateRecommendationActions
+                .updateRecommendation({categories: values})
+        )
     }
 
     return (
@@ -49,27 +45,11 @@ export default function AddCategory() {
                 New Category
             </Button>
             {show && (
-                <Layer
-                    onEsc={() => setShow(false)}
-                    onClickOutside={() => setShow(false)}
-                    position="center"
-                    className="layer"
-                >
-                    <Box align="center" pad={"medium"} gap="medium">
-                        <Heading level={3} margin="none">
-                            New category
-                        </Heading>
-                        <TextField
-                            fullWidth
-                            label={'Category name'}
-                            placeholder="Please set a name"
-                            onChange={handleChange}
-                        />
-                        <Button variant={"contained"} onClick={handleAccept} className="buttonLayer">
-                            Accept
-                        </Button>
-                    </Box>
-                </Layer>
+                <LayerCategory
+                    setShow={setShow}
+                    setCategories={setCategories}
+                    categories={categories}
+                />
             )}
         </div>
     );

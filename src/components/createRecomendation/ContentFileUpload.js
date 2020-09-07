@@ -1,17 +1,18 @@
 import IconButton from "@material-ui/core/IconButton";
 import {AttachFile, PhotoCamera} from "@material-ui/icons";
 import React, {useEffect, useState} from "react";
-import './FileContentUpload.css';
+import './css/FileContentUpload.css';
 import AzureService from "../../services/AzureService";
+import {useDispatch} from "react-redux";
+import AllActions from "../../redux/actions/AllActions";
 
 export default function ContentFileUpload(props) {
 
     const [file, setFile] = useState(null);
+    const dispatch = useDispatch();
 
     useEffect( () => {
-
         function uploadFile(){
-            console.log(file);
             if(file){
                 AzureService.putFile(file.name, file)
                     .then(response => console.log(response.status));
@@ -20,10 +21,15 @@ export default function ContentFileUpload(props) {
         if (props.flag){
             uploadFile();
         }
-    }, [props.flag, file]);
+    }, [file, dispatch, props.type, props.flag]);
 
     function handleFile(event) {
         setFile(event.target.files[0]);
+        dispatch(
+            AllActions
+                .CreateRecommendationActions
+                .updateRecommendation({[props.type]: event.target.files[0].name})
+        )
     }
 
     return(
