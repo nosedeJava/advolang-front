@@ -1,32 +1,63 @@
-import React from 'react';
-import './App.css';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
-import CreateRecommendation from "./components/createRecomendation/CreateRecommendation";
-import AddCategory from "./components/createRecomendation/AddCategory";
+import React, {useEffect} from 'react';
+import "./App.css";
+import {BrowserRouter, Switch, Route} from "react-router-dom";
+import {PruebaReactIndex} from './components/menu/PruebaReactIndex';
+import {PruebaReactIndex2} from './components/menu/PruebaReactIndex2'
+import {Login} from "./components/menu/authentication/Login";
+import {ProtectedRoute} from './components/menu/authentication/ProtectedRoute';
+import {CreateRecommendation} from "./components/createRecomendation/CreateRecommendation";
+import {AddCategory} from "./components/createRecomendation/AddCategory";
+
+export default function App(props) {
+  useEffect(() => {
+    setStorageValues()
+  });
+
+  function setStorageValues() {
+    localStorage.setItem("name", "Anónimos");
+    localStorage.setItem("email", "an@mail.com");
+    localStorage.setItem("passwd", "anonimo");
+  }
+
+  const routes = [
+    {
+      path: "/",
+      name: "pruebaReactIndex",
+      component: PruebaReactIndex
+    },
+
+    {
+      path: "/pruebaReactIndex2",
+      name: "pruebaReactIndex2",
+      component: PruebaReactIndex2
+    },
+    {
+      path: "/createRecommendation",
+      name: "Crear recomendación",
+      component: CreateRecommendation
+    },
+    {
+      path: "/cat",
+      name: "Adicionar categoría",
+      component: AddCategory
+    }
+  ];
+
+  const protectedElements=routes.map((route, i) =>
+    <ProtectedRoute exact path={route.path} component={route.component} menuList={routes} />
+  );
 
 
-const testInfo= {
-  title: "Las crónicas de Narnia: El león, la bruja y el ropero",
-  description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum velit dui, in vehicula mi accumsan id. Suspendisse potenti. Duis id cursus velit. Praesent dapibus arcu eu dolor aliquet euismod. Sed congue nunc vehicula est molestie, a egestas lacus congue. Quisque finibus cursus justo, et scelerisque nibh. Suspendisse eget orci sit amet massa vehicula dictum. Curabitur et erat nunc. Vestibulum leo orci, dapibus eu finibus eget, ultrices non lectus. Etiam eu congue mi. Phasellus accumsan nisl vel vehicula tincidunt. Curabitur rhoncus arcu sed facilisis porttitor. Etiam tortor nisi, dictum ornare lorem id, ornare vulputate augue. Fusce tincidunt nibh ut mollis tempus. Quisque euismod, turpis ut mattis mollis, est nisi accumsan ex, ac elementum est erat id velit. Integer non nunc sed felis volutpat hendrerit id ac nisi.",
-  sourceImage:"/img/test.png",
-  score: 4.7,
-  link: "https://youtu.be/dQw4w9WgXcQ",
-  author: {
-    username: "Stilink",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    profileImg: "/img/profile_image.jpg"
-  },
-  categories: ["gameplay","gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"],
-}
-function App() {
   return (
-      <BrowserRouter>
-          <Switch>
-              <Route path="/" exact component={CreateRecommendation}/>
-              <Route path="/cat" exact component={AddCategory}/>
-          </Switch>
-      </BrowserRouter>
-  )
-}
+    <BrowserRouter >
+      <div>
+        <Switch>
+          <Route exact path="/login" component={Login} />
+          {protectedElements}
+          <Route path="*" component={() => "404 NOT FOUND"}/>
+        </Switch>
+      </div>
+    </BrowserRouter >
 
-export default App;
+  );
+}
