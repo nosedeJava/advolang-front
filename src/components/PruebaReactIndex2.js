@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import '../App.css';
 
-function PruebaReactIndex2() {
+export function PruebaReactIndex2() {
   return (
       <div className="App">
       <header style={{backgroundColor:"blue"}}>
@@ -23,5 +23,3 @@ function PruebaReactIndex2() {
 
   );
 }
-
-export default PruebaReactIndex2;

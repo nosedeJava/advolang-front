@@ -8,6 +8,7 @@ import {SideBarMenu} from './SideBarMenu';
 
 
 export function Panel (props){
+
     return (
       <div>
         <CssBaseline />

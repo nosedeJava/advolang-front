@@ -1,78 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {Panel} from './components/Panel';
-import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import PruebaReactIndex from './components/PruebaReactIndex';
-import PruebaReactIndex2 from './components/PruebaReactIndex2'
-import { useRouteMatch, useHistory } from 'react-router-dom';
-import auth from './components/authentication/auth.js';
-import { Main } from "./components/Main";
+import React, {useEffect} from 'react';
+import { Switch, Route} from "react-router-dom";
+import {PruebaReactIndex} from './components/PruebaReactIndex';
+import {PruebaReactIndex2} from './components/PruebaReactIndex2'
+import {Login} from "./components/authentication/Login";
+import {ProtectedRoute} from './components/authentication/ProtectedRoute';
+import "./App.js";
 
-const pruebaReactIndex = () => (
-    <PruebaReactIndex />
-);
+export default function App(props) {
+  useEffect(() => {
+    setStorageValues()
+  });
 
-const pruebaReactIndex2 = () => (
-    <PruebaReactIndex2 />
-);
-
-const routes = [
-  {
-    path: "/",
-    name: "pruebaReactIndex",
-  },
-  {
-    path: "/pruebaReactIndex2",
-    name: "pruebaReactIndex2",
+  function setStorageValues() {
+    localStorage.setItem("name", "Natalia Durán");
+    localStorage.setItem("email", "n@mail.com");
+    localStorage.setItem("passwd", "maxo06");
   }
-];
 
-export default function  App(props)  {
+  const routes = [
+    {
+      path: "/",
+      name: "pruebaReactIndex",
+      component: PruebaReactIndex
+    },
 
-    const isLoggedIn = true;
-    var page;
-
-    const history=useHistory();
-
-    if(!isLoggedIn){
-      page = (
-        <div>
-
-          <div>
-            Not logged
-            {//<Route exact path="/" component={actualPage.componentValue}/>
-        }
-          </div>
-        </div>
-      );
+    {
+      path: "/pruebaReactIndex2",
+      name: "pruebaReactIndex2",
+      component: PruebaReactIndex2
     }
-    else{
-      page = (
-        <div>
+  ];
 
-          <div>
-            <Route  component={pruebaReactIndex}/>
-          </div>
-        </div>
-      );
+  const protectedElements=routes.map((route, i) =>
+    <ProtectedRoute exact path={route.path} component={route.component} menuList={routes} />
+  );
 
-    }
 
-    return (
-
-      <div>
-
-          <Panel menuList={routes}  history={history}/>
-
-          <Switch>
-            <Route exact path="/" component={Main} />
-            <Route path="/pruebaReactIndex2" component={pruebaReactIndex2} />
-            <Route path="*" component={() => "404 NOT FOUND"} />
-          </Switch>
-      </div>
-
-    );
-  }
+  return (
+    <div>
+      <Switch>
+        <Route exact path="/login" component={Login} />
+        {protectedElements}
+        <Route path="*" component={() => "404 NOT FOUND"}/>
+      </Switch>
+    </div>
+  );
+}
