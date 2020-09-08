@@ -7,27 +7,13 @@ import Typography from '@material-ui/core/Typography';
 import {SideBarMenu} from './SideBarMenu';
 
 
-export class Panel extends React.Component{
-
-  constructor(props){
-    super(props);
-
-    this.handleSelectedItem=this.handleSelectedItem.bind(this);
-  }
-
-
-  handleSelectedItem(item) {
-    this.props.handleMenuSelection(item);
-  }
-
-  render(){
-
+export function Panel (props){
     return (
       <div>
         <CssBaseline />
         <AppBar>
          <Toolbar>
-           <SideBarMenu side="left" menuList={this.props.menuList} handleMenuSelection={this.handleSelectedItem}/>
+           <SideBarMenu side="left" menuList={props.menuList} history={props.history} />
            <Typography variant="h6" noWrap>
              Persistent drawer
            </Typography>
@@ -35,5 +21,4 @@ export class Panel extends React.Component{
        </AppBar>
       </div>
     );
-  }
 }

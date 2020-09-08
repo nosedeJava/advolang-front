@@ -18,30 +18,23 @@ import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import PruebaReactIndex from './PruebaReactIndex'
 
 
-export class SideBarMenu extends React.Component{
+export function SideBarMenu (props){
 
-  constructor(props){
-    super(props);
+    const [state, setState] = React.useState({
+      top: false,
+      left: false,
+      bottom: false,
+      right: false,
+    });
 
     const toggleDrawer = (anchor, open) => (event) => {
       if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
         return;
       }
 
-      this.setState({[anchor]: open, actual_item:null})
+      setState({ ...state, [anchor]: open });
     };
 
-    this.state={top: false, left: false, bottom: false, right: false};
-    this.handleToggleDrawer=toggleDrawer;
-    this.handleSelectedItem=this.handleSelectedItem.bind(this);
-
-  }
-
-  handleSelectedItem(item) {
-    this.props.handleMenuSelection(item);
-  }
-
-  render(){
 
     const useStyles = makeStyles({
       list: {
@@ -60,10 +53,10 @@ export class SideBarMenu extends React.Component{
          [useStyles.fullList]: anchor === 'top' || anchor === 'bottom',
        })}
        role="presentation"
-       onClick={this.handleToggleDrawer(anchor, false)}
-       onKeyDown={this.handleToggleDrawer(anchor, false)}
+       onClick={toggleDrawer(anchor, false)}
+       onKeyDown={toggleDrawer(anchor, false)}
      >
-      <MenuItemsList itemslist={this.props.menuList} clickHandler={this.handleSelectedItem}/>
+      <MenuItemsList itemslist={props.menuList} history={props.history} />
 
        <Divider />
 
@@ -71,30 +64,26 @@ export class SideBarMenu extends React.Component{
      </div>
    );
 
-   const menuSide=this.props.side;
+   const menuSide=props.side;
     return(
       <div>
         <React.Fragment key={menuSide}>
-          <IconButton color="inherit" aria-label="open drawer" onClick={this.handleToggleDrawer(menuSide, true)} edge="start">
+          <IconButton color="inherit" aria-label="open drawer" onClick={toggleDrawer(menuSide, true)} edge="start">
             <MenuIcon />
           </IconButton>
           <SwipeableDrawer
             anchor={menuSide}
-            open={this.state.[menuSide]}
-            onClose={this.handleToggleDrawer(menuSide, false)}
-            onOpen={this.handleToggleDrawer(menuSide, true)}
+            open={state[menuSide]}
+            onClose={toggleDrawer(menuSide, false)}
+            onOpen={toggleDrawer(menuSide, true)}
           >
             {list(menuSide)}
           </SwipeableDrawer>
         </React.Fragment>
 
-        <div>
-          {this.state.actual_item}
-        </div>
 
     </div>
 
     );
-  }
 
 }

@@ -1,15 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {Panel} from './components/Panel';
+import logo from '../logo.svg';
+import './Main.css';
+import {Panel} from './Panel';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import PruebaReactIndex from './components/PruebaReactIndex';
-import PruebaReactIndex2 from './components/PruebaReactIndex2'
+import PruebaReactIndex from './PruebaReactIndex';
+import PruebaReactIndex2 from './PruebaReactIndex2'
 import { useRouteMatch, useHistory } from 'react-router-dom';
-import auth from './components/authentication/auth.js';
-import { Main } from "./components/Main";
 
 const pruebaReactIndex = () => (
     <PruebaReactIndex />
@@ -21,21 +19,20 @@ const pruebaReactIndex2 = () => (
 
 const routes = [
   {
-    path: "/",
+    path: "pruebaReactIndex",
     name: "pruebaReactIndex",
   },
   {
-    path: "/pruebaReactIndex2",
+    path: "pruebaReactIndex2",
     name: "pruebaReactIndex2",
   }
 ];
 
-export default function  App(props)  {
+export function  Main(props)  {
 
     const isLoggedIn = true;
     var page;
 
-    const history=useHistory();
 
     if(!isLoggedIn){
       page = (
@@ -54,7 +51,7 @@ export default function  App(props)  {
         <div>
 
           <div>
-            <Route  component={pruebaReactIndex}/>
+            {pruebaReactIndex}
           </div>
         </div>
       );
@@ -64,14 +61,13 @@ export default function  App(props)  {
     return (
 
       <div>
+        <div className="generalContainer">
+        <div>
+          {<PruebaReactIndex />}
 
-          <Panel menuList={routes}  history={history}/>
+        </div>
 
-          <Switch>
-            <Route exact path="/" component={Main} />
-            <Route path="/pruebaReactIndex2" component={pruebaReactIndex2} />
-            <Route path="*" component={() => "404 NOT FOUND"} />
-          </Switch>
+        </div>
       </div>
 
     );

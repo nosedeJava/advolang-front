@@ -7,17 +7,7 @@ import Container from '@material-ui/core/Container';
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import PruebaReactIndex from './components/PruebaReactIndex';
 import PruebaReactIndex2 from './components/PruebaReactIndex2'
-import { useRouteMatch, useHistory } from 'react-router-dom';
-import auth from './components/authentication/auth.js';
-import { Main } from "./components/Main";
 
-const pruebaReactIndex = () => (
-    <PruebaReactIndex />
-);
-
-const pruebaReactIndex2 = () => (
-    <PruebaReactIndex2 />
-);
 
 const routes = [
   {
@@ -30,12 +20,39 @@ const routes = [
   }
 ];
 
-export default function  App(props)  {
+export default class  Menu extends React.Component {
 
+  constructor(props){
+
+      super(props);
+
+      const pruebaReactIndex = () => (
+          <PruebaReactIndex />
+      );
+
+      const pruebaReactIndex2 = () => (
+          <PruebaReactIndex2 />
+      );
+
+
+      this.state={currentPageComponent:pruebaReactIndex}
+      this.pages={
+        "pruebaReactIndex":pruebaReactIndex,
+        "pruebaReactIndex2":pruebaReactIndex2
+      };
+      this.handleSelectedItem=this.handleSelectedItem.bind(this);
+
+  }
+
+  handleSelectedItem(itemComponent){
+    this.setState({currentPageComponent: this.pages[itemComponent]});
+  }
+
+
+  render(){
     const isLoggedIn = true;
     var page;
 
-    const history=useHistory();
 
     if(!isLoggedIn){
       page = (
@@ -54,7 +71,7 @@ export default function  App(props)  {
         <div>
 
           <div>
-            <Route  component={pruebaReactIndex}/>
+            <Route  component={this.state.currentPageComponent}/>
           </div>
         </div>
       );
@@ -64,15 +81,15 @@ export default function  App(props)  {
     return (
 
       <div>
+        <Panel menuList={routes} handleMenuSelection={this.handleSelectedItem} />
+        <Router>
+            <div className="generalContainer">
+              {page}
 
-          <Panel menuList={routes}  history={history}/>
-
-          <Switch>
-            <Route exact path="/" component={Main} />
-            <Route path="/pruebaReactIndex2" component={pruebaReactIndex2} />
-            <Route path="*" component={() => "404 NOT FOUND"} />
-          </Switch>
+            </div>
+        </Router>
       </div>
 
     );
   }
+}
