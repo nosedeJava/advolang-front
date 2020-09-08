@@ -21,13 +21,20 @@ const useStyles = makeStyles({
     width: 200,
     display: 'flex',
     alignItems: 'center',
+    color: "#B3B8E0",
   },
 });
 
 export default function HoverRating() {
-  const [value, setValue] = React.useState(2);
+  const [value, setValue] = React.useState(2.5);
   const [hover, setHover] = React.useState(-1);
   const classes = useStyles();
+
+  /* Función que debería postear el rating que selecciono el usuario. */
+  const postRating = (value) => {
+    setValue(value);
+  };
+
 
   return (
     <div className={classes.root}>
@@ -35,9 +42,7 @@ export default function HoverRating() {
         name="hover-feedback"
         value={value}
         precision={0.5}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
+        onChange={(event,newValue) => postRating(newValue)}
         onChangeActive={(event, newHover) => {
           setHover(newHover);
         }}

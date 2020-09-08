@@ -50,9 +50,11 @@ const useStyles = makeStyles({
     }
 });
 function Recommendation(props) {
+    
     const classes = useStyles();
     let colorScore = props.score>3.8?"#418525" : props.score<2.8? "#C77938": "#C7B117";
     return (
+
         <Grid container>
             <Grid item xs={1} ></Grid>
             <Grid item xs={8} >
