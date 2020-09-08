@@ -7,6 +7,8 @@ import {Login} from "./components/menu/authentication/Login";
 import {ProtectedRoute} from './components/menu/authentication/ProtectedRoute';
 import {CreateRecommendation} from "./components/createRecomendation/CreateRecommendation";
 import {AddCategory} from "./components/createRecomendation/AddCategory";
+import {SignIn} from "./SignIn";
+import {SignUp} from "./SignUp";
 
 export default function App(props) {
   useEffect(() => {
@@ -40,6 +42,18 @@ export default function App(props) {
       path: "/cat",
       name: "Adicionar categoría",
       component: AddCategory
+    },
+
+    {
+      path: "/signin",
+      name: "SignIn",
+      component: SignIn
+    },
+
+    {
+      path: "/signup",
+      name: "SignUp",
+      component: SignUp
     }
   ];
 
@@ -52,7 +66,9 @@ export default function App(props) {
     <BrowserRouter >
       <div>
         <Switch>
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/" component={SignIn} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/signin" component={SignIn} />
           {protectedElements}
           <Route path="*" component={() => "404 NOT FOUND"}/>
         </Switch>
