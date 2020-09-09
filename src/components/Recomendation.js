@@ -40,7 +40,7 @@ const useStyles = makeStyles({
     thumbnailSpace: {
         maxWidth: "8rem",
         maxHeight: "5rem",
-        backgroundColor: "#B3B8E0",
+        backgroundColor: "white",
     },
     categoriesStyle: {
         margin: "0.7rem",

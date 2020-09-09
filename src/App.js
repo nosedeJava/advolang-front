@@ -7,6 +7,8 @@ import {Login} from "./components/menu/authentication/Login";
 import {ProtectedRoute} from './components/menu/authentication/ProtectedRoute';
 import {CreateRecommendation} from "./components/createRecomendation/CreateRecommendation";
 import {AddCategory} from "./components/createRecomendation/AddCategory";
+import { ListRecommendationService } from "./services/ListRecomendationService"
+import FilterSection from "./components/FilterSection"
 
 export default function App(props) {
   useEffect(() => {
@@ -52,6 +54,7 @@ export default function App(props) {
     <BrowserRouter >
       <div>
         <Switch>
+          <Route path="/" exact component={ListRecommendationService} />
           <Route exact path="/login" component={Login} />
           {protectedElements}
           <Route path="*" component={() => "404 NOT FOUND"}/>

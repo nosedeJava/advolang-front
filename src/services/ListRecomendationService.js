@@ -5,15 +5,6 @@ export class ListRecommendationService extends React.Component {
     render() {
         const recommendations = [
             {
-                title: "The last samurai analysis on YouTube",
-                score: "4.2",
-                sourceImage: "youtube.png",
-                level: "Beginner",
-                user: "urobs",
-                time: "posted 6 hours ago",
-                categories: ["youtube", "analysis", "movie", "japan"]
-            },
-            {
                 title: "Gameplay FFVII remake GPB no-sub",
                 score: "4.8",
                 sourceImage: "youtube.png",
