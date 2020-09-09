@@ -8,6 +8,9 @@ import {CreateRecommendation} from "./components/createRecomendation/CreateRecom
 import {AddCategory} from "./components/createRecomendation/AddCategory";
 import {SignIn} from "./components/menu/authentication/SignIn";
 import {SignUp} from "./components/menu/authentication/SignUp";
+import PrincipalView from "./components/PrincipalView";
+import SpecificRecommendation from "./components/specificRecommendation/SpecificRecommendation"
+
 
 export default function App(props) {
   useEffect(() => {
@@ -23,8 +26,8 @@ export default function App(props) {
   const routes = [
     {
       path: "/",
-      name: "pruebaReactIndex",
-      component: PruebaReactIndex
+      name: "Principal view",
+      component: PrincipalView
     },
 
     {
@@ -42,18 +45,21 @@ export default function App(props) {
       name: "Adicionar categoría",
       component: AddCategory
     },
-
     {
       path: "/signin",
       name: "SignIn",
       component: SignIn
     },
-
     {
       path: "/signup",
       name: "SignUp",
       component: SignUp
     }
+    {
+      path:"/specific-recommendation",
+      name: "Specific recommendation",
+      component: SpecificRecommendation
+    },
   ];
 
   const protectedElements=routes.map((route, i) =>
