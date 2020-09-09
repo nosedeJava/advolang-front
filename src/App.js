@@ -3,12 +3,11 @@ import "./App.css";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import {PruebaReactIndex} from './components/menu/PruebaReactIndex';
 import {PruebaReactIndex2} from './components/menu/PruebaReactIndex2'
-import {Login} from "./components/menu/authentication/Login";
 import {ProtectedRoute} from './components/menu/authentication/ProtectedRoute';
 import {CreateRecommendation} from "./components/createRecomendation/CreateRecommendation";
 import {AddCategory} from "./components/createRecomendation/AddCategory";
-import {SignIn} from "./SignIn";
-import {SignUp} from "./SignUp";
+import {SignIn} from "./components/menu/authentication/SignIn";
+import {SignUp} from "./components/menu/authentication/SignUp";
 
 export default function App(props) {
   useEffect(() => {
