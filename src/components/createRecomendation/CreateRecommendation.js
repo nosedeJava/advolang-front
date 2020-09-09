@@ -4,11 +4,11 @@ import TextField from "@material-ui/core/TextField";
 import ContentFileUpload from "./ContentFileUpload";
 import ContentSelector from "./ContentSelector";
 import Button from "@material-ui/core/Button";
-import AddCategory from "./AddCategory";
+import {AddCategory} from "./AddCategory";
 import {useDispatch, useSelector} from "react-redux";
 import AllActions from "../../redux/actions/AllActions";
 
-export default function CreateRecommendation() {
+export function CreateRecommendation() {
 
     const recommendation = useSelector(state => state.newRecommendation);
     const dispatch = useDispatch();
