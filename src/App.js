@@ -13,7 +13,7 @@ const testInfo= {
   score: "0.1",
   link: "https://youtu.be/dQw4w9WgXcQ",
   author: {
-    username: "Stilink",
+    username: "Stinky",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     profileImg: "/img/profile_image.jpg"
   },

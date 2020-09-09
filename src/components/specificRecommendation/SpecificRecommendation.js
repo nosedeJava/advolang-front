@@ -71,13 +71,13 @@ function SpecificRecommendation(props) {
     const calculatePublication = (postDate) => {
         let actualDate = new Date();
         let hours = Math.floor(Math.abs(actualDate - postDate) / 36e5);
-        if(hours>=24){
-            let days = Math.floor(hours/24);
+        if (hours >= 24) {
+            let days = Math.floor(hours / 24);
             return "Posted " + days + " days ago";
-        }else{
+        } else {
             return "Posted " + hours + " hours ago";
         }
-        
+
     };
 
     let colorScore = props.score > 3.8 ? "#418525" : props.score < 2.8 ? "#C77938" : "#C7B117";
@@ -177,10 +177,12 @@ function SpecificRecommendation(props) {
                                     {props.author.username}
                                 </Typography>
                             </Grid>
-                            <br />
+                            <hr style={{
+                                width: "13rem",
+                            }} />
                             {/*Descripción del usuario.*/}
                             <Grid>
-                                <Typography align="center" style={{color: "#B3B8E0"}}>
+                                <Typography align="center" style={{ color: "#B3B8E0" }}>
                                     {props.author.description}
                                 </Typography>
 
