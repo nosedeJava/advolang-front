@@ -3,12 +3,14 @@ import "./App.css";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import {PruebaReactIndex} from './components/menu/PruebaReactIndex';
 import {PruebaReactIndex2} from './components/menu/PruebaReactIndex2'
-import {Login} from "./components/menu/authentication/Login";
 import {ProtectedRoute} from './components/menu/authentication/ProtectedRoute';
 import {CreateRecommendation} from "./components/createRecomendation/CreateRecommendation";
 import {AddCategory} from "./components/createRecomendation/AddCategory";
+import {SignIn} from "./components/menu/authentication/SignIn";
+import {SignUp} from "./components/menu/authentication/SignUp";
 import PrincipalView from "./components/PrincipalView";
 import SpecificRecommendation from "./components/specificRecommendation/SpecificRecommendation"
+
 
 export default function App(props) {
   useEffect(() => {
@@ -44,6 +46,16 @@ export default function App(props) {
       component: AddCategory
     },
     {
+      path: "/signin",
+      name: "SignIn",
+      component: SignIn
+    },
+    {
+      path: "/signup",
+      name: "SignUp",
+      component: SignUp
+    }
+    {
       path:"/specific-recommendation",
       name: "Specific recommendation",
       component: SpecificRecommendation
@@ -59,7 +71,9 @@ export default function App(props) {
     <BrowserRouter >
       <div>
         <Switch>
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/" component={SignIn} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/signin" component={SignIn} />
           {protectedElements}
           <Route path="*" component={() => "404 NOT FOUND"}/>
         </Switch>
