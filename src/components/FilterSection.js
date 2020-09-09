@@ -22,7 +22,11 @@ function FilterSection(props) {
     const classes = useStyles();
     let listCategories = ["videos", "gameplay", "videogames", "reddit"]
     const [level, setLevel] = useState("Any");
+    const [search, setSearch] = useState("");
+    const [listFilters, setlistFilters] = useState([]);
     const handleLevelChange = (e) => setLevel(e.target.value)
+    const handleSearchChange = (e) => setSearch(e.target.value)
+    const handleOnTagsChange = "";
     return (
         <Grid container spacing={1}>
             <Grid item xs={1} ></Grid>
@@ -37,6 +41,7 @@ function FilterSection(props) {
                                     </InputAdornment>
                                 ),
                             }}
+                            onChange={(e)=>handleSearchChange(e)}
                         />
                         <Grid item xs={3} className={classes.separation}>
                             <Autocomplete
