@@ -1,6 +1,7 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Box, Card, CardMedia, Typography } from '@material-ui/core';
+import { Grid, Box, Card, CardMedia, Typography, Link } from '@material-ui/core';
 import ListCategories from './ListCategories'
 const useStyles = makeStyles({
     recommendationBox: {
@@ -51,7 +52,12 @@ const useStyles = makeStyles({
 });
 function Recommendation(props) {
     const classes = useStyles();
+    let history = useHistory();
     let colorScore = props.score>3.8?"#418525" : props.score<2.8? "#C77938": "#C7B117";
+    const handleRedirectSpecific=()=>{
+        localStorage.setItem("recommendation-id",123)
+        history.push("/specific-recommendation")
+    }
     return (
         <Grid container>
             <Grid item xs={1} ></Grid>
@@ -69,7 +75,7 @@ function Recommendation(props) {
                         <Grid item xs={8} className={classes.generalClass}>
                             <Grid item xs={12} >
                                 <Box textAlign="left">
-                                    <Typography className={classes.generalClass4}>
+                                    <Typography className={classes.generalClass4} onClick={()=>handleRedirectSpecific()}>
                                         {props.title}
                                     </Typography>
                                 </Box>
