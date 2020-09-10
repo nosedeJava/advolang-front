@@ -41,21 +41,6 @@ export default function App(props) {
       component: CreateRecommendation
     },
     {
-      path: "/cat",
-      name: "Adicionar categoría",
-      component: AddCategory
-    },
-    {
-      path: "/signin",
-      name: "SignIn",
-      component: SignIn
-    },
-    {
-      path: "/signup",
-      name: "SignUp",
-      component: SignUp
-    }
-    {
       path:"/specific-recommendation",
       name: "Specific recommendation",
       component: SpecificRecommendation
@@ -71,9 +56,8 @@ export default function App(props) {
     <BrowserRouter >
       <div>
         <Switch>
-          <Route exact path="/" component={SignIn} />
+          <Route exact path="/login" component={SignIn} />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/signin" component={SignIn} />
           {protectedElements}
           <Route path="*" component={() => "404 NOT FOUND"}/>
         </Switch>

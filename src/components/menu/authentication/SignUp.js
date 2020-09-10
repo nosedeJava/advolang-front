@@ -81,7 +81,7 @@ export function SignUp(props) {
             localStorage.setItem("lastname", last);
             localStorage.setItem("email", email);
             localStorage.setItem("passwd", password);
-            props.history.push("/");
+            props.history.push("/login");
         }
         else{
             alert("No se han recibido los datos correctos.")

@@ -16,7 +16,7 @@ export function Panel (props){
          <Toolbar>
            <SideBarMenu side="left" menuList={props.menuList} history={props.history} />
            <Typography variant="h6" noWrap>
-             Persistent drawer
+             Advolang
            </Typography>
          </Toolbar>
        </AppBar>

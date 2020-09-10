@@ -63,13 +63,12 @@ export function SignIn(props) {
     function handleSubmit(){
         auth.login(() => {
             if(localStorage.getItem("email")===email && localStorage.getItem("passwd")===password){
-                props.history.push("/cat");
-            }
-            else{
+                props.history.push("/");
+            }else{
                 alert("Email o Contraseña incorrectas.")
             }
         });
-
+        
     }
     return (
         <Container component="main" maxWidth="xs">
