@@ -9,18 +9,21 @@ const useStyles = makeStyles({
     boxClass: {
         margin: "0.7rem",
         padding: '0.5rem',
+        backgroundColor: "#242847",
     },
     thumbnailSpace: {
         maxWidth: "7rem",
         maxHeight: "4rem",
     },
     fontFamilyTitle: {
+        color: "#B3B8E0",
         fontSize: "1.4rem",
         fontFamily: "Verdana",
     },
     fontFamilyText: {
         fontSize: "1rem",
         fontFamily: "Verdana",
+        color: "#B3B8E0",
     },
     score: {
         backgroundColor: "green",
@@ -37,6 +40,7 @@ const useStyles = makeStyles({
         textJustify: "start",
         fontSize: "1rem",
         fontFamily: "Verdana",
+        color: "#B3B8E0",
     },
     avatarSize: {
         width: "7rem",
@@ -51,19 +55,40 @@ const useStyles = makeStyles({
         margin: "0.7rem",
         padding: '0.5rem',
         width: "auto",
+        backgroundColor: "#242847",
+        color: "#B3B8E0",
+    },
+    categoriesBox: {
+        margin: "0.7rem",
+        padding: '0.5rem',
+        backgroundColor: "#B3B8E0",
     }
 });
 
 function SpecificRecommendation(props) {
     const classes = useStyles();
-    const changeScore = (score) => {
-        props.score = score;
+
+    const calculatePublication = (postDate) => {
+        let actualDate = new Date();
+        let hours = Math.floor(Math.abs(actualDate - postDate) / 36e5);
+        if (hours >= 24) {
+            let days = Math.floor(hours / 24);
+            return "Posted " + days + " days ago";
+        } else {
+            return "Posted " + hours + " hours ago";
+        }
+
     };
+
+    let colorScore = props.score > 3.8 ? "#418525" : props.score < 2.8 ? "#C77938" : "#C7B117";
+
+
     return (
         <Grid container id="specificRecommendation">
             <Grid container xs={8}>
                 <Box boxShadow={3} borderRadius="borderRadius" className={classes.boxClass} >
                     <Grid container xs={12}>
+                        {/* Uso de la imagen relacionada a la recomendación. */}
                         <Grid item xs={2} className={classes.boxClass}>
                             <Card className={classes.thumbnailSpace}>
                                 <CardMedia
@@ -73,6 +98,7 @@ function SpecificRecommendation(props) {
                             </Card>
                         </Grid>
                         <Grid item xs={9}>
+                            {/*Uso del titulo de la recomendación. */}
                             <Grid item xs={12}>
                                 <Box textAlign="left">
                                     <Typography className={classes.fontFamilyTitle}>
@@ -80,11 +106,12 @@ function SpecificRecommendation(props) {
                                     </Typography>
                                 </Box>
                             </Grid>
+                            {/* Uso de la fecha de publicación. */}
                             <Grid container xs={12}>
                                 <Grid item xs={4}>
                                     <Box textAlign="left">
-                                        <Typography>
-                                            Publicado hace 7 horas
+                                        <Typography style={{ color: "#B3B8E0" }}>
+                                            {calculatePublication(props.postDate)}
                                         </Typography>
                                     </Box>
                                 </Grid>
@@ -92,9 +119,10 @@ function SpecificRecommendation(props) {
                                     <Grid item>
                                         <HoverRating />
                                     </Grid>
+                                    {/* Uso del score asociado a la recomendación. */}
                                     <Grid item>
-                                        <Box borderRadius="50%" className={classes.score}>
-                                            <Typography className={classes.scoreFont}>
+                                        <Box borderRadius="50%" className={classes.score} style={{ backgroundColor: colorScore }}>
+                                            <Typography className={classes.scoreFont} align="center">
                                                 {props.score}
                                             </Typography>
                                         </Box>
@@ -103,6 +131,7 @@ function SpecificRecommendation(props) {
                             </Grid>
                         </Grid>
                     </Grid>
+                    {/* Uso de la descripción dada a una recomendación en especifico. */}
                     <Grid item>
                         <Box borderRadius="borderRadius" className={classes.boxClass}>
                             <Typography className={classes.descriptionFont} align="justify">
@@ -110,13 +139,16 @@ function SpecificRecommendation(props) {
                             </Typography>
                         </Box>
                     </Grid>
+                    {/* Uso del enlace relacionado a la recomendación.*/}
                     <Grid item>
-                        {props.link}
+                        <Box align="center">
+                            <a href={props.link} style={{ color: "#B3B8E0" }}>Link aquí</a>
+                        </Box>
                     </Grid>
                     <Grid>
                         <Grid container direction="row" justify="flex-end" alignItems="flex-end" alignContent="flex-end" spacing={1}>
                             <Grid item>
-                                <Button variant="outlined" color="primary">Save</Button>
+                                <Button variant="contained" color="primary">Save</Button>
                             </Grid>
                             <Grid item>
                                 <FormDialog />
@@ -135,23 +167,32 @@ function SpecificRecommendation(props) {
                             direction="column"
                             alignItems="center"
                             justify="center">
+                            {/* Aquí uso el nombre de usuario y el enlace a la imagen de perfil.*/}
                             <Grid item>
                                 <Avatar alt={props.author.username} src={props.author.profileImg} className={classes.avatarSize} />
                             </Grid>
+                            {/* Aquí uso el nombre de usuario*/}
                             <Grid item>
                                 <Typography variant="h4">
                                     {props.author.username}
                                 </Typography>
                             </Grid>
-                            <br />
+                            <hr style={{
+                                width: "13rem",
+                            }} />
+                            {/*Descripción del usuario.*/}
                             <Grid>
-                                {props.author.description}
+                                <Typography align="center" style={{ color: "#B3B8E0" }}>
+                                    {props.author.description}
+                                </Typography>
+
                             </Grid>
                         </Grid>
                     </Box>
                 </Grid>
+                {/* Uso de las categorias asociadas a la recomendación.*/}
                 <Grid item xs={10}>
-                    <Box boxShadow={3} borderRadius="borderRadius" className={classes.boxClass} >
+                    <Box className={classes.categoriesBox}>
                         <ListCategories content={props.categories} />
                     </Box>
                 </Grid>
@@ -159,6 +200,5 @@ function SpecificRecommendation(props) {
         </Grid>
     );
 }
-
 
 export default SpecificRecommendation;

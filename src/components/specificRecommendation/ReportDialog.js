@@ -9,6 +9,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
+  const [textField, setTextField] = React.useState('');
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -18,9 +19,15 @@ export default function FormDialog() {
     setOpen(false);
   };
 
+  const handleSendReport = () => {
+    alert("Reporte enviado.")
+    alert(textField)
+    setOpen(false);
+  };
+
   return (
     <div>
-      <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
+      <Button variant="contained" color="secondary" onClick={handleClickOpen}>
         Report
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -35,13 +42,16 @@ export default function FormDialog() {
             label="Description"
             type="text"
             fullWidth
+            onChange={(text) => {
+              setTextField(text.target.value);
+            }}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleSendReport} color="primary">
             Report
           </Button>
         </DialogActions>
