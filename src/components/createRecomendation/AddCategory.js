@@ -7,7 +7,7 @@ import {useDispatch} from "react-redux";
 import LayerCategory from "./LayerCategory";
 import AllActions from "../../redux/actions/AllActions";
 
-export default function AddCategory() {
+export function AddCategory() {
 
     const [categories, setCategories] = useState(['Music']);
     const [show, setShow] = useState(false);

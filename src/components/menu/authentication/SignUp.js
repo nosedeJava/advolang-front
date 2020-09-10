@@ -1,10 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -46,9 +44,50 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SignUp() {
+export function SignUp(props) {
     const classes = useStyles();
+    const [name, setName] = useState("");
+    const [last, setLast] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmp, setConfirmP] = useState("");
 
+    function handleName(userName){
+        setName(userName.target.value);
+    }
+
+    function handleLast(userLast){
+        setLast(userLast.target.value);
+    }
+
+    function handleEmail(userEmail){
+        setEmail(userEmail.target.value);
+    }
+
+    function handlePasswd(userPasswd){
+        setPassword(userPasswd.target.value);
+    }
+
+    function handleConfPsd(userConfPsd){
+        setConfirmP(userConfPsd.target.value);
+    }
+
+    function handleSubmit(){
+        if(localStorage.getItem("email")===email){
+            alert("Ya se encuentra registrado ese correo")
+        }
+        else if(password===confirmp){
+            localStorage.setItem("name", name);
+            localStorage.setItem("lastname", last);
+            localStorage.setItem("email", email);
+            localStorage.setItem("passwd", password);
+            props.history.push("/login");
+        }
+        else{
+            alert("No se han recibido los datos correctos.")
+        }
+
+    }
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -56,7 +95,7 @@ export default function SignUp() {
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
-                <Typography component="h1" variant="h5">
+                <Typography component="h1" variant="h5" style={{ color: 'black' }}>
                     Sign up
                 </Typography>
                 <form className={classes.form} noValidate>
@@ -70,6 +109,8 @@ export default function SignUp() {
                                 fullWidth
                                 id="firstName"
                                 label="First Name"
+                                value = {name}
+                                onChange = {handleName}
                                 autoFocus
                             />
                         </Grid>
@@ -81,6 +122,8 @@ export default function SignUp() {
                                 id="lastName"
                                 label="Last Name"
                                 name="lastName"
+                                value = {last}
+                                onChange = {handleLast}
                                 autoComplete="lname"
                             />
                         </Grid>
@@ -92,6 +135,8 @@ export default function SignUp() {
                                 id="email"
                                 label="Email Address"
                                 name="email"
+                                value = {email}
+                                onChange = {handleEmail}
                                 autoComplete="email"
                             />
                         </Grid>
@@ -104,6 +149,8 @@ export default function SignUp() {
                                 label="Password"
                                 type="password"
                                 id="password"
+                                value = {password}
+                                onChange = {handlePasswd}
                                 autoComplete="current-password"
                             />
                         </Grid>
@@ -115,28 +162,26 @@ export default function SignUp() {
                                 name="confirmPassword"
                                 label="Confirm Password"
                                 type="password"
-                                id="password"
+                                value = {confirmp}
+                                onChange = {handleConfPsd}
+                                id="Cpassword"
                             />
                         </Grid>
-                        <Grid item xs={12}>
-                            <FormControlLabel
-                                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                                label="I want to receive inspiration, marketing promotions and updates via email."
-                            />
-                        </Grid>
+
                     </Grid>
                     <Button
                         type="submit"
                         fullWidth
                         variant="contained"
                         color="primary"
+                        onClick={handleSubmit}
                         className={classes.submit}
                     >
                         Sign Up
                     </Button>
                     <Grid container justify="flex-end">
                         <Grid item>
-                            <Link href="#" variant="body2">
+                            <Link href={"/signin"} variant="body2">
                                 Already have an account? Sign in
                             </Link>
                         </Grid>

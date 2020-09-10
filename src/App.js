@@ -1,9 +1,15 @@
-import React from 'react';
-import './App.css';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
-import CreateRecommendation from "./components/createRecomendation/CreateRecommendation";
-import AddCategory from "./components/createRecomendation/AddCategory";
-import SpecificRecommendation from "./components/specificRecommendation/SpecificRecommendation";
+import React, {useEffect} from 'react';
+import "./App.css";
+import {BrowserRouter, Switch, Route} from "react-router-dom";
+import {PruebaReactIndex} from './components/menu/PruebaReactIndex';
+import {PruebaReactIndex2} from './components/menu/PruebaReactIndex2'
+import {ProtectedRoute} from './components/menu/authentication/ProtectedRoute';
+import {CreateRecommendation} from "./components/createRecomendation/CreateRecommendation";
+import {AddCategory} from "./components/createRecomendation/AddCategory";
+import {SignIn} from "./components/menu/authentication/SignIn";
+import {SignUp} from "./components/menu/authentication/SignUp";
+import PrincipalView from "./components/PrincipalView";
+import SpecificRecommendation from "./components/specificRecommendation/SpecificRecommendation"
 
 
 const testInfo= {
@@ -20,11 +26,58 @@ const testInfo= {
   categories: ["gameplay","gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"],
   postDate: Date.parse("September 8, 2020, 00:00:00 UTC")
 }
-function App() {
-  document.body.style = 'background: #B3B8E0;';
-  return (
-      <SpecificRecommendation {...testInfo} />
-  )
-}
 
-export default App;
+export default function App(props) {
+  useEffect(() => {
+    setStorageValues()
+  });
+
+  function setStorageValues() {
+    localStorage.setItem("name", "Anónimos");
+    localStorage.setItem("email", "an@mail.com");
+    localStorage.setItem("passwd", "anonimo");
+  }
+
+  const routes = [
+    {
+      path: "/",
+      name: "Principal view",
+      component: PrincipalView
+    },
+
+    {
+      path: "/pruebaReactIndex2",
+      name: "pruebaReactIndex2",
+      component: PruebaReactIndex2
+    },
+    {
+      path: "/createRecommendation",
+      name: "Crear recomendación",
+      component: CreateRecommendation
+    },
+    {
+      path:"/specific-recommendation",
+      name: "Specific recommendation",
+      component: SpecificRecommendation
+    },
+  ];
+
+  const protectedElements=routes.map((route, i) =>
+    <ProtectedRoute exact path={route.path} component={route.component} menuList={routes} />
+  );
+
+
+  return (
+    <BrowserRouter >
+      <div>
+        <Switch>
+          <Route exact path="/login" component={SignIn} />
+          <Route exact path="/signup" component={SignUp} />
+          {protectedElements}
+          <Route path="*" component={() => "404 NOT FOUND"}/>
+        </Switch>
+      </div>
+    </BrowserRouter >
+
+  );
+}
