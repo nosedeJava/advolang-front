@@ -5,7 +5,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import ListItemText from '@material-ui/core/ListItemText';
-import auth from './authentication/auth.js';
+import auth from '../../services/authService.js';
 
 export function MenuItemsList(props){
 

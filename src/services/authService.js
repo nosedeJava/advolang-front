@@ -1,6 +1,7 @@
-class Auth {
+class AuthService {
   constructor() {
-    this.authenticated = false;
+    const user = JSON.parse(localStorage.getItem('user'))
+    this.authenticated = !!user;
   }
 
   login(cb) {
@@ -18,4 +19,4 @@ class Auth {
   }
 }
 
-export default new Auth();
+export default new AuthService();

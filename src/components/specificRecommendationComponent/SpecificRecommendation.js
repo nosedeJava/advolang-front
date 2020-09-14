@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Box, Card, CardMedia, Typography, Button, Avatar } from '@material-ui/core';
 import HoverRating from './RatingRecommendation';
 import FormDialog from './ReportDialog';
-import ListCategories from '../ListCategories';
+import ListCategories from '../recommendationComponent/ListCategories';
 
 const useStyles = makeStyles({
     boxClass: {

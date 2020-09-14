@@ -1,4 +1,4 @@
-.mainFilterGrid:{
+.mainFilterGrid{
   align-items: center;
   justify: center;
 
@@ -39,7 +39,7 @@
   padding:  0.7rem;
 }
 
-.TextFieldStyle: {
+.TextFieldStyle {
   border-width:  10px;
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {ListRecommendations} from '../components/ListRecommendations';
+import {ListRecommendations} from '../components/recommendationComponent/ListRecommendations';
 
 export class ListRecommendationService extends React.Component {
     render() {

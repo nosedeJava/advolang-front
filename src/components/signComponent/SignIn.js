@@ -12,20 +12,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import auth from "./auth";
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-                Advolang
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import auth from "../../services/authService";
+import Copyright from "./Copyright";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -49,23 +37,21 @@ const useStyles = makeStyles((theme) => ({
 
 export function SignIn(props) {
     const classes = useStyles();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [user, setUser] = useState(null);
 
-    function handleEmail(userEmail){
-        setEmail(userEmail.target.value);
-    }
-
-    function handlePasswd(userPasswd){
-        setPassword(userPasswd.target.value);
+    function handleChange(event){
+        setUser({...user, [event.target.name]: event.target.value});
     }
 
     function handleSubmit(){
         auth.login(() => {
-            if(localStorage.getItem("email")===email && localStorage.getItem("passwd")===password){
+            const registered = JSON.parse(localStorage.getItem('registeredUser'));
+            if(registered.email === user.email && registered.password === user.password){
+                alert(`Welcome ${registered.firstName}`);
+                localStorage.setItem('user', JSON.stringify(user));
                 props.history.push("/");
             }else{
-                alert("Email o Contraseña incorrectas.")
+                alert("Wrong email or password")
             }
         });
 
@@ -90,8 +76,7 @@ export function SignIn(props) {
                                 id="email"
                                 label="Email Address"
                                 name="email"
-                                value = {email}
-                                onChange = {handleEmail}
+                                onChange = {handleChange}
                                 autoComplete="email"
                             />
                         </Grid>
@@ -104,8 +89,7 @@ export function SignIn(props) {
                                 label="Password"
                                 type="password"
                                 id="password"
-                                value = {password}
-                                onChange = {handlePasswd}
+                                onChange = {handleChange}
                                 autoComplete="current-password"
                             />
                         </Grid>
@@ -127,7 +111,7 @@ export function SignIn(props) {
                     <Grid container justify="flex-end">
                         <Grid item>
                             <Link href={"/signup"} variant="body2">
-                                You do not have an account? Sign up
+                                You do not have an account?
                             </Link>
                         </Grid>
                     </Grid>

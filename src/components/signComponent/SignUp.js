@@ -8,21 +8,9 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-                Advolang
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import Copyright from "./Copyright";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -45,60 +33,39 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export function SignUp(props) {
+
     const classes = useStyles();
-    const [name, setName] = useState("");
-    const [last, setLast] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [user, setUser] = useState(null);
     const [confirmp, setConfirmP] = useState("");
 
-    function handleName(userName){
-        setName(userName.target.value);
+    function handleChange(event) {
+        setUser({...user, [event.target.name]: event.target.value});
     }
 
-    function handleLast(userLast){
-        setLast(userLast.target.value);
-    }
-
-    function handleEmail(userEmail){
-        setEmail(userEmail.target.value);
-    }
-
-    function handlePasswd(userPasswd){
-        setPassword(userPasswd.target.value);
-    }
-
-    function handleConfPsd(userConfPsd){
+    function handleConfPsd(userConfPsd) {
         setConfirmP(userConfPsd.target.value);
     }
 
-    function handleSubmit(){
-        if(localStorage.getItem("email")===email){
-            alert("Ya se encuentra registrado ese correo")
-        }
-        else if(password===confirmp){
-            localStorage.setItem("name", name);
-            localStorage.setItem("lastname", last);
-            localStorage.setItem("email", email);
-            localStorage.setItem("passwd", password);
+    function handleSubmit() {
+        if (user.password === confirmp) {
+            localStorage.setItem('registeredUser', JSON.stringify(user));
             props.history.push("/login");
+        } else {
+            alert("The passwords are not equals")
         }
-        else{
-            alert("No se han recibido los datos correctos.")
-        }
-
     }
+
     return (
         <Container component="main" maxWidth="xs">
-            <CssBaseline />
+            <CssBaseline/>
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
-                    <LockOutlinedIcon />
+                    <LockOutlinedIcon/>
                 </Avatar>
-                <Typography component="h1" variant="h5" style={{ color: 'black' }}>
+                <Typography component="h1" variant="h5" style={{color: 'black'}}>
                     Sign up
                 </Typography>
-                <form className={classes.form} >
+                <form className={classes.form} onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <TextField
@@ -109,8 +76,7 @@ export function SignUp(props) {
                                 fullWidth
                                 id="firstName"
                                 label="First Name"
-                                value = {name}
-                                onChange = {handleName}
+                                onChange={handleChange}
                                 autoFocus
                             />
                         </Grid>
@@ -122,9 +88,7 @@ export function SignUp(props) {
                                 id="lastName"
                                 label="Last Name"
                                 name="lastName"
-                                value = {last}
-                                onChange = {handleLast}
-                                autoComplete="lname"
+                                onChange={handleChange}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -135,8 +99,7 @@ export function SignUp(props) {
                                 id="email"
                                 label="Email Address"
                                 name="email"
-                                value = {email}
-                                onChange = {handleEmail}
+                                onChange={handleChange}
                                 autoComplete="email"
                             />
                         </Grid>
@@ -149,8 +112,7 @@ export function SignUp(props) {
                                 label="Password"
                                 type="password"
                                 id="password"
-                                value = {password}
-                                onChange = {handlePasswd}
+                                onChange={handleChange}
                                 autoComplete="current-password"
                             />
                         </Grid>
@@ -162,26 +124,24 @@ export function SignUp(props) {
                                 name="confirmPassword"
                                 label="Confirm Password"
                                 type="password"
-                                value = {confirmp}
-                                onChange = {handleConfPsd}
+                                onChange={handleConfPsd}
                                 id="Cpassword"
                             />
                         </Grid>
 
                     </Grid>
                     <Button
-                        type="button"
+                        type="submit"
                         fullWidth
                         variant="contained"
                         color="primary"
-                        onClick={handleSubmit}
                         className={classes.submit}
                     >
                         Sign Up
                     </Button>
                     <Grid container justify="flex-end">
                         <Grid item>
-                            <Link href={"/login"} variant="body2">
+                            <Link href={"/signin"} variant="body2">
                                 Already have an account?
                             </Link>
                         </Grid>
@@ -189,7 +149,7 @@ export function SignUp(props) {
                 </form>
             </div>
             <Box mt={5}>
-                <Copyright />
+                <Copyright/>
             </Box>
         </Container>
     );

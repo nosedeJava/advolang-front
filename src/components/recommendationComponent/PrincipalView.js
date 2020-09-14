@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ListRecommendationService } from "../services/ListRecomendationService"
+import { ListRecommendationService } from "../../services/ListRecomendationService"
 import FilterSection from "./FilterSection"
 import './PrincipalView.css';
 
