@@ -98,7 +98,7 @@ export function SignUp(props) {
                 <Typography component="h1" variant="h5" style={{ color: 'black' }}>
                     Sign up
                 </Typography>
-                <form className={classes.form} noValidate>
+                <form className={classes.form} >
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <TextField
@@ -170,7 +170,7 @@ export function SignUp(props) {
 
                     </Grid>
                     <Button
-                        type="submit"
+                        type="button"
                         fullWidth
                         variant="contained"
                         color="primary"

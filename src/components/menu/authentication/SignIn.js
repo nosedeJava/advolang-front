@@ -68,7 +68,7 @@ export function SignIn(props) {
                 alert("Email o Contraseña incorrectas.")
             }
         });
-        
+
     }
     return (
         <Container component="main" maxWidth="xs">
@@ -78,9 +78,9 @@ export function SignIn(props) {
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5" style={{ color: 'black' }}>
-                    Sign up
+                    Sign In
                 </Typography>
-                <form className={classes.form} noValidate>
+                <form className={classes.form}  >
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
                             <TextField
@@ -115,7 +115,7 @@ export function SignIn(props) {
                         label="Remember me"
                     />
                     <Button
-                        type="submit"
+                        type="button"
                         fullWidth
                         variant="contained"
                         color="primary"

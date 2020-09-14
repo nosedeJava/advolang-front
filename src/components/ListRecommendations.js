@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import Recommendation from './Recomendation';
+import Recommendation from './Recommendation';
+import './ListRecommendations.css';
 
 export class ListRecommendations extends React.Component {
     render() {
@@ -8,9 +9,9 @@ export class ListRecommendations extends React.Component {
             return <Recommendation key={"recommendation-" + i} {...recommendation} />
         });
         return (
-            <Grid container >
+            <div className="listContentDiv">
                 {listContent}
-            </Grid>
+            </div>
         );
     }
 }
