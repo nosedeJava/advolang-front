@@ -1,5 +1,6 @@
 .generalContainer{
    height: 90vh;
+   height:auto;
    margin-top: 10vh;
    position: absolute;
    left: 0;

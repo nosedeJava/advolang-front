@@ -46,13 +46,19 @@ export function SignIn(props) {
     function handleSubmit(){
         auth.login(() => {
             const registered = JSON.parse(localStorage.getItem('registeredUser'));
-            if(registered.email === user.email && registered.password === user.password){
-                alert(`Welcome ${registered.firstName}`);
-                localStorage.setItem('user', JSON.stringify(user));
-                props.history.push("/");
-            }else{
-                alert("Wrong email or password")
+            if(registered !== null){
+              if(registered.email === user.email && registered.password === user.password){
+                  alert(`Welcome ${registered.firstName}`);
+                  localStorage.setItem('user', JSON.stringify(user));
+                  props.history.push("/");
+              }else{
+                  alert("Wrong email or password")
+              }
             }
+            else{
+              alert("Usuario no registrado")
+            }
+
         });
 
     }

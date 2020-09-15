@@ -1,0 +1,25 @@
+
+.video-responsive {
+  position: relative;
+  padding-bottom: 40%; /* 16/9 ratio */
+  padding-left: 50%;
+  height: 0;
+  overflow: hidden;
+  background-color: navy;
+
+}
+
+.video-responsive iframe,
+.video-responsive object,
+.video-responsive embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 60%;
+  height: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+
+}
