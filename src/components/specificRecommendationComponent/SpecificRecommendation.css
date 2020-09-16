@@ -216,20 +216,94 @@
   align-items: center;
   justify: center;
   margin-top: 10%;
-
 }
 
-.profileBox {
+.userConatainerBox {
   margin: 0.7rem;
   padding: 0.5rem;
-  width: auto;
-  background-color: #242847;
+  width: 15rem;
+  display: flex;
+  background-color: black;
   color: #B3B8E0;
+  align-items: center;;
+  justify-content: center;
+  word-break: break-all;
 }
 
+.usersSubContainer {
+  align-items: center;
+  justify-content: center;
+  background-color: blue;
+}
+
+.userProfileGrid {
+  background-color: transparent;
+  width: 60%;
+  height: 60%;
+  align-items: center;
+  justify-content: center;
+}
+
+.userImageDiv{
+  background-color: gray;
+}
+
+.userNameGrid{
+  background-color: lightgreen;
+  padding: 0.5rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  word-break: break-all;
+
+}
+
+.userNameBox{
+  font-size: 200%;
+}
+
+.divider{
+  color: black;
+  width: 85%;
+  padding-top: 1%;
+}
+
+.userDescGrid{
+  background-color: darkgreen;
+  padding: 0.5rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  word-break: break-all;
+
+}
+
+.userDescBox{
+  font-size: 100%;
+}
+
+.categoriesGrid{
+  background-color: silver;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
 
 .categoriesBox: {
-  margin: 0.7rem;
-  padding: 0.5rem;
   background-color: #B3B8E0;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerPost{
+  width: 90%;
+  justify-content: flex-end;
+  align-items: flex-end;
+  align-content: flex-end;
+  background-color: olive;
+  padding: 0.5rem;
 }

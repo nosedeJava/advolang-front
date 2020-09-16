@@ -1,3 +1,15 @@
+.imageBox {
+  background-color: red;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5rem;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+}
 
 .video-responsive {
   position: relative;

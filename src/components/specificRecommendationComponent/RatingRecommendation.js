@@ -40,7 +40,7 @@ const labels = (value)=>{
 
 
 export default function HoverRating(props) {
-  const [value, setValue] = React.useState(2.5);
+  const [value, setValue] = React.useState(props.startValues);
   const [hover, setHover] = React.useState(-1);
 
   /* Función que debería postear el rating que selecciono el usuario. */
