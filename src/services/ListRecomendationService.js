@@ -1,9 +1,10 @@
 import React from 'react';
 import {ListRecommendations} from '../components/recommendationComponent/ListRecommendations';
+import {recommendations} from '../components/Auxiliar/Data.js';
 
 export class ListRecommendationService extends React.Component {
     render() {
-      const recommendations = [
+      const recommendations_1 = [
           {
               id: 1,
               title: "Gameplay FFVII remake GPB no-sub",

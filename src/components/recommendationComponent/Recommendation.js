@@ -2,13 +2,16 @@ import React from 'react';
 import { Grid, Box, Card, CardMedia, Typography, ButtonBase} from '@material-ui/core';
 import ListCategories from './ListCategories'
 import './Recommendation.css';
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
+import {calcProm, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
+
 
 
 function Recommendation(props) {
   let history = useHistory();
 
-  let colorScore = props.score > 3.8 ? "#418525" : props.score < 2.8 ? "#C77938" : "#C7B117";
+  let score=calcProm(props.list_score);
+  let colorScore = score > 3.8 ? "#418525" : score < 2.8 ? "#C77938" : "#C7B117";
 
   const handleRedirectSpecific = () => {
     localStorage.setItem("recommendation-id", props.id)
@@ -50,7 +53,7 @@ function Recommendation(props) {
                     <Grid item xs={4}>
                       <Box textAlign="left">
                         <Typography className="generalClass5">
-                          {props.user}
+                          {props.user.name}
                         </Typography>
                       </Box>
                     </Grid>
@@ -66,7 +69,7 @@ function Recommendation(props) {
                     <Grid item xs={4}>
                       <Box textAlign="right">
                         <Typography className="generalClass5">
-                          {props.time}
+                          {calculatePublication(props.time)}
                         </Typography>
                       </Box>
                     </Grid>
@@ -78,7 +81,7 @@ function Recommendation(props) {
                 <Grid  item xs={1} className="gridScoreStyle" >
                   <Box border={1} className="boxScoreStyle" style={{ backgroundColor: colorScore, }}>
                     <Typography className="generalClass3" align="center" >
-                      {props.score}
+                      {score}
                     </Typography>
                   </Box>
                 </Grid>
