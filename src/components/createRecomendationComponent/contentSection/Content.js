@@ -10,8 +10,10 @@ import {TextField} from "@material-ui/core";
 import {AttachFile} from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 import Category from "../categorySection/Category";
+import Button from "@material-ui/core/Button";
+import AzureService from "../../../services/AzureService";
 
-export default function Content(){
+export default function Content(props){
 
     const dispatch = useDispatch();
     const recommendation = useSelector(state => state.newRecommendation);
@@ -43,6 +45,38 @@ export default function Content(){
                 .CreateRecommendationActions
                 .updateRecommendation({file: event.target.files[0].name})
         )
+    }
+
+    function post(){
+        if (checkInputs()){
+            props.setFlag(true);
+            if (file){
+                AzureService.putFile(file.name, file)
+                    .then(response => console.log(response.status));
+            }
+            recommendation.date = new Date();
+            localStorage.setItem('recommendation', JSON.stringify(recommendation));
+        }
+    }
+
+    function checkInputs(){
+        if (!recommendation.title){
+            alert('Please fill the title field');
+            return false
+        }
+        if (!recommendation.description){
+            alert('Please fill the description field');
+            return false
+        }
+        if (!recommendation.contentType){
+            alert('Please select a content type');
+            return false
+        }
+        if (!recommendation.categories){
+            alert('Please select any category')
+            return false
+        }
+        return true
     }
 
     return(
@@ -97,6 +131,14 @@ export default function Content(){
                 <h1>Set the categories</h1>
                 <Category/>
             </div>
+            <Button
+                className="button"
+                variant={"contained"}
+                color={"primary"}
+                onClick={post}
+            >
+                Post Recommendation
+            </Button>
         </div>
     )
 }

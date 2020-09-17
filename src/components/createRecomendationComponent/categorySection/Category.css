@@ -12,14 +12,14 @@
     width: 70% !important;
 }
 
-.button{
+.category-container .button{
     background: #414442 !important;
     color: white !important;
     font-family: cursive !important;
     transition-duration: 0.4s;
 }
 
-.button:hover{
+.category-container .button:hover{
     background: #681a68 !important;
 }
 

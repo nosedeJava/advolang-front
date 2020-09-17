@@ -23,7 +23,7 @@
 .card h1{
     margin-top: 20px;
     color: darkblue;
-    font-family: Chilanka, serif;
+    font-family: "Yrsa SemiBold", serif;
 }
 
 .card .textField{
@@ -45,4 +45,8 @@
 
 .input-file input{
     display: none;
+}
+
+.recommendation-container .button{
+    margin-top: 40px;
 }

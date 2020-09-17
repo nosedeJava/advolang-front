@@ -1,10 +1,11 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import "./ThumbnailView.css";
 import {useDropzone} from "react-dropzone";
 import {useDispatch} from "react-redux";
 import AllActions from "../../../redux/actions/AllActions";
+import AzureService from "../../../services/AzureService";
 
-export default function ThumbnailView(){
+export default function ThumbnailView(props){
 
     const [file, setFile] = useState(null);
     const dispatch = useDispatch();
@@ -17,6 +18,13 @@ export default function ThumbnailView(){
         )
     }, [dispatch])
     const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
+
+    useEffect(() => {
+        if (props.flag){
+            AzureService.putFile(file.name, file)
+                .then(response => console.log(response.status));
+        }
+    }, [file, props.flag])
 
     return(
         <div className="cont">
