@@ -10,10 +10,10 @@ import {SideBarMenu} from './SideBarMenu';
 export function Panel (props){
 
     return (
-      <div>
+      <div className="panelDiv">
         <CssBaseline />
-        <AppBar>
-         <Toolbar>
+        <AppBar className="panelAppBar">
+         <Toolbar className="toolbarPanel">
            <SideBarMenu side="left" menuList={props.menuList} history={props.history} />
            <Typography variant="h6" noWrap>
              Advolang

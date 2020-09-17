@@ -8,24 +8,24 @@ export const ProtectedRoute = ({component: Component, ...rest}) => {
 
     return (
         <Route
-            {...rest}
-            render={props => authService.isAuthenticated() ? (
-                <div>
-                    <Panel menuList={rest.menuList} history={props.history}/>
-                    <div className="generalContainer">
-                        <Component/>
-                    </div>
-                </div>
-            ) : (
-                <Redirect
-                    to={{
-                        pathname: "/login",
-                        state: {
-                            from: props.location
-                        }
-                    }}
-                />
-            )}
+          {...rest}
+          render={props => authService.isAuthenticated() ? (
+            <div>
+              <Panel menuList={rest.menuList} history={props.history}/>
+              <div className="generalContainer">
+                <Component />
+              </div>
+            </div>
+          ) : (
+            <Redirect
+              to={{
+                pathname: "/login",
+                state: {
+                  from: props.location
+                }
+              }}
+            />
+          )}
         />
     )
 }

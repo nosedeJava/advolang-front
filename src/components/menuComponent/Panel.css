@@ -1,0 +1,9 @@
+.panelDiv {
+  background-color: pink;
+  width: 100%;
+  height: 4rem;
+}
+
+.toolbarPanel{
+  height: 100%;
+}

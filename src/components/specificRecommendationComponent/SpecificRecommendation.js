@@ -8,6 +8,7 @@ import {ResourceController} from './ResourceController.js';
 import './SpecificRecommendation.css';
 import {calcProm, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
 import {recommendations} from '../Auxiliar/Data.js';
+import {CheckValidYoutubeURL} from '../Auxiliar/CheckMedia.js';
 
 function SpecificRecommendation(props) {
 
@@ -38,6 +39,9 @@ function SpecificRecommendation(props) {
 
   const handleSave = () =>{
     alert("Successfully saved")
+    /*var mime = require('mime-types');
+    alert(mime.lookup("https://ia600204.us.archive.org/11/items/hamlet_0911_librivox/hamlet_act5_shakespeare.mp3"))
+    CheckValidYoutubeURL("https://www.youtube.com/watch?v=CVQ4qJ2-8wg&list=TLPQMTcwOTIwMjDBXyN4G6qDnw&index=18")*/
   }
 
   return (
@@ -50,7 +54,7 @@ function SpecificRecommendation(props) {
             {/* Uso de la imagen relacionada a la recomendación. */}
             <Grid item className="imageRecomGrid">
               <div className="imageRecomDiv">
-                <Avatar variant="square" alt="Remy Sharp" src={currentRecom.sourceImage} style={{ height: '100%', width: '100%' }} />
+                <Avatar variant="square" alt="Remy Sharp" src={currentRecom.sourceImage} style={{ height: 'auto', width: 'auto' }} />
               </div>
             </Grid>
 

@@ -32,25 +32,35 @@
 
 .imageRecomGrid{
   background-color: green;
-  width: 6rem;
-  height: 6rem;
+  width: 15%;
+  height: 55%;
   justify-content: center;
   align-items: center;
   justify: center;
   text-align: center;
   display: flex;
   padding: 0.5rem;
+  vertical-align: center;
+
+}
+
+
+.imageRecomDiv {
+  width: 100%;
+  height: 100%;
+  vertical-align: center;
 }
 
 .infoRecomGrid{
   background-color: pink;
-  width: 86%;
+  width: 84%;
+
 
 }
 
 .infoRecomGridContainer{
   background-color: gray;
-  align-items:flex-start;
+  align-items: flex-end;
   justify: space-between;
   justify-content: space-between;
   display: flex;
