@@ -5,9 +5,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import "./CreateRecommendation.css";
-import {Image, PostAdd} from "@material-ui/icons";
+import {CategoryRounded, Image, PostAdd, VideoLabel} from "@material-ui/icons";
 import Post from "../postSection/Post";
 import ThumbnailView from "../thumbnailSection/ThumbnailView";
+import Content from "../contentSection/Content";
+import Category from "../categorySection/Category";
 
 function a11yProps(index) {
     return {
@@ -50,7 +52,7 @@ export default function FullWidthTabs() {
                     >
                         <Tab icon={<PostAdd/>} label="Post" {...a11yProps(0)} />
                         <Tab icon={<Image/>} label="Thumbnail View" {...a11yProps(1)} />
-                        <Tab label="Item Three" {...a11yProps(2)} />
+                        <Tab icon={<VideoLabel/>} label="Content" {...a11yProps(2)} />
                     </Tabs>
                 </AppBar>
                 <SwipeableViews
@@ -58,8 +60,9 @@ export default function FullWidthTabs() {
                     index={value}
                     onChangeIndex={handleChangeIndex}
                 >
-                    <Post index={1}/>
-                    <ThumbnailView index={2}/>
+                    <Post index={0}/>
+                    <ThumbnailView index={1}/>
+                    <Content index={2}/>
                 </SwipeableViews>
             </div>
         </div>

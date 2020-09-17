@@ -15,7 +15,7 @@ export default function ThumbnailView(){
             .CreateRecommendationActions
             .updateRecommendation({image: acceptedFiles[0].name})
         )
-    }, [])
+    }, [dispatch])
     const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
     return(
