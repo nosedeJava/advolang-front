@@ -1,6 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Box, Card, CardMedia, Typography, Button, Avatar, Divider } from '@material-ui/core';
+import { Grid, Box, Typography, Button, Avatar, Divider } from '@material-ui/core';
 import HoverRating from './RatingRecommendation';
 import FormDialog from './ReportDialog';
 import ListCategories from '../recommendationComponent/ListCategories';
@@ -8,12 +7,11 @@ import {ResourceController} from './ResourceController.js';
 import './SpecificRecommendation.css';
 import {calcProm, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
 import {recommendations} from '../Auxiliar/Data.js';
-import {CheckValidYoutubeURL} from '../Auxiliar/CheckMedia.js';
 
-function SpecificRecommendation(props) {
+function SpecificRecommendation() {
 
   let current_id=localStorage.getItem('recommendation-id');
-  let currentRecom = recommendations.filter(recom => recom.id == current_id)[0];
+  let currentRecom = recommendations.filter(recom => recom.id === current_id)[0];
 
   const [totalScore, setTotalScore] = React.useState(calcProm(currentRecom.list_score));
   const [firstVoting, setFirstVoting] = React.useState(true);

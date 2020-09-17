@@ -1,24 +1,21 @@
 import React, { useState } from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { Grid, Box, TextField, InputAdornment, Chip, MenuItem, InputLabel, Select, FormControl, Icon, Button } from '@material-ui/core';
+import { Grid, Box, TextField, InputAdornment, Chip, MenuItem, InputLabel, Select, FormControl, Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import './FilterSection.css';
 
 
-function FilterSection(props) {
+function FilterSection() {
   let listCategories = ["videos", "gameplay", "videogames", "reddit"]
   const [level, setLevel] = useState("Any");
   const [search, setSearch] = useState("");
-  const [listFilters, setlistFilters] = useState([]);
   const handleLevelChange = (e) => setLevel(e.target.value)
   const handleSearchChange = (e) => setSearch(e.target.value)
-  const handleOnTagsChange = "";
 
   return (
       <Grid container spacing={1} className="mainFilterGrid" direction="column" >
-        <Grid item xs={1} ></Grid>
+        <Grid item xs={1} />
           <Grid className="filterGridStyle" >
             <Box border={2} borderColor="primary.main" className="filterStyle" borderRadius="borderRadius" >
               <Grid container spacing={1} direction="row" className="filterSectionGrid" >

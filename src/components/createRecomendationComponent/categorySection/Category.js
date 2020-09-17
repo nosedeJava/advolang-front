@@ -1,14 +1,13 @@
-import React, {useState} from 'react';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import TextField from '@material-ui/core/TextField';
-import "./css/AddCategory.css";
-import Button from "@material-ui/core/Button";
+import React, {useState} from "react";
 import {useDispatch} from "react-redux";
+import AllActions from "../../../redux/actions/AllActions";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import "./Category.css";
 import LayerCategory from "./LayerCategory";
-import AllActions from "../../redux/actions/AllActions";
 
-export function AddCategory() {
-
+export default function Category(){
     const [categories, setCategories] = useState(['Music']);
     const [show, setShow] = useState(false);
     const dispatch = useDispatch();

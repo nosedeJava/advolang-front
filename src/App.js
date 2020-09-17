@@ -2,11 +2,11 @@ import React from 'react';
 import "./App.css";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import {ProtectedRoute} from './components/protectedRouteComponent/ProtectedRoute';
-import {CreateRecommendation} from "./components/createRecomendation/CreateRecommendation";
 import {SignIn} from "./components/signComponent/SignIn";
 import {SignUp} from "./components/signComponent/SignUp";
 import PrincipalView from "./components/recommendationComponent/PrincipalView";
 import SpecificRecommendation from "./components/specificRecommendationComponent/SpecificRecommendation"
+import CreateRecommendation from "./components/createRecomendationComponent/createRecommendation/CreateRecommendation";
 
 export default function App(props) {
 

@@ -10,27 +10,25 @@ import auth from '../../services/authService.js';
 export function MenuItemsList(props){
 
   function handleMenuItemListTo(path){
-    if(auth.isAuthenticated()){
-      props.history.push(path);
-    };
+	if(auth.isAuthenticated()){
+	  props.history.push(path);
+	}
   }
 
+	let menuItemsList=props.itemslist.map((item, i) =>
+	  <List>
+		<ListItem button key={i} onClick={() => handleMenuItemListTo(item.path)}>
+		  <ListItemIcon>{i % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+		  <ListItemText primary={item.name} />
+		</ListItem>
+	  </List>
+	);
 
-    var menuItemsList=props.itemslist.map((item, i) =>
-      <List>
-        <ListItem button key={i} onClick={() => handleMenuItemListTo(item.path)}>
-          <ListItemIcon>{i % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-          <ListItemText primary={item.name} />
-        </ListItem>
-      </List>
-    );
+	return(
 
-    return(
+	  <div>
+		  {menuItemsList}
+	  </div>
 
-      <div>
-          {menuItemsList}
-
-      </div>
-
-    );
+	);
 }

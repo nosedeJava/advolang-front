@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Box, Card, CardMedia, Typography, Button, Avatar } from '@material-ui/core';
+import {Box } from '@material-ui/core';
 import './ResourceController.css';
 
 export function ResourceController(props) {
@@ -17,7 +17,7 @@ export function ResourceController(props) {
 
       <Box className="audioBox">
         <audio controls="controls">
-          <source src={url} type="audio/mp3"></source>
+          <source src={url} type="audio/mp3"/>
           Your browser does not support the audio element.
         </audio>
       </Box>
@@ -46,9 +46,9 @@ export function ResourceController(props) {
 
   const options = (resource) => {
     const type=resource.type;
-    const url=resource.url;
+    // const url=resource.url;
 
-    const objectq=typeList[type];
+    // const objectq=typeList[type];
     return (
       typeList[type]
     );
