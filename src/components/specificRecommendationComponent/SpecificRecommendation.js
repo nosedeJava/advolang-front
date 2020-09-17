@@ -11,7 +11,7 @@ import {recommendations} from '../Auxiliar/Data.js';
 function SpecificRecommendation() {
 
   let current_id=localStorage.getItem('recommendation-id');
-  let currentRecom = recommendations.filter(recom => recom.id === current_id)[0];
+  let currentRecom = recommendations.filter(recom => recom.id == current_id)[0];
 
   const [totalScore, setTotalScore] = React.useState(calcProm(currentRecom.list_score));
   const [firstVoting, setFirstVoting] = React.useState(true);
