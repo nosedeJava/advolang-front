@@ -56,6 +56,7 @@ export default function Content(props){
             }
             recommendation.date = new Date();
             localStorage.setItem('recommendation', JSON.stringify(recommendation));
+            alert( localStorage.getItem('recommendation'))
         }
     }
 

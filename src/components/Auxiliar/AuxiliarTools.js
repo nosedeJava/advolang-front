@@ -1,4 +1,4 @@
-
+/* Calcula la media de los valores de una lista */
 export const calcProm = (list_values) => {
   let sum = list_values.reduce(function(a, b){
     return a+b;
@@ -9,6 +9,7 @@ export const calcProm = (list_values) => {
   return (sum/recom_scores_length).toFixed(1);
 }
 
+/* De sql date a javascript date*/
 export const formatDate=(date)=>{
   var dateStr=date; //returned from mysql timestamp/datetime field
   var a=dateStr.split(" ");
@@ -18,6 +19,7 @@ export const formatDate=(date)=>{
 
 }
 
+/* Calcula la cantidad de días/horas de una publicación hasta el día de hoy */
 export const calculatePublication = (postDate) => {
 
   let formatPostDate=formatDate(postDate);

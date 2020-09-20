@@ -49,7 +49,7 @@ export function SignIn(props) {
             if(registered !== null){
               if(registered.email === user.email && registered.password === user.password){
                   alert(`Welcome ${registered.firstName}`);
-                  localStorage.setItem('user', JSON.stringify(user));
+                  localStorage.setItem('user', JSON.stringify(registered));
                   props.history.push("/");
               }else{
                   alert("Wrong email or password")

@@ -7,26 +7,39 @@ import {SignUp} from "./components/signComponent/SignUp";
 import PrincipalView from "./components/recommendationComponent/PrincipalView";
 import SpecificRecommendation from "./components/specificRecommendationComponent/SpecificRecommendation"
 import CreateRecommendation from "./components/createRecomendationComponent/createRecommendation/CreateRecommendation";
+import { useEffect } from 'react';
+import HomeIcon from '@material-ui/icons/Home';
+import PostAddIcon from '@material-ui/icons/PostAdd';
 
 export default function App(props) {
 
     const routes = [
         {
             path: "/",
-            name: "Principal view",
-            component: PrincipalView
+            name: "Home",
+            component: PrincipalView,
+            menuVisible: true,
+            menuIcon:() => <HomeIcon />
         },
         {
             path: "/createRecommendation",
             name: "Crear recomendación",
-            component: CreateRecommendation
+            component: CreateRecommendation,
+            menuVisible: true,
+            menuIcon:() => <PostAddIcon />
         },
         {
             path: "/specific-recommendation",
             name: "Specific recommendation",
-            component: SpecificRecommendation
-        },
+            component: SpecificRecommendation,
+            menuVisible: false,
+        }
+
     ];
+
+    useEffect(() => {
+      window.scrollTo(0, 0)
+    }, []);
 
     const protectedElements = routes.map((route, i) =>
         <ProtectedRoute exact path={route.path} component={route.component} menuList={routes} key={i}/>

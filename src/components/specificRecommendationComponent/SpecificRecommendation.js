@@ -7,6 +7,8 @@ import {ResourceController} from './ResourceController.js';
 import './SpecificRecommendation.css';
 import {calcProm, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
 import {recommendations} from '../Auxiliar/Data.js';
+import {CheckValidYoutubeURL, CheckMimeType} from '../Auxiliar/CheckMedia.js';
+
 
 function SpecificRecommendation() {
 
@@ -34,13 +36,21 @@ function SpecificRecommendation() {
     /*Cambiar valores en la bd*/
 
   }
+  function callback(bool){
+    alert(bool)
+    //continúa
+  }
 
   const handleSave = () =>{
     alert("Successfully saved")
-    /*var mime = require('mime-types');
-    alert(mime.lookup("https://ia600204.us.archive.org/11/items/hamlet_0911_librivox/hamlet_act5_shakespeare.mp3"))
-    CheckValidYoutubeURL("https://www.youtube.com/watch?v=CVQ4qJ2-8wg&list=TLPQMTcwOTIwMjDBXyN4G6qDnw&index=18")*/
+    alert(CheckMimeType("PP.txt"))
+    CheckValidYoutubeURL("https://www.youtube.com/watch?v=BjC0KUxiMhc", callback);
+
+
   }
+
+
+
 
   return (
     <Grid container id="specificRecommendation" className="specificRecommendationGrid" spacing={1} direction="row" >

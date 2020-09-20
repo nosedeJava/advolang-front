@@ -35,7 +35,9 @@ const useStyles = makeStyles((theme) => ({
 export function SignUp(props) {
 
     const classes = useStyles();
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({
+      profileImage: "img/user.png"
+    });
     const [confirmp, setConfirmP] = useState("");
 
     function handleChange(event) {
@@ -45,6 +47,7 @@ export function SignUp(props) {
     function handleConfPsd(userConfPsd) {
         setConfirmP(userConfPsd.target.value);
     }
+
 
     function handleSubmit() {
         if (user.password === confirmp) {

@@ -1,0 +1,46 @@
+.upDownMenuDiv {
+  padding: 3%;
+  width: auto;
+
+}
+
+.sideMenuDiv {
+  width: 18rem;
+  height: 98%;
+}
+
+.avatarProfileImageBox {
+  background-color: transparent;
+  height: auto;
+  width: auto;
+}
+
+.userProfileData {
+  margin-left: 5%;
+}
+
+.menuItemsDiv {
+  height: 80%;
+  overflow-y: auto;
+  padding-bottom: 10%;
+  background-color: transparent;
+}
+
+.logoutDiv {
+  height: 5%;
+  cursor: pointer;
+  background-color: transparent;
+  position: relative;
+}
+
+.logoutText{
+  height: 23%;
+  font-size: 120%;
+  background-color: transparent;
+  text-align: center;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
+  display: flex;
+
+}

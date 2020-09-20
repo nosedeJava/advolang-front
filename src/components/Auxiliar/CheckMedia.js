@@ -1,15 +1,36 @@
-import {validateUrl} from 'youtube-validate';
+import {validateUrl, validateVideoID} from 'youtube-validate';
 
-export const CheckValidYoutubeURL=(url)=>{
-  alert(url)
-  validateUrl("youtube.com/watch?v=2XH5_qafR8k")
-  .then(
-    () => {
+export const CheckMimeType = (url) => {
+  var mime = require('mime-types');
+  return mime.lookup(url);
+}
 
-    },
-    error => {
-      alert(error);
-      return false;
+export const CheckValidYoutubeURL = (url, callback) => {
+
+  let valid=true;
+
+  validateUrl(url)
+  .catch (
+    error =>{
+      valid=false;
     }
-  );
+  )
+  .finally(
+    callback(valid)
+  )
+}
+
+export const CheckValidYoutubeID = (id, callback) => {
+
+  let valid=true;
+
+  validateVideoID(id)
+  .catch (
+    error =>{
+      valid=false;
+    }
+  )
+  .finally(
+    callback(valid)
+  )
 }
