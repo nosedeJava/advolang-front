@@ -10,6 +10,7 @@ import CreateRecommendation from "./components/createRecomendationComponent/crea
 import { useEffect } from 'react';
 import HomeIcon from '@material-ui/icons/Home';
 import PostAddIcon from '@material-ui/icons/PostAdd';
+import MyRecommendations from "./components/myRecommendations/mainComponent/MyRecommendations";
 
 export default function App(props) {
 
@@ -33,12 +34,19 @@ export default function App(props) {
             name: "Specific recommendation",
             component: SpecificRecommendation,
             menuVisible: false,
+        },
+        {
+            path: "/My-Recommendations",
+            name: "My recommendations",
+            component: MyRecommendations,
+            menuVisible: true,
+            menuIcon:() => <HomeIcon />
         }
 
     ];
 
     useEffect(() => {
-      window.scrollTo(0, 0)
+        window.scrollTo(0, 0)
     }, []);
 
     const protectedElements = routes.map((route, i) =>

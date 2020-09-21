@@ -15,7 +15,7 @@ export function MenuItemsList(props){
 
   let filterShowItems = props.itemslist.filter(item => item.menuVisible === true);
 	let menuItemsList = filterShowItems.map((item, i) =>
-    <List>
+    <List key={i}>
       <ListItem button key={i} onClick={() => handleMenuItemListTo(item.path)}>
     	   <ListItemIcon>{<item.menuIcon />}</ListItemIcon>
        <ListItemText primary={item.name} />
