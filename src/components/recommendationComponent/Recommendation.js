@@ -33,7 +33,6 @@ function Recommendation(props) {
                     <CardMedia
                       component="img"
                       image={props.sourceImage}
-
                     />
                     </Card>
                 </Grid>

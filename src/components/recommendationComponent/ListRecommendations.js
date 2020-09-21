@@ -5,7 +5,7 @@ import './ListRecommendations.css';
 
 export class ListRecommendations extends React.Component {
     render() {
-        const listContent = this.props.recommendationList.map((recommendation, i) => {
+        const listContent = this.props.recommendations.map((recommendation, i) => {
             return <Recommendation key={"recommendation-" + i} {...recommendation} />
         });
         return (
