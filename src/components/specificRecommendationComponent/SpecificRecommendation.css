@@ -1,13 +1,19 @@
-.specificRecommendationGrid{
+html {
   background-color: #eaeaea;
+}
+
+.specificRecommendationGrid{
   align-items:flex-start;
   justify: space-between;
   justify-content: space-between;
+  padding: 0.5%;
+  background-color: #eaeaea;
+
 }
 
 .gridPostContainer{
   background-color: transparent;
-  width: 65vw;
+  width: 63vw;
   justify-content: center;
   align-items: center;
   justify: center;
@@ -16,8 +22,8 @@
 
 .postBoxClass{
   background-color: #242847;
-  margin-top: 5%;
-  margin-left: 10%;
+  margin-top: 1%;
+  margin-left: 7%;
 }
 
 .headerRecomGrid{
@@ -189,6 +195,7 @@
   justify-content: center;
   align-items: center;
   justify: center;
+  background-color: transparent;
 }
 
 .gridUserContainer{
@@ -196,7 +203,7 @@
   justify-content: center;
   align-items: center;
   justify: center;
-  margin-top: 10%;
+  margin-top: 3%;
 }
 
 .userConatainerBox {

@@ -10,41 +10,49 @@ import CreateRecommendation from "./components/createRecomendationComponent/crea
 import { useEffect } from 'react';
 import HomeIcon from '@material-ui/icons/Home';
 import PostAddIcon from '@material-ui/icons/PostAdd';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import SavedRecommendations from "./components/savedRecommendations/SavedRecommendations"
 
 export default function App(props) {
-    const PrincipalMainView = () =>{
-        return <PrincipalView type="main"/>
-    }
-    const routes = [
-        {
-            path: "/",
-            name: "Home",
-            component: PrincipalMainView,
-            menuVisible: true,
-            menuIcon:() => <HomeIcon />
-        },
-        {
-            path: "/createRecommendation",
-            name: "Crear recomendación",
-            component: CreateRecommendation,
-            menuVisible: true,
-            menuIcon:() => <PostAddIcon />
-        },
-        {
-            path: "/specific-recommendation",
-            name: "Specific recommendation",
-            component: SpecificRecommendation,
-            menuVisible: false,
-        }
 
-    ];
+  const PrincipalMainView = () => {
+    return <PrincipalView type="main"/>
+  }
+
+  const routes = [
+    {
+      path: "/",
+      name: "Overview",
+      component: PrincipalMainView,
+      menuVisible: true,
+      menuIcon: () => <HomeIcon/>
+    }, {
+      path: "/savedRecommendations",
+      name: "My recommendations",
+      component: SavedRecommendations,
+      menuVisible: true,
+      menuIcon: () => <LibraryBooksIcon/>
+    }, {
+      path: "/createRecommendation",
+      name: "Add new post",
+      component: CreateRecommendation,
+      menuVisible: true,
+      menuIcon: () => <PostAddIcon/>
+    }, {
+      path: "/specific-recommendation",
+      name: "Specific recommendation",
+      component: SpecificRecommendation,
+      menuVisible: false
+    }
+
+  ];
 
     useEffect(() => {
       window.scrollTo(0, 0)
     }, []);
 
     const protectedElements = routes.map((route, i) =>
-        <ProtectedRoute exact path={route.path} component={route.component} menuList={routes} key={i}/>
+      <ProtectedRoute exact path={route.path} component={route.component} menuList={routes} key={i}/>
     );
 
     return (
