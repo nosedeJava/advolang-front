@@ -19,8 +19,8 @@ function Recommendation(props) {
   }
 
   return (
-    <Grid container>
-      <Grid item xs={1} ></Grid>
+      <Grid container>
+        <Grid item xs={1} />
         <Grid container spacing={0} direction="column" className="mainGridContainer" >
           <Box className="recommendationBox" >
 
@@ -31,10 +31,10 @@ function Recommendation(props) {
                 <Grid item xs={2} className="generalClassImage">
                   <Card className="thumbnailSpace">
                     <CardMedia
-                      component="img"
-                      image={props.sourceImage}
+                        component="img"
+                        image={props.sourceImage}
                     />
-                    </Card>
+                  </Card>
                 </Grid>
 
                 <Grid item xs={9} className="generalClass">
@@ -95,8 +95,8 @@ function Recommendation(props) {
             </Grid>
 
           </Box>
+        </Grid>
       </Grid>
-    </Grid>
   );
 }
 
