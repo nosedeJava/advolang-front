@@ -8,7 +8,6 @@ import './SpecificRecommendation.css';
 import {calcProm, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
 import {recommendations} from '../Auxiliar/Data.js';
 import {CheckValidYoutubeURL, CheckMimeType} from '../Auxiliar/CheckMedia.js';
-import Container from '@material-ui/core/Container';
 
 function SpecificRecommendation() {
 

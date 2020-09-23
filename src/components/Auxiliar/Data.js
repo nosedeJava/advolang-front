@@ -96,7 +96,7 @@ export const recommendations = [{
   },
   {
     id: 6,
-    title: "Gameplay FFVII remake GPB no-sub",
+    title: "Gameplay FFVII remake GPB no-sub g",
     sourceImage: "youtube.png",
     level: "Beginner",
     description: "prueba de funcionamineto 6 gonjnhjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhmhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhrihrhroijhori jijoijoijohtoijtyhtjyhjthotjhojtoiyjhotiyjhoijthjtyijhotjyijhojhoiyjhotjhojtyihjtoiyjhityjhoitjyhoijtoiyjhojyhotjohjtyohjtohjtoiyoijoitjhoityjhoitjhotijhoti rijhoithjotiyhjotjhotiyjhotjhotiyjhotiyjhotyjohjtoihjtojhothjothjotjhotyijhoitjhoytij",

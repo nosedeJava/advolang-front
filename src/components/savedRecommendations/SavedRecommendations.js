@@ -9,7 +9,7 @@ function SavedRecommendations (props){
 
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(5);
+  const [postsPerPage] = useState(4);
 
   useEffect(() => {
     //Traer datos de la base de datos
@@ -31,11 +31,13 @@ function SavedRecommendations (props){
     <div className="savedRecommendationsContainer" >
       <div className="savedRecommendationsDiv">
         <ListRecommendations recommendations={currentPosts}/>
-        <RecomPagination
-          postsPerPage={postsPerPage}
-          totalPosts={posts.length}
-          paginate={paginate}
-        />
+        <div className="paginationDiv">
+          <RecomPagination
+            postsPerPage={postsPerPage}
+            totalPosts={posts.length}
+            paginate={paginate}
+          />
+        </div>
       </div>
     </div>
   );

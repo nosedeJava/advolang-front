@@ -12,13 +12,12 @@
   padding:  0.1rem ;
 }
 
-.gridScoreStyle {
+.scoreGridValue {
   border-radius: 10px;
-  padding-right: 0.4rem;
-
+  padding-right: 1.5rem;
 }
 
-.boxScoreStyle{
+.scoreBoxValue{
   border-radius: 50%;
   height: 3.7rem;
   width: 3.7rem;
@@ -26,8 +25,6 @@
   align-items: center;
   margin: auto;
   float: right;
-
-
 }
 
 .generalClassImage{
@@ -69,6 +66,59 @@
   max-width: 8rem;
   max-height: 5rem;
   background-color: white;
+}
+
+.titleGridValue {
+}
+
+.titleBoxValue {
+  font-size: 1.7rem;
+  font-weight: bold;
+  font-family: Verdana;
+  color: #B3B8E0;
+  word-break: break-all;
+  margin-top: 0.2rem;
+
+}
+
+.levelGridValue {
+  background-color: transparent;
+  width: 95%;
+}
+
+.levelBoxValue {
+  font-size: 1.2rem;
+  font-family: Verdana;
+  font-weight: bold;
+  color: #B3B8E0;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.userNameGridValue {
+  background-color: transparent;
+  width: 95%;
+}
+
+.userNameBoxValue {
+  font-size: 1rem;
+  font-family: Verdana;
+  color: #B3B8E0;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.timeGridValue {
+  text-align: right;
+  width: 100%;
+  padding-right: 1rem;
+}
+
+.timeGridBox {
+  font-size: 1rem;
+  font-family: Verdana;
+  color: #B3B8E0;
+  text-align: right;
 }
 
 .categoriesStyle {
