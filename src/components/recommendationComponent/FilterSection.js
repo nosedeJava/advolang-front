@@ -7,8 +7,8 @@ import './FilterSection.css';
 
 
 function FilterSection(props) {
-  // props.lang dice que buscar para la lista de categories si es none, 
-  // es una lista general de los idiomas a los que esta suscrito, 
+  // props.lang dice que buscar para la lista de categories si es none,
+  // es una lista general de los idiomas a los que esta suscrito,
   // o si es un idioma en particular, se busca las categorias disponibles para ese idioma
   // de momento se usa con una lista quemada pero el punto seria traer esa informacion de back
   let listCategories = ["videos", "gameplay", "videogames", "reddit"]
@@ -19,14 +19,13 @@ function FilterSection(props) {
   const handleSearchChange = (e) => setSearch(e.target.value);
   const handleCategorySelected = (event, values) => setCategories(values);
   const submitFilter = () => props.renderFilterFunction(search, level, categories);
-  
+
   return (
       <Grid container spacing={1} className="mainFilterGrid" direction="column" >
         <Grid item xs={1} />
           <Grid className="filterGridStyle" >
             <Box border={2} borderColor="primary.main" className="filterStyle" borderRadius="borderRadius" >
               <Grid container spacing={1} direction="row" className="filterSectionGrid" >
-
                 <TextField id="outlined-basic" label="Search" variant="outlined" className="separation" style={{ width: "20rem" }}
                   InputProps={{
                     startAdornment: (
@@ -38,8 +37,7 @@ function FilterSection(props) {
 
                   onChange={(e)=>handleSearchChange(e)}
                 />
-
-                <Grid item xs={3} className="separation">
+                <Grid item  className="separation">
                   <Autocomplete
                     fullWidth
                     multiple
