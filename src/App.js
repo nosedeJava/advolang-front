@@ -10,7 +10,7 @@ import CreateRecommendation from "./components/createRecomendationComponent/crea
 import { useEffect } from 'react';
 import HomeIcon from '@material-ui/icons/Home';
 import PostAddIcon from '@material-ui/icons/PostAdd';
-import MyRecommendations from "./components/myRecommendations/mainComponent/MyRecommendations";
+import CreatedRecommendations from "./components/createdRecommendationComponent/mainComponent/CreatedRecommendations";
 
 export default function App(props) {
     const PrincipalMainView = () =>{
@@ -38,9 +38,9 @@ export default function App(props) {
             menuVisible: false,
         },
         {
-            path: "/My-Recommendations",
-            name: "My recommendations",
-            component: MyRecommendations,
+            path: "/Created-Recommendations",
+            name: "Created recommendations",
+            component: CreatedRecommendations,
             menuVisible: true,
             menuIcon:() => <HomeIcon />
         }
