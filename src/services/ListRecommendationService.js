@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { ListRecommendations } from '../components/recommendationComponent/ListRecommendations';
 import { recommendations } from '../components/Auxiliar/Data.js';

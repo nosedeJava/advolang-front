@@ -39,37 +39,23 @@ function Recommendation(props) {
 
                 <Grid item xs={9} className="generalClass">
 
-                  <Grid item xs={12} >
-                    <Box textAlign="left">
-                      <Typography className="generalClass4" >
+                  <Grid item className="titleGridValue">
+                    <Box className="titleBoxValue" textAlign="left">
                         {props.title}
-                      </Typography>
                     </Box>
                   </Grid>
 
                   <Grid container >
 
-                    <Grid item xs={4}>
-                      <Box textAlign="left">
-                        <Typography className="generalClass5">
-                          {props.user.name}
-                        </Typography>
-                      </Box>
-                    </Grid>
-
-                    <Grid item xs={4}>
-                      <Box textAlign="left">
-                        <Typography className="generalClass5">
+                    <Grid item className="levelGridValue" >
+                      <Box className="levelBoxValue" textAlign="left">
                           {props.level}
-                        </Typography>
                       </Box>
                     </Grid>
 
-                    <Grid item xs={4}>
-                      <Box textAlign="right">
-                        <Typography className="generalClass5">
-                          {calculatePublication(props.time)}
-                        </Typography>
+                    <Grid item className="userNameGridValue">
+                      <Box className="userNameBoxValue" textAlign="left">
+                          {props.user.name}
                       </Box>
                     </Grid>
 
@@ -77,17 +63,28 @@ function Recommendation(props) {
 
                 </Grid>
 
-                <Grid  item xs={1} className="gridScoreStyle" >
-                  <Box border={1} className="boxScoreStyle" style={{ backgroundColor: colorScore, }}>
+                <Grid item className="scoreGridValue" >
+                  <Box border={1} className="scoreBoxValue" style={{ backgroundColor: colorScore, }}>
                     <Typography className="generalClass3" align="center" >
                       {score}
                     </Typography>
                   </Box>
                 </Grid>
 
+
+
               </ButtonBase>
 
             </Grid>
+
+            <Grid item className="timeGridValue">
+              <Box className="timeGridBox" textAlign="right">
+                  {calculatePublication(props.time)}
+              </Box>
+            </Grid>
+
+
+
 
             <Grid container>
               <Grid item xs={12}>

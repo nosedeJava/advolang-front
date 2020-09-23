@@ -1,23 +1,29 @@
+.specificRecommendationDiv {
+  background-color: #616363;
+  min-height: 90vh;
+  height: 100%;
+}
+
 .specificRecommendationGrid{
-  background-color: #eaeaea;
   align-items:flex-start;
   justify: space-between;
   justify-content: space-between;
+  background-color: #616363;
 }
 
 .gridPostContainer{
   background-color: transparent;
-  width: 65vw;
+  width: 63%;
   justify-content: center;
   align-items: center;
   justify: center;
-
+  background-color: #616363;
 }
 
 .postBoxClass{
   background-color: #242847;
-  margin-top: 5%;
-  margin-left: 10%;
+  margin-top: 1%;
+  margin-left: 7%;
 }
 
 .headerRecomGrid{
@@ -26,8 +32,6 @@
   align-items: center;
   justify: center;
   justify-content: space-between;
-  display: flex;
-
 }
 
 .imageRecomGrid{
@@ -62,11 +66,6 @@
   justify: space-between;
   justify-content: space-between;
   display: flex;
-}
-
-.thumbnailSpace {
-  max-width: 7rem;
-  max-height: 4rem;
 }
 
 .recomTitleGrid{
@@ -148,13 +147,21 @@
 
 .recomDescription{
   background-color: transparent;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  justify: center;
+  margin-left: 1%;
+  margin-right: 1%;
+  width: 100%;
+  padding: 0.5rem;
+
 }
 
 .descripBoxClass {
   background-color: #407088;
   width: 98%;
-  margin-left: 1%;
-  margin-right: 1%;
+
   padding: 0.5rem;
   text-justify: start;
   font-size: 1rem;
@@ -189,14 +196,16 @@
   justify-content: center;
   align-items: center;
   justify: center;
+  background-color: transparent;
 }
 
 .gridUserContainer{
-  background-color: #dadbf0;
+  background-color: #535578;
   justify-content: center;
   align-items: center;
   justify: center;
-  margin-top: 10%;
+  margin-top: 3%;
+  margin-left: -5%;
 }
 
 .userConatainerBox {
@@ -204,7 +213,7 @@
   padding: 0.5rem;
   width: 15rem;
   display: flex;
-  background-color: #a2a3ba;
+  background-color: #454555;
   color: white;
   align-items: center;;
   justify-content: center;
@@ -276,19 +285,21 @@
 
 }
 
-
 .categoriesBox{
-  background-color: #B3B8E0;
+  background-color: #a9acc6;
   text-align: center;
   align-items: center;
   justify-content: center;
 }
 
-.footerPost{
-  width: 90%;
+.footerPostBox{
+  width: 98%;
+  background-color: #535578;
+  padding: 0.5rem;
+}
+
+.footerPostContainer {
   justify-content: flex-end;
   align-items: flex-end;
   align-content: flex-end;
-  background-color: #B3B8E0;
-  padding: 0.5rem;
 }
