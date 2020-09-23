@@ -6,13 +6,20 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import './FilterSection.css';
 
 
-function FilterSection() {
+function FilterSection(props) {
+  // props.lang dice que buscar para la lista de categories si es none, 
+  // es una lista general de los idiomas a los que esta suscrito, 
+  // o si es un idioma en particular, se busca las categorias disponibles para ese idioma
+  // de momento se usa con una lista quemada pero el punto seria traer esa informacion de back
   let listCategories = ["videos", "gameplay", "videogames", "reddit"]
-  const [level, setLevel] = useState("Any");
+  const [categories, setCategories] = React.useState([]);
+  const [level, setLevel] = useState("");
   const [search, setSearch] = useState("");
-  const handleLevelChange = (e) => setLevel(e.target.value)
-  const handleSearchChange = (e) => setSearch(e.target.value)
-
+  const handleLevelChange = (e) => setLevel(e.target.value);
+  const handleSearchChange = (e) => setSearch(e.target.value);
+  const handleCategorySelected = (event, values) => setCategories(values);
+  const submitFilter = () => props.renderFilterFunction(search, level, categories);
+  
   return (
       <Grid container spacing={1} className="mainFilterGrid" direction="column" >
         <Grid item xs={1} />
@@ -44,6 +51,7 @@ function FilterSection() {
                     limitTags={1}
                     id="categories"
                     options={listCategories}
+                    onChange={handleCategorySelected}
                     className="separation"
                     renderTags={(value, getTagProps) =>
                         value.map((option, index) => (
@@ -84,7 +92,7 @@ function FilterSection() {
                 <Button
                     variant="contained"
                     color="primary"
-
+                    onClick={() => submitFilter()}
                     endIcon={<ArrowForwardIosIcon />}
                 >
                   Filter

@@ -13,12 +13,14 @@ import PostAddIcon from '@material-ui/icons/PostAdd';
 import MyRecommendations from "./components/myRecommendations/mainComponent/MyRecommendations";
 
 export default function App(props) {
-
+    const PrincipalMainView = () =>{
+        return <PrincipalView type="main"/>
+    }
     const routes = [
         {
             path: "/",
             name: "Home",
-            component: PrincipalView,
+            component: PrincipalMainView,
             menuVisible: true,
             menuIcon:() => <HomeIcon />
         },
