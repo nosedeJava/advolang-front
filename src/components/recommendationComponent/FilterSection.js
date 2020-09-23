@@ -26,7 +26,6 @@ function FilterSection(props) {
           <Grid className="filterGridStyle" >
             <Box border={2} borderColor="primary.main" className="filterStyle" borderRadius="borderRadius" >
               <Grid container spacing={1} direction="row" className="filterSectionGrid" >
-
                 <TextField id="outlined-basic" label="Search" variant="outlined" className="separation" style={{ width: "20rem" }}
                   InputProps={{
                     startAdornment: (
@@ -38,8 +37,7 @@ function FilterSection(props) {
 
                   onChange={(e)=>handleSearchChange(e)}
                 />
-
-                <Grid item xs={3} className="separation">
+                <Grid item  className="separation">
                   <Autocomplete
                     fullWidth
                     multiple

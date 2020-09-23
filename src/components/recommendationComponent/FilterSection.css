@@ -4,15 +4,9 @@
   align-self: center;
   width: 60%;
   background-color: transparent;
+  margin-right: 1rem;
 
-}
 
-.gridContainer{
-  align-items: center;
-  justify: center;
-  margin-left: 20rem;
-  margin-right: auto;
-  background-color: transparent;
 }
 
 .filterSectionGrid{
@@ -31,16 +25,19 @@
   align-items: center;
   justify: center;
   margin: 0 auto;
+
 }
 
 .filterGridStyle{
-  width: 61.5%;
+  width: 60%;
   align-items: center;
   justify: center;
-  margin-left: auto;
-  margin-right: auto;
   align-items: center;
-  padding:  0.7rem;
+  padding-top:  0.7rem;
+  padding-bottom:  0.7rem;
+  margin-left: -0.7rem;
+  margin-right: 1rem;
+
 }
 
 .TextFieldStyle {
@@ -48,5 +45,5 @@
 }
 
 .buttonStyle {
-  margin-left: 1rem;
+  padding-left: 1rem;
 }
