@@ -1,6 +1,6 @@
 import React,  { useState, useEffect } from 'react';
 import './SavedRecommendations.css';
-import {recommendations} from '../Auxiliar/Data.js';
+import {savedRecommendationsList} from '../Auxiliar/Data.js';
 import RecomPagination from './RecomPagination';
 import {ListRecommendations} from '../recommendationComponent/ListRecommendations';
 
@@ -14,7 +14,7 @@ function SavedRecommendations (props){
   useEffect(() => {
     //Traer datos de la base de datos
     const fetchPosts = async () => {
-      const res = recommendations;
+      const res = savedRecommendationsList;
       setPosts(res);
     };
 

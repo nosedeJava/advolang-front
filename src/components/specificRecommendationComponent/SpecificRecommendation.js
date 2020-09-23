@@ -6,7 +6,7 @@ import ListCategories from '../recommendationComponent/ListCategories';
 import {ResourceController} from './ResourceController.js';
 import './SpecificRecommendation.css';
 import {calcProm, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
-import {recommendations} from '../Auxiliar/Data.js';
+import {recommendations, savedRecommendationsList} from '../Auxiliar/Data.js';
 import {CheckValidYoutubeURL, CheckMimeType} from '../Auxiliar/CheckMedia.js';
 
 function SpecificRecommendation() {
@@ -41,15 +41,25 @@ function SpecificRecommendation() {
   }
 
   const handleSave = () =>{
-    alert("Successfully saved")
-    alert(CheckMimeType("PP.txt"))
-    CheckValidYoutubeURL("https://www.youtube.com/watch?v=BjC0KUxiMhc", callback);
 
+    let existingSavedRecom = savedRecommendationsList.filter(recom => recom.id === currentRecom.id);
+
+    if(existingSavedRecom.length !== 0){
+      alert("This recommendation is already seaved")
+    }
+
+    else{
+      savedRecommendationsList.push(currentRecom)
+      alert("Successfully saved")
+
+    }
 
   }
 
-
-
+  const typesRec = () =>{
+    alert(CheckMimeType("PP.txt"))
+    CheckValidYoutubeURL("https://www.youtube.com/watch?v=BjC0KUxiMhc", callback);
+  }
 
   return (
     <div className="specificRecommendationDiv">
