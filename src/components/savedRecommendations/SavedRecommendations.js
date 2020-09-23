@@ -28,8 +28,8 @@ function SavedRecommendations (props){
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
-    <div className="mainDiv" >
-      <div className='container mt-5'>
+    <div className="savedRecommendationsContainer" >
+      <div className="savedRecommendationsDiv">
         <ListRecommendations recommendations={currentPosts}/>
         <RecomPagination
           postsPerPage={postsPerPage}

@@ -1,7 +1,9 @@
-.mainDiv{
+.savedRecommendationsContainer {
     margin: 0 auto;
-    width: 99vw;
+    width: 100%;
+    height: auto;
     justify-content: center;
     align-items: center;
-
+    /*background-color: blue;*/
+    min-height: 89.9vh;
 }

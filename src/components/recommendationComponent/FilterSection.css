@@ -1,6 +1,9 @@
 .mainFilterGrid{
   align-items: center;
   justify: center;
+  align-self: center;
+  width: 60%;
+  background-color: blue;
 
 }
 
@@ -18,7 +21,7 @@
 }
 
 .separation {
-    margin-right: 1.5rem;
+  margin-right: 1.5rem;
 }
 
 .filterStyle {

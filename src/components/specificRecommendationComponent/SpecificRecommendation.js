@@ -8,7 +8,7 @@ import './SpecificRecommendation.css';
 import {calcProm, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
 import {recommendations} from '../Auxiliar/Data.js';
 import {CheckValidYoutubeURL, CheckMimeType} from '../Auxiliar/CheckMedia.js';
-
+import Container from '@material-ui/core/Container';
 
 function SpecificRecommendation() {
 
@@ -58,7 +58,7 @@ function SpecificRecommendation() {
         <Grid item className="gridPostContainer">
           <Box boxShadow={3} borderRadius="borderRadius" className="postBoxClass" >
 
-            <Grid container className="headerRecomGrid">
+            <Grid container className="headerRecomGrid" >
 
               {/* Uso de la imagen relacionada a la recomendación. */}
               <Grid item className="imageRecomGrid">
@@ -109,34 +109,38 @@ function SpecificRecommendation() {
                   </Grid>
                 </Grid>
               </Grid>
+              {/* Uso de la descripción dada a una recomendación en especifico. */}
+              <Grid item className="recomDescription">
+                <Box borderRadius="borderRadius" className="descripBoxClass">
+                  {currentRecom.description}
+                </Box>
+              </Grid>
             </Grid>
 
-            {/* Uso de la descripción dada a una recomendación en especifico. */}
-            <Grid item className="recomDescription">
-              <Box borderRadius="borderRadius" className="descripBoxClass">
-                {currentRecom.description}
-              </Box>
-            </Grid>
+
 
             {/* Uso del enlace relacionado a la recomendación.*/}
             <Grid item className="recomRecourseGrid">
               <Box className="recomRecourseBox" align="center">
                 <ResourceController resources={currentRecom.resources}/>
               </Box>
+
             </Grid>
 
-            <Grid>
 
-              <Grid container className="footerPost" direction="row" spacing={1}>
-                <Grid item>
-                  <Button variant="contained" color="primary" onClick={handleSave}>Save</Button>
+
+            <Grid item >
+              <Box className="footerPostBox" >
+                <Grid container className="footerPostContainer" direction="row" spacing={1}>
+                  <Grid item>
+                    <Button variant="contained" color="primary" onClick={handleSave}>Save</Button>
+                  </Grid>
+
+                  <Grid item>
+                    <FormDialog />
+                  </Grid>
                 </Grid>
-
-                <Grid item>
-                  <FormDialog />
-                </Grid>
-
-              </Grid>
+              </Box>
             </Grid>
           </Box>
         </Grid>
