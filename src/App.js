@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./App.css";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import {ProtectedRoute} from './components/protectedRouteComponent/ProtectedRoute';
@@ -7,7 +7,6 @@ import {SignUp} from "./components/signComponent/SignUp";
 import PrincipalView from "./components/recommendationComponent/PrincipalView";
 import SpecificRecommendation from "./components/specificRecommendationComponent/SpecificRecommendation"
 import CreateRecommendation from "./components/createRecomendationComponent/createRecommendation/CreateRecommendation";
-import { useEffect } from 'react';
 import HomeIcon from '@material-ui/icons/Home';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import CreatedRecommendations from "./components/createdRecommendationComponent/mainComponent/CreatedRecommendations";
@@ -56,11 +55,10 @@ export default function App(props) {
       menuIcon:() => <HomeIcon />
     },
     {
-      path: "/Specific-User",
+      path: "/specific-user",
       name: "Specific User",
       component: SpecificUser,
-      menuVisible: true,
-      menuIcon:() => <HomeIcon />
+      menuVisible: false
     }
   ];
 

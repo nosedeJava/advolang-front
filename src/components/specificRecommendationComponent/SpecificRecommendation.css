@@ -206,10 +206,15 @@
   margin-left: -5%;
 }
 
+.specificUserButtonBase {
+  width: auto;
+  display: flex;
+}
+
 .userConatainerBox {
   margin: 0.7rem;
   padding: 0.5rem;
-  width: 15rem;
+  width: 80%;
   display: flex;
   background-color: #454555;
   color: white;
@@ -234,6 +239,7 @@
 
 .userImageDiv{
   background-color: transparent;
+  padding-top: 1rem;
 }
 
 .userNameGrid{
@@ -259,17 +265,16 @@
 
 .userDescGrid{
   background-color: transparent;
-  padding: 0.5rem;
   text-align: center;
   align-items: center;
   justify-content: center;
   width: 100%;
   word-break: break-all;
-
 }
 
 .userDescBox{
   font-size: 100%;
+  padding: 1rem;
 }
 
 .categoriesGrid{

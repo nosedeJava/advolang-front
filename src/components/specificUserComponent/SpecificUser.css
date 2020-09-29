@@ -1,14 +1,14 @@
 .specificUserDiv {
   min-height: 90vh;
   height: 100%;
-  background-color: pink;
+  background-color: transparent;
 }
 
 .specificUserGridContainer {
   align-items:flex-start;
   justify: space-between;
   justify-content: space-between;
-  background-color: green;
+  background-color: transparent;
 
 }
 
@@ -17,18 +17,23 @@
   justify-content: center;
   align-items: center;
   justify: center;
-  background-color: purple;
+  background-color: transparent;
   padding-left: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
 
 }
 
 .specificProfileBox {
-  background-color: blue;
+  background-color: gray;
   justify-content: center;
   align-items: center;
   justify: center;
   text-align: center;
   display: flex;
+  border: black 5px;
+  margin-top: 2rem;
+
 }
 
 .specificProfileContainer {
@@ -41,7 +46,7 @@
 }
 
 .specificProfileGridImage {
-  background-color: red;
+  background-color: transparent;
   padding-top: 3rem;
 
 }
@@ -50,7 +55,7 @@
   width: 15vw;
   height: 15vw;
   border-radius: 50%;
-  background-color: pink;
+  background-color: transparent;
 }
 
 .specificProfileGridInfo {
@@ -122,6 +127,7 @@
 .specificUserDescBox {
   font-family: Verdana, serif;
   font-size: 100%;
+  padding: 0.3rem;
 }
 
 .specificSuscriptionsGrid {
@@ -129,7 +135,7 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-  padding-top: 0.5rem;
+  padding-top: 0.7rem;
   width: 100%;
 }
 
@@ -138,13 +144,15 @@
   text-align: center;
   align-items: center;
   justify-content: center;
+  display: flex;
+  padding: 0.5rem 0.3rem 0.5rem 0.3rem;
 }
 
 .specificUserPosts {
   justify-content: center;
   align-items: center;
   justify: center;
-  background-color: yellow;
+  background-color: transparent;
   padding: 0.5rem;
   padding-right: 2rem;
   width: 74%;
@@ -152,11 +160,11 @@
 
 .specificUserPostsBox {
   width: 100%;
-  background-color: red;
+  background-color: transparent;
 }
 
 .paginationPostsDiv {
-  background-color: blue;
+  background-color: transparent;
   justify-content: center;
   align-items: center;
   justify: center;

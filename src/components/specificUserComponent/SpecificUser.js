@@ -3,7 +3,7 @@ import './SpecificUser.css';
 import { Grid, Box, Typography, Button, Avatar, Divider } from '@material-ui/core';
 import {ListRecommendations} from '../recommendationComponent/ListRecommendations';
 import RecomPagination from '../Pagination/RecomPagination';
-import {recommendations} from '../Auxiliar/Data.js';
+import {getCurrentRecom, getUserRecommendations} from '../Auxiliar/AuxiliarTools.js';
 import ListCategories from '../recommendationComponent/ListCategories';
 
 
@@ -12,10 +12,13 @@ function SpecificUser(){
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(4);
 
+  let current_id=localStorage.getItem('recommendation-id');
+  let currentRecom = getCurrentRecom(current_id);
+
   useEffect(() => {
     //Traer datos de la base de datos
     const fetchPosts = async () => {
-      const res = recommendations;
+      const res = getUserRecommendations(currentRecom.creator.id);
       setPosts(res);
     };
 
@@ -36,7 +39,7 @@ function SpecificUser(){
             <Grid container className="specificProfileContainer" spacing={0} direction="column">
               <Grid item className="specificProfileGridImage">
                 <Box className="roundedImageBox">
-                  <Avatar  alt="Remy Sharp" src="img/julian.jpg" style={{ height: '100%', width: '100%', backgroundColor: "white" }} />
+                  <Avatar  alt="Remy Sharp" src={currentRecom.creator.userImage} style={{ height: '100%', width: '100%', backgroundColor: "white" }} />
                 </Box>
               </Grid>
 
@@ -44,25 +47,25 @@ function SpecificUser(){
                 <Grid container className="specificProfileInfoItemContainer" spacing={0} direction="column">
                   <Grid item className="specificUsernameGrid">
                     <Box className="specificUsernameBox">
-                      Jules
+                      {currentRecom.creator.username}
                     </Box>
                   </Grid>
 
                   <Grid item className="specificNameGrid">
                     <Box className="specificNameBox">
-                      Julian Casablancas
+                      {currentRecom.creator.fullname}
                     </Box>
                   </Grid>
 
                   <Grid item className="specificEmailGrid">
                     <Box  className="specificEmailBox">
-                      Jules@mail.com
+                      {currentRecom.creator.email}
                     </Box>
                   </Grid>
 
                   <Grid item className="specificUserDescGrid">
                     <Box className="specificUserDescBox">
-                      description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
+                      {currentRecom.creator.description}
                     </Box>
                   </Grid>
 
@@ -72,7 +75,7 @@ function SpecificUser(){
 
               <Grid item className="specificSuscriptionsGrid">
                 <Box className="specificSuscriptionsBox">
-                  <ListCategories content={["gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"]} />
+                  <ListCategories content={currentRecom.creator.subscriptions} />
                 </Box>
               </Grid>
 
