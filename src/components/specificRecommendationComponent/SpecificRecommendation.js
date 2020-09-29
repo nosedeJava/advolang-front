@@ -8,6 +8,8 @@ import './SpecificRecommendation.css';
 import {calcProm, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
 import {recommendations, savedRecommendationsList} from '../Auxiliar/Data.js';
 import {CheckValidYoutubeURL, CheckMimeType} from '../Auxiliar/CheckMedia.js';
+import {ShowSuccessMessage, ShowWarningMessage, ShowErrorMessage} from '../Auxiliar/Swal.js';
+
 
 function SpecificRecommendation() {
 
@@ -45,15 +47,12 @@ function SpecificRecommendation() {
     let existingSavedRecom = savedRecommendationsList.filter(recom => recom.id === currentRecom.id);
 
     if(existingSavedRecom.length !== 0){
-      alert("This recommendation is already seaved")
+      ShowWarningMessage("Warning", "This recommendation is already saved")
     }
-
     else{
       savedRecommendationsList.push(currentRecom)
-      alert("Successfully saved")
-
+      ShowSuccessMessage ("Awesome", "Recommendation successfully saved")
     }
-
   }
 
   const typesRec = () =>{
@@ -201,3 +200,4 @@ function SpecificRecommendation() {
 }
 
 export default SpecificRecommendation;
+
