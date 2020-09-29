@@ -55,7 +55,7 @@ function Recommendation(props) {
 
                     <Grid item className="userNameGridValue">
                       <Box className="userNameBoxValue" textAlign="left">
-                          {props.user.name}
+                          {props.user.username}
                       </Box>
                     </Grid>
 

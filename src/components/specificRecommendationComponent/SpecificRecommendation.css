@@ -12,7 +12,6 @@
 }
 
 .gridPostContainer{
-  background-color: transparent;
   width: 63%;
   justify-content: center;
   align-items: center;
@@ -192,7 +191,6 @@
 }
 
 .gridUserContainerMain {
-  background-color: transparent;
   justify-content: center;
   align-items: center;
   justify: center;

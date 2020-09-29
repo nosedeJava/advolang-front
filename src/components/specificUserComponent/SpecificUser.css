@@ -1,0 +1,168 @@
+.specificUserDiv {
+  min-height: 90vh;
+  height: 100%;
+  background-color: pink;
+}
+
+.specificUserGridContainer {
+  align-items:flex-start;
+  justify: space-between;
+  justify-content: space-between;
+  background-color: green;
+
+}
+
+.specificProfileItem {
+  width: 25%;
+  justify-content: center;
+  align-items: center;
+  justify: center;
+  background-color: purple;
+  padding-left: 2rem;
+
+}
+
+.specificProfileBox {
+  background-color: blue;
+  justify-content: center;
+  align-items: center;
+  justify: center;
+  text-align: center;
+  display: flex;
+}
+
+.specificProfileContainer {
+  justify-content: center;
+  align-items: center;
+  justify: center;
+  text-align: center;
+  display: flex;
+
+}
+
+.specificProfileGridImage {
+  background-color: red;
+  padding-top: 3rem;
+
+}
+
+.roundedImageBox {
+  width: 15vw;
+  height: 15vw;
+  border-radius: 50%;
+  background-color: pink;
+}
+
+.specificProfileGridInfo {
+
+}
+
+.specificProfileInfoItemContainer {
+  justify-content: center;
+  align-items: center;
+  justify: center;
+}
+
+.specificUsernameGrid {
+  background-color: transparent;
+  padding: 0.5rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  word-break: break-all;
+
+}
+
+.specificUsernameBox {
+  font-family: Verdana, serif;
+  font-size: 200%;
+  font-weight: bold;
+}
+
+.specificNameGrid {
+  background-color: transparent;
+  padding: 0.3rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  word-break: break-all;
+}
+
+.specificNameBox {
+  font-family: Verdana, serif;
+  font-size: 120%;
+}
+
+.specificEmailGrid {
+  background-color: transparent;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  word-break: break-all;
+}
+
+.specificEmailBox {
+  font-family: Verdana, serif;
+  font-size: 100%;
+}
+
+.specificUserDescGrid {
+  background-color: transparent;
+  padding: 0.5rem 0.3rem 0.3rem 0.3rem;
+  text-align: left;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  word-break: break-all;
+}
+
+.specificUserDescBox {
+  font-family: Verdana, serif;
+  font-size: 100%;
+}
+
+.specificSuscriptionsGrid {
+  background-color: transparent;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.5rem;
+  width: 100%;
+}
+
+.specificSuscriptionsBox {
+  background-color: #a9acc6;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.specificUserPosts {
+  justify-content: center;
+  align-items: center;
+  justify: center;
+  background-color: yellow;
+  padding: 0.5rem;
+  padding-right: 2rem;
+  width: 74%;
+}
+
+.specificUserPostsBox {
+  width: 100%;
+  background-color: red;
+}
+
+.paginationPostsDiv {
+  background-color: blue;
+  justify-content: center;
+  align-items: center;
+  justify: center;
+  text-align: center;
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+
+}

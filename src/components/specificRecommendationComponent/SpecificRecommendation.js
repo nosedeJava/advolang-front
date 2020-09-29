@@ -125,8 +125,6 @@ function SpecificRecommendation() {
               </Grid>
             </Grid>
 
-
-
             {/* Uso del enlace relacionado a la recomendación.*/}
             <Grid item className="recomRecourseGrid">
               <Box className="recomRecourseBox" align="center">
@@ -134,8 +132,6 @@ function SpecificRecommendation() {
               </Box>
 
             </Grid>
-
-
 
             <Grid item >
               <Box className="footerPostBox" >
@@ -153,7 +149,6 @@ function SpecificRecommendation() {
           </Box>
         </Grid>
 
-
         <Grid item xs={4} direction="row" className="gridUserContainerMain">
           <Grid container spacing={0} direction="column" className="gridUserContainer">
             <Grid item className="userFirstGrid">
@@ -170,7 +165,7 @@ function SpecificRecommendation() {
                   {/* Aquí uso el nombre de usuario*/}
                   <Grid item className="userNameGrid">
                     <Box className="userNameBox">
-                      {currentRecom.user.name}
+                      {currentRecom.user.username}
                     </Box>
                   </Grid>
 
@@ -200,4 +195,3 @@ function SpecificRecommendation() {
 }
 
 export default SpecificRecommendation;
-

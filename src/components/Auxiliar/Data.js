@@ -6,9 +6,15 @@ export var recommendations = [{
     level: "Beginner",
     description: "prueba de funcionamineto gonjnhjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhmhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhrihrhroijhori jijoijoijohtoijtyhtjyhjthotjhojtoiyjhotiyjhoijthjtyijhotjyijhojhoiyjhotjhojtyihjtoiyjhityjhoitjyhoijtoiyjhojyhotjohjtyohjtohjtoiyoijoitjhoityjhoitjhotijhoti rijhoithjotiyhjotjhotiyjhotjhotiyjhotiyjhotyjohjtoihjtojhothjothjotjhotyijhoitjhoytij",
     user: {
-      name: "Stinky",
+      id: "0",
+      username: "Stinky",
+      password: "12345",
       fullname: "",
-      description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu"
+      userImage: "",
+      description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
+      saved: {},
+      subscriptions: {}
+
     },
     time: "2001-11-11 13:23:44",
     categories: ["gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"],
@@ -25,9 +31,14 @@ export var recommendations = [{
     level: "Beginner",
     description: "prueba de funcionamineto 2 gonjnhjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhmhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhrihrhroijhori jijoijoijohtoijtyhtjyhjthotjhojtoiyjhotiyjhoijthjtyijhotjyijhojhoiyjhotjhojtyihjtoiyjhityjhoitjyhoijtoiyjhojyhotjohjtyohjtohjtoiyoijoitjhoityjhoitjhotijhoti rijhoithjotiyhjotjhotiyjhotjhotiyjhotiyjhotyjohjtoihjtojhothjothjotjhotyijhoitjhoytij",
     user: {
-      name: "Urobs",
+      id: "1",
+      username: "Urobs",
+      password: "12345",
       fullname: "",
-      description: "Prueba de usuario"
+      userImage: "",
+      description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
+      saved: {},
+      subscriptions: {}
     },
     time: "2002-11-11 13:23:44",
     categories: ["youtube", "analysis", "movie", "japan"],
@@ -44,9 +55,14 @@ export var recommendations = [{
     level: "Beginner",
     description: "prueba de funcionamineto 3 gonjnhjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhmhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhrihrhroijhori jijoijoijohtoijtyhtjyhjthotjhojtoiyjhotiyjhoijthjtyijhotjyijhojhoiyjhotjhojtyihjtoiyjhityjhoitjyhoijtoiyjhojyhotjohjtyohjtohjtoiyoijoitjhoityjhoitjhotijhoti rijhoithjotiyhjotjhotiyjhotjhotiyjhotiyjhotyjohjtoihjtojhothjothjotjhotyijhoitjhoytij",
     user: {
-      name: "Stinky",
+      id: "0",
+      username: "Stinky",
+      password: "12345",
       fullname: "",
-      description: "Prueba de usuario"
+      userImage: "",
+      description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
+      saved: {},
+      subscriptions: {}
     },
     time: "2003-11-11 13:23:44",
     categories: ["gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"],
@@ -63,9 +79,14 @@ export var recommendations = [{
     level: "Beginner",
     description: "prueba de funcionamineto 4 gonjnhjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhmhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhrihrhroijhori jijoijoijohtoijtyhtjyhjthotjhojtoiyjhotiyjhoijthjtyijhotjyijhojhoiyjhotjhojtyihjtoiyjhityjhoitjyhoijtoiyjhojyhotjohjtyohjtohjtoiyoijoitjhoityjhoitjhotijhoti rijhoithjotiyhjotjhotiyjhotjhotiyjhotiyjhotyjohjtoihjtojhothjothjotjhotyijhoitjhoytij",
     user: {
-      name: "Stinky",
+      id: "0",
+      username: "Stinky",
+      password: "12345",
       fullname: "",
-      description: "Prueba de usuario"
+      userImage: "",
+      description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
+      saved: {},
+      subscriptions: {}
     },
     time: "2004-11-11 13:23:44",
     categories: ["gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"],
@@ -82,9 +103,14 @@ export var recommendations = [{
     level: "Beginner",
     description: "prueba de funcionamineto 5 gonjnhjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhmhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhrihrhroijhori jijoijoijohtoijtyhtjyhjthotjhojtoiyjhotiyjhoijthjtyijhotjyijhojhoiyjhotjhojtyihjtoiyjhityjhoitjyhoijtoiyjhojyhotjohjtyohjtohjtoiyoijoitjhoityjhoitjhotijhoti rijhoithjotiyhjotjhotiyjhotjhotiyjhotiyjhotyjohjtoihjtojhothjothjotjhotyijhoitjhoytij",
     user: {
-      name: "Urobs",
+      id: "1",
+      username: "Urobs",
+      password: "12345",
       fullname: "",
-      description: "Prueba de usuario"
+      userImage: "",
+      description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
+      saved: {},
+      subscriptions: {}
     },
     time: "2005-11-11 13:23:44",
     categories: ["youtube", "analysis", "movie", "japan"],
@@ -101,9 +127,14 @@ export var recommendations = [{
     level: "Beginner",
     description: "prueba de funcionamineto 6 gonjnhjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhmhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhrihrhroijhori jijoijoijohtoijtyhtjyhjthotjhojtoiyjhotiyjhoijthjtyijhotjyijhojhoiyjhotjhojtyihjtoiyjhityjhoitjyhoijtoiyjhojyhotjohjtyohjtohjtoiyoijoitjhoityjhoitjhotijhoti rijhoithjotiyhjotjhotiyjhotjhotiyjhotiyjhotyjohjtoihjtojhothjothjotjhotyijhoitjhoytij",
     user: {
-      name: "Stinky",
-      fullname: " ",
-      description: "Prueba de usuario"
+      id: "0",
+      username: "Stinky",
+      password: "12345",
+      fullname: "",
+      userImage: "",
+      description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
+      saved: {},
+      subscriptions: {}
     },
     time: "2006-11-11 13:23:44",
     categories: ["gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"],
@@ -121,9 +152,14 @@ export var recommendations = [{
     level: "Beginner",
     description: "prueba de funcionamineto gonjnhjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhmhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhrihrhroijhori jijoijoijohtoijtyhtjyhjthotjhojtoiyjhotiyjhoijthjtyijhotjyijhojhoiyjhotjhojtyihjtoiyjhityjhoitjyhoijtoiyjhojyhotjohjtyohjtohjtoiyoijoitjhoityjhoitjhotijhoti rijhoithjotiyhjotjhotiyjhotjhotiyjhotiyjhotyjohjtoihjtojhothjothjotjhotyijhoitjhoytij",
     user: {
-      name: "Stinky",
+      id: "0",
+      username: "Stinky",
+      password: "12345",
       fullname: "",
-      description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu"
+      userImage: "",
+      description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
+      saved: {},
+      subscriptions: {}
     },
     time: "2001-11-11 13:23:44",
     categories: ["gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"],
@@ -140,9 +176,14 @@ export var recommendations = [{
     level: "Beginner",
     description: "prueba de funcionamineto 2 gonjnhjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhmhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhrihrhroijhori jijoijoijohtoijtyhtjyhjthotjhojtoiyjhotiyjhoijthjtyijhotjyijhojhoiyjhotjhojtyihjtoiyjhityjhoitjyhoijtoiyjhojyhotjohjtyohjtohjtoiyoijoitjhoityjhoitjhotijhoti rijhoithjotiyhjotjhotiyjhotjhotiyjhotiyjhotyjohjtoihjtojhothjothjotjhotyijhoitjhoytij",
     user: {
-      name: "Urobs",
+      id: "1",
+      username: "Urobs",
+      password: "12345",
       fullname: "",
-      description: "Prueba de usuario"
+      userImage: "",
+      description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
+      saved: {},
+      subscriptions: {}
     },
     time: "2001-11-11 13:23:44",
     categories: ["gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"],
@@ -163,9 +204,14 @@ export var savedRecommendationsList = [
     level: "Beginner",
     description: "prueba de funcionamineto gonjnhjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhmhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhrihrhroijhori jijoijoijohtoijtyhtjyhjthotjhojtoiyjhotiyjhoijthjtyijhotjyijhojhoiyjhotjhojtyihjtoiyjhityjhoitjyhoijtoiyjhojyhotjohjtyohjtohjtoiyoijoitjhoityjhoitjhotijhoti rijhoithjotiyhjotjhotiyjhotjhotiyjhotiyjhotyjohjtoihjtojhothjothjotjhotyijhoitjhoytij",
     user: {
-      name: "Stinky",
+      id: "0",
+      username: "Stinky",
+      password: "12345",
       fullname: "",
-      description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu"
+      userImage: "",
+      description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
+      saved: {},
+      subscriptions: {}
     },
     time: "2001-11-11 13:23:44",
     categories: ["gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"],
@@ -182,9 +228,14 @@ export var savedRecommendationsList = [
     level: "Beginner",
     description: "prueba de funcionamineto 2 gonjnhjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhmhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhrihrhroijhori jijoijoijohtoijtyhtjyhjthotjhojtoiyjhotiyjhoijthjtyijhotjyijhojhoiyjhotjhojtyihjtoiyjhityjhoitjyhoijtoiyjhojyhotjohjtyohjtohjtoiyoijoitjhoityjhoitjhotijhoti rijhoithjotiyhjotjhotiyjhotjhotiyjhotiyjhotyjohjtoihjtojhothjothjotjhotyijhoitjhoytij",
     user: {
-      name: "Urobs",
+      id: "1",
+      username: "Urobs",
+      password: "12345",
       fullname: "",
-      description: "Prueba de usuario"
+      userImage: "",
+      description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
+      saved: {},
+      subscriptions: {}
     },
     time: "2001-11-11 13:23:44",
     categories: ["gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"],

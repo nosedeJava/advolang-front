@@ -13,6 +13,8 @@ import PostAddIcon from '@material-ui/icons/PostAdd';
 import CreatedRecommendations from "./components/createdRecommendationComponent/mainComponent/CreatedRecommendations";
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import SavedRecommendations from "./components/savedRecommendations/SavedRecommendations"
+import SpecificUser from "./components/specificUserComponent/SpecificUser"
+
 
 export default function App(props) {
 
@@ -39,7 +41,7 @@ export default function App(props) {
       component: CreateRecommendation,
       menuVisible: true,
       menuIcon: () => <PostAddIcon/>
-    }, 
+    },
     {
       path: "/specific-recommendation",
       name: "Specific recommendation",
@@ -50,6 +52,13 @@ export default function App(props) {
       path: "/Created-Recommendations",
       name: "Created recommendations",
       component: CreatedRecommendations,
+      menuVisible: true,
+      menuIcon:() => <HomeIcon />
+    },
+    {
+      path: "/Specific-User",
+      name: "Specific User",
+      component: SpecificUser,
       menuVisible: true,
       menuIcon:() => <HomeIcon />
     }
