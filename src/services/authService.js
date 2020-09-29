@@ -1,12 +1,32 @@
+const axios = require('axios').default;
+const URL = 'http://localhost:8080/api/auth';
+
 class AuthService {
   constructor() {
-    const user = JSON.parse(localStorage.getItem('user'))
+    const user = JSON.parse(localStorage.getItem('user'));
     this.authenticated = !!user;
   }
 
-  login(cb) {
-    this.authenticated = true;
-    cb();
+  login(usr) {
+    return axios.post(`${URL}/signin`, usr)
+        .then(response =>
+            response.data.token ? localStorage.setItem('user', JSON.stringify(response.data)): undefined
+        ).then(() => this.authenticated = true);
+  }
+
+  signup(usr, history){
+    return axios.post(`${URL}/signup`, usr)
+        .then(response => response.status)
+        .catch(error => {
+          if (error.response){
+            alert('Bad credentials')
+            console.info(error.response.status);
+            console.info(error.response.data);
+          }else{
+            alert('Server error');
+            console.info(error.message);
+          }
+        })
   }
 
   logout(cb) {

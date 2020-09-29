@@ -12,8 +12,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import auth from "../../services/authService";
 import Copyright from "./Copyright";
+import authService from "../../services/authService";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -44,22 +44,8 @@ export function SignIn(props) {
     }
 
     function handleSubmit(){
-        auth.login(() => {
-            const registered = JSON.parse(localStorage.getItem('registeredUser'));
-            if(registered !== null){
-              if(registered.email === user.email && registered.password === user.password){
-                  alert(`Welcome ${registered.firstName}`);
-                  localStorage.setItem('user', JSON.stringify(registered));
-                  props.history.push("/");
-              }else{
-                  alert("Wrong email or password")
-              }
-            }
-            else{
-              alert("Usuario no registrado")
-            }
-
-        });
+        authService.login(user, props.history)
+            .then(() => props.history.push('/'));
 
     }
     return (
@@ -79,9 +65,9 @@ export function SignIn(props) {
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="email"
-                                label="Email Address"
-                                name="email"
+                                id="username"
+                                label="User Name"
+                                name="username"
                                 onChange = {handleChange}
                                 autoComplete="email"
                             />

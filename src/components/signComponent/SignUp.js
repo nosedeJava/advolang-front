@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Copyright from "./Copyright";
+import authService from "../../services/authService";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -51,8 +52,20 @@ export function SignUp(props) {
 
     function handleSubmit() {
         if (user.password === confirmp) {
-            localStorage.setItem('registeredUser', JSON.stringify(user));
-            props.history.push("/login");
+            authService.signup(user)
+                .then(response => console.info(response.status))
+                .then(() => alert('User accepted'))
+                .then(() => props.history.push('/login'))
+                .catch(error => {
+                    if(error.response){
+                        alert('User Name already exists');
+                        console.info(error.response.status);
+                        console.info(error.response.status);
+                    }else{
+                        alert('Server error');
+                        console.info(error.message);
+                    }
+                })
         } else {
             alert("The passwords are not equals")
         }
@@ -68,17 +81,19 @@ export function SignUp(props) {
                 <Typography component="h1" variant="h5" style={{color: 'black'}}>
                     Sign up
                 </Typography>
-                <form className={classes.form} onSubmit={handleSubmit}>
+                <form className={classes.form}
+                      // onSubmit={handleSubmit}
+                >
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 autoComplete="fname"
-                                name="firstName"
+                                name="fullName"
                                 variant="outlined"
                                 required
                                 fullWidth
                                 id="firstName"
-                                label="First Name"
+                                label="Full name"
                                 onChange={handleChange}
                                 autoFocus
                             />
@@ -88,9 +103,9 @@ export function SignUp(props) {
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="lastName"
-                                label="Last Name"
-                                name="lastName"
+                                id="username"
+                                label="User Name"
+                                name="username"
                                 onChange={handleChange}
                             />
                         </Grid>
@@ -134,7 +149,8 @@ export function SignUp(props) {
 
                     </Grid>
                     <Button
-                        type="submit"
+                        type="button"
+                        onClick={handleSubmit}
                         fullWidth
                         variant="contained"
                         color="primary"

@@ -1,5 +1,4 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {useEffect, useState} from 'react';
 import './SideBarMenu.css';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Divider from '@material-ui/core/Divider';
@@ -7,13 +6,18 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import {MenuItemsList} from './MenuItemsList';
 import {List, ListItem, ListItemIcon, ListItemText, Box} from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Avatar from '@material-ui/core/Avatar';
+import UserInformationService from "../../services/UserInformationService";
 
 export function SideBarMenu (props){
 
-  let user = JSON.parse(localStorage.getItem('user'));
+  const [user, setUser] = useState({fullName:'', email:''});
+
+  useEffect(() => {
+    UserInformationService.getUser()
+        .then(response => setUser(response))
+  },[])
 
   const [state, setState] = React.useState({
     top: false,
@@ -42,16 +46,16 @@ export function SideBarMenu (props){
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-
+      {console.log(user)}
       <List>
         <ListItem button key="userInfo">
           <Box className="avatarProfileImageBox">
-            <Avatar  alt="Remy Sharp" src={user.profileImage}  style={{width: 48, height: 48, backgroundColor: "#f3f3f3" }} />
+            <Avatar  alt="Remy Sharp" src={'img/profile_image.jpg'}  style={{width: 48, height: 48, backgroundColor: "#f3f3f3" }} />
           </Box>
           <ListItemText
             className = "userProfileData"
-            primary={user.firstName + " " +user.lastName}
-            secondary={user.firstName.email}
+            primary={user.fullName}
+            secondary={user.email}
           />
         </ListItem>
       </List>
