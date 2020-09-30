@@ -1,7 +1,7 @@
 .specificUserDiv {
   min-height: 90vh;
   height: 100%;
-  background-color: transparent;
+  background-color: #e7e8e2;
 }
 
 .specificUserGridContainer {
@@ -13,26 +13,27 @@
 }
 
 .specificProfileItem {
-  width: 25%;
-  justify-content: center;
+  width: 32%;
+  justify-content: right;
   align-items: center;
   justify: center;
   background-color: transparent;
-  padding-left: 2rem;
   padding-bottom: 2rem;
   display: flex;
-
 }
 
 .specificProfileBox {
-  background-color: gray;
+  background-color: #828486;
+  color: white;
   justify-content: center;
   align-items: center;
   justify: center;
   text-align: center;
   display: flex;
-  border: black 5px;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
+  border-radius: 8px;
+  width: 85%;
+  border: solid #dddddd;
 
 }
 
@@ -140,12 +141,14 @@
 }
 
 .specificSuscriptionsBox {
-  background-color: #a9acc6;
+  background-color: #bdb8b8;
   text-align: center;
   align-items: center;
   justify-content: center;
   display: flex;
   padding: 0.5rem 0.3rem 0.5rem 0.3rem;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .specificUserPosts {
@@ -155,7 +158,7 @@
   background-color: transparent;
   padding: 0.5rem;
   padding-right: 2rem;
-  width: 74%;
+  width: 66%;
 }
 
 .specificUserPostsBox {

@@ -11,7 +11,7 @@ export default function SingleCard(props){
             <CardActionArea>
                 <div className="recommendation">
                     <h1>{props.recommendation.title}</h1>
-                    <img src={props.recommendation.sourceImage} alt=""/>
+                    <img src={props.recommendation.thumbnail} alt=""/>
                 </div>
             </CardActionArea>
             <div className="footer">

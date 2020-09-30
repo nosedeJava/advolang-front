@@ -11,7 +11,7 @@ export var recommendations = [{
       password: "12345",
       email: "s@mail.com",
       fullname: "Prueba usuario",
-      userImage: "img/julian.jpg",
+      userImage: "img/imageProfExample.png",
       description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
       saved: [],
       subscriptions: ["gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame"]
@@ -35,7 +35,7 @@ export var recommendations = [{
       password: "12345",
       email: "s@mail.com",
       fullname: "Prueba usuario",
-      userImage: "img/julian.jpg",
+      userImage: "img/imageProfExample.png",
       description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
       saved: [],
       subscriptions: ["gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"]
@@ -59,7 +59,7 @@ export var recommendations = [{
       password: "12345",
       email: "s@mail.com",
       fullname: "Prueba usuario",
-      userImage: "img/julian.jpg",
+      userImage: "img/imageProfExample.png",
       description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
       saved: [],
       subscriptions: ["gameplay", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"]
@@ -83,7 +83,7 @@ export var recommendations = [{
       password: "12345",
       email: "s@mail.com",
       fullname: "Prueba usuario",
-      userImage: "img/julian.jpg",
+      userImage: "img/imageProfExample.png",
       description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
       saved: [],
       subscriptions: ["gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"]
@@ -107,7 +107,7 @@ export var recommendations = [{
       password: "12345",
       email: "s@mail.com",
       fullname: "Prueba usuario",
-      userImage: "img/julian.jpg",
+      userImage: "img/imageProfExample.png",
       description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
       saved: [],
       subscriptions: ["gameplay", "videogame", "FFVII", "GPB"]
@@ -131,7 +131,7 @@ export var recommendations = [{
       password: "12345",
       email: "s@mail.com",
       fullname: "Prueba usuario",
-      userImage: "img/julian.jpg",
+      userImage: "img/imageProfExample.png",
       description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
       saved: [],
       subscriptions: ["gameplay", "videogame", "FFVII", "GPB", "videogame", "FFVII", "GPB"]
@@ -156,7 +156,7 @@ export var recommendations = [{
       password: "12345",
       email: "s@mail.com",
       fullname: "Prueba usuario",
-      userImage: "img/julian.jpg",
+      userImage: "img/imageProfExample.png",
       description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
       saved: [],
       subscriptions: ["gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"]
@@ -180,7 +180,7 @@ export var recommendations = [{
       password: "12345",
       email: "s@mail.com",
       fullname: "Prueba usuario",
-      userImage: "img/julian.jpg",
+      userImage: "img/imageProfExample.png",
       description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
       saved: [],
       subscriptions: ["gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"]
@@ -208,7 +208,7 @@ export var savedRecommendationsList = [
       password: "12345",
       email: "s@mail.com",
       fullname: "Prueba usuario",
-      userImage: "img/julian.jpg",
+      userImage: "img/imageProfExample.png",
       description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
       saved: [],
       subscriptions: ["gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"]
@@ -232,7 +232,7 @@ export var savedRecommendationsList = [
       password: "12345",
       email: "s@mail.com",
       fullname: "Prueba usuario",
-      userImage: "img/julian.jpg",
+      userImage: "img/imageProfExample.png",
       description: "Prueba de usuariojhbjhbjhbjhbrjhbehbtjhbrt euthhtiuhituheiuhtiehtiehriuhtiuerhtuiehrtuiehutheirthierhiehtiehtiehihtiurhtiehtiehtihtirhtiuhrithiruhtiurhtihu",
       saved: [],
       subscriptions: ["gameplay", "videogame", "FFVII", "GPB", "gameplay", "videogame", "FFVII", "GPB"]

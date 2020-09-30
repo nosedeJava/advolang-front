@@ -38,7 +38,7 @@ function SpecificUser(){
           <Box className="specificProfileBox">
             <Grid container className="specificProfileContainer" spacing={0} direction="column">
               <Grid item className="specificProfileGridImage">
-                <Box className="roundedImageBox">
+                <Box className="roundedImageBox" border>
                   <Avatar  alt="Remy Sharp" src={currentRecom.creator.userImage} style={{ height: '100%', width: '100%', backgroundColor: "white" }} />
                 </Box>
               </Grid>
