@@ -1,37 +1,48 @@
-import React from 'react';
-import { Grid, Box, Typography, Button, Avatar, Divider } from '@material-ui/core';
+import React, { useEffect } from 'react';
+import { Grid, Box, Typography, Button, Avatar, Divider, ButtonBase } from '@material-ui/core';
 import HoverRating from './RatingRecommendation';
 import FormDialog from './ReportDialog';
 import ListCategories from '../recommendationComponent/ListCategories';
 import {ResourceController} from './ResourceController.js';
 import './SpecificRecommendation.css';
-import {calcProm, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
-import {recommendations, savedRecommendationsList} from '../Auxiliar/Data.js';
+import {calcProm, calculatePublication, getRecommendationScores, getRecommendationScoreColor, getFirstVoting, setUserVote, addScore} from '../Auxiliar/AuxiliarTools.js';
+import {savedRecommendationsList} from '../Auxiliar/Data.js';
 import {CheckValidYoutubeURL, CheckMimeType} from '../Auxiliar/CheckMedia.js';
+import {ShowSuccessMessage, ShowWarningMessage, ShowErrorMessage} from '../Auxiliar/Swal.js';
+import { useHistory } from "react-router-dom";
+import {getCurrentRecom} from '../Auxiliar/AuxiliarTools.js';
 
 function SpecificRecommendation() {
 
+  let history = useHistory();
+
+  useEffect(() => {
+      window.scrollTo(0, 0)
+  }, []);
+
+  /* (valor prev antes de base de datos) Id del usuario de la sesión*/
+  let sessionUserId = "5";
+
   let current_id=localStorage.getItem('recommendation-id');
-  let currentRecom = recommendations.filter(recom => recom.id == current_id)[0];
+  let currentRecom = getCurrentRecom(current_id);
 
-  const [totalScore, setTotalScore] = React.useState(calcProm(currentRecom.list_score));
-  const [firstVoting, setFirstVoting] = React.useState(true);
+  const [totalScore, setTotalScore] = React.useState(calcProm(getRecommendationScores(current_id)));
+  const [firstVoting, setFirstVoting] = React.useState(getFirstVoting(sessionUserId, current_id));
 
-  let colorScore = totalScore > 3.8 ? "#418525" : totalScore < 2.8 ? "#C77938" : "#C7B117";
+
+  let colorScore = getRecommendationScoreColor(totalScore);
 
   const handleRating = (value) =>{
 
     if(firstVoting){
       setFirstVoting(false);
+      addScore(sessionUserId, current_id, value);
     }
     else{
-      currentRecom.list_score.pop();
+      setUserVote(sessionUserId, current_id, value);
     }
 
-    currentRecom.list_score.push(value);
-
-    let prom=calcProm(currentRecom.list_score);
-    setTotalScore(prom);
+    setTotalScore(calcProm(getRecommendationScores(current_id)));
     /*Cambiar valores en la bd*/
 
   }
@@ -45,14 +56,17 @@ function SpecificRecommendation() {
     let existingSavedRecom = savedRecommendationsList.filter(recom => recom.id === currentRecom.id);
 
     if(existingSavedRecom.length !== 0){
-      alert("This recommendation is already seaved")
+      ShowWarningMessage("Warning", "This recommendation is already saved")
     }
-
     else{
       savedRecommendationsList.push(currentRecom)
-      alert("Successfully saved")
-
+      ShowSuccessMessage ("Awesome", "Recommendation successfully saved")
     }
+  }
+
+  const handleSpecificUser = () => {
+    history.push("/specific-user")
+    //redirigir a specific user
 
   }
 
@@ -72,7 +86,7 @@ function SpecificRecommendation() {
               {/* Uso de la imagen relacionada a la recomendación. */}
               <Grid item className="imageRecomGrid">
                 <div className="imageRecomDiv">
-                  <Avatar variant="square" alt="Remy Sharp" src={currentRecom.sourceImage} style={{ height: 'auto', width: 'auto', backgroundColor: "white" }} />
+                  <Avatar variant="square" alt="Remy Sharp" src={currentRecom.thumbnail} style={{ height: 'auto', width: 'auto', backgroundColor: "white" }} />
                 </div>
               </Grid>
 
@@ -126,17 +140,13 @@ function SpecificRecommendation() {
               </Grid>
             </Grid>
 
-
-
             {/* Uso del enlace relacionado a la recomendación.*/}
             <Grid item className="recomRecourseGrid">
               <Box className="recomRecourseBox" align="center">
-                <ResourceController resources={currentRecom.resources}/>
+                <ResourceController resource={currentRecom.resource}/>
               </Box>
 
             </Grid>
-
-
 
             <Grid item >
               <Box className="footerPostBox" >
@@ -154,37 +164,38 @@ function SpecificRecommendation() {
           </Box>
         </Grid>
 
-
         <Grid item xs={4} direction="row" className="gridUserContainerMain">
           <Grid container spacing={0} direction="column" className="gridUserContainer">
             <Grid item className="userFirstGrid">
-              <Box boxShadow={3} borderRadius="borderRadius" className="userConatainerBox" >
-                <Grid container className="usersSubContainer" spacing={0} direction="column">
+              <ButtonBase className="specificUserButtonBase" onClick={handleSpecificUser}>
+                <Box boxShadow={3} borderRadius="borderRadius" className="userConatainerBox" >
+                  <Grid container className="usersSubContainer" spacing={0} direction="column">
 
-                  {/* Aquí uso el nombre de usuario y el enlace a la imagen de perfil.*/}
-                  <Grid item className="userProfileGrid">
-                    <div className="userImageDiv">
-                      <Avatar variant="square" alt="Stinky" src="logo512.png" style={{ height: '100%', width: '100%' }} />
-                    </div>
+                    {/* Aquí uso el nombre de usuario y el enlace a la imagen de perfil.*/}
+                    <Grid item className="userProfileGrid">
+                      <div className="userImageDiv">
+                        <Avatar variant="square" alt="Stinky" src={currentRecom.creator.userImage} style={{ height: '100%', width: '100%' }} />
+                      </div>
+                    </Grid>
+
+                    {/* Aquí uso el nombre de usuario*/}
+                    <Grid item className="userNameGrid">
+                      <Box className="userNameBox">
+                        {currentRecom.creator.username}
+                      </Box>
+                    </Grid>
+
+                    <Divider className="divider" variant="middle"  />
+
+                    {/*Descripción del usuario.*/}
+                    <Grid className="userDescGrid">
+                      <Box className="userDescBox">
+                        {currentRecom.creator.description}
+                      </Box>
+                    </Grid>
                   </Grid>
-
-                  {/* Aquí uso el nombre de usuario*/}
-                  <Grid item className="userNameGrid">
-                    <Box className="userNameBox">
-                      {currentRecom.user.name}
-                    </Box>
-                  </Grid>
-
-                  <Divider className="divider" variant="middle"  />
-
-                  {/*Descripción del usuario.*/}
-                  <Grid className="userDescGrid">
-                    <Box className="userDescBox">
-                      {currentRecom.user.description}
-                    </Box>
-                  </Grid>
-                </Grid>
-              </Box>
+                </Box>
+              </ButtonBase>
             </Grid>
 
             {/* Uso de las categorias asociadas a la recomendación.*/}

@@ -1,7 +1,7 @@
 import React,  { useState, useEffect } from 'react';
 import './SavedRecommendations.css';
 import {savedRecommendationsList} from '../Auxiliar/Data.js';
-import RecomPagination from './RecomPagination';
+import RecomPagination from '../Pagination/RecomPagination';
 import {ListRecommendations} from '../recommendationComponent/ListRecommendations';
 
 
@@ -36,6 +36,7 @@ function SavedRecommendations (props){
             postsPerPage={postsPerPage}
             totalPosts={posts.length}
             paginate={paginate}
+            color="primary"
           />
         </div>
       </div>

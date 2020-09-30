@@ -1,7 +1,7 @@
 import React from 'react';
 import Pagination from '@material-ui/lab/Pagination';
 
-const RecomPagination = ({ postsPerPage, totalPosts, paginate }) => {
+const RecomPagination = ({ postsPerPage, totalPosts, paginate, color }) => {
   const pageNumbers = [];
 
   const handleClick = (event, value)=>{
@@ -15,7 +15,7 @@ const RecomPagination = ({ postsPerPage, totalPosts, paginate }) => {
   return (
     <div>
       <div>
-        <Pagination count={pageNumbers.length} color="secondary" onChange={handleClick}/>
+        <Pagination count={pageNumbers.length} color={color} onChange={handleClick} />
       </div>
     </div>
 

@@ -1,0 +1,179 @@
+.specificUserDiv {
+  min-height: 90vh;
+  height: 100%;
+  background-color: #e7e8e2;
+}
+
+.specificUserGridContainer {
+  align-items:flex-start;
+  justify: space-between;
+  justify-content: space-between;
+  background-color: transparent;
+
+}
+
+.specificProfileItem {
+  width: 32%;
+  justify-content: right;
+  align-items: center;
+  justify: center;
+  background-color: transparent;
+  padding-bottom: 2rem;
+  display: flex;
+}
+
+.specificProfileBox {
+  background-color: #828486;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  justify: center;
+  text-align: center;
+  display: flex;
+  margin-top: 1.5rem;
+  border-radius: 8px;
+  width: 85%;
+  border: solid #dddddd;
+
+}
+
+.specificProfileContainer {
+  justify-content: center;
+  align-items: center;
+  justify: center;
+  text-align: center;
+  display: flex;
+
+}
+
+.specificProfileGridImage {
+  background-color: transparent;
+  padding-top: 3rem;
+
+}
+
+.roundedImageBox {
+  width: 15vw;
+  height: 15vw;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.specificProfileGridInfo {
+
+}
+
+.specificProfileInfoItemContainer {
+  justify-content: center;
+  align-items: center;
+  justify: center;
+}
+
+.specificUsernameGrid {
+  background-color: transparent;
+  padding: 0.5rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  word-break: break-all;
+
+}
+
+.specificUsernameBox {
+  font-family: Verdana, serif;
+  font-size: 200%;
+  font-weight: bold;
+}
+
+.specificNameGrid {
+  background-color: transparent;
+  padding: 0.3rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  word-break: break-all;
+}
+
+.specificNameBox {
+  font-family: Verdana, serif;
+  font-size: 120%;
+}
+
+.specificEmailGrid {
+  background-color: transparent;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  word-break: break-all;
+}
+
+.specificEmailBox {
+  font-family: Verdana, serif;
+  font-size: 100%;
+}
+
+.specificUserDescGrid {
+  background-color: transparent;
+  padding: 0.5rem 0.3rem 0.3rem 0.3rem;
+  text-align: left;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  word-break: break-all;
+}
+
+.specificUserDescBox {
+  font-family: Verdana, serif;
+  font-size: 100%;
+  padding: 0.3rem;
+}
+
+.specificSuscriptionsGrid {
+  background-color: transparent;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.7rem;
+  width: 100%;
+}
+
+.specificSuscriptionsBox {
+  background-color: #bdb8b8;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 0.5rem 0.3rem 0.5rem 0.3rem;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.specificUserPosts {
+  justify-content: center;
+  align-items: center;
+  justify: center;
+  background-color: transparent;
+  padding: 0.5rem;
+  padding-right: 2rem;
+  width: 66%;
+}
+
+.specificUserPostsBox {
+  width: 100%;
+  background-color: transparent;
+}
+
+.paginationPostsDiv {
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  justify: center;
+  text-align: center;
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+
+}

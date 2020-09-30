@@ -39,9 +39,9 @@ export function ResourceController(props) {
   };
 
   const typeList={
-    "video": videoDiv(props.resources.url),
-    "image": imageDiv(props.resources.url),
-    "audio": audioDiv(props.resources.url)
+    "video": videoDiv(props.resource.url),
+    "image": imageDiv(props.resource.url),
+    "audio": audioDiv(props.resource.url)
   }
 
   const options = (resource) => {
@@ -56,7 +56,7 @@ export function ResourceController(props) {
 
   return (
     <div>
-      {options(props.resources)}
+      {options(props.resource)}
     </div>
   );
 }

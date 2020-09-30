@@ -3,15 +3,14 @@ import { Grid, Box, Card, CardMedia, Typography, ButtonBase} from '@material-ui/
 import ListCategories from './ListCategories'
 import './Recommendation.css';
 import { useHistory } from "react-router-dom";
-import {calcProm, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
-
-
+import {calcProm, calculatePublication, getRecommendationScores, getRecommendationScoreColor} from '../Auxiliar/AuxiliarTools.js';
 
 function Recommendation(props) {
   let history = useHistory();
+  let recomScoreList = getRecommendationScores(props.id);
 
-  let score=calcProm(props.list_score);
-  let colorScore = score > 3.8 ? "#418525" : score < 2.8 ? "#C77938" : "#C7B117";
+  let score = recomScoreList.length !== 0 ? calcProm(recomScoreList) : 0.0;
+  let colorScore = getRecommendationScoreColor(score);
 
   const handleRedirectSpecific = () => {
     localStorage.setItem("recommendation-id", props.id)
@@ -32,7 +31,7 @@ function Recommendation(props) {
                   <Card className="thumbnailSpace">
                     <CardMedia
                         component="img"
-                        image={props.sourceImage}
+                        image={props.thumbnail}
                     />
                   </Card>
                 </Grid>
@@ -55,7 +54,7 @@ function Recommendation(props) {
 
                     <Grid item className="userNameGridValue">
                       <Box className="userNameBoxValue" textAlign="left">
-                          {props.user.name}
+                          {props.creator.username}
                       </Box>
                     </Grid>
 
@@ -71,8 +70,6 @@ function Recommendation(props) {
                   </Box>
                 </Grid>
 
-
-
               </ButtonBase>
 
             </Grid>
@@ -82,9 +79,6 @@ function Recommendation(props) {
                   {calculatePublication(props.time)}
               </Box>
             </Grid>
-
-
-
 
             <Grid container>
               <Grid item xs={12}>
