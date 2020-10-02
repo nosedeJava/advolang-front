@@ -1,7 +1,7 @@
 import AuthHeader from "./AuthHeader";
 
 const axios = require('axios').default;
-const urlBack = 'http://localhost:8080';
+const urlBack = 'https://advolang-back.herokuapp.com';
 
 class RequestService{
     post(path, data) {

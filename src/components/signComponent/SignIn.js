@@ -13,7 +13,7 @@ import Container from '@material-ui/core/Container';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Copyright from "./Copyright";
-import authService from "../../services/authService";
+import authService from "../../services/AuthService";
 
 const useStyles = makeStyles((theme) => ({
     paper: {

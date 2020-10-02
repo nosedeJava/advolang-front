@@ -1,5 +1,5 @@
 const axios = require('axios').default;
-const URL = 'http://localhost:8080/api/auth';
+const URL = 'https://advolang-back.herokuapp.com/api/auth';
 
 class AuthService {
   constructor() {

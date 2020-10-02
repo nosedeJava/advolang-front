@@ -4,7 +4,7 @@ class UserInformationService{
     getUser(){
         const username = JSON.parse(localStorage.getItem('user')).id;
         console.log(username);
-        return RequestService.get(`/users/${username}`)
+        return RequestService.get(`/api/users/${username}`)
             .then(response => response.data);
     }
 }

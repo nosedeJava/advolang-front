@@ -26,36 +26,36 @@ export default function FormDialog() {
   };
 
   return (
-    <div>
-      <Button variant="contained" color="secondary" onClick={handleClickOpen}>
-        Report
-      </Button>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Report</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Describe in a simple way why you are reporting this recommendation.
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            label="Description"
-            type="text"
-            fullWidth
-            onChange={(text) => {
-              setTextField(text.target.value);
-            }}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleSendReport} color="primary">
-            Report
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+      <div>
+        <Button variant="contained" color="secondary" onClick={handleClickOpen}>
+          Report
+        </Button>
+        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+          <DialogTitle id="form-dialog-title">Report</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Describe in a simple way why you are reporting this recommendation.
+            </DialogContentText>
+            <TextField
+                autoFocus
+                margin="dense"
+                label="Description"
+                type="text"
+                fullWidth
+                onChange={(text) => {
+                  setTextField(text.target.value);
+                }}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={handleSendReport} color="primary">
+              Report
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
   );
 }

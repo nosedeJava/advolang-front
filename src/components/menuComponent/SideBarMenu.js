@@ -46,7 +46,6 @@ export function SideBarMenu (props){
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      {console.log(user)}
       <List>
         <ListItem button key="userInfo">
           <Box className="avatarProfileImageBox">
