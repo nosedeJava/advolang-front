@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import "./Content.css";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -19,16 +19,6 @@ export default function Content(props){
     const recommendation = useSelector(state => state.newRecommendation);
     const [file, setFile] = useState(null);
 
-    useEffect(() => {
-        dispatch(AllActions
-            .CreateRecommendationActions
-            .updateRecommendation({
-                file: ''
-            })
-        )
-        setFile(null);
-    }, [dispatch, recommendation.contentType])
-
     function handleChange(event){
         dispatch(AllActions
             .CreateRecommendationActions
@@ -43,7 +33,7 @@ export default function Content(props){
         dispatch(
             AllActions
                 .CreateRecommendationActions
-                .updateRecommendation({file: event.target.files[0].name})
+                .updateRecommendation({resource: event.target.files[0].name})
         )
     }
 
@@ -54,9 +44,8 @@ export default function Content(props){
                 AzureService.putFile(file.name, file)
                     .then(response => console.log(response.status));
             }
-            recommendation.date = new Date();
+            recommendation.creationDate = new Date();
             localStorage.setItem('recommendation', JSON.stringify(recommendation));
-            alert( localStorage.getItem('recommendation'))
         }
     }
 
@@ -69,8 +58,8 @@ export default function Content(props){
             alert('Please fill the description field');
             return false
         }
-        if (!recommendation.contentType){
-            alert('Please select a content type');
+        if (!recommendation.resourceType){
+            alert('Please select a source type');
             return false
         }
         if (!recommendation.categories){
@@ -87,26 +76,26 @@ export default function Content(props){
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Content type</InputLabel>
                     <Select
-                        name="contentType"
+                        name="resourceType"
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        value={recommendation.contentType}
+                        value={recommendation.resourceType}
                         onChange={handleChange}
                         placeholder="Select the content type"
                     >
                         <MenuItem value={'Url'}>Url</MenuItem>
-                        <MenuItem value={'File'}>Multimedia File</MenuItem>
+                        <MenuItem value={'Multimedia File'}>Multimedia File</MenuItem>
                     </Select>
                 </FormControl>
-                {recommendation.contentType === 'Url' && (
+                {recommendation.resourceType === 'Url' && (
                     <TextField
                         label="Url"
-                        name="url"
+                        name="resource"
                         onChange={handleChange}
                         fullWidth
                     />
                 )}
-                {recommendation.contentType === 'File' && (
+                {recommendation.resourceType === 'Multimedia File' && (
                     <div className="input-file">
                         <input accept={'*/*'} type="file" id={'file'} onChange={handleFile}/>
                         <label htmlFor={'file'}>

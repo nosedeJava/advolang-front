@@ -13,6 +13,7 @@ import CreatedRecommendations from "./components/createdRecommendationComponent/
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import SavedRecommendations from "./components/savedRecommendations/SavedRecommendations"
 import SpecificUser from "./components/specificUserComponent/SpecificUser"
+import RequestService from "./services/RequestService";
 
 
 export default function App(props) {
@@ -62,25 +63,30 @@ export default function App(props) {
     }
   ];
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
 
-    const protectedElements = routes.map((route, i) =>
+  useEffect(() => {
+    RequestService.get(' /api/users/migcdo')
+        .then(response => console.log(response.status));
+  },[])
+
+  const protectedElements = routes.map((route, i) =>
       <ProtectedRoute exact path={route.path} component={route.component} menuList={routes} key={i}/>
-    );
+  );
 
-    return (
-        <BrowserRouter>
-            <div>
-                <Switch>
-                    <Route exact path="/login" component={SignIn}/>
-                    <Route exact path="/signup" component={SignUp}/>
-                    {protectedElements}
-                    <Route path="*" component={() => "404 NOT FOUND"}/>
-                </Switch>
-            </div>
-        </BrowserRouter>
+  return (
+      <BrowserRouter>
+        <div>
+          <Switch>
+            <Route exact path="/login" component={SignIn}/>
+            <Route exact path="/signup" component={SignUp}/>
+            {protectedElements}
+            <Route path="*" component={() => "404 NOT FOUND"}/>
+          </Switch>
+        </div>
+      </BrowserRouter>
 
-    );
+  );
 }

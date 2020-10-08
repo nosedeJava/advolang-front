@@ -1,7 +1,7 @@
 const initialState = {
-    contentType:'',
-    file:'',
-    image:''
+    resourceType:'',
+    resource:'',
+    thumbnail:''
 }
 
 const newRecommendation = (state = initialState, action) => {

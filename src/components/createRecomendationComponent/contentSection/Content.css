@@ -41,6 +41,7 @@
     border: #61dafb 2px dashed;
     border-radius: 15px;
     margin: 20px 0 0;
+    color: black;
 }
 
 .input-file input{
