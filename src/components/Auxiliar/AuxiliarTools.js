@@ -11,6 +11,15 @@ export const calcProm = (list_values) => {
   return (sum/recom_scores_length).toFixed(1);
 }
 
+/* De java Date a JS date con formato YYYY-MM-DD HH:MM:SS*/
+export const adaptJavaDate = (date) => {
+  const moment = require('moment');
+  const d = new Date(date);
+
+  return moment(d).format('YYYY-MM-DD HH:MM:SS');
+}
+
+
 /* De sql date a javascript date*/
 export const formatDate=(date)=>{
   var dateStr=date; //returned from mysql timestamp/datetime field
@@ -42,6 +51,7 @@ export const getRecommendationScores = (recomId) => {
 
 /* Retorna el color correspondiente al valor del score */
 export const getRecommendationScoreColor = (scoreValue) => {
+  
   return scoreValue > 3.8 ? "#418525" : scoreValue < 2.8 ? "#C77938" : "#C7B117";
 }
 

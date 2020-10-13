@@ -3,17 +3,21 @@ import { Grid, Box, Card, CardMedia, Typography, ButtonBase} from '@material-ui/
 import ListCategories from './ListCategories'
 import './Recommendation.css';
 import { useHistory } from "react-router-dom";
-import {calcProm, calculatePublication, getRecommendationScores, getRecommendationScoreColor} from '../Auxiliar/AuxiliarTools.js';
+import {calcProm, adaptJavaDate, calculatePublication, getRecommendationScores, getRecommendationScoreColor} from '../Auxiliar/AuxiliarTools.js';
 
 function Recommendation(props) {
-  let history = useHistory();
-  let recomScoreList = getRecommendationScores(props.id);
 
-  let score = recomScoreList.length !== 0 ? calcProm(recomScoreList) : 0.0;
-  let colorScore = getRecommendationScoreColor(score);
+  let history = useHistory();
+  let recomScoreList = getRecommendationScores(props.recom.id);
+
+  let recomScoreListSize = recomScoreList.length;
+  let score = recomScoreListSize !== 0 ? calcProm(recomScoreList) : 0.0;
+  let colorScore = recomScoreListSize === 0 ? "gray" : getRecommendationScoreColor(score);
+
+  let thumbnail = props.recom.thumbnail === "" ? "img/jc2.png"   : props.recom.thumbnail == null;
 
   const handleRedirectSpecific = () => {
-    localStorage.setItem("recommendation-id", props.id)
+    localStorage.setItem("recommendation-id", props.recom.id)
     history.push("/specific-recommendation")
   }
 
@@ -31,7 +35,7 @@ function Recommendation(props) {
                   <Card className="thumbnailSpace">
                     <CardMedia
                         component="img"
-                        image={props.thumbnail}
+                        image={thumbnail}
                     />
                   </Card>
                 </Grid>
@@ -40,7 +44,7 @@ function Recommendation(props) {
 
                   <Grid item className="titleGridValue">
                     <Box className="titleBoxValue" textAlign="left">
-                        {props.title}
+                        {props.recom.title}
                     </Box>
                   </Grid>
 
@@ -48,13 +52,13 @@ function Recommendation(props) {
 
                     <Grid item className="levelGridValue" >
                       <Box className="levelBoxValue" textAlign="left">
-                          {props.level}
+                          {props.recom.level}
                       </Box>
                     </Grid>
 
                     <Grid item className="userNameGridValue">
                       <Box className="userNameBoxValue" textAlign="left">
-                          {props.creator.username}
+                          {props.recom.creator}
                       </Box>
                     </Grid>
 
@@ -76,14 +80,15 @@ function Recommendation(props) {
 
             <Grid item className="timeGridValue">
               <Box className="timeGridBox" textAlign="right">
-                  {calculatePublication(props.time)}
+
+                  {calculatePublication(adaptJavaDate(props.recom.creationDate))}
               </Box>
             </Grid>
 
             <Grid container>
               <Grid item xs={12}>
                 <Box className="categoriesStyle">
-                  <ListCategories content={props.categories} />
+
                 </Box>
               </Grid>
             </Grid>
