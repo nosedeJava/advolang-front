@@ -8,7 +8,7 @@ import './SpecificRecommendation.css';
 import {calcProm, calculatePublication, getRecommendationScores, getRecommendationScoreColor, getFirstVoting, setUserVote, addScore} from '../Auxiliar/AuxiliarTools.js';
 import {savedRecommendationsList} from '../Auxiliar/Data.js';
 import {CheckValidYoutubeURL, CheckMimeType} from '../Auxiliar/CheckMedia.js';
-import {ShowSuccessMessage, ShowWarningMessage, ShowErrorMessage} from '../Auxiliar/Swal.js';
+import {ShowSuccessMessage, ShowWarningMessage} from '../Auxiliar/Swal.js';
 import { useHistory } from "react-router-dom";
 import {getCurrentRecom} from '../Auxiliar/AuxiliarTools.js';
 
@@ -57,10 +57,12 @@ function SpecificRecommendation() {
 
     if(existingSavedRecom.length !== 0){
       ShowWarningMessage("Warning", "This recommendation is already saved")
+          .then(() => console.log("Done"))
     }
     else{
       savedRecommendationsList.push(currentRecom)
-      ShowSuccessMessage ("Awesome", "Recommendation successfully saved")
+      ShowSuccessMessage("Awesome", "Recommendation successfully saved")
+          .then(() => console.log("Done"))
     }
   }
 

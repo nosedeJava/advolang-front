@@ -20,7 +20,7 @@ export default function ThumbnailView(props){
     const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
     useEffect(() => {
-        if (props.flag){
+        if (props.flag && file){
             AzureService.putFile(file.name, file)
                 .then(response => console.log(response.status));
         }

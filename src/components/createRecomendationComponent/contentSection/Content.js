@@ -12,6 +12,8 @@ import IconButton from "@material-ui/core/IconButton";
 import Category from "../categorySection/Category";
 import Button from "@material-ui/core/Button";
 import AzureService from "../../../services/AzureService";
+import UserInformationService from "../../../services/UserInformationService";
+import RequestService from "../../../services/RequestService";
 
 export default function Content(props){
 
@@ -37,7 +39,8 @@ export default function Content(props){
         )
     }
 
-    function post(){
+    function postRecommendation(){
+        UserInformationService.getUsername().then(response => recommendation.creator = response);
         if (checkInputs()){
             props.setFlag(true);
             if (file){
@@ -45,8 +48,21 @@ export default function Content(props){
                     .then(response => console.log(response.status));
             }
             recommendation.creationDate = new Date();
-            localStorage.setItem('recommendation', JSON.stringify(recommendation));
+            post();
         }
+    }
+
+    function post(){
+
+        RequestService.post('/api/someLanguage/recommendations', recommendation)
+            .then(response => console.log(response.status))
+            .catch(error => {
+                if (error.response){
+                    alert('The title already exists')
+                }else {
+                    alert('Server error')
+                }
+            })
     }
 
     function checkInputs(){
@@ -125,7 +141,7 @@ export default function Content(props){
                 className="button"
                 variant={"contained"}
                 color={"primary"}
-                onClick={post}
+                onClick={postRecommendation}
             >
                 Post Recommendation
             </Button>

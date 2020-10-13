@@ -1,7 +1,8 @@
 const initialState = {
     resourceType:'',
     resource:'',
-    thumbnail:''
+    thumbnail:'',
+    categories: []
 }
 
 const newRecommendation = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const newRecommendation = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.payload
+            }
+        case "UPDATE_CATEGORY":
+            return {
+                ...state,
+                categories: state.categories.concat(action.payload)
             }
         default:
             return state

@@ -1,6 +1,6 @@
 import React,  { useState, useEffect } from 'react';
 import './SpecificUser.css';
-import { Grid, Box, Typography, Button, Avatar, Divider } from '@material-ui/core';
+import { Grid, Box, Avatar} from '@material-ui/core';
 import {ListRecommendations} from '../recommendationComponent/ListRecommendations';
 import RecomPagination from '../Pagination/RecomPagination';
 import {getCurrentRecom, getUserRecommendations} from '../Auxiliar/AuxiliarTools.js';
@@ -23,7 +23,7 @@ function SpecificUser(){
     };
 
     fetchPosts();
-  }, []);
+  }, [currentRecom.creator.id]);
 
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
