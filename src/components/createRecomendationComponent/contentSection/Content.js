@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./Content.css";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -21,6 +21,11 @@ export default function Content(props){
     const recommendation = useSelector(state => state.newRecommendation);
     const [file, setFile] = useState(null);
 
+    useEffect(() => {
+        UserInformationService.getUsername()
+            .then(response => recommendation.creator = response)
+    },[recommendation]);
+
     function handleChange(event){
         dispatch(AllActions
             .CreateRecommendationActions
@@ -40,7 +45,6 @@ export default function Content(props){
     }
 
     function postRecommendation(){
-        UserInformationService.getUsername().then(response => recommendation.creator = response);
         if (checkInputs()){
             props.setFlag(true);
             if (file){
@@ -54,8 +58,9 @@ export default function Content(props){
 
     function post(){
 
-        RequestService.post('/api/someLanguage/recommendations', recommendation)
+        RequestService.post('/api/recommendations', recommendation)
             .then(response => console.log(response.status))
+            .then(() => window.location.reload)
             .catch(error => {
                 if (error.response){
                     alert('The title already exists')

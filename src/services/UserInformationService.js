@@ -1,16 +1,16 @@
 import RequestService from "./RequestService";
 
 class UserInformationService{
-    getUser(){
+    async getUser(){
         const username = JSON.parse(localStorage.getItem('user')).id;
-        return RequestService.get(`/api/users/${username}`)
-            .then(response => response.data);
+        const response = await RequestService.get(`/api/users/${username}`);
+        return response.data;
     }
 
-    getUsername(){
+    async getUsername(){
         const username = JSON.parse(localStorage.getItem('user')).id;
-        return RequestService.get(`/api/users/${username}`)
-            .then(response => response.data.username);
+        const response = await RequestService.get(`/api/users/${username}`);
+        return response.data.username;
     }
 }
 

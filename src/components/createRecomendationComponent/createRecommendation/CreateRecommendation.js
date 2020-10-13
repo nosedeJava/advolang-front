@@ -38,6 +38,8 @@ export default function CreateRecommendation() {
         setValue(index);
     };
 
+    
+
     return (
         <div className="create-recommendation-container">
             <div className={classes.root}>
