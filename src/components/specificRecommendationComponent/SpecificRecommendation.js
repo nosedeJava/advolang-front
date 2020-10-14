@@ -10,46 +10,52 @@ import {savedRecommendationsList} from '../Auxiliar/Data.js';
 import {CheckValidYoutubeURL, CheckMimeType} from '../Auxiliar/CheckMedia.js';
 import {ShowSuccessMessage, ShowWarningMessage} from '../Auxiliar/Swal.js';
 import { useHistory } from "react-router-dom";
-import {getCurrentRecom} from '../Auxiliar/AuxiliarTools.js';
-import RequestService from "../../services/RequestService";
+import {componentDidMountGet, componentDidMountPost} from '../Auxiliar/Petitions.js';
+import {getLocalStorageObject} from '../Auxiliar/ObjectTools.js';
+
 
 function SpecificRecommendation() {
 
   let history = useHistory();
-
-  const [loading, setLoading] = React.useState(true);
-  const [currentRecom, setCurrentRecom] = React.useState({});
-
   let current_id=localStorage.getItem('recommendation-id');
+  /* (valor prev antes de base de datos) Id del usuario de la sesión*/
+  let sessionUserId = getLocalStorageObject('user').id;
+
+  /* Carga de respuestas*/
+  const [loadingCurrentRecom, setLoadingCurrentRecom] = React.useState(true);
+  const [loadingScorePost, setLoadingScorePost] = React.useState(false);
+
+  /* */
+  const [currentRecom, setCurrentRecom] = React.useState({});
+  const [totalScore, setTotalScore] = React.useState(calcProm(getRecommendationScores(current_id)));
+  const [firstVoting, setFirstVoting] = React.useState(true);
 
   useEffect(() => {
-      const componentDidMount = async () => {
-        setLoading(true);
-        const res = await RequestService.get('/api/recommendations/5f8676dfbff18761f995aee5');
-        setCurrentRecom(JSON.parse(JSON.stringify(res.data)));
-        setLoading(false);
-      };
-      componentDidMount();
+      componentDidMountGet(setLoadingCurrentRecom, setCurrentRecom, '/api/recommendations/' + current_id);
       window.scrollTo(0, 0);
-
   }, []);
 
 
-  /* (valor prev antes de base de datos) Id del usuario de la sesión*/
-  let sessionUserId = "5";
-
-
-  const [totalScore, setTotalScore] = React.useState(calcProm(getRecommendationScores(current_id)));
-  const [firstVoting, setFirstVoting] = React.useState(getFirstVoting(sessionUserId, current_id));
-
 
   let colorScore = getRecommendationScoreColor(totalScore);
+
+  const afterScorePost = () => {
+    alert("Successfully score post")
+  }
 
   const handleRating = (value) =>{
 
     if(firstVoting){
       setFirstVoting(false);
       addScore(sessionUserId, current_id, value);
+      let newScore = {
+        userId : getLocalStorageObject('user').type,
+        recommendationId : current_id,
+        value : value
+      }
+
+      componentDidMountPost(setLoadingScorePost, afterScorePost, '/api/scores/add', newScore)
+
     }
     else{
       setUserVote(sessionUserId, current_id, value);
@@ -90,7 +96,7 @@ function SpecificRecommendation() {
     CheckValidYoutubeURL("https://www.youtube.com/watch?v=BjC0KUxiMhc", callback);
   }
 
-  if (loading) {
+  if (loadingCurrentRecom) {
     return <h2>Loading...</h2>;
   }
 

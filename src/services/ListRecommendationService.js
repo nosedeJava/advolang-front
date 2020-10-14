@@ -1,7 +1,7 @@
 
 import React, { useEffect }  from 'react';
 import { ListRecommendations } from '../components/recommendationComponent/ListRecommendations';
-import RequestService from "./RequestService";
+import {componentDidMountGet} from '../components/Auxiliar/Petitions.js';
 
 export default function ListRecommendationService(props) {
 
@@ -9,14 +9,8 @@ export default function ListRecommendationService(props) {
   const [recommendations, setRecommendations] = React.useState([]);
 
   useEffect(() => {
+    componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
 
-    const componentDidMount = async () => {
-      setLoading(true);
-      const res = await RequestService.get('/api/recommendations');
-      setRecommendations(res.data);
-      setLoading(false);
-    };
-    componentDidMount();
   }, []);
 
   if (loading) {

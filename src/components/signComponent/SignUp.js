@@ -52,8 +52,6 @@ export function SignUp(props) {
 
     function handleSubmit() {
         if (user.password === confirmp) {
-
-          alert(JSON.stringify(user))
             authService.signup(user)
                 .then(response => console.info(response.status))
                 .then(() => alert('User accepted'))

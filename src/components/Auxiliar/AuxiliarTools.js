@@ -51,7 +51,7 @@ export const getRecommendationScores = (recomId) => {
 
 /* Retorna el color correspondiente al valor del score */
 export const getRecommendationScoreColor = (scoreValue) => {
-  
+
   return scoreValue > 3.8 ? "#418525" : scoreValue < 2.8 ? "#C77938" : "#C7B117";
 }
 
