@@ -1,12 +1,7 @@
 
 import React, { useEffect }  from 'react';
 import { ListRecommendations } from '../components/recommendationComponent/ListRecommendations';
-//import { recommendations } from '../components/Auxiliar/Data.js';
 import RequestService from "./RequestService";
-import axios from 'axios';
-//let recommendations = RequestService.get('/api/users/migcdo/recommendations');
-
-
 
 export default function ListRecommendationService(props) {
 
@@ -17,7 +12,7 @@ export default function ListRecommendationService(props) {
 
     const componentDidMount = async () => {
       setLoading(true);
-      const res = await RequestService.get('/api/users/migcdo/recommendations');
+      const res = await RequestService.get('/api/recommendations');
       setRecommendations(res.data);
       setLoading(false);
     };

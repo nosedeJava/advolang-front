@@ -14,7 +14,7 @@ function Recommendation(props) {
   let score = recomScoreListSize !== 0 ? calcProm(recomScoreList) : 0.0;
   let colorScore = recomScoreListSize === 0 ? "gray" : getRecommendationScoreColor(score);
 
-  let thumbnail = props.recom.thumbnail === "" ? "img/jc2.png"   : props.recom.thumbnail == null;
+  let thumbnail = props.recom.thumbnail === "" ? "img/default.png"   : props.recom.thumbnail;
 
   const handleRedirectSpecific = () => {
     localStorage.setItem("recommendation-id", props.recom.id)
@@ -31,7 +31,7 @@ function Recommendation(props) {
 
               <ButtonBase  className="specificCard" onClick={handleRedirectSpecific}  >
 
-                <Grid item xs={2} className="generalClassImage">
+                <Grid item xs={2} className="generalClassImage" container spacing={0} direction="column">
                   <Card className="thumbnailSpace">
                     <CardMedia
                         component="img"
@@ -67,7 +67,7 @@ function Recommendation(props) {
                 </Grid>
 
                 <Grid item className="scoreGridValue" >
-                  <Box border={1} className="scoreBoxValue" style={{ backgroundColor: colorScore, }}>
+                  <Box border={1} className="scoreBoxValue" style={{ backgroundColor: colorScore }}>
                     <Typography className="generalClass3" align="center" >
                       {score}
                     </Typography>

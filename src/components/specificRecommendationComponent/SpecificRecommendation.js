@@ -11,20 +11,33 @@ import {CheckValidYoutubeURL, CheckMimeType} from '../Auxiliar/CheckMedia.js';
 import {ShowSuccessMessage, ShowWarningMessage} from '../Auxiliar/Swal.js';
 import { useHistory } from "react-router-dom";
 import {getCurrentRecom} from '../Auxiliar/AuxiliarTools.js';
+import RequestService from "../../services/RequestService";
 
 function SpecificRecommendation() {
 
   let history = useHistory();
 
+  const [loading, setLoading] = React.useState(true);
+  const [currentRecom, setCurrentRecom] = React.useState({});
+
+  let current_id=localStorage.getItem('recommendation-id');
+
   useEffect(() => {
-      window.scrollTo(0, 0)
+      const componentDidMount = async () => {
+        setLoading(true);
+        const res = await RequestService.get('/api/recommendations/5f8676dfbff18761f995aee5');
+        setCurrentRecom(JSON.parse(JSON.stringify(res.data)));
+        setLoading(false);
+      };
+      componentDidMount();
+      window.scrollTo(0, 0);
+
   }, []);
+
 
   /* (valor prev antes de base de datos) Id del usuario de la sesión*/
   let sessionUserId = "5";
 
-  let current_id=localStorage.getItem('recommendation-id');
-  let currentRecom = getCurrentRecom(current_id);
 
   const [totalScore, setTotalScore] = React.useState(calcProm(getRecommendationScores(current_id)));
   const [firstVoting, setFirstVoting] = React.useState(getFirstVoting(sessionUserId, current_id));
@@ -77,8 +90,13 @@ function SpecificRecommendation() {
     CheckValidYoutubeURL("https://www.youtube.com/watch?v=BjC0KUxiMhc", callback);
   }
 
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
+
   return (
     <div className="specificRecommendationDiv">
+      {alert(JSON.stringify(currentRecom))}
       <Grid container id="specificRecommendation" className="specificRecommendationGrid" spacing={0} direction="row" >
         <Grid item className="gridPostContainer">
           <Box boxShadow={3} borderRadius="borderRadius" className="postBoxClass" >
@@ -107,7 +125,6 @@ function SpecificRecommendation() {
 
                     <Grid item className="recomDateGrid">
                       <Box className="recomDateBox">
-                          {calculatePublication(currentRecom.time)}
                       </Box>
                     </Grid>
 
@@ -203,7 +220,7 @@ function SpecificRecommendation() {
             {/* Uso de las categorias asociadas a la recomendación.*/}
             <Grid item className="categoriesGrid">
               <Box className="categoriesBox">
-                <ListCategories content={currentRecom.categories} />
+                {/*<ListCategories  content={currentRecom.categories} />*/}
               </Box>
             </Grid>
           </Grid>
