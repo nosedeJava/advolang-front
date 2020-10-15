@@ -45,8 +45,10 @@ export const calculatePublication = (postDate) => {
 };
 
 /* Busca la lista de scores de una recomendación específica, dado su id */
-export const getRecommendationScores = (recomId) => {
-  return scores.filter(score =>  score.recommendation === recomId).map(recomScore => recomScore.value);
+export const getRecommendationScores = (values) => {
+
+  return []
+  /*return scores.filter(score =>  score.recommendation === recomId).map(recomScore => recomScore.value);*/
 };
 
 /* Retorna el color correspondiente al valor del score */

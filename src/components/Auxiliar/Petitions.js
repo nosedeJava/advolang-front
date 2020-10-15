@@ -16,6 +16,6 @@ export const componentDidMountGet = async (setLoading, setCurrentObject, url) =>
 export const componentDidMountPost = async (setLoading, afterPost, url, data) => {
   setLoading(true);
   const res = await RequestService.post(url, data);
-  afterPost();
+  afterPost(JSON.parse(JSON.stringify(res.data)));
   setLoading(false);
 };

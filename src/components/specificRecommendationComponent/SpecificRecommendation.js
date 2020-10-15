@@ -10,7 +10,7 @@ import {savedRecommendationsList} from '../Auxiliar/Data.js';
 import {CheckValidYoutubeURL, CheckMimeType} from '../Auxiliar/CheckMedia.js';
 import {ShowSuccessMessage, ShowWarningMessage} from '../Auxiliar/Swal.js';
 import { useHistory } from "react-router-dom";
-import {componentDidMountGet, componentDidMountPost} from '../Auxiliar/Petitions.js';
+import {componentDidMountGet,  componentDidMountPost} from '../Auxiliar/Petitions.js';
 import {getLocalStorageObject} from '../Auxiliar/ObjectTools.js';
 
 
@@ -18,38 +18,45 @@ function SpecificRecommendation() {
 
   let history = useHistory();
   let current_id=localStorage.getItem('recommendation-id');
-  /* (valor prev antes de base de datos) Id del usuario de la sesión*/
-  let sessionUserId = getLocalStorageObject('user').id;
+  let creator_current_recom = localStorage.getItem('creator-recommendation-username');
+  /* Usuario de la sesión*/
+  let currentUser =  getLocalStorageObject('user');
+
 
   /* Carga de respuestas*/
   const [loadingCurrentRecom, setLoadingCurrentRecom] = React.useState(true);
   const [loadingScorePost, setLoadingScorePost] = React.useState(false);
+  const [loadingAllScoresValue, setloadingAllScoresValue] = React.useState(true);
+  const [loadingCreator_current_recom_object, setLoadingCreator_current_recom_object] = React.useState(false);
 
   /* */
   const [currentRecom, setCurrentRecom] = React.useState({});
-  const [totalScore, setTotalScore] = React.useState(calcProm(getRecommendationScores(current_id)));
-  const [firstVoting, setFirstVoting] = React.useState(true);
+  const [scoreObject, setScoreObject] = React.useState(null);
+  const [allTotalScore, setAllTotalScore] = React.useState([]);
+  const [creator_current_recom_object, setCreator_current_recom_object] = React.useState([]);
 
   useEffect(() => {
       componentDidMountGet(setLoadingCurrentRecom, setCurrentRecom, '/api/recommendations/' + current_id);
+      componentDidMountGet(setLoadingScorePost, setScoreObject, '/api/scores/values/' + currentUser.type + '/' + current_id );
+      componentDidMountGet(setloadingAllScoresValue, setAllTotalScore, '/api/scores/values/' + current_id);
+      componentDidMountGet(setLoadingCreator_current_recom_object, setCreator_current_recom_object, '/api/users/' + creator_current_recom);
       window.scrollTo(0, 0);
   }, []);
 
 
-
-  let colorScore = getRecommendationScoreColor(totalScore);
-
   const afterScorePost = () => {
-    alert("Successfully score post")
+    ShowSuccessMessage("Awesome", "Successfully score post")
+  }
+
+  const afterScoreUpdate = (data) => {
+    setAllTotalScore(data)
+    ShowSuccessMessage("Awesome", "Successfully score update")
   }
 
   const handleRating = (value) =>{
-
-    if(firstVoting){
-      setFirstVoting(false);
-      addScore(sessionUserId, current_id, value);
+    if(scoreObject === "") {
       let newScore = {
-        userId : getLocalStorageObject('user').type,
+        userId : currentUser.type,
         recommendationId : current_id,
         value : value
       }
@@ -58,13 +65,12 @@ function SpecificRecommendation() {
 
     }
     else{
-      setUserVote(sessionUserId, current_id, value);
+      scoreObject.value = value;
+      componentDidMountPost(setLoadingScorePost, afterScoreUpdate, '/api/scores/value/update', scoreObject)
     }
 
-    setTotalScore(calcProm(getRecommendationScores(current_id)));
-    /*Cambiar valores en la bd*/
-
   }
+
   function callback(bool){
     alert(bool)
     //continúa
@@ -96,13 +102,12 @@ function SpecificRecommendation() {
     CheckValidYoutubeURL("https://www.youtube.com/watch?v=BjC0KUxiMhc", callback);
   }
 
-  if (loadingCurrentRecom) {
+  if (loadingCurrentRecom || loadingScorePost || loadingAllScoresValue || loadingCreator_current_recom_object) {
     return <h2>Loading...</h2>;
   }
 
   return (
     <div className="specificRecommendationDiv">
-      {alert(JSON.stringify(currentRecom))}
       <Grid container id="specificRecommendation" className="specificRecommendationGrid" spacing={0} direction="row" >
         <Grid item className="gridPostContainer">
           <Box boxShadow={3} borderRadius="borderRadius" className="postBoxClass" >
@@ -141,15 +146,15 @@ function SpecificRecommendation() {
 
                         <Grid item >
                           <Box className="ratingGrid">
-                            <HoverRating className="hooverRating" startValues={totalScore} selectedMatch={handleRating} />
+                            <HoverRating className="hooverRating" startValues={calcProm(allTotalScore)} selectedMatch={handleRating} />
                           </Box>
                         </Grid>
 
                         {/* Uso del score asociado a la recomendación. */}
                         <Grid item className="recomScoreGrid">
-                          <Box borderRadius="50%" className="scoreBox" style={{ backgroundColor: colorScore }}>
+                          <Box borderRadius="50%" className="scoreBox" style={{ backgroundColor: getRecommendationScoreColor(calcProm(allTotalScore)) }}>
                             <Typography className="scoreFont" >
-                              {totalScore}
+                              {calcProm(allTotalScore)}
                             </Typography>
                           </Box>
                         </Grid>
@@ -199,14 +204,14 @@ function SpecificRecommendation() {
                     {/* Aquí uso el nombre de usuario y el enlace a la imagen de perfil.*/}
                     <Grid item className="userProfileGrid">
                       <div className="userImageDiv">
-                        <Avatar variant="square" alt="Stinky" src={currentRecom.creator.userImage} style={{ height: '100%', width: '100%' }} />
+                        <Avatar variant="square" alt="Stinky" src={creator_current_recom_object.profileImage} style={{ height: '100%', width: '100%' }} />
                       </div>
                     </Grid>
 
                     {/* Aquí uso el nombre de usuario*/}
                     <Grid item className="userNameGrid">
                       <Box className="userNameBox">
-                        {currentRecom.creator.username}
+                        {creator_current_recom_object.username}
                       </Box>
                     </Grid>
 
@@ -215,7 +220,7 @@ function SpecificRecommendation() {
                     {/*Descripción del usuario.*/}
                     <Grid className="userDescGrid">
                       <Box className="userDescBox">
-                        {currentRecom.creator.description}
+                        {creator_current_recom_object.description}
                       </Box>
                     </Grid>
                   </Grid>

@@ -17,7 +17,8 @@ function Recommendation(props) {
   let thumbnail = props.recom.thumbnail === "" ? "img/default.png"   : props.recom.thumbnail;
 
   const handleRedirectSpecific = () => {
-    localStorage.setItem("recommendation-id", props.recom.id)
+    localStorage.setItem("recommendation-id", props.recom.id);
+    localStorage.setItem("creator-recommendation-username",props.recom.creator);
     history.push("/specific-recommendation")
   }
 
