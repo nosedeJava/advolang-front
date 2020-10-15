@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     height: auto;
-    padding: 40px 20px;
+    padding: 40px 20px 0 20px;
     box-sizing: border-box;
 }
 
@@ -50,4 +50,5 @@
 
 .recommendation-container .button{
     margin-top: 40px;
+    margin-bottom: 0;
 }

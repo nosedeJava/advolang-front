@@ -1,0 +1,22 @@
+.update-user-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.update-user-container .update-user-card{
+    width: 40%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Abyssinica SIL", serif;
+    color: darkblue;
+    padding: 20px;
+}

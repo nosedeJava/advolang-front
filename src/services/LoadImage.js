@@ -6,7 +6,7 @@ export default function (props) {
     const [image, setImage] = useState(null);
 
     useEffect(() => {
-        AzureService.getFile(props.fileName)
+        AzureService.getFile(props.fileName, props.containerName)
             .then(response => {
                 const blob = new Blob([response.data]);
                 const url = URL.createObjectURL(blob);

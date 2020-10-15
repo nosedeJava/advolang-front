@@ -61,6 +61,7 @@ export default function CreateRecommendation() {
                     axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
                     index={value}
                     onChangeIndex={handleChangeIndex}
+                    className="content"
                 >
                     <Post index={0}/>
                     <ThumbnailView index={1} flag={flag}/>

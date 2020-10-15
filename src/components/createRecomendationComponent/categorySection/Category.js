@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import AllActions from "../../../redux/actions/AllActions";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import TextField from "@material-ui/core/TextField";
@@ -14,7 +14,6 @@ export default function Category(){
     const [categoryList, setCategoryList] = useState([]);
     const [show, setShow] = useState(false);
     const dispatch = useDispatch();
-    const recommendation = useSelector(state => state.newRecommendation);
 
     useEffect(() => {
         RequestService.get('/api/categoryList')

@@ -14,7 +14,7 @@ class AuthService {
         ).then(() => this.authenticated = true);
   }
 
-  signup(usr, history){
+  signup(usr){
     return axios.post(`${URL}/signup`, usr)
         .then(response => response.status)
         .catch(error => {
