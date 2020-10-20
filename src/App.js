@@ -42,7 +42,7 @@ export default function App() {
       menuIcon: () => <PostAddIcon/>
     },
     {
-      path: "/:user/recommendations/:recomid",
+      path: "/:recomLang/:user/recommendations/:recomid",
       name: "Specific recommendation",
       component: SpecificRecommendation,
       menuVisible: false

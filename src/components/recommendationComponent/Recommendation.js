@@ -4,7 +4,7 @@ import { Grid, Box, Card, CardMedia, Typography, ButtonBase} from '@material-ui/
 import ListCategories from './ListCategories'
 import { useHistory } from "react-router-dom";
 import {calcProm, adaptJavaDate, calculatePublication, getRecommendationScores, getRecommendationScoreColor} from '../Auxiliar/AuxiliarTools.js';
-import {componentDidMountGetAzure} from '../Auxiliar/Petitions.js';
+import {componentDidMountGet, componentDidMountGetAzure} from '../Auxiliar/Petitions.js';
 
 
 function Recommendation(props) {
@@ -16,30 +16,35 @@ function Recommendation(props) {
   let score = recomScoreListSize !== 0 ? calcProm(recomScoreList) : 0.0;
   let colorScore = recomScoreListSize === 0 ? "gray" : getRecommendationScoreColor(score);
 
+  /* Load values */
+  const[loadScoresList, setLoadScoresList] = React.useState(false);
   const[loadThumb, setLoadThumb] = React.useState(false);
+
+  /* Petitions values */
+  const[scoresList, setScoresList] = React.useState([]);
 
   const setRecomThumb = (newThumbValue) => {
     props.recom.thumbnail = newThumbValue;
   }
 
-  const loadPetitions = () => {
+  const componentDidMount = () => {
     if (props.recom.thumbnail !== "/img/default.png") {
       componentDidMountGetAzure(setLoadThumb, setRecomThumb, props.recom.thumbnail);
     }
+    componentDidMountGet(setLoadScoresList, setScoresList, '/api/scores/values/' + props.recom.id);
   }
 
   useEffect(() => {
-      loadPetitions();
+      componentDidMount();
       window.scrollTo(0, 0);
   }, []);
 
   const handleRedirectSpecific = () => {
-    localStorage.setItem("specific-current-recom", JSON.stringify(props.recom));
     localStorage.setItem("recommendation-id", props.recom.id);
-    history.push(`/${props.recom.creator}/recommendations/${props.recom.id}`)
+    history.push(`/spanish/${props.recom.creator}/recommendations/${props.recom.id}`)
   }
 
-  if (loadThumb) {
+  if (loadThumb || loadScoresList) {
     return <h2>Loading...</h2>;
   }
 
@@ -89,9 +94,9 @@ function Recommendation(props) {
                 </Grid>
 
                 <Grid item className="scoreGridValue" >
-                  <Box border={1} className="scoreBoxValue" style={{ backgroundColor: colorScore }}>
+                  <Box border={1} className="scoreBoxValue" style={{ backgroundColor:  getRecommendationScoreColor(calcProm(scoresList)) }}>
                     <Typography className="generalClass3" align="center" >
-                      {score}
+                      {calcProm(scoresList)}
                     </Typography>
                   </Box>
                 </Grid>
@@ -110,7 +115,7 @@ function Recommendation(props) {
             <Grid container>
               <Grid item xs={12}>
                 <Box className="categoriesStyle">
-
+                  {<ListCategories  content={props.recom.categories} />}
                 </Box>
               </Grid>
             </Grid>
