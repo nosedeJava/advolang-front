@@ -2,15 +2,17 @@ import React from 'react';
 import Recommendation from './Recommendation';
 import './ListRecommendations.css';
 
-export class ListRecommendations extends React.Component {
-    render() {
-        const listContent = this.props.recommendations.map((recommendation, i) => {
-            return <Recommendation key={"recommendation-" + i} {...recommendation} />
-        });
-        return (
-            <div className="listContentDiv">
-                {listContent}
-            </div>
-        );
-    }
+export function ListRecommendations(props) {
+
+  const listContent = props.recommendations.map((recommendation, i) => {
+    if(recommendation.thumbnail === "") recommendation.thumbnail = "/img/default.png";
+    return <Recommendation key={"recommendation-" + i} recom={recommendation} />
+  });
+
+  return (
+    <div className="listContentDiv">
+      {listContent}
+    </div>
+  );
+
 }

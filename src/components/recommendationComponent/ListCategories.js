@@ -13,13 +13,14 @@ const useStyles = makeStyles({
 
 });
 function ListCategories(props) {
-    const classes= useStyles()
+    const classes= useStyles();
+    let catList = JSON.parse(JSON.stringify(props.content));
     return (
         <Grid container spacing={1} className="listCategoriesContainer">
-            {props.content.map((category, i) => (
-                <Grid item key={category+"-"+i+"-"+props.content.length}>
-                    <Chip label={category}  component="a" href={"#"+category} clickable color="primary" className={classes.chipStyle}/>
-                </Grid>
+            {catList.map((category, i) => (
+              <Grid item key={category.value+"-"+i}>
+                <Chip  label={category.value}  component="a" href={"#"+category.value} clickable color="primary" className={classes.chipStyle}/>
+              </Grid>
             ))}
         </Grid>
     );

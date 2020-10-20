@@ -2,6 +2,10 @@ import {scores, recommendations} from './Data.js';
 
 /* Calcula la media de los valores de una lista */
 export const calcProm = (list_values) => {
+  let list_length = list_values.length;
+
+  if(list_length === 0) return 0;
+
   let sum = list_values.reduce(function(a, b){
     return a+b;
   }, 0);
@@ -10,6 +14,15 @@ export const calcProm = (list_values) => {
 
   return (sum/recom_scores_length).toFixed(1);
 }
+
+/* De java Date a JS date con formato YYYY-MM-DD HH:MM:SS*/
+export const adaptJavaDate = (date) => {
+  const moment = require('moment');
+  const d = new Date(date);
+
+  return moment(d).format('YYYY-MM-DD HH:MM:SS');
+}
+
 
 /* De sql date a javascript date*/
 export const formatDate=(date)=>{
@@ -36,12 +49,15 @@ export const calculatePublication = (postDate) => {
 };
 
 /* Busca la lista de scores de una recomendación específica, dado su id */
-export const getRecommendationScores = (recomId) => {
-  return scores.filter(score =>  score.recommendation === recomId).map(recomScore => recomScore.value);
+export const getRecommendationScores = (values) => {
+
+  return []
+  /*return scores.filter(score =>  score.recommendation === recomId).map(recomScore => recomScore.value);*/
 };
 
 /* Retorna el color correspondiente al valor del score */
 export const getRecommendationScoreColor = (scoreValue) => {
+
   return scoreValue > 3.8 ? "#418525" : scoreValue < 2.8 ? "#C77938" : "#C7B117";
 }
 

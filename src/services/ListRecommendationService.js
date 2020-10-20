@@ -1,13 +1,27 @@
 
-import React from 'react';
+import React, { useEffect }  from 'react';
 import { ListRecommendations } from '../components/recommendationComponent/ListRecommendations';
-import { recommendations } from '../components/Auxiliar/Data.js';
+import {componentDidMountGet} from '../components/Auxiliar/Petitions.js';
 
 export default function ListRecommendationService(props) {
+
+  const [loading, setLoading] = React.useState(false);
+  const [recommendations, setRecommendations] = React.useState([]);
+
+  useEffect(() => {
+    componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
+
+  }, []);
+
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
+
     let recommendationList = [];
     //se debe hacer el llamado al back para que devuelva las recomendaciones en particular de cada if y asignarlo a recommendationList
     if (props.main) {
         recommendationList = recommendations;
+
     } else if (props.saved) {
         recommendationList = recommendations;
     } else if (props.reported) {
@@ -28,5 +42,5 @@ export default function ListRecommendationService(props) {
         console.log(props.lang)
         recommendationList = recommendations;
     }
-    return <ListRecommendations recommendations={recommendationList} />
+    return <ListRecommendations recommendations={recommendationList} loading={loading}  />
 }

@@ -49,7 +49,7 @@ export function SideBarMenu (props){
       <List>
         <ListItem button key="userInfo">
           <Box className="avatarProfileImageBox">
-            <Avatar  alt="Remy Sharp" src={'img/profile_image.jpg'}  style={{width: 48, height: 48, backgroundColor: "#f3f3f3" }} />
+            <Avatar  alt="Remy Sharp" src={user.profileImage}  style={{width: 48, height: 48, backgroundColor: "#f3f3f3" }} />
           </Box>
           <ListItemText
             className = "userProfileData"
