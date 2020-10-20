@@ -1,9 +1,6 @@
 .panelDiv {
   width: 100%;
   display: flex;
-}
-
-.panelDiv .toolbarPanel{
   background: #7282be;
   color: white;
 }

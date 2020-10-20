@@ -29,6 +29,20 @@ class AuthService {
         })
   }
 
+  updateUser(usr){
+    return axios.put(`${URL}/update`, usr)
+        .then(response => response.status)
+        .catch(error => {
+          if (error.response){
+            alert('Something was wrong')
+            console.info(error.response.status);
+          }else{
+            alert('Server error');
+            console.info(error.message);
+          }
+        })
+  }
+
   logout(cb) {
     this.authenticated = false;
     cb();

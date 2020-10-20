@@ -17,6 +17,7 @@ export default function ThumbnailView(props){
             .updateRecommendation({thumbnail: acceptedFiles[0].name})
         )
     }, [dispatch])
+
     const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
     useEffect(() => {
