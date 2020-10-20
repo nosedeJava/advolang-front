@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import './Recommendation.css';
 import { Grid, Box, Card, CardMedia, Typography, ButtonBase} from '@material-ui/core';
 import ListCategories from './ListCategories'
-import './Recommendation.css';
 import { useHistory } from "react-router-dom";
 import {calcProm, adaptJavaDate, calculatePublication, getRecommendationScores, getRecommendationScoreColor} from '../Auxiliar/AuxiliarTools.js';
+import {componentDidMountGetAzure} from '../Auxiliar/Petitions.js';
+
 
 function Recommendation(props) {
 
@@ -14,12 +16,31 @@ function Recommendation(props) {
   let score = recomScoreListSize !== 0 ? calcProm(recomScoreList) : 0.0;
   let colorScore = recomScoreListSize === 0 ? "gray" : getRecommendationScoreColor(score);
 
-  let thumbnail = props.recom.thumbnail === "" ? "img/default.png"   : props.recom.thumbnail;
+  const[loadThumb, setLoadThumb] = React.useState(false);
+
+  const setRecomThumb = (newThumbValue) => {
+    props.recom.thumbnail = newThumbValue;
+  }
+
+  const loadPetitions = () => {
+    if (props.recom.thumbnail !== "/img/default.png") {
+      componentDidMountGetAzure(setLoadThumb, setRecomThumb, props.recom.thumbnail);
+    }
+  }
+
+  useEffect(() => {
+      loadPetitions();
+      window.scrollTo(0, 0);
+  }, []);
 
   const handleRedirectSpecific = () => {
+    localStorage.setItem("specific-current-recom", JSON.stringify(props.recom));
     localStorage.setItem("recommendation-id", props.recom.id);
-    localStorage.setItem("creator-recommendation-username",props.recom.creator);
-    history.push("/specific-recommendation")
+    history.push(`/${props.recom.creator}/recommendations/${props.recom.id}`)
+  }
+
+  if (loadThumb) {
+    return <h2>Loading...</h2>;
   }
 
   return (
@@ -36,7 +57,7 @@ function Recommendation(props) {
                   <Card className="thumbnailSpace">
                     <CardMedia
                         component="img"
-                        image={thumbnail}
+                        image={props.recom.thumbnail}
                     />
                   </Card>
                 </Grid>

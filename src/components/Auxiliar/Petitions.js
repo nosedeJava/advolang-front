@@ -1,4 +1,5 @@
 import RequestService from "../../services/RequestService";
+import AzureService from '../../services/AzureService.js';
 
 /* Realiza la petición get a una URL dada
 
@@ -12,6 +13,19 @@ export const componentDidMountGet = async (setLoading, setCurrentObject, url) =>
   setCurrentObject(JSON.parse(JSON.stringify(res.data)));
   setLoading(false);
 };
+
+export const componentDidMountGetAzure = async (setLoading, setCurrentObject, url) => {
+  setLoading(true);
+  const res = await AzureService.getFile(url);
+  setCurrentObject(res.config.url);
+  setLoading(false);
+};
+
+export const componentDidMountListGet = (url_petitions_list) => {
+  url_petitions_list.forEach(element =>  {
+    componentDidMountGet(element.loadingConst, element.setConst, element.url);
+  });
+}
 
 export const componentDidMountPost = async (setLoading, afterPost, url, data) => {
   setLoading(true);

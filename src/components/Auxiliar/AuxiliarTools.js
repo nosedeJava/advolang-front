@@ -2,6 +2,10 @@ import {scores, recommendations} from './Data.js';
 
 /* Calcula la media de los valores de una lista */
 export const calcProm = (list_values) => {
+  let list_length = list_values.length;
+
+  if(list_length === 0) return 0;
+
   let sum = list_values.reduce(function(a, b){
     return a+b;
   }, 0);

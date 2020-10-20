@@ -1,50 +1,75 @@
 import React, { useEffect } from 'react';
+import './SpecificRecommendation.css';
 import { Grid, Box, Typography, Button, Avatar, Divider, ButtonBase } from '@material-ui/core';
+import {useParams} from "react-router-dom";
+
 import HoverRating from './RatingRecommendation';
 import FormDialog from './ReportDialog';
 import ListCategories from '../recommendationComponent/ListCategories';
 import {ResourceController} from './ResourceController.js';
-import './SpecificRecommendation.css';
-import {calcProm, calculatePublication, getRecommendationScores, getRecommendationScoreColor, getFirstVoting, setUserVote, addScore} from '../Auxiliar/AuxiliarTools.js';
+import {calcProm, getRecommendationScoreColor} from '../Auxiliar/AuxiliarTools.js';
 import {savedRecommendationsList} from '../Auxiliar/Data.js';
 import {CheckValidYoutubeURL, CheckMimeType} from '../Auxiliar/CheckMedia.js';
 import {ShowSuccessMessage, ShowWarningMessage} from '../Auxiliar/Swal.js';
 import { useHistory } from "react-router-dom";
-import {componentDidMountGet,  componentDidMountPost} from '../Auxiliar/Petitions.js';
+import {componentDidMountListGet, componentDidMountPost} from '../Auxiliar/Petitions.js';
 import {getLocalStorageObject} from '../Auxiliar/ObjectTools.js';
 
-
-function SpecificRecommendation() {
+function SpecificRecommendation(props) {
 
   let history = useHistory();
-  let current_id=localStorage.getItem('recommendation-id');
-  let creator_current_recom = localStorage.getItem('creator-recommendation-username');
+  const params = useParams();
+
+  let currentRecomJson = JSON.parse(localStorage.getItem("specific-current-recom"));
+  let current_id = currentRecomJson.id;
+  let creator_current_recom = currentRecomJson.creator;
+
   /* Usuario de la sesión*/
   let currentUser =  getLocalStorageObject('user');
 
 
-  /* Carga de respuestas*/
-  const [loadingCurrentRecom, setLoadingCurrentRecom] = React.useState(true);
+  /* Load de peticiones*/
   const [loadingScorePost, setLoadingScorePost] = React.useState(false);
-  const [loadingAllScoresValue, setloadingAllScoresValue] = React.useState(true);
+  const [loadingAllScoresValue, setloadingAllScoresValue] = React.useState(false);
   const [loadingCreator_current_recom_object, setLoadingCreator_current_recom_object] = React.useState(false);
 
-  /* */
-  const [currentRecom, setCurrentRecom] = React.useState({});
+  /* Valores de peticiones */
   const [scoreObject, setScoreObject] = React.useState(null);
   const [allTotalScore, setAllTotalScore] = React.useState([]);
   const [creator_current_recom_object, setCreator_current_recom_object] = React.useState([]);
 
+  const url_petitions_list = [
+    {
+      url: '/api/scores/values/' + currentUser.type + '/' + current_id,
+      setConst: setScoreObject,
+      loadingConst: setLoadingScorePost
+    },
+    {
+      url: '/api/scores/values/' + current_id,
+      setConst: setAllTotalScore,
+      loadingConst: setloadingAllScoresValue
+    },
+    {
+      url: '/api/users/' + creator_current_recom,
+      setConst: setCreator_current_recom_object,
+      loadingConst: setLoadingCreator_current_recom_object
+    }
+  ]
+
+  const loadPetitions = () => {
+    componentDidMountListGet(url_petitions_list);
+
+  }
+
   useEffect(() => {
-      componentDidMountGet(setLoadingCurrentRecom, setCurrentRecom, '/api/recommendations/' + current_id);
-      componentDidMountGet(setLoadingScorePost, setScoreObject, '/api/scores/values/' + currentUser.type + '/' + current_id );
-      componentDidMountGet(setloadingAllScoresValue, setAllTotalScore, '/api/scores/values/' + current_id);
-      componentDidMountGet(setLoadingCreator_current_recom_object, setCreator_current_recom_object, '/api/users/' + creator_current_recom);
+      loadPetitions();
       window.scrollTo(0, 0);
   }, []);
 
 
   const afterScorePost = () => {
+    componentDidMountListGet(url_petitions_list.slice(0, 2));
+
     ShowSuccessMessage("Awesome", "Successfully score post")
   }
 
@@ -78,14 +103,14 @@ function SpecificRecommendation() {
 
   const handleSave = () =>{
 
-    let existingSavedRecom = savedRecommendationsList.filter(recom => recom.id === currentRecom.id);
+    let existingSavedRecom = savedRecommendationsList.filter(recom => recom.id === currentRecomJson.id);
 
     if(existingSavedRecom.length !== 0){
       ShowWarningMessage("Warning", "This recommendation is already saved")
           .then(() => console.log("Done"))
     }
     else{
-      savedRecommendationsList.push(currentRecom)
+      savedRecommendationsList.push(currentRecomJson)
       ShowSuccessMessage("Awesome", "Recommendation successfully saved")
           .then(() => console.log("Done"))
     }
@@ -102,12 +127,14 @@ function SpecificRecommendation() {
     CheckValidYoutubeURL("https://www.youtube.com/watch?v=BjC0KUxiMhc", callback);
   }
 
-  if (loadingCurrentRecom || loadingScorePost || loadingAllScoresValue || loadingCreator_current_recom_object) {
+  if (loadingScorePost || loadingAllScoresValue || loadingCreator_current_recom_object ) {
     return <h2>Loading...</h2>;
   }
 
   return (
     <div className="specificRecommendationDiv">
+
+      {alert(params.recomid)}
       <Grid container id="specificRecommendation" className="specificRecommendationGrid" spacing={0} direction="row" >
         <Grid item className="gridPostContainer">
           <Box boxShadow={3} borderRadius="borderRadius" className="postBoxClass" >
@@ -117,7 +144,7 @@ function SpecificRecommendation() {
               {/* Uso de la imagen relacionada a la recomendación. */}
               <Grid item className="imageRecomGrid">
                 <div className="imageRecomDiv">
-                  <Avatar variant="square" alt="Remy Sharp" src={currentRecom.thumbnail} style={{ height: 'auto', width: 'auto', backgroundColor: "white" }} />
+                  <Avatar variant="square" alt="Remy Sharp" src={currentRecomJson.thumbnail} style={{ height: 'auto', width: 'auto', backgroundColor: "white" }} />
                 </div>
               </Grid>
 
@@ -127,7 +154,7 @@ function SpecificRecommendation() {
                   {/*Uso del titulo de la recomendación. */}
                   <Grid item className="recomTitleGrid">
                     <Box className="recomTitleBox">
-                      {currentRecom.title}
+                      {currentRecomJson.title}
                     </Box>
                   </Grid>
 
@@ -165,7 +192,7 @@ function SpecificRecommendation() {
               {/* Uso de la descripción dada a una recomendación en especifico. */}
               <Grid item className="recomDescription">
                 <Box borderRadius="borderRadius" className="descripBoxClass">
-                  {currentRecom.description}
+                  {currentRecomJson.description}
                 </Box>
               </Grid>
             </Grid>
@@ -173,7 +200,7 @@ function SpecificRecommendation() {
             {/* Uso del enlace relacionado a la recomendación.*/}
             <Grid item className="recomRecourseGrid">
               <Box className="recomRecourseBox" align="center">
-                <ResourceController resource={currentRecom.resource}/>
+                <ResourceController resource={currentRecomJson.resource}/>
               </Box>
 
             </Grid>
