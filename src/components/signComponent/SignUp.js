@@ -12,6 +12,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Copyright from "./Copyright";
 import authService from "../../services/AuthService";
+import RequestService from "../../services/RequestService";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -49,7 +50,6 @@ export function SignUp(props) {
         setConfirmP(userConfPsd.target.value);
     }
 
-
     function handleSubmit() {
         if (user.password === confirmp) {
             authService.signup(user)
@@ -59,7 +59,6 @@ export function SignUp(props) {
                 .catch(error => {
                     if(error.response){
                         alert('User Name already exists');
-                        console.info(error.response.status);
                         console.info(error.response.status);
                     }else{
                         alert('Server error');

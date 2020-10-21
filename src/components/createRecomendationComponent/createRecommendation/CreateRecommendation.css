@@ -5,8 +5,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: auto;
 }
 
 .create-recommendation-container .tab{
     width: 50% !important;
+}
+
+.create-recommendation-container .content{
+    display: flex;
+    flex: auto;
+    align-items: center;
+    justify-content: center;
 }

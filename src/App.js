@@ -13,6 +13,8 @@ import CreatedRecommendations from "./components/createdRecommendationComponent/
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import SavedRecommendations from "./components/savedRecommendations/SavedRecommendations"
 import SpecificUser from "./components/specificUserComponent/SpecificUser"
+import UpdateUser from "./components/updateUserComponent/Update-User";
+import {AccountCircle} from "@material-ui/icons";
 
 
 export default function App() {
@@ -59,6 +61,13 @@ export default function App() {
       name: "Specific User",
       component: SpecificUser,
       menuVisible: false
+    },
+    {
+      path: "/update-user",
+      name: "Update information",
+      component: UpdateUser,
+      menuVisible: true,
+      menuIcon: () => <AccountCircle/>
     }
   ];
 

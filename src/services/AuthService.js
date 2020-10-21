@@ -14,7 +14,7 @@ class AuthService {
         ).then(() => this.authenticated = true);
   }
 
-  signup(usr, history){
+  signup(usr){
     return axios.post(`${URL}/signup`, usr)
         .then(response => response.status)
         .catch(error => {
@@ -22,6 +22,20 @@ class AuthService {
             alert('Bad credentials')
             console.info(error.response.status);
             console.info(error.response.data);
+          }else{
+            alert('Server error');
+            console.info(error.message);
+          }
+        })
+  }
+
+  updateUser(usr){
+    return axios.put(`${URL}/update`, usr)
+        .then(response => response.status)
+        .catch(error => {
+          if (error.response){
+            alert('Something was wrong')
+            console.info(error.response.status);
           }else{
             alert('Server error');
             console.info(error.message);

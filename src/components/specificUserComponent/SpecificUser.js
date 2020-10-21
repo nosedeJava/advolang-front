@@ -32,73 +32,73 @@ function SpecificUser(){
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
-    <div className="specificUserDiv">
-      <Grid container className="specificUserGridContainer">
-        <Grid item className="specificProfileItem">
-          <Box className="specificProfileBox">
-            <Grid container className="specificProfileContainer" spacing={0} direction="column">
-              <Grid item className="specificProfileGridImage">
-                <Box className="roundedImageBox" border>
-                  <Avatar  alt="Remy Sharp" src={currentRecom.creator.userImage} style={{ height: '100%', width: '100%', backgroundColor: "white" }} />
-                </Box>
-              </Grid>
+      <div className="specificUserDiv">
+        <Grid container className="specificUserGridContainer">
+          <Grid item className="specificProfileItem">
+            <Box className="specificProfileBox">
+              <Grid container className="specificProfileContainer" spacing={0} direction="column">
+                <Grid item className="specificProfileGridImage">
+                  <Box className="roundedImageBox" border>
+                    <Avatar  alt="Remy Sharp" src={currentRecom.creator.userImage} style={{ height: '100%', width: '100%', backgroundColor: "white" }} />
+                  </Box>
+                </Grid>
 
-              <Grid item className="specificProfileGridInfo">
-                <Grid container className="specificProfileInfoItemContainer" spacing={0} direction="column">
-                  <Grid item className="specificUsernameGrid">
-                    <Box className="specificUsernameBox">
-                      {currentRecom.creator.username}
-                    </Box>
-                  </Grid>
+                <Grid item className="specificProfileGridInfo">
+                  <Grid container className="specificProfileInfoItemContainer" spacing={0} direction="column">
+                    <Grid item className="specificUsernameGrid">
+                      <Box className="specificUsernameBox">
+                        {currentRecom.creator.username}
+                      </Box>
+                    </Grid>
 
-                  <Grid item className="specificNameGrid">
-                    <Box className="specificNameBox">
-                      {currentRecom.creator.fullname}
-                    </Box>
-                  </Grid>
+                    <Grid item className="specificNameGrid">
+                      <Box className="specificNameBox">
+                        {currentRecom.creator.fullname}
+                      </Box>
+                    </Grid>
 
-                  <Grid item className="specificEmailGrid">
-                    <Box  className="specificEmailBox">
-                      {currentRecom.creator.email}
-                    </Box>
-                  </Grid>
+                    <Grid item className="specificEmailGrid">
+                      <Box  className="specificEmailBox">
+                        {currentRecom.creator.email}
+                      </Box>
+                    </Grid>
 
-                  <Grid item className="specificUserDescGrid">
-                    <Box className="specificUserDescBox">
-                      {currentRecom.creator.description}
-                    </Box>
+                    <Grid item className="specificUserDescGrid">
+                      <Box className="specificUserDescBox">
+                        {currentRecom.creator.description}
+                      </Box>
+                    </Grid>
+
                   </Grid>
 
                 </Grid>
 
+                <Grid item className="specificSuscriptionsGrid">
+                  <Box className="specificSuscriptionsBox">
+                    <ListCategories content={currentRecom.creator.subscriptions} />
+                  </Box>
+                </Grid>
+
               </Grid>
+            </Box>
+          </Grid>
 
-              <Grid item className="specificSuscriptionsGrid">
-                <Box className="specificSuscriptionsBox">
-                  <ListCategories content={currentRecom.creator.subscriptions} />
-                </Box>
-              </Grid>
+          <Grid item className="specificUserPosts">
+            <Box className="specificUserPostsBox">
+              <ListRecommendations recommendations={currentPosts}/>
+              <div className="paginationPostsDiv">
+                <RecomPagination
+                    postsPerPage={postsPerPage}
+                    totalPosts={posts.length}
+                    paginate={paginate}
+                    color="secondary"
+                />
+              </div>
+            </Box>
+          </Grid>
 
-            </Grid>
-          </Box>
         </Grid>
-
-        <Grid item className="specificUserPosts">
-          <Box className="specificUserPostsBox">
-            <ListRecommendations recommendations={currentPosts}/>
-            <div className="paginationPostsDiv">
-              <RecomPagination
-                postsPerPage={postsPerPage}
-                totalPosts={posts.length}
-                paginate={paginate}
-                color="secondary"
-              />
-            </div>
-          </Box>
-        </Grid>
-
-      </Grid>
-    </div>
+      </div>
   );
 }
 
