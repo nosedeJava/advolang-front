@@ -1,0 +1,10 @@
+.generalClassImage{
+    border-radius: 10px;
+    padding:  0.5rem ;
+    margin: auto;
+}
+.thumbnailSpace {
+    max-width: 80%;
+    max-height: 80%;
+    background-color: white;
+}
