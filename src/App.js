@@ -15,6 +15,7 @@ import SavedRecommendations from "./components/savedRecommendations/SavedRecomme
 import SpecificUser from "./components/specificUserComponent/SpecificUser"
 import UpdateUser from "./components/updateUserComponent/Update-User";
 import {AccountCircle} from "@material-ui/icons";
+import Languages from './components/languageComponent/Languages';
 
 
 export default function App() {
@@ -57,6 +58,13 @@ export default function App() {
       menuIcon:() => <HomeIcon />
     },
     {
+      path: "/languages",
+      name: "Languages",
+      component: Languages,
+      menuVisible: true,
+      menuIcon:() => <HomeIcon />
+    },
+    {
       path: "/user/:userId",
       name: "Specific User",
       component: SpecificUser,
@@ -68,7 +76,7 @@ export default function App() {
       component: UpdateUser,
       menuVisible: true,
       menuIcon: () => <AccountCircle/>
-    }
+    },
   ];
 
   useEffect(() => {
