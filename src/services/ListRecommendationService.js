@@ -1,7 +1,7 @@
 
 import React, { useEffect }  from 'react';
 import { ListRecommendations } from '../components/recommendationComponent/ListRecommendations';
-import {componentDidMountGet} from '../components/Auxiliar/Petitions.js';
+import {componentDidMountGet} from './Petitions.js';
 
 export default function ListRecommendationService(props) {
 

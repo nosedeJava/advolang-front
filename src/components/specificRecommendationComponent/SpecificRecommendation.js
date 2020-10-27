@@ -12,7 +12,7 @@ import {savedRecommendationsList} from '../Auxiliar/Data.js';
 import {CheckValidYoutubeURL, CheckMimeType} from '../Auxiliar/CheckMedia.js';
 import {ShowSuccessMessage, ShowWarningMessage} from '../Auxiliar/Swal.js';
 import { useHistory } from "react-router-dom";
-import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentDidMountPost} from '../Auxiliar/Petitions.js';
+import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentDidMountPost} from '../../services/Petitions.js';
 import {getLocalStorageObject} from '../Auxiliar/ObjectTools.js';
 
 function SpecificRecommendation(props) {

@@ -1,5 +1,5 @@
-import RequestService from "../../services/RequestService";
-import AzureService from '../../services/AzureService.js';
+import RequestService from "./RequestService";
+import AzureService from './AzureService';
 
 /* Realiza la petición get a una URL dada
 
