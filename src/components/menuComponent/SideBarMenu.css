@@ -11,8 +11,9 @@
 
 .avatarProfileImageBox {
   background-color: transparent;
-  height: auto;
-  width: auto;
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
 }
 
 .userProfileData {

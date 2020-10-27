@@ -4,6 +4,7 @@ import {useDropzone} from "react-dropzone";
 import {useDispatch} from "react-redux";
 import AllActions from "../../../redux/actions/AllActions";
 import AzureService from "../../../services/AzureService";
+import RequestService from "../../../services/RequestService";
 
 export default function ThumbnailView(props){
 
@@ -22,7 +23,7 @@ export default function ThumbnailView(props){
 
     useEffect(() => {
         if (props.flag && file){
-            AzureService.putFile(file.name, file)
+            AzureService.putFile(file.name, file, RequestService.getUsername())
                 .then(response => console.log(response.status));
         }
     }, [file, props.flag])

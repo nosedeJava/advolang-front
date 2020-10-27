@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import UserInformationService from "../../services/UserInformationService";
 import './UpdateUser.css';
 import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
@@ -7,6 +6,7 @@ import {PhotoCamera} from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
 import AuthService from "../../services/AuthService";
 import AzureService from "../../services/AzureService";
+import RequestService from "../../services/RequestService";
 
 export default function UpdateUser(){
 
@@ -14,7 +14,7 @@ export default function UpdateUser(){
     const [file, setFile] = useState(null);
 
     useEffect(() => {
-        UserInformationService.getUser()
+        RequestService.getUser()
             .then(response => setUser(response));
     }, [])
 
