@@ -57,7 +57,7 @@ export default function App() {
       menuIcon:() => <HomeIcon />
     },
     {
-      path: "/user/:userId",
+      path: "/users/:user",
       name: "Specific User",
       component: SpecificUser,
       menuVisible: false

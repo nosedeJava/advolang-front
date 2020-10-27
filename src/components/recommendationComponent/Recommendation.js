@@ -29,7 +29,7 @@ function Recommendation(props) {
 
   const componentDidMount = () => {
     if (props.recom.thumbnail !== "/img/default.png") {
-      componentDidMountGetAzure(setLoadThumb, setRecomThumb, props.recom.thumbnail);
+      componentDidMountGetAzure(setLoadThumb, setRecomThumb, props.recom.thumbnail, props.recom.creator);
     }
     componentDidMountGet(setLoadScoresList, setScoresList, '/api/scores/values/' + props.recom.id);
   }

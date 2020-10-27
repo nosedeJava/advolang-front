@@ -14,7 +14,7 @@ export default function ListRecommendationService(props) {
   }, []);
 
   if (loading) {
-    return <h2>Loading...</h2>;
+    return <h2>Loading 2...</h2>;
   }
 
     let recommendationList = [];

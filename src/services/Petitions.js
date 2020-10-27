@@ -22,9 +22,9 @@ export const componentDidMountGetWithAzureAfter = async (setLoading, setAzureObj
   setLoading(false);
 };
 
-export const componentDidMountGetAzure = async (setLoading, setCurrentObject, url) => {
+export const componentDidMountGetAzure = async (setLoading, setCurrentObject, url , container) => {
   setLoading(true);
-  const res = await AzureService.getFile(url);
+  const res = await AzureService.getFile(url, container);
   setCurrentObject(res.config.url);
   setLoading(false);
 };

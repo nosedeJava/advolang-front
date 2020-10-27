@@ -7,8 +7,6 @@ const urlBack = 'http://localhost:8080';
 
 class RequestService{
 
-
-
     post(path, data) {
         return axios.post(`${urlBack}${path}`, data, {headers: AuthHeader()});
     }
