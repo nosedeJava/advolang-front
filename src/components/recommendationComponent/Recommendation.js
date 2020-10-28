@@ -107,7 +107,6 @@ function Recommendation(props) {
 
             <Grid item className="timeGridValue">
               <Box className="timeGridBox" textAlign="right">
-
                   {calculatePublication(adaptJavaDate(props.recom.creationDate))}
               </Box>
             </Grid>
