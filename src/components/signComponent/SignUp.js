@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,7 +12,6 @@ import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Copyright from "./Copyright";
 import authService from "../../services/AuthService";
-import RequestService from "../../services/RequestService";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -37,9 +36,7 @@ const useStyles = makeStyles((theme) => ({
 export function SignUp(props) {
 
     const classes = useStyles();
-    const [user, setUser] = useState({
-      profileImage: "img/user.png"
-    });
+    const [user, setUser] = useState();
     const [confirmp, setConfirmP] = useState("");
 
     function handleChange(event) {

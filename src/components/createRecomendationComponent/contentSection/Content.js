@@ -12,7 +12,6 @@ import IconButton from "@material-ui/core/IconButton";
 import Category from "../categorySection/Category";
 import Button from "@material-ui/core/Button";
 import AzureService from "../../../services/AzureService";
-import UserInformationService from "../../../services/UserInformationService";
 import RequestService from "../../../services/RequestService";
 
 export default function Content(props){
@@ -21,10 +20,12 @@ export default function Content(props){
     const recommendation = useSelector(state => state.newRecommendation);
     const [file, setFile] = useState(null);
 
+
     useEffect(() => {
-        UserInformationService.getUsername()
-            .then(response => recommendation.creator = response)
-    },[recommendation]);
+        dispatch(AllActions.CreateRecommendationActions
+            .updateRecommendation(
+                {creator: RequestService.getUsername()}))
+    },[dispatch])
 
     function handleChange(event){
         dispatch(AllActions
@@ -48,22 +49,21 @@ export default function Content(props){
         if (checkInputs()){
             props.setFlag(true);
             if (file){
-                AzureService.putFile(file.name, file)
+                AzureService.putFile(file.name, file, RequestService.getUsername())
                     .then(response => console.log(response.status));
             }
-            recommendation.creationDate = new Date();
             post();
         }
     }
 
     function post(){
-
-        RequestService.post('/api/recommendations', recommendation)
+        RequestService.post('/api/spanish/recommendations', recommendation)
             .then(response => console.log(response.status))
-            .then(() => window.location.reload)
+            .then(() => window.location.reload())
             .catch(error => {
                 if (error.response){
-                    alert('The title already exists')
+                    alert(`${error.message}`)
+                    console.log(error.response.status)
                 }else {
                     alert('Server error')
                 }

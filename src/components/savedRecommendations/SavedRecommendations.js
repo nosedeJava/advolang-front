@@ -4,7 +4,6 @@ import {savedRecommendationsList} from '../Auxiliar/Data.js';
 import RecomPagination from '../Pagination/RecomPagination';
 import {ListRecommendations} from '../recommendationComponent/ListRecommendations';
 
-
 function SavedRecommendations (props){
 
   const [posts, setPosts] = useState([]);
@@ -17,7 +16,6 @@ function SavedRecommendations (props){
       const res = savedRecommendationsList;
       setPosts(res);
     };
-
     fetchPosts();
   }, []);
 
@@ -28,21 +26,20 @@ function SavedRecommendations (props){
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
-    <div className="savedRecommendationsContainer" >
-      <div className="savedRecommendationsDiv">
-        <ListRecommendations recommendations={currentPosts}/>
-        <div className="paginationDiv">
-          <RecomPagination
-            postsPerPage={postsPerPage}
-            totalPosts={posts.length}
-            paginate={paginate}
-            color="primary"
-          />
+      <div className="savedRecommendationsContainer" >
+        <div className="savedRecommendationsDiv">
+          <ListRecommendations recommendations={currentPosts}/>
+          <div className="paginationDiv">
+            <RecomPagination
+                postsPerPage={postsPerPage}
+                totalPosts={posts.length}
+                paginate={paginate}
+                color="primary"
+            />
+          </div>
         </div>
       </div>
-    </div>
   );
-
 }
 
 export default SavedRecommendations;
