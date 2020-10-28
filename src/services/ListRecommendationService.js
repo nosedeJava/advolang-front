@@ -1,42 +1,36 @@
 
-import React, { useEffect }  from 'react';
+import React, { useEffect } from 'react';
 import { ListRecommendations } from '../components/recommendationComponent/ListRecommendations';
-import {componentDidMountGet} from '../components/Auxiliar/Petitions.js';
+import { componentDidMountGet } from '../components/Auxiliar/Petitions.js';
 
 export default function ListRecommendationService(props) {
 
-  const [loading, setLoading] = React.useState(false);
-  const [recommendations, setRecommendations] = React.useState([]);
+    const [loading, setLoading] = React.useState(false);
+    const [recommendations, setRecommendations] = React.useState([]);
 
-  useEffect(() => {
-    componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
-
-  }, []);
-
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
-
-    let recommendationList = [];
-    //se debe hacer el llamado al back para que devuelva las recomendaciones en particular de cada if y asignarlo a recommendationList
-    if (props.main) {
-        recommendationList = recommendations;
-    } else if (props.saved) {
-        recommendationList = recommendations;
-    } else if (props.reported) {
-        let lang = props.lang;
-        recommendationList = recommendations;
-    } else if (props.self) {
-        let user = localStorage.getItem('username')
-        recommendationList = recommendations;
-    } else if (props.filtered) {
-        let categories = props.categories;
-        let title = props.title;
-        let difficulty = props.difficulty;
-        recommendationList = recommendations;
-    } else if (props.lang) {
-        console.log(props.lang)
-        recommendationList = recommendations;
+    useEffect(() => {
+        if (props.main) {
+            componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
+        } else if (props.saved) {
+            componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
+        } else if (props.reported) {
+            let lang = props.lang;
+            componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
+        } else if (props.self) {
+            componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
+        } else if (props.filtered) {
+            let categories = props.categories;
+            let title = props.title;
+            let difficulty = props.difficulty;
+            componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
+        } else if (props.lang) {
+            componentDidMountGet(setLoading, setRecommendations, '/api/'+props.lang+'/recommendations');
+        }
+    }, []);
+    if (loading) {
+        return <h2>Loading...</h2>;
     }
-    return <ListRecommendations recommendations={recommendationList} loading={loading}  />
+    //se debe hacer el llamado al back para que devuelva las recomendaciones en particular de cada if y asignarlo a recommendationList
+    
+    return <ListRecommendations recommendations={recommendations} loading={loading} />
 }
