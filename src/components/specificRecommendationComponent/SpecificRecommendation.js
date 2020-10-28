@@ -12,7 +12,7 @@ import {savedRecommendationsList} from '../Auxiliar/Data.js';
 import {CheckValidYoutubeURL, CheckMimeType} from '../Auxiliar/CheckMedia.js';
 import {ShowSuccessMessage, ShowWarningMessage} from '../Auxiliar/Swal.js';
 import { useHistory } from "react-router-dom";
-import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentDidMountPost} from '../Auxiliar/Petitions.js';
+import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentDidMountPost} from '../../services/Petitions.js';
 import {getLocalStorageObject} from '../Auxiliar/ObjectTools.js';
 
 function SpecificRecommendation(props) {
@@ -128,7 +128,7 @@ function SpecificRecommendation(props) {
   }
 
   const handleSpecificUser = () => {
-    history.push("/specific-user")
+    history.push("/users/"+creator_current_recom_username)
     //redirigir a specific user
 
   }
@@ -230,6 +230,7 @@ function SpecificRecommendation(props) {
           </Box>
         </Grid>
 
+        {/* Usuario creador*/}
         <Grid item xs={4} direction="row" className="gridUserContainerMain">
           <Grid container spacing={0} direction="column" className="gridUserContainer">
             <Grid item className="userFirstGrid">

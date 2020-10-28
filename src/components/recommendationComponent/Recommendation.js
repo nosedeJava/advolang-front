@@ -4,7 +4,7 @@ import { Grid, Box, Card, CardMedia, Typography, ButtonBase} from '@material-ui/
 import ListCategories from './ListCategories'
 import { useHistory } from "react-router-dom";
 import {calcProm, adaptJavaDate, calculatePublication, getRecommendationScores, getRecommendationScoreColor} from '../Auxiliar/AuxiliarTools.js';
-import {componentDidMountGet, componentDidMountGetAzure} from '../Auxiliar/Petitions.js';
+import {componentDidMountGet, componentDidMountGetAzure} from '../../services/Petitions.js';
 
 
 function Recommendation(props) {
@@ -29,7 +29,7 @@ function Recommendation(props) {
 
   const componentDidMount = () => {
     if (props.recom.thumbnail !== "/img/default.png") {
-      componentDidMountGetAzure(setLoadThumb, setRecomThumb, props.recom.thumbnail);
+      componentDidMountGetAzure(setLoadThumb, setRecomThumb, props.recom.thumbnail, props.recom.creator);
     }
     componentDidMountGet(setLoadScoresList, setScoresList, '/api/scores/values/' + props.recom.id);
   }

@@ -1,7 +1,7 @@
 
 import React, { useEffect }  from 'react';
 import { ListRecommendations } from '../components/recommendationComponent/ListRecommendations';
-import {componentDidMountGet} from '../components/Auxiliar/Petitions.js';
+import {componentDidMountGet} from './Petitions.js';
 
 export default function ListRecommendationService(props) {
 
@@ -14,7 +14,7 @@ export default function ListRecommendationService(props) {
   }, []);
 
   if (loading) {
-    return <h2>Loading...</h2>;
+    return <h2>Loading 2...</h2>;
   }
 
     let recommendationList = [];
