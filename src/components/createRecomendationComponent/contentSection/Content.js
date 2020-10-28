@@ -22,8 +22,10 @@ export default function Content(props){
 
 
     useEffect(() => {
-        recommendation.username = RequestService.getUsername();
-    },[recommendation.username])
+        dispatch(AllActions.CreateRecommendationActions
+            .updateRecommendation(
+                {creator: RequestService.getUsername()}))
+    },[dispatch])
 
     function handleChange(event){
         dispatch(AllActions
