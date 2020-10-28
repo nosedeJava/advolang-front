@@ -1,32 +1,28 @@
 import React from 'react';
-
+import { Grid, CardMedia, Card, Typography, Box } from '@material-ui/core';
 function SpecificLanguage(props) {
     return (
         <Grid
             container
             direction="row"
-            justify="center"
-            alignItems="center"
         >
-            <Grid
-                container
-                direction="row"
-                justify="flex-start"
-                alignItems="flex-start"
-            >
-                <Grid item xs={2} className="generalClassImage" container spacing={0} direction="column">
+            <Grid item xs={2} >
+
+            </Grid>
+            <Grid item xs={1} justuf className="generalClassImage" spacing={1} direction="column">
+                <Box pl={3}>
                     <Card className="thumbnailSpace">
                         <CardMedia
                             component="img"
-                            image={"/img/"+props.language+".png"}
+                            image={"/img/" + props.language.toLowerCase() + ".png"}
                         />
                     </Card>
-                </Grid>
-                <Grid item>
-                    <Typography style={{"color":"#242847"}}>
-                        {props.language}
-                    </Typography>
-                </Grid>
+                </Box>
+            </Grid>
+            <Grid item xs={3}>
+                <Typography variant="h5" component="h2" style={{ "color": "#242847", fontSize: "2.2rem" }}>
+                    {props.language}
+                </Typography>
             </Grid>
         </Grid>
     );

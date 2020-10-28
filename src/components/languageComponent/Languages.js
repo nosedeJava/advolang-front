@@ -2,7 +2,7 @@ import React from 'react';
 import './Languages.css';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Card, CardActionArea, CardContent, CardMedia, ButtonBase, Typography } from '@material-ui/core';
-
+import { useHistory } from "react-router-dom";
 const useStyles = makeStyles({
     root: {
         width: 300,
@@ -14,9 +14,11 @@ const useStyles = makeStyles({
 
 function Languages(props) {
     const classes = useStyles();
+    let history = useHistory();
     let langs = ["Spanish", "English", "Italian", "Portuguese", "French", "German", "Russian", "Japanese"];
     const redirectSpecificLanguage = (lang) => {
-        alert(lang);
+
+        history.push(`/${lang}/recommendations`);
     }
     return (
         <div className="generalDiv">
