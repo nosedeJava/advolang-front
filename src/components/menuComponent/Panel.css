@@ -1,6 +1,16 @@
 .panelDiv {
+  background-color: transparent;
   width: 100%;
-  display: flex;
-  background: #7282be;
+  min-height: 5%;
+  background-color: yellow;
+}
+
+.panelAppBar {
+  height: 100%;
+}
+
+.toolbarPanel{
+  background-color: #7282be;
   color: white;
+
 }
