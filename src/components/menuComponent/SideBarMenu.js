@@ -8,14 +8,15 @@ import {MenuItemsList} from './MenuItemsList';
 import {List, ListItem, ListItemIcon, ListItemText, Box} from '@material-ui/core';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Avatar from '@material-ui/core/Avatar';
-import UserInformationService from "../../services/UserInformationService";
+import RequestService from "../../services/RequestService";
+import LoadImage from "../../services/LoadImage";
 
 export function SideBarMenu (props){
 
   const [user, setUser] = useState({fullName:'', email:''});
 
   useEffect(() => {
-    UserInformationService.getUser()
+    RequestService.getUser()
         .then(response => setUser(response))
   },[])
 
@@ -48,9 +49,13 @@ export function SideBarMenu (props){
     >
       <List>
         <ListItem button key="userInfo">
-          <Box className="avatarProfileImageBox">
-            <Avatar  alt="Remy Sharp" src={user.profileImage}  style={{width: 48, height: 48, backgroundColor: "#f3f3f3" }} />
-          </Box>
+          <div className="avatarProfileImageBox">
+            {user && !user.profileImage ? (
+                LoadImage('user.png', 'frontcontainer',100)
+            ):(
+                LoadImage(user.profileImage, RequestService.getUsername(),100)
+            )}
+          </div>
           <ListItemText
             className = "userProfileData"
             primary={user.fullName}

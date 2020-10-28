@@ -1,7 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { ListRecommendations } from '../components/recommendationComponent/ListRecommendations';
-import { componentDidMountGet } from '../components/Auxiliar/Petitions.js';
+import { componentDidMountGet } from './Petitions.js';
 
 export default function ListRecommendationService(props) {
 
@@ -30,7 +30,5 @@ export default function ListRecommendationService(props) {
     if (loading) {
         return <h2>Loading...</h2>;
     }
-    //se debe hacer el llamado al back para que devuelva las recomendaciones en particular de cada if y asignarlo a recommendationList
-    
     return <ListRecommendations recommendations={recommendations} loading={loading} />
 }

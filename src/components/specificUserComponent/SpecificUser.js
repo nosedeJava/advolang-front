@@ -1,35 +1,65 @@
 import React,  { useState, useEffect } from 'react';
 import './SpecificUser.css';
+import {useParams} from "react-router-dom";
 import { Grid, Box, Avatar} from '@material-ui/core';
 import {ListRecommendations} from '../recommendationComponent/ListRecommendations';
 import RecomPagination from '../Pagination/RecomPagination';
 import {getCurrentRecom, getUserRecommendations} from '../Auxiliar/AuxiliarTools.js';
 import ListCategories from '../recommendationComponent/ListCategories';
+import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentDidMountPost} from '../../services/Petitions.js';
 
 
 function SpecificUser(){
+
+  const params = useParams();
+
+  let user_username = params.user;
+
+  const[user, setUser]  = useState({});
+  const[loadingUser, setLoadingUser] = useState(true);
+
   const [posts, setPosts] = useState([]);
+  const [loadingPosts, setLoadingPosts] = useState(true);
+
+
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(4);
 
   let current_id=localStorage.getItem('recommendation-id');
   let currentRecom = getCurrentRecom(current_id);
 
-  useEffect(() => {
-    //Traer datos de la base de datos
-    const fetchPosts = async () => {
-      const res = getUserRecommendations(currentRecom.creator.id);
-      setPosts(res);
-    };
+  const url_petitions_list = [
+    {
+      url: '/api/users/'+user_username+'/recommendations',
+      setConst: setPosts,
+      loadingConst: setLoadingPosts
+    },
+    {
+      url: '/api/users/'+ user_username,
+      setConst: setUser,
+      loadingConst: setLoadingUser
+    }
+  ]
 
-    fetchPosts();
-  }, [currentRecom.creator.id]);
+  const componentDidMount = () => {
+    componentDidMountListGet(url_petitions_list);
+  }
+
+  useEffect(() => {
+    componentDidMount();
+    window.scrollTo(0, 0);
+
+  }, []);
 
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  if (loadingUser || loadingPosts ) {
+    return <h2>Loading...</h2>;
+  }
 
   return (
       <div className="specificUserDiv">
@@ -39,7 +69,7 @@ function SpecificUser(){
               <Grid container className="specificProfileContainer" spacing={0} direction="column">
                 <Grid item className="specificProfileGridImage">
                   <Box className="roundedImageBox" border>
-                    <Avatar  alt="Remy Sharp" src={currentRecom.creator.userImage} style={{ height: '100%', width: '100%', backgroundColor: "white" }} />
+                    <Avatar  alt="Remy Sharp" src="" style={{ height: '100%', width: '100%', backgroundColor: "white" }} />
                   </Box>
                 </Grid>
 
@@ -47,25 +77,25 @@ function SpecificUser(){
                   <Grid container className="specificProfileInfoItemContainer" spacing={0} direction="column">
                     <Grid item className="specificUsernameGrid">
                       <Box className="specificUsernameBox">
-                        {currentRecom.creator.username}
+                        {user.username}
                       </Box>
                     </Grid>
 
                     <Grid item className="specificNameGrid">
                       <Box className="specificNameBox">
-                        {currentRecom.creator.fullname}
+                        {user.fullname}
                       </Box>
                     </Grid>
 
                     <Grid item className="specificEmailGrid">
                       <Box  className="specificEmailBox">
-                        {currentRecom.creator.email}
+                        {user.email}
                       </Box>
                     </Grid>
 
                     <Grid item className="specificUserDescGrid">
                       <Box className="specificUserDescBox">
-                        {currentRecom.creator.description}
+                        {"user.description"}
                       </Box>
                     </Grid>
 
@@ -75,7 +105,7 @@ function SpecificUser(){
 
                 <Grid item className="specificSuscriptionsGrid">
                   <Box className="specificSuscriptionsBox">
-                    <ListCategories content={currentRecom.creator.subscriptions} />
+                    <ListCategories content={user.subscriptions} />
                   </Box>
                 </Grid>
 
