@@ -49,12 +49,12 @@ export function SideBarMenu (props){
     >
       <List>
         <ListItem button key="userInfo">
-          {/*<Box className="avatarProfileImageBox">*/}
-          {/*  <Avatar  alt="Remy Sharp" src={user.profileImage}  style={{width: 48, height: 48, backgroundColor: "#f3f3f3" }} />*/}
-          {/*</Box>*/}
           <div className="avatarProfileImageBox">
-            {user.profileImage === 'user.png' && LoadImage('user.png', 'frontContainer',48,48)}
-            {user.profileImage !== 'user.png' && LoadImage(user.profileImage, RequestService.getUsername(),48,48)}
+            {user && !user.profileImage ? (
+                LoadImage('user.png', 'frontcontainer',100)
+            ):(
+                LoadImage(user.profileImage, RequestService.getUsername(),100)
+            )}
           </div>
           <ListItemText
             className = "userProfileData"

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import AzureService from "./AzureService";
 
-export default function (fileName, containerName, width, height) {
+export default function (fileName, containerName, radius) {
 
     const [image, setImage] = useState(null);
 
@@ -15,7 +15,15 @@ export default function (fileName, containerName, width, height) {
     },[containerName, fileName])
 
     return(
-        <img src={image} style={{width: width, height: height}} alt="No_Image"/>
+        <div style={{
+            background: `url(${image})`,
+            backgroundRepeat: 'no-repeat',
+            height:`100%`,
+            backgroundPosition:'center',
+            backgroundSize: 'cover',
+            width:`100%`,
+            borderRadius:`${radius}%`
+        }}/>
     )
 
 }

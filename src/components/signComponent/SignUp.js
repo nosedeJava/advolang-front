@@ -36,14 +36,8 @@ const useStyles = makeStyles((theme) => ({
 export function SignUp(props) {
 
     const classes = useStyles();
-    const [user, setUser] = useState({
-      profileImage: "img/user.png"
-    });
+    const [user, setUser] = useState();
     const [confirmp, setConfirmP] = useState("");
-
-    useEffect(() => {
-        user.profileImage = 'user.png'
-    },[user.profileImage])
 
     function handleChange(event) {
         setUser({...user, [event.target.name]: event.target.value});
