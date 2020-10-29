@@ -7,14 +7,12 @@ export default function ListRecommendationService(props) {
 
     const [loading, setLoading] = React.useState(false);
     const [recommendations, setRecommendations] = React.useState([]);
-
     useEffect(() => {
         if (props.main) {
             componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
         } else if (props.saved) {
             componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
         } else if (props.reported) {
-            let lang = props.lang;
             componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
         } else if (props.self) {
             componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
@@ -24,7 +22,7 @@ export default function ListRecommendationService(props) {
             let difficulty = props.difficulty;
             componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
         } else if (props.lang) {
-            componentDidMountGet(setLoading, setRecommendations, '/api/'+props.lang+'/recommendations');
+            componentDidMountGet(setLoading, setRecommendations, '/api/'+props.lang.toLowerCase()+'/recommendations');
         }
     }, []);
     if (loading) {

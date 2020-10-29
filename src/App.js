@@ -80,7 +80,7 @@ export default function App() {
     },
     {
       path: "/:language/recommendations",
-      name: "languages recommendation",
+      name: "Languages recommendation",
       component: PrincipalViewLanguage,
       menuVisible: false,
     },
