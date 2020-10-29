@@ -41,7 +41,7 @@ export default function App() {
     }, 
     {
       path: "/savedRecommendations",
-      name: "My recommendations",
+      name: "Saved recommendations",
       component: SavedRecommendations,
       menuVisible: true,
       menuIcon: () => <LibraryBooksIcon />
