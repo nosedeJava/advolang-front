@@ -8,12 +8,13 @@ import FormDialog from './ReportDialog';
 import ListCategories from '../recommendationComponent/ListCategories';
 import {ResourceController} from './ResourceController.js';
 import {calcProm, getRecommendationScoreColor, adaptJavaDate, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
-import {savedRecommendationsList} from '../Auxiliar/Data.js';
 import {CheckValidYoutubeURL, CheckMimeType} from '../Auxiliar/CheckMedia.js';
 import {ShowSuccessMessage, ShowWarningMessage} from '../Auxiliar/Swal.js';
 import { useHistory } from "react-router-dom";
 import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentDidMountPost} from '../../services/Petitions.js';
 import {getLocalStorageObject} from '../Auxiliar/ObjectTools.js';
+import RequestService from "../../services/RequestService";
+import Swal from 'sweetalert2';
 
 function SpecificRecommendation(props) {
 
@@ -112,16 +113,27 @@ function SpecificRecommendation(props) {
     //continúa
   }
 
-  const handleSave = () =>{
+  const handleSave = async () =>{
+    // Confirmation
+    let existingSavedRecom = await RequestService.get("/api/users/"+ currentUser.id + "/saved-recommendations/" + current_id);
 
-    let existingSavedRecom = savedRecommendationsList.filter(recom => recom.id === currentRecom.id);
+    if(existingSavedRecom.data){
+      Swal.fire({
+        title: "Warning",
+        text: "This recommendation is already saved",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: 'Unsave',
+      }).then(async (result) => {
+          if (result.isConfirmed) {
+            await RequestService.delete("/api/users/"+ currentUser.id + "/saved-recommendations?recommendationId=" + current_id);
+            Swal.fire('Successfully unsaved', '', 'success')
+          }
 
-    if(existingSavedRecom.length !== 0){
-      ShowWarningMessage("Warning", "This recommendation is already saved")
-          .then(() => console.log("Done"))
+      })
     }
     else{
-      savedRecommendationsList.push(JSON.stringify(currentRecom))
+      await RequestService.post("/api/users/" + currentUser.id + "/saved-recommendations?recommendationId=" + current_id);
       ShowSuccessMessage("Awesome", "Recommendation successfully saved")
           .then(() => console.log("Done"))
     }

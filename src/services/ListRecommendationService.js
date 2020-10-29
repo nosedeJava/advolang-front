@@ -12,7 +12,8 @@ export default function ListRecommendationService(props) {
         if (props.main) {
             componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
         } else if (props.saved) {
-            componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
+            let username = JSON.parse(localStorage.getItem("user")).id;
+            componentDidMountGet(setLoading, setRecommendations, '/api/users/'+username+'/saved-recommendations');
         } else if (props.reported) {
             let lang = props.lang;
             componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
