@@ -54,5 +54,4 @@ export const componentDidMountGetAndAfterPostAzure = async (urlGet, getContainer
   .then(data => postAzure(urlGet, data, postContainer, afterAction)
   );
 
-
 }
