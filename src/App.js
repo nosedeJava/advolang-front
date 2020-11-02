@@ -8,13 +8,16 @@ import PrincipalView from "./components/recommendationComponent/PrincipalView";
 import SpecificRecommendation from "./components/specificRecommendationComponent/SpecificRecommendation"
 import CreateRecommendation from "./components/createRecomendationComponent/createRecommendation/CreateRecommendation";
 import HomeIcon from '@material-ui/icons/Home';
+import LanguageIcon from '@material-ui/icons/Language';
 import PostAddIcon from '@material-ui/icons/PostAdd';
+import CreateIcon from '@material-ui/icons/Create';
 import CreatedRecommendations from "./components/createdRecommendationComponent/mainComponent/CreatedRecommendations";
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import SavedRecommendations from "./components/savedRecommendations/SavedRecommendations"
 import SpecificUser from "./components/specificUserComponent/SpecificUser"
 import UpdateUser from "./components/updateUserComponent/Update-User";
 import { AccountCircle } from "@material-ui/icons";
+import SettingsIcon from '@material-ui/icons/Settings';
 import Languages from './components/languageComponent/Languages';
 import PrincipalViewLanguage from './components/languageComponent/PrincipalViewLanguage'
 
@@ -37,20 +40,21 @@ export default function App() {
       name: "Languages",
       component: Languages,
       menuVisible: true,
-      menuIcon: () => <HomeIcon />
-    }, 
+      menuIcon: () => <LanguageIcon />
+    },
+    {
+      path: "/createRecommendation",
+      name: "Add new post",
+      component: CreateRecommendation,
+      menuVisible: true,
+      menuIcon: () => <PostAddIcon />
+    },
     {
       path: "/savedRecommendations",
       name: "Saved recommendations",
       component: SavedRecommendations,
       menuVisible: true,
       menuIcon: () => <LibraryBooksIcon />
-    }, {
-      path: "/createRecommendation",
-      name: "Add new post",
-      component: CreateRecommendation,
-      menuVisible: true,
-      menuIcon: () => <PostAddIcon />
     },
     {
       path: "/:recomLang/:user/recommendations/:recomid",
@@ -63,7 +67,7 @@ export default function App() {
       name: "Created recommendations",
       component: CreatedRecommendations,
       menuVisible: true,
-      menuIcon: () => <HomeIcon />
+      menuIcon: () => <CreateIcon />
     },
     {
       path: "/users/:user",
@@ -73,10 +77,10 @@ export default function App() {
     },
     {
       path: "/update-user",
-      name: "Update information",
+      name: "Settings",
       component: UpdateUser,
       menuVisible: true,
-      menuIcon: () => <AccountCircle />
+      menuIcon: () => <SettingsIcon />
     },
     {
       path: "/:language/recommendations",

@@ -12,6 +12,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Copyright from "./Copyright";
 import authService from "../../services/AuthService";
+import {componentDidMountGetAndAfterPostAzure} from "../../services/Petitions";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -35,8 +36,13 @@ const useStyles = makeStyles((theme) => ({
 
 export function SignUp(props) {
 
+
     const classes = useStyles();
-    const [user, setUser] = useState();
+
+    const [user, setUser] = useState({
+      profileImage: "user.png",
+    });
+
     const [confirmp, setConfirmP] = useState("");
 
     function handleChange(event) {
@@ -47,11 +53,19 @@ export function SignUp(props) {
         setConfirmP(userConfPsd.target.value);
     }
 
+    const handleProfile = async () => {
+      componentDidMountGetAndAfterPostAzure(user.profileImage, "frontcontainer", user.profileImage,  user.username, afterCreation)
+    }
+
+    const afterCreation = (getRes) => {
+      alert(JSON.stringify(getRes))
+    }
+
     function handleSubmit() {
         if (user.password === confirmp) {
             authService.signup(user)
                 .then(response => console.info(response.status))
-                .then(() => alert('User accepted'))
+                .then(() => handleProfile())
                 .then(() => props.history.push('/login'))
                 .catch(error => {
                     if(error.response){

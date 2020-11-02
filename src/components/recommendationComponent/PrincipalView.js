@@ -26,6 +26,7 @@ export default function PrincipalView(props) {
     const FilterView = () => {
         return <ListRecommendationService filtered title={title} difficulty={difficulty} categories={categories} />
     }
+
     return (
         <div className="mainDiv" >
             {viewType === "lang" && <SpecificLanguage language={lang} />}
