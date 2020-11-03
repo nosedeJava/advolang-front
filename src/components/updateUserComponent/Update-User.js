@@ -30,15 +30,17 @@ export default function UpdateUser(){
     function updateUser(){
         AuthService.updateUser(user)
             .then(() => console.log("Ok"))
-        AzureService.putFile(file.name, file, user.username)
-            .then(response => console.log(response.status));
+        if (file){
+            AzureService.putFile(file.name, file, user.username)
+                .then(response => console.log(response.status));
+        }
     }
 
     return(
         <div className="update-user-container">
             {user&& console.log(user)}
             <div className="update-user-card">
-                <h1>Update your personal information</h1>
+                <h1 style={{textAlign:'center'}}>Update your personal information</h1>
                 <TextField
                     value={user?user.username:''}
                     label="Username"
@@ -67,7 +69,7 @@ export default function UpdateUser(){
                     name={'fullName'}
                     onChange={handleChange}
                 />
-                <h2>Thumbnail view</h2>
+                <h2 style={{margin:'10px 0 0 0'}}>Thumbnail view</h2>
                 <div className="file-upload">
                     <input onChange={handleFile} type="file" id="update-file" accept="*/*" style={{display:'none'}}/>
                     <label htmlFor="update-file">
@@ -83,7 +85,18 @@ export default function UpdateUser(){
                     )}
                 </div>
 
-                <Button color={"secondary"} variant={"contained"} onClick={updateUser}>Update</Button>
+                <TextField
+                    name="description"
+                    value={user?user.description:''}
+                    multiline
+                    rows={4}
+                    variant={"outlined"}
+                    label="Description"
+                    placeholder="Set your description"
+                    fullWidth
+                />
+
+                <Button style={{marginTop:'10px'}} color={"secondary"} variant={"contained"} onClick={updateUser}>Update</Button>
             </div>
         </div>
     )

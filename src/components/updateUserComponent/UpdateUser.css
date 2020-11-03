@@ -5,10 +5,11 @@
     flex: auto;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
 .update-user-container .update-user-card{
-    width: 30%;
+    width: 35%;
     height: auto;
     border-radius: 15px;
     box-shadow: 0 0 20px;
