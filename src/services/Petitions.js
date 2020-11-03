@@ -53,5 +53,39 @@ export const componentDidMountGetAndAfterPostAzure = async (urlGet, getContainer
   .then(res => res.data)
   .then(data => postAzure(urlGet, data, postContainer, afterAction)
   );
+}
+
+export const userInfoAzure = async (setLoading, setCurrentObject, url, setProfileImage)  => {
+
+  setLoading(true);
+  const res = await RequestService.get(url);
+  const user = JSON.parse(JSON.stringify(res.data));
+  setCurrentObject(user);
+
+  const imageRes = await AzureService.getFile(user.profileImage, user.username)
+  setProfileImage(imageRes.config.url)
+
+  setLoading(false);
+
+}
+
+
+export const recomInfoAzure = async (setLoading, setCurrentObject, url, setProfileImage, setRecObject)  => {
+
+  setLoading(true);
+  const res = await RequestService.get(url);
+  const recom = JSON.parse(JSON.stringify(res.data));
+  setCurrentObject(recom);
+
+  const imageRes = await AzureService.getFile(recom.thumbnail, recom.creator)
+  setProfileImage(imageRes.config.url)
+
+  if(recom.resourceType.toLowerCase() !== 'url'){
+    const recRes = await AzureService.getFile(recom.resource, recom.creator)
+    setRecObject(recRes.config.url)
+  }
+
+
+  setLoading(false);
 
 }

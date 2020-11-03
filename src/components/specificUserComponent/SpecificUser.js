@@ -6,7 +6,7 @@ import {ListRecommendations} from '../recommendationComponent/ListRecommendation
 import RecomPagination from '../Pagination/RecomPagination';
 import {getCurrentRecom, getUserRecommendations} from '../Auxiliar/AuxiliarTools.js';
 import ListCategories from '../recommendationComponent/ListCategories';
-import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentDidMountPost} from '../../services/Petitions.js';
+import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentDidMountPost, userInfoAzure} from '../../services/Petitions.js';
 
 
 function SpecificUser(){
@@ -16,6 +16,8 @@ function SpecificUser(){
   let user_username = params.user;
 
   const[user, setUser]  = useState({});
+  const[userProfile, setUserProfile]  = useState({});
+
   const[loadingUser, setLoadingUser] = useState(true);
 
   const [posts, setPosts] = useState([]);
@@ -24,9 +26,6 @@ function SpecificUser(){
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(4);
-
-  let current_id=localStorage.getItem('recommendation-id');
-  let currentRecom = getCurrentRecom(current_id);
 
   const url_petitions_list = [
     {
@@ -43,6 +42,8 @@ function SpecificUser(){
 
   const componentDidMount = () => {
     componentDidMountListGet(url_petitions_list);
+    userInfoAzure(setLoadingUser, setUser,'/api/users/'+ user_username, setUserProfile)
+
   }
 
   useEffect(() => {
@@ -69,7 +70,7 @@ function SpecificUser(){
               <Grid container className="specificProfileContainer" spacing={0} direction="column">
                 <Grid item className="specificProfileGridImage">
                   <Box className="roundedImageBox" border>
-                    <Avatar  alt="Remy Sharp" src="" style={{ height: '100%', width: '100%', backgroundColor: "white" }} />
+                    <Avatar  alt={user.username} src={userProfile} style={{ height: '100%', width: '100%', backgroundColor: "white" }} />
                   </Box>
                 </Grid>
 

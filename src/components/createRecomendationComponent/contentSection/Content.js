@@ -14,11 +14,16 @@ import Button from "@material-ui/core/Button";
 import AzureService from "../../../services/AzureService";
 import RequestService from "../../../services/RequestService";
 
+import {CheckValidYoutubeURL, CheckMimeType} from '../../Auxiliar/CheckMedia.js';
+
+
 export default function Content(props){
 
     const dispatch = useDispatch();
     const recommendation = useSelector(state => state.newRecommendation);
     const [file, setFile] = useState(null);
+    const [contentType, setContentType] = React.useState(true);
+
 
 
     useEffect(() => {
@@ -45,19 +50,29 @@ export default function Content(props){
         )
     }
 
-    function postRecommendation(){
+    const f = (m) => {
+      alert(m)
+    }
+
+    async function postRecommendation (){
         if (checkInputs()){
             props.setFlag(true);
             if (file){
-                AzureService.putFile(file.name, file, RequestService.getUsername())
-                    .then(response => console.log(response.status));
+              alert(JSON.stringify(file.type))
+              alert(JSON.stringify(file.name))
+              alert(JSON.stringify(RequestService.getUsername()))
+
+              const p = await AzureService.putFile(file.name, file, RequestService.getUsername())
+              alert(JSON.stringify(p))
             }
             post();
         }
     }
 
     function post(){
-        RequestService.post('/api/spanish/recommendations', recommendation)
+      if(contentType === 'Url')  recommendation.resourceType = 'url';
+
+      RequestService.post('/api/spanish/recommendations', recommendation)
             .then(response => console.log(response.status))
             .then(() => window.location.reload())
             .catch(error => {
@@ -90,6 +105,10 @@ export default function Content(props){
         return true
     }
 
+    const handleContentType  = (event) => {
+      setContentType(event.target.value)
+    }
+
     return(
         <div className="recommendation-container">
             <div className="card">
@@ -97,26 +116,27 @@ export default function Content(props){
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Content type</InputLabel>
                     <Select
-                        name="resourceType"
+                        name="contentType"
                         labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={recommendation.resourceType}
-                        onChange={handleChange}
+                        id="contentType"
+                        onChange={handleContentType}
                         placeholder="Select the content type"
                     >
                         <MenuItem value={'Url'}>Url</MenuItem>
                         <MenuItem value={'Multimedia File'}>Multimedia File</MenuItem>
                     </Select>
                 </FormControl>
-                {recommendation.resourceType === 'Url' && (
+                {contentType === 'Url' && (
                     <TextField
                         label="Url"
                         name="resource"
                         onChange={handleChange}
                         fullWidth
                     />
+
                 )}
-                {recommendation.resourceType === 'Multimedia File' && (
+
+                {contentType === 'Multimedia File' && (
                     <div className="input-file">
                         <input accept={'*/*'} type="file" id={'file'} onChange={handleFile}/>
                         <label htmlFor={'file'}>
@@ -128,7 +148,9 @@ export default function Content(props){
                                 <AttachFile/>
                             </IconButton>
                         </label>
+
                         {file ? (
+
                             <p>{file.name}</p>
                         ) : (
                             <p>No file selected yet!</p>
@@ -136,7 +158,12 @@ export default function Content(props){
                     </div>
                 )}
                 {file && (
-                    <h4>The file has been uploaded</h4>
+                    <h4>
+                      {
+                        recommendation.resourceType =file.type
+                      }
+                      The file has been uploaded
+                    </h4>
                 )}
                 <hr/>
                 <h1>Set the categories</h1>

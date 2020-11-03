@@ -11,9 +11,11 @@ import {calcProm, getRecommendationScoreColor, adaptJavaDate, calculatePublicati
 import {CheckValidYoutubeURL, CheckMimeType} from '../Auxiliar/CheckMedia.js';
 import {ShowSuccessMessage, ShowWarningMessage} from '../Auxiliar/Swal.js';
 import { useHistory } from "react-router-dom";
-import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentDidMountPost} from '../../services/Petitions.js';
+import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentDidMountPost, componentDidMountGetAzure, userInfoAzure, recomInfoAzure} from '../../services/Petitions.js';
 import {getLocalStorageObject} from '../Auxiliar/ObjectTools.js';
 import RequestService from "../../services/RequestService";
+import AzureService from "../../services/AzureService";
+
 import Swal from 'sweetalert2';
 
 function SpecificRecommendation(props) {
@@ -35,22 +37,21 @@ function SpecificRecommendation(props) {
   const [loadingScorePost, setLoadingScorePost] = React.useState(false);
   const [loadingAllScoresValue, setloadingAllScoresValue] = React.useState(false);
   const [loadingCreator_current_recom_object, setLoadingCreator_current_recom_object] = React.useState(false);
-  const [loadCompleteThumb, setLoadCompleteThumb] = React.useState(false);
 
   /* Valores de peticiones */
   const [currentRecom, setCurrentRecom] = React.useState({});
+  const [thumb, setThumb] = React.useState("/img/default.png");
+  const [recObject, setRecObject] = React.useState({});
+
   const [scoreObject, setScoreObject] = React.useState(null);
   const [allTotalScore, setAllTotalScore] = React.useState([]);
   const [creator_current_recom_object, setCreator_current_recom_object] = React.useState([]);
-  const [thumb, setThumb] = React.useState("/img/default.png");
+  const [userProfile, setUserProfile] = React.useState();
+
 
 
   const url_petitions_list = [
-    {
-      url: '/api/'+lang+'/recommendations/'+current_id,
-      setConst: setCurrentRecom,
-      loadingConst: setLoadingCurrentRecom
-    },
+
     {
       url: '/api/scores/values/' + currentUser.type + '/' + current_id,
       setConst: setScoreObject,
@@ -60,17 +61,13 @@ function SpecificRecommendation(props) {
       url: '/api/scores/values/' + current_id,
       setConst: setAllTotalScore,
       loadingConst: setloadingAllScoresValue
-    },
-    {
-      url: '/api/users/' + creator_current_recom_username,
-      setConst: setCreator_current_recom_object,
-      loadingConst: setLoadingCreator_current_recom_object
     }
   ]
 
   const componentDidMount = () => {
+    recomInfoAzure(setLoadingCurrentRecom, setCurrentRecom, '/api/'+lang+'/recommendations/'+current_id,setThumb, setRecObject)
     componentDidMountListGet(url_petitions_list);
-    componentDidMountGetWithAzureAfter(setLoadCompleteThumb, setThumb, '/api/'+ lang +'/recommendations/'+ current_id + '/thumbnail');
+    userInfoAzure(setLoadingCreator_current_recom_object, setCreator_current_recom_object, '/api/users/' + creator_current_recom_username, setUserProfile)
   }
 
   useEffect(() => {
@@ -150,7 +147,7 @@ function SpecificRecommendation(props) {
     CheckValidYoutubeURL("https://www.youtube.com/watch?v=BjC0KUxiMhc", callback);
   }
 
-  if (loadingCurrentRecom || loadingScorePost || loadingAllScoresValue || loadingCreator_current_recom_object || loadCompleteThumb ) {
+  if (loadingCurrentRecom || loadingScorePost || loadingAllScoresValue || loadingCreator_current_recom_object  ) {
     return <h2>Loading...</h2>;
   }
 
@@ -221,7 +218,7 @@ function SpecificRecommendation(props) {
             {/* Uso del enlace relacionado a la recomendación.*/}
             <Grid item className="recomRecourseGrid">
               <Box className="recomRecourseBox" align="center">
-                <ResourceController resource={currentRecom.resource}/>
+                <ResourceController resource={recObject} resourceType = {currentRecom.resourceType} />
               </Box>
 
             </Grid>
@@ -253,7 +250,7 @@ function SpecificRecommendation(props) {
                     {/* Aquí uso el nombre de usuario y el enlace a la imagen de perfil.*/}
                     <Grid item className="userProfileGrid">
                       <div className="userImageDiv">
-                        <Avatar variant="square" alt="Stinky" src={creator_current_recom_object.profileImage} style={{ height: '100%', width: '100%' }} />
+                        <Avatar variant="square" alt={creator_current_recom_object.username} src={userProfile} style={{ height: '100%', width: '100%' }} />
                       </div>
                     </Grid>
 

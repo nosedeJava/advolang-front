@@ -1,8 +1,14 @@
-import React from 'react';
-import {Box } from '@material-ui/core';
+import React, { useEffect }  from 'react';
+import {Box} from '@material-ui/core';
 import './ResourceController.css';
+import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentDidMountPost, componentDidMountGetAzure} from '../../services/Petitions.js';
+
 
 export function ResourceController(props) {
+
+  const rec = props.resource;
+  const type = props.resourceType.toLowerCase();
+
 
   const imageDiv=(url)=>{
     return (
@@ -12,19 +18,19 @@ export function ResourceController(props) {
     );
   };
 
-  const audioDiv=(url)=>{
+  const audioDiv=(url, type)=>{
     return (
 
       <Box className="audioBox">
         <audio controls="controls">
-          <source src={url} type="audio/mp3"/>
+          <source src={url} type={type}/>
           Your browser does not support the audio element.
         </audio>
       </Box>
     );
   };
 
-  const videoDiv=(url)=>{
+  const videoDiv=(url, type)=>{
     return (
 
       <Box className="video-responsive">
@@ -32,31 +38,39 @@ export function ResourceController(props) {
           title="video"
           src={url}
           frameborder="0"
+          type={type}
           allowfullscreen="allowfullscreen">
         </iframe>
       </Box>
     );
   };
 
-  const typeList={
-    "video": videoDiv(props.resource.url),
-    "image": imageDiv(props.resource.url),
-    "audio": audioDiv(props.resource.url)
-  }
 
-  const options = (resource) => {
-    const type=resource.type;
-    // const url=resource.url;
+  const options = () => {
 
-    // const objectq=typeList[type];
+    const typeList={
+      "video": videoDiv(rec, type),
+      "image": imageDiv(rec, type),
+      "audio": audioDiv(rec, type)
+    }
+
+    const typeParts = type.split("/");
+    const specificType = typeParts[0]
+
+
     return (
-      typeList[type]
+      <div>
+        {typeList[specificType]}
+      </div>
     );
   }
 
   return (
     <div>
-      {options(props.resource)}
+      {
+        options()
+      }
+
     </div>
   );
 }
