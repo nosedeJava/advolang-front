@@ -41,3 +41,17 @@ export const componentDidMountPost = async (setLoading, afterPost, url, data) =>
   afterPost(JSON.parse(JSON.stringify(res.data)));
   setLoading(false);
 };
+
+export const postAzure= async (urlGet, file, postContainer, afterAction) => {
+  const putRes = await AzureService.putFile(urlGet, file, postContainer);
+  afterAction(putRes)
+
+}
+
+export const componentDidMountGetAndAfterPostAzure = async (urlGet, getContainer, urlPost, postContainer, afterAction) => {
+  AzureService.getFile(urlGet, getContainer)
+  .then(res => res.data)
+  .then(data => postAzure(urlGet, data, postContainer, afterAction)
+  );
+
+}

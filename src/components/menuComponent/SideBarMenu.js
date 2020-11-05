@@ -8,16 +8,17 @@ import {MenuItemsList} from './MenuItemsList';
 import {List, ListItem, ListItemIcon, ListItemText, Box} from '@material-ui/core';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Avatar from '@material-ui/core/Avatar';
-import RequestService from "../../services/RequestService";
-import LoadImage from "../../services/LoadImage";
+import {componentDidMountGetAzure} from '../../services/Petitions.js';
+
 
 export function SideBarMenu (props){
 
-  const [user, setUser] = useState({fullName:'', email:''});
+  const user = JSON.parse(localStorage.getItem('user'));
+  const [LoadProf, setLoadProf] = React.useState(false);
+  const [prof, setProf] = React.useState();
 
   useEffect(() => {
-    RequestService.getUser()
-        .then(response => setUser(response))
+    componentDidMountGetAzure(setLoadProf, setProf, user.profileImage, user.id )
   },[])
 
   const [state, setState] = React.useState({
@@ -49,16 +50,12 @@ export function SideBarMenu (props){
     >
       <List>
         <ListItem button key="userInfo">
-          <div className="avatarProfileImageBox">
-            {user && !user.profileImage ? (
-                LoadImage('user.png', 'frontcontainer',100)
-            ):(
-                LoadImage(user.profileImage, RequestService.getUsername(),100)
-            )}
-          </div>
+          <Box className="avatarProfileImageBox">
+            <Avatar  alt="Remy Sharp" src={prof}  style={{width: 48, height: 48, backgroundColor: "#f3f3f3" }} />
+          </Box>
           <ListItemText
             className = "userProfileData"
-            primary={user.fullName}
+            primary={user.fullname}
             secondary={user.email}
           />
         </ListItem>
@@ -88,7 +85,6 @@ export function SideBarMenu (props){
   const menuSide=props.side;
 
   return(
-
     <div>
       <React.Fragment key={menuSide}>
         <IconButton color="inherit" aria-label="open drawer" onClick={toggleDrawer(menuSide, true)} edge="start">
