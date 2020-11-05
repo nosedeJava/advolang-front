@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import "./App.css";
-import { BrowserRouter, Switch, Route, useParams } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { ProtectedRoute } from './components/protectedRouteComponent/ProtectedRoute';
-import { SignIn } from "./components/signComponent/SignIn";
 import { SignUp } from "./components/signComponent/SignUp";
 import PrincipalView from "./components/recommendationComponent/PrincipalView";
 import SpecificRecommendation from "./components/specificRecommendationComponent/SpecificRecommendation"
@@ -16,10 +15,10 @@ import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import SavedRecommendations from "./components/savedRecommendations/SavedRecommendations"
 import SpecificUser from "./components/specificUserComponent/SpecificUser"
 import UpdateUser from "./components/updateUserComponent/Update-User";
-import { AccountCircle } from "@material-ui/icons";
 import SettingsIcon from '@material-ui/icons/Settings';
 import Languages from './components/languageComponent/Languages';
 import PrincipalViewLanguage from './components/languageComponent/PrincipalViewLanguage'
+import SignIn from "./components/signComponent/SignIn";
 
 export default function App() {
 

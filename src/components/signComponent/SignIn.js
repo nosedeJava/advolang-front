@@ -1,42 +1,11 @@
-import React, {useState} from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Copyright from "./Copyright";
-import authService from "../../services/AuthService";
+import React, {useState} from "react";
+import './SignIn.css';
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import AuthService from "../../services/AuthService";
 
-const useStyles = makeStyles((theme) => ({
-    paper: {
-        marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.primary.main,
-    },
-    form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(3),
-    },
-    submit: {
-        margin: theme.spacing(3, 0, 2),
-    },
-}));
+export default function SignIn(props){
 
-export function SignIn(props) {
-    const classes = useStyles();
     const [user, setUser] = useState(null);
 
     function handleChange(event){
@@ -44,74 +13,63 @@ export function SignIn(props) {
     }
 
     function handleSubmit(){
-        authService.login(user, props.history)
+        AuthService.login(user, props.history)
             .then(() => props.history.push('/'));
 
     }
-    return (
-        <Container component="main" maxWidth="xs">
-            <CssBaseline />
-            <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5" style={{ color: 'black' }}>
-                    Sign In
-                </Typography>
-                <form className={classes.form}  >
-                    <Grid container spacing={2}>
-                        <Grid item xs={12}>
-                            <TextField
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="username"
-                                label="User Name"
-                                name="username"
-                                onChange = {handleChange}
-                                autoComplete="email"
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                variant="outlined"
-                                required
-                                fullWidth
-                                name="password"
-                                label="Password"
-                                type="password"
-                                id="password"
-                                onChange = {handleChange}
-                                autoComplete="current-password"
-                            />
-                        </Grid>
-                    </Grid>
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
-                    />
+    return(
+        <div className="signIn-container">
+            <div className="background-container">
+                <div className="signIn-container">
+                    <div className="image"/>
+                    <div className="inputs">
+                        <h1 style={{margin:'0'}}>Sign In</h1>
+                        <TextField
+                            variant="outlined"
+                            required
+                            fullWidth
+                            id="username"
+                            label="User Name"
+                            name="username"
+                            onChange = {handleChange}
+                            autoComplete="email"
+                            style={{margin: '20px 0 0 0'}}
+                        />
+                        <TextField
+                            variant="outlined"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            onChange = {handleChange}
+                            autoComplete="current-password"
+                            style={{margin: '20px 0 0 0'}}
+                        />
+                        <Button
+                            style={{margin: '20px 20px 0 20px'}}
+                            variant={"contained"}
+                            color={"primary"}
+                            fullWidth
+                            onClick={handleSubmit}
+                        >
+                            Sign in
+                        </Button>
+                    </div>
+                </div>
+                <div className="left-panel">
+                    <h1>Don't have an account?</h1>
                     <Button
-                        type="button"
                         fullWidth
-                        variant="contained"
-                        color="primary"
-                        onClick={handleSubmit}
-                        className={classes.submit}
+                        color='primary'
+                        variant={"contained"}
+                        onClick={() => props.history.push('/signup')}
                     >
-                        Sign In
+                        Sign Up
                     </Button>
-                    <Grid container justify="flex-end">
-                        <Grid item>
-                            <Link href={"/signup"} variant="body2">
-                                You do not have an account?
-                            </Link>
-                        </Grid>
-                    </Grid>
-                </form>
+                </div>
             </div>
-            <Box mt={5}>
-                <Copyright />
-            </Box>
-        </Container>
-    );
+        </div>
+    )
 }
