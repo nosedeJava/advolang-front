@@ -1,70 +1,37 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Advolang
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://peaceful-bastion-97971.herokuapp.com/)
+Este repositorio correpsonde al codigo de front-end del proyecto Advolang
 
-## Available Scripts
+Actualmente esta desplegado en heroku
 
-In the project directory, you can run:
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://advolang.herokuapp.com/)
 
-### `npm start`
+## Problema a solucionar
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Los métodos tradicionales hacen engorroso el aprendizaje de un nuevo idioma, acarreando consigo algunos problemas entre ellos, que tiene como prioridad como cualquier otro negocio de maximizar la utilidad, por lo que se tienden a alargar los programas al punto de por ejemplo dedicar todo un semestre a aprender dos o tres tiempos gramaticales en un programa de inglés, cuando no necesariamente el proceso debe ser tan tardío. Por otra parte estos cursos suelen ser costosos, pues debido al alargue de sus programas te encontraras pagando varias veces una suscripción que no te provee el conocimiento esperado, esto conlleva en muchos casos a que las personas terminen aburriéndose y abandonando la consistencia en su aprendizaje.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Descripción
 
-### `npm test`
+Nuestra plataforma permite el aprendizaje colaborativo de diferentes comunidades, a través de la recomendación de contenido, que permita el desarrollo de la habilidad en un idioma. Este contenido puede variar, pues pueden ser videos de YouTube, libros, guías, películas, entre otros. Fundamentalmente puedes recomendar cualquier cosa que pueda servirle a la comunidad para mejorar en su camino a la fluidez de un idioma. Este contenido está etiquetado para que sea fácil de buscar y así se adecue a los intereses del usuario, lo que buscamos es que las personas tengan un acercamiento del idioma que quieren aprender a su vida cotidiana.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Arquitectura
 
-### `npm run build`
+En este caso nuestra aplicación esta diseñada considerando 4 componentes para su funcionamiento
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Spring-boot para el back-end
+- React para el front-end
+- MongoDB para el almacenamiento de la información
+- Azure Storage(blob) para el alamcenamiento de multimedia
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+A continuación, mostramos algunos de los modelos usados dentro de esta aplicación.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Diagrama de componentes
 
-### `npm run eject`
+![Diagrama de componentes](https://raw.githubusercontent.com/nosedeJava/advolang-front/master/public/img/component%20diagram.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Autores
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Michael Preciado (urobs17)
+- Jeymar Vega (Stilink)
+- Miguel Rivera (migue1994)
+- Natalia Duran (nduran06)
