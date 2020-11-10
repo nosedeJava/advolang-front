@@ -54,7 +54,7 @@ export default function HoverRating(props) {
     <div className="hooverDiv">
       <Rating
         name="hover-feedback"
-        value={value}
+        value={parseFloat(value)}
         precision={0.1}
         onChange={(event,newValue) => postRating(newValue)}
         onChangeActive={(event, newHover) => {
