@@ -59,6 +59,7 @@ export const componentDidMountGetAndAfterPostAzure = async (urlGet, getContainer
   );
 }
 
+/* Load specific user component info */
 export const userInfoAzure = async (setLoading, setCurrentObject, url, setProfileImage)  => {
 
   setLoading(true);
@@ -74,6 +75,7 @@ export const userInfoAzure = async (setLoading, setCurrentObject, url, setProfil
 }
 
 
+/* Load specific recommendation component info */
 export const recomInfoAzure = async (setLoading, setCurrentObject, url, setProfileImage, setRecObject, setDivText)  => {
 
   setLoading(true);
@@ -117,7 +119,7 @@ export const recomInfoAzure = async (setLoading, setCurrentObject, url, setProfi
     }
 
     await LinkPreview.getPreview(recom.resource)
-        .then(data => setDivText([JSON.parse(JSON.stringify(data)), finalImage])-1);
+        .then(data => setDivText([JSON.parse(JSON.stringify(data)), finalImage]));
   }
 
   setLoading(false);

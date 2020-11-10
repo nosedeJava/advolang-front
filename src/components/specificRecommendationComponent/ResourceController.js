@@ -1,17 +1,21 @@
-import React, { useEffect }  from 'react';
+import React from 'react';
 import {Box} from '@material-ui/core';
 import './ResourceController.css';
-import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentDidMountPost, componentDidMountGetAzure} from '../../services/Petitions.js';
 import { LinkPreviewer } from "./preview/LinkPreviewer";
-import LinkPreview from 'react-native-link-preview';
-
+import {getYoutubeVideoId, validVideoId, getYouTubeEmbedURL} from '../Auxiliar/CheckMedia.js';
 
 export function ResourceController(props) {
 
   const rec = props.resource;
   const type = props.resourceType.toLowerCase();
-  const urlContent = props.contentURL[0];
-  const urlImage = props.contentURL[1];
+  let urlContent ;
+  let urlImage ;
+
+  if (typeof(props.contentURL) !== 'undefined') {
+    urlContent = props.contentURL[0];
+    urlImage = props.contentURL[1];
+  }
+
 
   const imageDiv=(url)=>{
     return (
@@ -66,7 +70,18 @@ export function ResourceController(props) {
   const options = () => {
     if(type === 'url'){
 
-      return <div>{textDiv()}</div>
+      const youTubeId = getYoutubeVideoId(rec);
+
+      if(youTubeId !== null){
+        if(validVideoId(youTubeId)) {
+          const youTubeEmbed = getYouTubeEmbedURL(youTubeId)
+          return <div> {videoDiv(youTubeEmbed, "video")} </div>;
+        }
+      }
+
+      else {
+        return <div>{textDiv()}</div>
+      }
     }
 
     const typeList={
@@ -78,11 +93,8 @@ export function ResourceController(props) {
     const typeParts = type.split("/");
     const specificType = typeParts[0]
 
-
     return (
-      <div>
-        {typeList[specificType]}
-      </div>
+      <div> {typeList[specificType]} </div>
     );
   }
 

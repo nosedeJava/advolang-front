@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import './LinkPreviewer.css';
 import {Box} from '@material-ui/core';
 
