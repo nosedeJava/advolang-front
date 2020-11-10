@@ -2,13 +2,16 @@ import React, { useEffect }  from 'react';
 import {Box} from '@material-ui/core';
 import './ResourceController.css';
 import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentDidMountPost, componentDidMountGetAzure} from '../../services/Petitions.js';
+import { LinkPreviewer } from "./preview/LinkPreviewer";
+import LinkPreview from 'react-native-link-preview';
 
 
 export function ResourceController(props) {
 
   const rec = props.resource;
   const type = props.resourceType.toLowerCase();
-
+  const urlContent = props.contentURL[0];
+  const urlImage = props.contentURL[1];
 
   const imageDiv=(url)=>{
     return (
@@ -45,8 +48,26 @@ export function ResourceController(props) {
     );
   };
 
+  const textDiv = () => {
+    return (
+      <Box  className="urlContent">
+        <LinkPreviewer
+          href={rec}
+          image={urlImage}
+          title={urlContent.title}
+          text={urlContent.description}
+        >
+        </LinkPreviewer>
+      </Box>
+    );
+  }
+
 
   const options = () => {
+    if(type === 'url'){
+
+      return <div>{textDiv()}</div>
+    }
 
     const typeList={
       "video": videoDiv(rec, type),
@@ -64,6 +85,7 @@ export function ResourceController(props) {
       </div>
     );
   }
+
 
   return (
     <div>

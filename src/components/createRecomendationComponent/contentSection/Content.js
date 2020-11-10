@@ -14,8 +14,6 @@ import Button from "@material-ui/core/Button";
 import AzureService from "../../../services/AzureService";
 import RequestService from "../../../services/RequestService";
 
-import {CheckValidYoutubeURL, CheckMimeType} from '../../Auxiliar/CheckMedia.js';
-
 
 export default function Content(props){
 
@@ -50,12 +48,10 @@ export default function Content(props){
         )
     }
 
-    const f = (m) => {
-      alert(m)
-    }
 
     async function postRecommendation (){
         if (checkInputs()){
+
             props.setFlag(true);
             if (file){
               alert(JSON.stringify(file.type))

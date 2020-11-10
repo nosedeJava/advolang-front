@@ -8,14 +8,12 @@ import FormDialog from './ReportDialog';
 import ListCategories from '../recommendationComponent/ListCategories';
 import {ResourceController} from './ResourceController.js';
 import {calcProm, getRecommendationScoreColor, adaptJavaDate, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
-import {CheckValidYoutubeURL, CheckMimeType} from '../Auxiliar/CheckMedia.js';
+import {CheckValidYoutubeURL, CheckMimeType, getYoutubeVideoId} from '../Auxiliar/CheckMedia.js';
 import {ShowSuccessMessage, ShowWarningMessage} from '../Auxiliar/Swal.js';
 import { useHistory } from "react-router-dom";
 import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentDidMountPost, componentDidMountGetAzure, userInfoAzure, recomInfoAzure} from '../../services/Petitions.js';
 import {getLocalStorageObject} from '../Auxiliar/ObjectTools.js';
 import RequestService from "../../services/RequestService";
-import AzureService from "../../services/AzureService";
-
 import Swal from 'sweetalert2';
 
 function SpecificRecommendation(props) {
@@ -49,6 +47,11 @@ function SpecificRecommendation(props) {
   const [userProfile, setUserProfile] = React.useState();
 
 
+  const [divText, setDivText] = React.useState()
+
+
+  const [state, setState] = React.useState()
+
 
   const url_petitions_list = [
 
@@ -65,12 +68,18 @@ function SpecificRecommendation(props) {
   ]
 
   const componentDidMount = () => {
-    recomInfoAzure(setLoadingCurrentRecom, setCurrentRecom, '/api/'+lang+'/recommendations/'+current_id,setThumb, setRecObject)
+    recomInfoAzure(setLoadingCurrentRecom, setCurrentRecom, '/api/'+lang+'/recommendations/'+current_id,setThumb, setRecObject, setDivText);
     componentDidMountListGet(url_petitions_list);
-    userInfoAzure(setLoadingCreator_current_recom_object, setCreator_current_recom_object, '/api/users/' + creator_current_recom_username, setUserProfile)
+    userInfoAzure(setLoadingCreator_current_recom_object, setCreator_current_recom_object, '/api/users/' + creator_current_recom_username, setUserProfile);
+  }
+
+  const alerts = (p) => {
+    alert(JSON.stringify(p))
+    setState(p.data)
   }
 
   useEffect(() => {
+
       componentDidMount();
       window.scrollTo(0, 0);
   }, []);
@@ -142,10 +151,19 @@ function SpecificRecommendation(props) {
 
   }
 
-  const typesRec = () =>{
+  const typesRec = () => {
     alert(CheckMimeType("PP.txt"))
-    CheckValidYoutubeURL("https://www.youtube.com/watch?v=BjC0KUxiMhc", callback);
+    CheckValidYoutubeURL("https://www.youtube.com/watch?v=8yvEYKRF5zzzA&list=8yvEYKRF5zzzA&start_radio=1", callback);
   }
+
+  const alertAns = (ans) => {
+    alert(ans)
+  }
+
+  const checkURL = () => {
+    CheckValidYoutubeURL("https://www.youtube.com/watch?v=8yvEYKRF5IA&list=RD8yvEYKRF5IA&start_radio=1", alertAns)
+  }
+
 
   if (loadingCurrentRecom || loadingScorePost || loadingAllScoresValue || loadingCreator_current_recom_object  ) {
     return <h2>Loading...</h2>;
@@ -218,7 +236,7 @@ function SpecificRecommendation(props) {
             {/* Uso del enlace relacionado a la recomendación.*/}
             <Grid item className="recomRecourseGrid">
               <Box className="recomRecourseBox" align="center">
-                <ResourceController resource={recObject} resourceType = {currentRecom.resourceType} />
+                <ResourceController resource={recObject} resourceType = {currentRecom.resourceType} contentURL={divText} />
               </Box>
 
             </Grid>
@@ -240,7 +258,7 @@ function SpecificRecommendation(props) {
         </Grid>
 
         {/* Usuario creador*/}
-        <Grid item xs={4} direction="row" className="gridUserContainerMain">
+        <Grid container item xs={4} direction="row" className="gridUserContainerMain">
           <Grid container spacing={0} direction="column" className="gridUserContainer">
             <Grid item className="userFirstGrid">
               <ButtonBase className="specificUserButtonBase" onClick={handleSpecificUser}>

@@ -1,5 +1,9 @@
 import RequestService from "./RequestService";
 import AzureService from './AzureService';
+import LinkPreview from 'react-native-link-preview';
+import JSSoup from 'jssoup';
+
+const axios = require('axios').default;
 
 /* Realiza la petición get a una URL dada
 
@@ -70,7 +74,7 @@ export const userInfoAzure = async (setLoading, setCurrentObject, url, setProfil
 }
 
 
-export const recomInfoAzure = async (setLoading, setCurrentObject, url, setProfileImage, setRecObject)  => {
+export const recomInfoAzure = async (setLoading, setCurrentObject, url, setProfileImage, setRecObject, setDivText)  => {
 
   setLoading(true);
   const res = await RequestService.get(url);
@@ -85,7 +89,36 @@ export const recomInfoAzure = async (setLoading, setCurrentObject, url, setProfi
     setRecObject(recRes.config.url)
   }
 
+  else {
+    setRecObject(recom.resource)
+    const p = await axios.get(recom.resource);
+    var soup = new JSSoup(p.data, false);
+
+    let links = []
+
+    soup.findAll('img').forEach(element => {
+      /*let imgSrc = element.get('src')
+      links.append(imgSrc)*/
+      let imgSrc = element.attrs.src
+      if(imgSrc.substring(0, 4) === "http") {
+        links.push(imgSrc)
+      }
+    });
+
+    let finalImage = "";
+
+    const linkLength = links.length
+    if(linkLength >= 2) {
+      finalImage = links[1]
+    }
+
+    else if (linkLength === 1){
+      finalImage = links[0]
+    }
+
+    await LinkPreview.getPreview(recom.resource)
+        .then(data => setDivText([JSON.parse(JSON.stringify(data)), finalImage])-1);
+  }
 
   setLoading(false);
-
 }

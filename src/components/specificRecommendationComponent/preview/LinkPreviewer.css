@@ -1,0 +1,42 @@
+.previewerDiv {
+  width: 100%;
+  background-color: #d1d1d1;
+  border-radius: 5px;
+}
+
+.previewerDiv:hover>* {
+  opacity: 0.6;
+}
+
+
+.tittleLinkPrevBox {
+  text-align: left;
+  background-color: #d1d1d1;
+  color: black;
+  padding: 0.2rem 1rem 0.05rem 1rem;
+}
+
+.imageLinkPrevBox {
+  width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #d1d1d1;
+  border-radius: 5px;
+
+}
+
+.imageLinkPrev {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px 5px 0 0;
+
+}
+
+.descLinkPrevBox {
+  text-align: left;
+  color: #8c8c8c;
+  background-color: #d1d1d1;
+  padding: 0.05rem 1rem 0.2rem 1rem;
+  border-radius: 0 0 5px 5px;
+}
