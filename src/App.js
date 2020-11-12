@@ -19,6 +19,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import Languages from './components/languageComponent/Languages';
 import PrincipalViewLanguage from './components/languageComponent/PrincipalViewLanguage'
 import SignIn from "./components/signComponent/SignIn";
+import MainPage from "./components/mainPageComponent/MainPage";
 
 export default function App() {
 
@@ -100,6 +101,7 @@ export default function App() {
   return (
     <div>
       <Switch>
+        <Route exact path="/mainPage" component={MainPage}/>
         <Route exact path="/login" component={SignIn} />
         <Route exact path="/signup" component={SignUp} />
         {protectedElements}
