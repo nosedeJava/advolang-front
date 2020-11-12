@@ -38,7 +38,7 @@ export function SideBarMenu (props){
 
   const handleLogout = () => {
     localStorage.clear();
-    props.history.push("/login");
+    props.history.push("/mainPage");
   }
 
   const list = (anchor) => (

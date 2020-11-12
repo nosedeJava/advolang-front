@@ -1,10 +1,11 @@
 .mainPage-container{
     width: 100%;
-    min-height: 100vh;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: url("/img/content.jpg") no-repeat center fixed;
+    background-size: cover;
 }
 
 .mainPage-container .header{
@@ -24,46 +25,113 @@
     padding: 0 50px;
     border-radius: 20px;
     font-family: cursive;
+    color: white;
 }
 
 .mainPage-container .content{
-    width: 78%;
-    margin: 50px 100px;
+    width: 90%;
+    margin: 10px 100px;
     height: auto;
-    padding: 40px 50px;
+    padding: 20px 50px;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     border-radius: 15px;
-    box-shadow: 0 0 20px black;
 }
 
 .content img{
-    width: 50%;
-    height: 350px;
+    width: 45%;
+    height: 300px;
     border-radius: 15px;
+    box-shadow: 0 0 10px black;
 }
 
-.content h2{
+.content p{
     width: 45%;
-    font-size: 40px;
+    font-size: 35px;
     text-align: justify;
-    color: black;
+    color: #c65757;
+    font-family: "Yrsa Medium", serif;
 }
 
 .mainPage-container .title{
     text-align: center;
-    margin-top: 80px;
-    color: #407088;
+    margin-top: 50px;
+    margin-bottom: 0;
     font-size: 60px;
+    padding: 0;
+    color: #000000;
+    font-family: Verdana, serif;
 }
 
 .mainPage-container hr{
-    width: 80%;
+    width: 90%;
     background-color: transparent;
-    border-top: 1px solid #bebec1;
+    border-top: 1px solid #b5afaf;
     padding: 0;
-    margin: 0;
+    margin: 40px 0 0 0;
+}
+
+.mainPage-container .footer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background: url("/img/footer.jpg");
+}
+
+.footer .information{
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.information .brand{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    flex: auto;
+}
+
+.brand img{
+    width: 300px;
+    height: 150px;
+}
+
+.information .contact-us{
+    padding: 10px;
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.information .get-start{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.get-start .but{
+    background: #bea17e;
+    padding: 0 50px;
+    border-radius: 20px;
+    font-family: cursive;
+    color: white;
+}
+
+li{
+    color: white;
 }
