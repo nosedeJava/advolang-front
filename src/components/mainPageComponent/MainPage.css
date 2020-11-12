@@ -1,0 +1,137 @@
+.mainPage-container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url("/img/content.jpg") no-repeat center fixed;
+    background-size: cover;
+}
+
+.mainPage-container .header{
+    width: 100%;
+    height: 100vh;
+    background: url("/img/main-back.png") center no-repeat;
+    background-size: cover;
+    display: flex;
+}
+
+.header .button{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 83%;
+    background: #bea17e;
+    padding: 0 50px;
+    border-radius: 20px;
+    font-family: cursive;
+    color: white;
+}
+
+.mainPage-container .content{
+    width: 90%;
+    margin: 10px 100px;
+    height: auto;
+    padding: 20px 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 15px;
+}
+
+.content img{
+    width: 45%;
+    height: 300px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px black;
+}
+
+.content p{
+    width: 45%;
+    font-size: 35px;
+    text-align: justify;
+    color: #c65757;
+    font-family: "Yrsa Medium", serif;
+}
+
+.mainPage-container .title{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 0;
+    font-size: 60px;
+    padding: 0;
+    color: #000000;
+    font-family: Verdana, serif;
+}
+
+.mainPage-container hr{
+    width: 90%;
+    background-color: transparent;
+    border-top: 1px solid #b5afaf;
+    padding: 0;
+    margin: 40px 0 0 0;
+}
+
+.mainPage-container .footer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background: url("/img/footer.jpg");
+}
+
+.footer .information{
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.information .brand{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    flex: auto;
+}
+
+.brand img{
+    width: 300px;
+    height: 150px;
+}
+
+.information .contact-us{
+    padding: 10px;
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.information .get-start{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.get-start .but{
+    background: #bea17e;
+    padding: 0 50px;
+    border-radius: 20px;
+    font-family: cursive;
+    color: white;
+}
+
+li{
+    color: white;
+}
