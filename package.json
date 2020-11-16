@@ -39,6 +39,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-swipeable-views": "^0.13.9",
+    "react-youtube": "^7.13.0",
     "redux": "^4.0.5",
     "styled-components": "^5.2.0",
     "swaelos-youtube-validator": "^1.1.0",

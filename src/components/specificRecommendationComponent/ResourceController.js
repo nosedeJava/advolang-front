@@ -75,7 +75,7 @@ export function ResourceController(props) {
       if(youTubeId !== null){
         if(validVideoId(youTubeId)) {
           const youTubeEmbed = getYouTubeEmbedURL(youTubeId)
-          return <div> {videoDiv(youTubeEmbed, "video")} </div>;
+          return <div> {videoDiv("http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=http://localhost:3000/", "video")} </div>;
         }
       }
 
