@@ -2,15 +2,10 @@ import RequestService from "./RequestService";
 import AzureService from './AzureService';
 import LinkPreview from 'react-native-link-preview';
 import JSSoup from 'jssoup';
-
+import {fetch} from 'whatwg-fetch';
 const axios = require('axios').default;
+const invocation = new XMLHttpRequest();
 
-/* Realiza la petición get a una URL dada
-
-   setLoading -> Cambia el valor de loading de un componente
-   setCurrentObject -> Cambia el valor de un objeto con la respuesta de la petición
-   url -> URL de donde se va a realizar la petición (http://localhost:8080/URL o https://heroku.com/URL)
-*/
 export const componentDidMountGet = async (setLoading, setCurrentObject, url) => {
 
   try{
@@ -110,6 +105,10 @@ export const userInfoAzure = async (setLoading, setCurrentObject, url, setProfil
   }
 }
 
+const handlerHTTPRequest = (e) => {
+  alert(JSON.stringify(e))
+  alert("json data " +JSON.stringify(e.data))
+}
 
 /* Load specific recommendation component info */
 export const recomInfoAzure = async (setLoading, setCurrentObject, url, setProfileImage, setRecObject, setDivText)  => {
@@ -130,6 +129,40 @@ export const recomInfoAzure = async (setLoading, setCurrentObject, url, setProfi
     }
 
     else {
+
+      /*let externalData;
+
+      invocation.open('GET', 'https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS?redirectlocale=en-US&redirectslug=HTTP_access_control', false);
+xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+      invocation.onload = function (e) {
+      if (invocation.readyState === 4) {
+        alert(invocation.responseText)
+
+        if (invocation.status === 200) {
+
+          var json_obj = JSON.parse(invocation.responseText);
+          alert(JSON.stringify(json_obj))
+        } else {
+          console.error(invocation.statusText);
+        }
+      }
+    }
+    invocation.onerror = function (e) {
+      console.error(invocation.statusText);
+    };
+      invocation.send();*/
+
+      fetch('https://www.google.com?redirectlocale=en-US&redirectslug=HTTP_access_control', {
+    mode: 'no-cors',
+  })
+  .then(response => console.log(response))
+  .catch(error => console.error(error))
+  fetch('https://www.google.com', {
+mode: 'no-cors',
+})
+.then(response => console.log(response))
+.catch(error => console.error(error))
+
       setRecObject(recom.resource)
       const p = await axios.get(recom.resource, {
         headers: {

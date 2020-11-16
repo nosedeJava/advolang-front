@@ -2,6 +2,12 @@
   "name": "advolang",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "-": "0.0.1",
     "@material-ui/core": "^4.11.0",
@@ -13,7 +19,11 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
+    "clean": "^4.0.2",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-favicon": "^2.0.1",
+    "fetch": "^1.1.0",
     "gatsby-plugin-react-helmet": "^3.3.14",
     "grommet": "^2.15.0",
     "grommet-icons": "^4.4.0",
@@ -22,6 +32,7 @@
     "mime-types": "^2.1.27",
     "moment": "^2.29.1",
     "opengraph-react": "^1.3.0",
+    "path": "^0.12.7",
     "prerender-node": "^3.2.5",
     "react": "^16.13.1",
     "react-bootstrap": "^1.3.0",
@@ -44,14 +55,9 @@
     "styled-components": "^5.2.0",
     "swaelos-youtube-validator": "^1.1.0",
     "sweetalert2": "^10.3.5",
+    "whatwg-fetch": "^3.5.0",
     "youtube-validate": "^1.2.4",
     "youtube-validator": "^1.1.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

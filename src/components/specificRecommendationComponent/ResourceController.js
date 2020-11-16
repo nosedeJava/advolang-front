@@ -11,6 +11,8 @@ export function ResourceController(props) {
   let urlContent ;
   let urlImage ;
 
+  
+
   if (typeof(props.contentURL) !== 'undefined') {
     urlContent = props.contentURL[0];
     urlImage = props.contentURL[1];

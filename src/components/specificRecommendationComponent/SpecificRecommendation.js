@@ -15,7 +15,8 @@ import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentD
 import {getLocalStorageObject} from '../Auxiliar/ObjectTools.js';
 import RequestService from "../../services/RequestService";
 import Swal from 'sweetalert2';
-
+import {fetch} from 'whatwg-fetch';
+var invocation = new XMLHttpRequest();
 function SpecificRecommendation(props) {
 
   let history = useHistory();
@@ -67,10 +68,23 @@ function SpecificRecommendation(props) {
     }
   ]
 
-  const componentDidMount = () => {
+  const handler = (e) =>{
+    console.log(e)
+  }
+
+  const componentDidMount = async () => {
     recomInfoAzure(setLoadingCurrentRecom, setCurrentRecom, '/api/'+lang+'/recommendations/'+current_id,setThumb, setRecObject, setDivText);
     componentDidMountListGet(url_petitions_list);
     userInfoAzure(setLoadingCreator_current_recom_object, setCreator_current_recom_object, '/api/users/' + creator_current_recom_username, setUserProfile);
+
+    /*var invocation = new XMLHttpRequest();
+    var url = 'https://yts.mx/api/v2/list_movies.json';
+
+    invocation.open('GET', url, true);
+    invocation.onreadystatechange = handler;
+    invocation.send();*/
+
+
   }
 
   const alerts = (p) => {
