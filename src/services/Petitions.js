@@ -12,25 +12,33 @@ const axios = require('axios').default;
    url -> URL de donde se va a realizar la petición (http://localhost:8080/URL o https://heroku.com/URL)
 */
 export const componentDidMountGet = async (setLoading, setCurrentObject, url) => {
-  setLoading(true);
-  const res = await RequestService.get(url);
-  setCurrentObject(JSON.parse(JSON.stringify(res.data)));
-  setLoading(false);
-};
 
-export const componentDidMountGetWithAzureAfter = async (setLoading, setAzureObject, url) => {
-  setLoading(true);
-  const res = await RequestService.get(url);
-  const azureURLRec = JSON.parse(JSON.stringify(res.data));
-  if(azureURLRec !== "") componentDidMountGetAzure(setLoading, setAzureObject, azureURLRec);
-  setLoading(false);
+  try{
+    setLoading(true);
+    const res = await RequestService.get(url);
+    setCurrentObject(JSON.parse(JSON.stringify(res.data)));
+    setLoading(false);
+  }
+
+  catch(error) {
+    console.log(error)
+  }
+
 };
 
 export const componentDidMountGetAzure = async (setLoading, setCurrentObject, url , container) => {
-  setLoading(true);
-  const res = await AzureService.getFile(url, container);
-  setCurrentObject(res.config.url);
-  setLoading(false);
+
+  try{
+    setLoading(true);
+    const res = await AzureService.getFile(url, container);
+    setCurrentObject(res.config.url);
+    setLoading(false);
+  }
+
+  catch(error) {
+    console.log(error)
+  }
+
 };
 
 export const componentDidMountListGet = (url_petitions_list) => {
@@ -40,87 +48,126 @@ export const componentDidMountListGet = (url_petitions_list) => {
 }
 
 export const componentDidMountPost = async (setLoading, afterPost, url, data) => {
-  setLoading(true);
-  const res = await RequestService.post(url, data);
-  afterPost(JSON.parse(JSON.stringify(res.data)));
-  setLoading(false);
+
+  try {
+
+    setLoading(true);
+    const res = await RequestService.post(url, data);
+    afterPost(JSON.parse(JSON.stringify(res.data)));
+    setLoading(false);
+  }
+
+  catch(error) {
+    console.log(error)
+  }
+
 };
 
 export const postAzure= async (urlGet, file, postContainer, afterAction) => {
-  const putRes = await AzureService.putFile(urlGet, file, postContainer);
-  afterAction(putRes)
+  try {
+    const putRes = await AzureService.putFile(urlGet, file, postContainer);
+    afterAction(putRes)
+  }
 
+  catch(error) {
+    console.log(error)
+  }
 }
 
 export const componentDidMountGetAndAfterPostAzure = async (urlGet, getContainer, urlPost, postContainer, afterAction) => {
-  AzureService.getFile(urlGet, getContainer)
-  .then(res => res.data)
-  .then(data => postAzure(urlGet, data, postContainer, afterAction)
-  );
+
+  try {
+
+    AzureService.getFile(urlGet, getContainer)
+    .then(res => res.data)
+    .then(data => postAzure(urlGet, data, postContainer, afterAction)
+    );
+
+  }
+  catch(error) {
+    console.log(error)
+  }
 }
 
 /* Load specific user component info */
 export const userInfoAzure = async (setLoading, setCurrentObject, url, setProfileImage)  => {
 
-  setLoading(true);
-  const res = await RequestService.get(url);
-  const user = JSON.parse(JSON.stringify(res.data));
-  setCurrentObject(user);
+  try {
 
-  const imageRes = await AzureService.getFile(user.profileImage, user.username)
-  setProfileImage(imageRes.config.url)
+    setLoading(true);
+    const res = await RequestService.get(url);
+    const user = JSON.parse(JSON.stringify(res.data));
+    setCurrentObject(user);
 
-  setLoading(false);
+    const imageRes = await AzureService.getFile(user.profileImage, user.username)
+    setProfileImage(imageRes.config.url)
 
+    setLoading(false);
+  }
+
+  catch(error) {
+    console.log(error)
+  }
 }
 
 
 /* Load specific recommendation component info */
 export const recomInfoAzure = async (setLoading, setCurrentObject, url, setProfileImage, setRecObject, setDivText)  => {
 
-  setLoading(true);
-  const res = await RequestService.get(url);
-  const recom = JSON.parse(JSON.stringify(res.data));
-  setCurrentObject(recom);
+  try{
 
-  const imageRes = await AzureService.getFile(recom.thumbnail, recom.creator)
-  setProfileImage(imageRes.config.url)
+    setLoading(true);
+    const res = await RequestService.get(url);
+    const recom = JSON.parse(JSON.stringify(res.data));
+    setCurrentObject(recom);
 
-  if(recom.resourceType.toLowerCase() !== 'url'){
-    const recRes = await AzureService.getFile(recom.resource, recom.creator)
-    setRecObject(recRes.config.url)
-  }
+    const imageRes = await AzureService.getFile(recom.thumbnail, recom.creator)
+    setProfileImage(imageRes.config.url)
 
-  else {
-    setRecObject(recom.resource)
-    const p = await axios.get(recom.resource);
-    var soup = new JSSoup(p.data, false);
+    if(recom.resourceType.toLowerCase() !== 'url'){
+      const recRes = await AzureService.getFile(recom.resource, recom.creator)
+      setRecObject(recRes.config.url)
+    }
 
-    let links = []
+    else {
+      setRecObject(recom.resource)
+      const p = await axios.get(recom.resource, {
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        }
+      });
+      var soup = new JSSoup(p.data, false);
 
-    soup.findAll('img').forEach(element => {
-      /*let imgSrc = element.get('src')
-      links.append(imgSrc)*/
-      let imgSrc = element.attrs.src
-      if(imgSrc.substring(0, 4) === "http") {
-        links.push(imgSrc)
+      let links = []
+
+      soup.findAll('img').forEach(element => {
+        /*let imgSrc = element.get('src')
+        links.append(imgSrc)*/
+        let imgSrc = element.attrs.src
+        if(imgSrc.substring(0, 4) === "http") {
+          links.push(imgSrc)
+        }
+      });
+
+      let finalImage = "";
+
+      const linkLength = links.length
+      if(linkLength >= 2) {
+        finalImage = links[1]
       }
-    });
 
-    let finalImage = "";
+      else if (linkLength === 1){
+        finalImage = links[0]
+      }
 
-    const linkLength = links.length
-    if(linkLength >= 2) {
-      finalImage = links[1]
+      await LinkPreview.getPreview(recom.resource)
+          .then(data => setDivText([JSON.parse(JSON.stringify(data)), finalImage]));
     }
 
-    else if (linkLength === 1){
-      finalImage = links[0]
-    }
-
-    await LinkPreview.getPreview(recom.resource)
-        .then(data => setDivText([JSON.parse(JSON.stringify(data)), finalImage]));
+    setLoading(false);
   }
 
-  setLoading(false);
+  catch(error) {
+    console.log(error)
+  }
 }
