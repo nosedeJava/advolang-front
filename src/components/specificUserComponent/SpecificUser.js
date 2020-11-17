@@ -4,9 +4,8 @@ import {useParams} from "react-router-dom";
 import { Grid, Box, Avatar} from '@material-ui/core';
 import {ListRecommendations} from '../recommendationComponent/ListRecommendations';
 import RecomPagination from '../Pagination/RecomPagination';
-import {getCurrentRecom, getUserRecommendations} from '../Auxiliar/AuxiliarTools.js';
 import ListCategories from '../recommendationComponent/ListCategories';
-import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentDidMountPost, userInfoAzure} from '../../services/Petitions.js';
+import {componentDidMountListGet, userInfoAzure} from '../../services/Petitions.js';
 
 
 function SpecificUser(){
