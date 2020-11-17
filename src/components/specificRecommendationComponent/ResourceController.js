@@ -7,16 +7,7 @@ import {getYoutubeVideoId, validVideoId, getYouTubeEmbedURL} from '../Auxiliar/C
 export function ResourceController(props) {
 
   const rec = props.resource;
-  const type = props.resourceType.toLowerCase();
-  let urlContent ;
-  let urlImage ;
-
-  
-
-  if (typeof(props.contentURL) !== 'undefined') {
-    urlContent = props.contentURL[0];
-    urlImage = props.contentURL[1];
-  }
+  const type = props.resourceType.toLowerCase()
 
 
   const imageDiv=(url)=>{
@@ -46,9 +37,9 @@ export function ResourceController(props) {
         <iframe
           title="video"
           src={url}
-          frameborder="0"
+          frameBorder="0"
           type={type}
-          allowfullscreen="allowfullscreen">
+          allowFullScreen="allowfullscreen">
         </iframe>
       </Box>
     );
@@ -59,15 +50,12 @@ export function ResourceController(props) {
       <Box  className="urlContent">
         <LinkPreviewer
           href={rec}
-          image={urlImage}
-          title={urlContent.title}
-          text={urlContent.description}
+          defaultImage = {props.postImage}
         >
         </LinkPreviewer>
       </Box>
     );
   }
-
 
   const options = () => {
     if(type === 'url'){
@@ -77,7 +65,12 @@ export function ResourceController(props) {
       if(youTubeId !== null){
         if(validVideoId(youTubeId)) {
           const youTubeEmbed = getYouTubeEmbedURL(youTubeId)
-          return <div> {videoDiv("http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=http://localhost:3000/", "video")} </div>;
+          return (
+            <div>
+              {videoDiv(youTubeEmbed, "video")}
+            </div>
+
+        );
         }
       }
 

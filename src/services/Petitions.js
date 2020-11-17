@@ -1,10 +1,5 @@
 import RequestService from "./RequestService";
 import AzureService from './AzureService';
-import LinkPreview from 'react-native-link-preview';
-import JSSoup from 'jssoup';
-import {fetch} from 'whatwg-fetch';
-const axios = require('axios').default;
-const invocation = new XMLHttpRequest();
 
 export const componentDidMountGet = async (setLoading, setCurrentObject, url) => {
 
@@ -105,11 +100,6 @@ export const userInfoAzure = async (setLoading, setCurrentObject, url, setProfil
   }
 }
 
-const handlerHTTPRequest = (e) => {
-  alert(JSON.stringify(e))
-  alert("json data " +JSON.stringify(e.data))
-}
-
 /* Load specific recommendation component info */
 export const recomInfoAzure = async (setLoading, setCurrentObject, url, setProfileImage, setRecObject, setDivText)  => {
 
@@ -129,77 +119,12 @@ export const recomInfoAzure = async (setLoading, setCurrentObject, url, setProfi
     }
 
     else {
-
-      /*let externalData;
-
-      invocation.open('GET', 'https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS?redirectlocale=en-US&redirectslug=HTTP_access_control', false);
-xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-      invocation.onload = function (e) {
-      if (invocation.readyState === 4) {
-        alert(invocation.responseText)
-
-        if (invocation.status === 200) {
-
-          var json_obj = JSON.parse(invocation.responseText);
-          alert(JSON.stringify(json_obj))
-        } else {
-          console.error(invocation.statusText);
-        }
-      }
-    }
-    invocation.onerror = function (e) {
-      console.error(invocation.statusText);
-    };
-      invocation.send();*/
-
-      fetch('https://www.google.com?redirectlocale=en-US&redirectslug=HTTP_access_control', {
-    mode: 'no-cors',
-  })
-  .then(response => console.log(response))
-  .catch(error => console.error(error))
-  fetch('https://www.google.com', {
-mode: 'no-cors',
-})
-.then(response => console.log(response))
-.catch(error => console.error(error))
-
       setRecObject(recom.resource)
-      const p = await axios.get(recom.resource, {
-        headers: {
-          "Access-Control-Allow-Origin": "*"
-        }
-      });
-      var soup = new JSSoup(p.data, false);
-
-      let links = []
-
-      soup.findAll('img').forEach(element => {
-        /*let imgSrc = element.get('src')
-        links.append(imgSrc)*/
-        let imgSrc = element.attrs.src
-        if(imgSrc.substring(0, 4) === "http") {
-          links.push(imgSrc)
-        }
-      });
-
-      let finalImage = "";
-
-      const linkLength = links.length
-      if(linkLength >= 2) {
-        finalImage = links[1]
-      }
-
-      else if (linkLength === 1){
-        finalImage = links[0]
-      }
-
-      await LinkPreview.getPreview(recom.resource)
-          .then(data => setDivText([JSON.parse(JSON.stringify(data)), finalImage]));
     }
 
-    setLoading(false);
-  }
+  setLoading(false);
 
+  }
   catch(error) {
     console.log(error)
   }

@@ -15,8 +15,7 @@ import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentD
 import {getLocalStorageObject} from '../Auxiliar/ObjectTools.js';
 import RequestService from "../../services/RequestService";
 import Swal from 'sweetalert2';
-import {fetch} from 'whatwg-fetch';
-var invocation = new XMLHttpRequest();
+
 function SpecificRecommendation(props) {
 
   let history = useHistory();
@@ -194,7 +193,7 @@ function SpecificRecommendation(props) {
               {/* Uso de la imagen relacionada a la recomendación. */}
               <Grid item className="imageRecomGrid">
                 <div className="imageRecomDiv">
-                  <Avatar variant="square" alt="Remy Sharp" src={thumb} style={{ height: 'auto', width: 'auto', backgroundColor: "white" }} />
+                  <Avatar variant="square" alt="post image" src={thumb} style={{ height: 'auto', width: 'auto', backgroundColor: "white" }} />
                 </div>
               </Grid>
 
@@ -250,7 +249,7 @@ function SpecificRecommendation(props) {
             {/* Uso del enlace relacionado a la recomendación.*/}
             <Grid item className="recomRecourseGrid">
               <Box className="recomRecourseBox" align="center">
-                <ResourceController resource={recObject} resourceType = {currentRecom.resourceType} contentURL={divText} />
+                <ResourceController resource={recObject} resourceType = {currentRecom.resourceType} postImage={thumb} />
               </Box>
 
             </Grid>

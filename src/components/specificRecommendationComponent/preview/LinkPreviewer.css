@@ -8,7 +8,6 @@
   opacity: 0.6;
 }
 
-
 .tittleLinkPrevBox {
   text-align: left;
   background-color: #d1d1d1;
@@ -37,6 +36,13 @@
   text-align: left;
   color:  #444444;
   background-color: #dbdbdb;
+  padding: 0.05rem 1rem 0.2rem 1rem;
+}
+
+.publisherPrevBox {
+  text-align: left;
+  color: black;
+  background-color: #d1d1d1;
   padding: 0.05rem 1rem 0.2rem 1rem;
   border-radius: 0 0 5px 5px;
 }
