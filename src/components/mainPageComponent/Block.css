@@ -1,0 +1,34 @@
+.mainPage-main{
+    width: 50%;
+    height: 100%;
+}
+
+.mainPage-main .mainPage-contenido{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainPage-contenido:hover{
+    transition-duration: 0.8s;
+    background: rgba(0,0,0,0.8);
+}
+
+
+.mainPage-contenido h1{
+    margin: 40px;
+    font-size: 50px;
+    font-family: "URW Gothic", serif;
+    text-align: center;
+    color: white;
+}
+
+.mainPage-contenido p{
+    text-align: center;
+    font-size: 30px;
+    margin: 40px;
+    color: white;
+}

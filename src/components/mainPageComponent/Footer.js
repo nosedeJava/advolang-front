@@ -1,17 +1,9 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import {Send} from "@material-ui/icons";
 import Copyright from "../signComponent/Copyright";
 import './Footer.css'
 import {useHistory} from "react-router-dom";
 
 export default function Footer(){
-
-    const history = useHistory();
-
-    function handleClick(){
-        history.push('/login')
-    }
 
     return(
         <div className="main-page-footer">
@@ -29,17 +21,6 @@ export default function Footer(){
                         <li>miguel.rivera-r@mail.escuelaing.edu.co</li>
                     </ul>
                     <hr style={{width:'100%', margin: 0}}/>
-                </div>
-                <div className='get-start'>
-                    <h1 style={{color:'white', fontSize:'20px'}}>GET START</h1>
-                    <Button
-                        variant={"contained"}
-                        className='but'
-                        endIcon={<Send style={{fontSize: 40}}/>}
-                        onClick={handleClick}
-                    >
-                        <h1>Start</h1>
-                    </Button>
                 </div>
             </div>
             <hr style={{width: '100%'}}/>
