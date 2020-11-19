@@ -1,86 +1,104 @@
 .recommendationBox {
-  border-radius: 10px;
   margin-top: 1rem;
   background-color: #242847;
   width: 100%;
-}
-
-
-.generalClass {
-  margin: 10rem;
   border-radius: 10px;
-  padding:  0.1rem ;
+  border: 3px solid #434769;
+
 }
 
-.scoreGridValue {
+.topGrid {
   border-radius: 10px;
-  padding-right: 1.5rem;
-}
-
-.scoreBoxValue{
-  border-radius: 50%;
-  height: 3.7rem;
-  width: 3.7rem;
-  text-align: center;
-  align-items: center;
-  margin: auto;
-  float: right;
-}
-
-.generalClassImage{
-  margin: 10px;
+  padding:  1rem 0.5rem 0.5rem 0rem ;
   border-radius: 10px;
-  padding:  0.5rem ;
-  margin: auto;
-  text-align: center;
-  align-items: center;
-  justify: center;
 }
 
-.generalClass2 {
-  border-radius: 50%;
-  height: 3.7rem;
-  width: 3.7rem;
-  font-size: 10;
-  margin: auto;
-}
-
-.generalClass3 {
-  color: white;
-  font-size: 1.4rem;
-  font-family: Verdana;
-  padding-top: 1rem;
-}
-
-.generalClass4 {
-  font-size: 1.2rem;
-  font-family: Verdana;
-  color: #B3B8E0;
-}
-
-.generalClass5 {
-  font-size: 1rem;
-  font-family: Verdana;
-  color: #B3B8E0;
-}
-
-.thumbnailSpace {
-  max-width: 80%;
-  max-height: 80%;
-  background-color: white;
+.topGridContainer {
+  background-color: #8c8fa9;
+  width: 80%;
+  padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+  border-radius: 10px;
 }
 
 .titleGridValue {
+
 }
 
 .titleBoxValue {
   font-size: 1.7rem;
   font-weight: bold;
   font-family: Verdana;
-  color: #B3B8E0;
+  color: white;
   word-break: break-all;
   margin-top: 0.2rem;
 
+}
+
+.imageGrid{
+  margin: auto;
+  border-radius: 10px;
+  padding:  0.5rem 0.3rem  0.5rem 0.3rem ;
+  text-align: center;
+  align-items: center;
+  justify: center;
+  width: 10%;
+  background-color: transparent;
+
+}
+
+.thumbnailSpace {
+  max-width: 80%;
+  max-height: 80%;
+  min-width: 80%;
+  min-height: 80%;
+  background-color: transparent;
+}
+
+.scoreGridValue {
+  border-radius: 10px;
+  width: 10%;
+}
+
+.scoreBoxValue{
+  border-radius: 50%;
+  width: 5vw;
+  height: 5vw;
+  text-align: center;
+  align-items: center;
+  margin: auto;
+  float: left;
+  animation: colorChange 5s infinite alternate linear;
+}
+
+@keyframes colorChange {
+  from { /* radial-gradient(farthest-corner at top right, ..) */
+    background-position:left top;
+    background-size:200% 100%;
+
+  }
+  49.9% {
+    background-position:left top;
+  }
+  50% { /* radial-gradient(farthest-corner at top center, ..) */
+    background-size:100% 100%;
+  }
+  50.1% {
+    background-position:right top;
+  }
+  to { /* radial-gradient(farthest-corner at top left, ..) */
+    background-position:right top;
+    background-size:200% 100%;
+  }
+}
+
+.scoreTypographyDiv {
+  margin-top: 30%;
+
+}
+
+.scoreTypography {
+  color: white;
+  font-family: Verdana;
 }
 
 .levelGridValue {
@@ -92,7 +110,7 @@
   font-size: 1.2rem;
   font-family: Verdana;
   font-weight: bold;
-  color: #B3B8E0;
+  color: white;
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
 }
@@ -105,7 +123,7 @@
 .userNameBoxValue {
   font-size: 1rem;
   font-family: Verdana;
-  color: #B3B8E0;
+  color: white;
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
 }
@@ -131,14 +149,6 @@
 }
 
 .cardInfoGrid{
-}
-
-.boxClass{
-  border-radius: 50px;
-  height: 3.7rem;
-  width: 3.7rem;
-  font-size: 10;
-  background-color: gray;
 }
 
 .specificCard {

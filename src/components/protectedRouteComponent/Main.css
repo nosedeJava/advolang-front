@@ -1,22 +1,21 @@
 .root{
   height: 100vh;
+
 }
 
-
-.root .panelDiv{
+.panelDiv{
   background-color: transparent;
   height: 10vh;
 }
 
-.root .generalContainer{
+.generalContainer{
   color: #FFF;
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #292a2b;
+  height: 90vh;
+  min-height: 90%;
   width: 100%;
-  position:relative;
+  width:auto;
   left: 0;
-  overflow: auto;
-  clear:both;
+  overflow-y: auto;
+  clear: both;
 }

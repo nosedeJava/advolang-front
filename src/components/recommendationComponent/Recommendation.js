@@ -5,7 +5,8 @@ import ListCategories from './ListCategories'
 import { useHistory } from "react-router-dom";
 import {calcProm, adaptJavaDate, calculatePublication, getRecommendationScores, getRecommendationScoreColor} from '../Auxiliar/AuxiliarTools.js';
 import {componentDidMountGet, componentDidMountGetAzure} from '../../services/Petitions.js';
-
+import {LoadingTouchBall} from '../loadingComponent/Loading';
+import Divider from '@material-ui/core/Divider';
 
 function Recommendation(props) {
 
@@ -45,11 +46,11 @@ function Recommendation(props) {
   }
 
   if (loadThumb || loadScoresList) {
-    return <h2>Loading...</h2>;
+    return <LoadingTouchBall />;
   }
 
   return (
-      <Grid container>
+      <Grid container className="recommendationContainer">
         <Grid item xs={1} />
         <Grid container spacing={0} direction="column" className="mainGridContainer" >
           <Box className="recommendationBox" >
@@ -58,7 +59,7 @@ function Recommendation(props) {
 
               <ButtonBase  className="specificCard" onClick={handleRedirectSpecific}  >
 
-                <Grid item xs={2} className="generalClassImage" container spacing={0} direction="column">
+                <Grid item xs={2} className="imageGrid" container spacing={0} direction="column">
                   <Card className="thumbnailSpace">
                     <CardMedia
                         component="img"
@@ -67,15 +68,15 @@ function Recommendation(props) {
                   </Card>
                 </Grid>
 
-                <Grid item xs={9} className="generalClass">
+                <Grid item xs={9} className="topGrid" justify="flex-end">
 
-                  <Grid item className="titleGridValue">
-                    <Box className="titleBoxValue" textAlign="left">
-                        {props.recom.title}
-                    </Box>
-                  </Grid>
+                  <Grid container className="topGridContainer" >
 
-                  <Grid container >
+                    <Grid item className="titleGridValue">
+                      <Box className="titleBoxValue" textAlign="left">
+                          {props.recom.title}
+                      </Box>
+                    </Grid>
 
                     <Grid item className="levelGridValue" >
                       <Box className="levelBoxValue" textAlign="left">
@@ -94,10 +95,12 @@ function Recommendation(props) {
                 </Grid>
 
                 <Grid item className="scoreGridValue" >
-                  <Box border={1} className="scoreBoxValue" style={{ backgroundColor:  getRecommendationScoreColor(calcProm(scoresList)) }}>
-                    <Typography className="generalClass3" align="center" >
-                      {calcProm(scoresList)}
-                    </Typography>
+                  <Box className="scoreBoxValue" style={{ background:  getRecommendationScoreColor(calcProm(scoresList)) }}>
+                    <div className="scoreTypographyDiv">
+                      <Typography className="scoreTypography" align="center" style={{fontWeight: 500, fontSize: "1.2vw"}} >
+                        {calcProm(scoresList)}
+                      </Typography>
+                    </div>
                   </Box>
                 </Grid>
 

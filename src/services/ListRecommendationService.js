@@ -2,11 +2,14 @@
 import React, { useEffect } from 'react';
 import { ListRecommendations } from '../components/recommendationComponent/ListRecommendations';
 import { componentDidMountGet } from './Petitions.js';
-
+import {DefaultLoading} from '../components/loadingComponent/Loading';
+import ReactLoading from "react-loading";
+import Skeleton from 'react-loading-skeleton';
 export default function ListRecommendationService(props) {
 
     const [loading, setLoading] = React.useState(false);
     const [recommendations, setRecommendations] = React.useState([]);
+
     useEffect(() => {
         if (props.main) {
             componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
@@ -26,8 +29,16 @@ export default function ListRecommendationService(props) {
             componentDidMountGet(setLoading, setRecommendations, '/api/'+props.lang.toLowerCase()+'/recommendations');
         }
     }, []);
+
     if (loading) {
-        return <h2>Loading...</h2>;
+      return (
+        <div style = {{backgroundColor: 'yellow', lineHeight: 2 }}>
+          <Skeleton count={5} height={50} width={50}/>
+          <ReactLoading type="cylon" color="blue" />
+
+        </div>
+      );
+
     }
     return <ListRecommendations recommendations={recommendations} loading={loading} />
 }

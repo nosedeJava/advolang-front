@@ -15,6 +15,7 @@ import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentD
 import {getLocalStorageObject} from '../Auxiliar/ObjectTools.js';
 import RequestService from "../../services/RequestService";
 import Swal from 'sweetalert2';
+import {DefaultLoading} from '../loadingComponent/Loading';
 
 function SpecificRecommendation(props) {
 
@@ -179,7 +180,7 @@ function SpecificRecommendation(props) {
 
 
   if (loadingCurrentRecom || loadingScorePost || loadingAllScoresValue || loadingCreator_current_recom_object  ) {
-    return <h2>Loading...</h2>;
+    return <DefaultLoading isActive={true} />
   }
 
   return (
