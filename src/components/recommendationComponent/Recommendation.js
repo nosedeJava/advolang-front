@@ -6,7 +6,6 @@ import { useHistory } from "react-router-dom";
 import {calcProm, adaptJavaDate, calculatePublication, getRecommendationScores, getRecommendationScoreColor} from '../Auxiliar/AuxiliarTools.js';
 import {componentDidMountGet, componentDidMountGetAzure} from '../../services/Petitions.js';
 import {LoadingTouchBall} from '../loadingComponent/Loading';
-import Divider from '@material-ui/core/Divider';
 
 function Recommendation(props) {
 

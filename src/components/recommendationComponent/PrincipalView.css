@@ -1,8 +1,27 @@
 .mainDiv{
     margin: 0 auto;
     width: 100%;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
     margin-bottom: 2rem;
+    background-color: green;
+}
+
+.sponsorSectionItem {
+  background-color: purple;
+  width: 17%;
+padding: 0;
+}
+
+.postsSectionItem {
+  background-color: red;
+  justify-content: center;
+  align-items: center;
+  width: 66%;
+}
+
+.suscriptionSectionItem {
+  background-color: pink;
+  width: 17%;
+
+
 }

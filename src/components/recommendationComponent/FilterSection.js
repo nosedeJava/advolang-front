@@ -21,7 +21,7 @@ function FilterSection(props) {
   const submitFilter = () => props.renderFilterFunction(search, level, categories);
 
   return (
-      <Grid container spacing={1} className="mainFilterGrid" direction="column" >
+      <Grid container spacing={0} className="mainFilterGrid" direction="column" >
         <Grid item xs={1} />
           <Grid className="filterGridStyle" >
             <Box className="filterStyle" borderRadius="borderRadius" >
