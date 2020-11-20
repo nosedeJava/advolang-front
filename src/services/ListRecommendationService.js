@@ -18,10 +18,13 @@ export default function ListRecommendationService(props) {
         } else if (props.self) {
             componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
         } else if (props.filtered) {
-            let categories = props.categories;
+            let categories = props.categories.join();
             let title = props.title;
             let difficulty = props.difficulty;
-            componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
+            let type = props.type==="main"?"principal":props.type;
+            let username = JSON.parse(localStorage.getItem("user")).id;
+            let url= '/api/filter?'+"title="+title+"&difficulty="+difficulty+"&type="+type+"&username="+username+"&categories="+categories;
+            componentDidMountGet(setLoading, setRecommendations, url);
         } else if (props.lang) {
             componentDidMountGet(setLoading, setRecommendations, '/api/'+props.lang.toLowerCase()+'/recommendations');
         }

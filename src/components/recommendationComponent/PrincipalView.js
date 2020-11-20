@@ -10,6 +10,7 @@ export default function PrincipalView(props) {
     const [title, setTitle] = React.useState('');
     const [difficulty, setDifficulty] = React.useState('');
     const [categories, setCategories] = React.useState([]);
+    const [type, setType] = React.useState(props.type);
 
     const changeViewType = (newType) => {
         setViewType(newType)
@@ -24,7 +25,7 @@ export default function PrincipalView(props) {
         changeViewType("filtered");
     }
     const FilterView = () => {
-        return <ListRecommendationService filtered title={title} difficulty={difficulty} categories={categories} />
+        return <ListRecommendationService filtered title={title} difficulty={difficulty} categories={categories} type={type}/>
     }
 
     return (
