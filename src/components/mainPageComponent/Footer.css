@@ -1,11 +1,13 @@
 .main-page-footer{
     display: flex;
+    min-width: 500px;
     flex-direction: column;
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
     background: url("/img/footer.jpg") center no-repeat;
     background-size: cover;
+
 }
 
 .main-page-footer .information{
@@ -15,6 +17,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .information .brand{
@@ -33,8 +36,9 @@
 
 .information .contact-us{
     padding: 10px;
+    box-sizing: border-box;
     display: flex;
-    flex: auto;
+    min-width: 450px;
     flex-direction: column;
     align-items: start;
     justify-content: center;

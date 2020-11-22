@@ -24,7 +24,7 @@ export default function MainPage(){
             <div className="cover-page">
                 <h1>Learn the language that you want</h1>
                 <img src="/img/libros.png" alt=""/>
-                <div>
+                <div className="buttons">
                     <Button className="cover-page-button" onClick={handleClick}>
                         Start now
                     </Button>
@@ -69,7 +69,7 @@ export default function MainPage(){
                     img={"/img/third.jpg"}
                 />
             </div>
-            <div className="mainPage-block" style={{height: 'auto'}}>
+            <div className="mainPage-message">
                 <h1 style={{width:'30%', textAlign:'center'}}>Don't waste your time any more!</h1>
                 <img style={{margin:'20px 80px'}} src="/img/happy.jpg" alt="" width="100px" height="100px"/>
             </div>
