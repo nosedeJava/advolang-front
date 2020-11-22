@@ -1,10 +1,14 @@
 .mainPage-main{
+    display: flex;
+    flex-direction: column;
     width: 50%;
-    height: 100%;
+    height: 400px;
+    min-width: 500px;
 }
 
 .mainPage-main .mainPage-contenido{
     width: 100%;
+    min-width: 500px;
     display: flex;
     flex-direction: column;
     height: 100%;

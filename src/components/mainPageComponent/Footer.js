@@ -1,7 +1,6 @@
 import React from "react";
 import Copyright from "../signComponent/Copyright";
 import './Footer.css'
-import {useHistory} from "react-router-dom";
 
 export default function Footer(){
 
