@@ -1,15 +1,21 @@
 .mainDiv{
-    margin: 0 auto;
-    width: 100%;
-    overflow: hidden;
-    margin-bottom: 2rem;
-    background-color: green;
+  margin: 0 auto;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  background-color: green;
+  display: inline-flex;
 }
 
-.sponsorSectionItem {
+.trendsSectionItem {
   background-color: purple;
   width: 17%;
-padding: 0;
+  height: 100%;
+  float: left;
+}
+
+.trendsSectionDiv {
+  width: 100%;
 }
 
 .postsSectionItem {
@@ -19,9 +25,18 @@ padding: 0;
   width: 66%;
 }
 
-.suscriptionSectionItem {
+.subscriptionAndRecomSectionItem {
   background-color: pink;
+  float: right;
   width: 17%;
+}
 
+.subscriptionSectionDiv {
+
+
+}
+
+
+.sponsorRecomsSectionDiv {
 
 }

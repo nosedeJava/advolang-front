@@ -1,10 +1,12 @@
 import React from 'react';
+import './PrincipalView.css';
 import ListRecommendationService from "../../services/ListRecommendationService"
 import FilterSection from "./FilterSection"
-import './PrincipalView.css';
 import SpecificLanguage from '../languageComponent/SpecificLanguage';
-import {SponsorRecom} from './Sponsor';
-import { Grid, Box, Card, CardMedia, Typography, ButtonBase} from '@material-ui/core';
+import {Trends} from '../trendsComponent/Trends';
+import {Subscription} from '../subscriptionComponent/Subscription';
+import {SponsorRecom} from '../sponsorComponent/Sponsor';
+import { Grid} from '@material-ui/core';
 
 export default function PrincipalView(props) {
     const [viewType, setViewType] = React.useState(props.type);
@@ -30,12 +32,12 @@ export default function PrincipalView(props) {
     }
 
     return (
-      <Grid container className="mainDiv" spacing={0} padding={0} direction="row">
+      <Grid container className="mainDiv" spacing={0} direction="row">
 
-        <Grid item className="sponsorSectionItem">
+        <Grid item className="trendsSectionItem">
 
-          <div className="sponsorSectionDiv">
-            <SponsorRecom />
+          <div className="trendsSectionDiv">
+            <Trends />
 
           </div>
         </Grid>
@@ -55,12 +57,18 @@ export default function PrincipalView(props) {
 
         </Grid>
 
-         <Grid className="suscriptionSectionItem">
+         <Grid item className="subscriptionAndRecomSectionItem">
 
-          <div className="suscriptionSectionDiv">
-            <SponsorRecom />
-
+          <div className="subscriptionSectionDiv">
+            <Subscription />
           </div>
+
+          <br />
+          
+          <div className="sponsorRecomsSectionDiv">
+            <SponsorRecom />
+          </div>
+
         </Grid >
 
       </Grid>

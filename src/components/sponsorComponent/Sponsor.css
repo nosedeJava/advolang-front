@@ -1,0 +1,21 @@
+.sponsorRecomsBox {
+  width: 95%;
+}
+
+.sponsorTittleBox {
+  background-color: lightYellow;
+  font-weight: bold;
+  max-width: 100%;
+  color: black;
+  font-size: 1.5vw;
+  overflow-wrap: break-word;
+  vertical-align: middle;
+  text-align: left;
+  display: flex;
+  padding: 5%;
+}
+
+.sponsorPaper {
+  max-height: 67vh;
+  overflow-y: scroll;
+}

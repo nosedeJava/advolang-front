@@ -1,0 +1,24 @@
+.sponsorPostGeneralBox {
+  width: 100%;
+  background-color: brown;
+  padding: 5%
+}
+
+.sponsorPostButtonBase {
+  width: 100%;
+}
+
+.sponsorPostCard {
+  width: 100%;
+  background-color: darkBlue;
+}
+
+.sponsorPostCardTittle {
+  text-align: left;
+  font-size: 1.1vw;
+  overflow-wrap: break-word;
+
+  font-weight: bold;
+  color: black;
+
+}

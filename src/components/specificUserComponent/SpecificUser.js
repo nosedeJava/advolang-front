@@ -49,7 +49,7 @@ function SpecificUser(){
     componentDidMount();
     window.scrollTo(0, 0);
 
-  });
+  }, []);
 
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
