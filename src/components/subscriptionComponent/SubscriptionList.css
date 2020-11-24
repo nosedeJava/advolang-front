@@ -1,0 +1,46 @@
+.SubsListContainer {
+  width: 100%;
+}
+
+.subsListSubheader {
+  color: black;
+  font-size: 100%;
+  font-weight: bold;
+  width: 83%;
+  background-color: lightGreen;
+  word-break: break-all;
+  float: left;
+  padding: 5% 5% 5% 7%;
+  border-top-right-radius: 0.5vw;
+  border-top-left-radius: 0.5vw;
+
+}
+
+.generalSubscriptionsList {
+  width: 100%;
+  float: left;
+
+}
+
+.listItemsContainerBox {
+  overflow-y: scroll;
+  height: 30vh;
+  width: 95%;
+  padding: 0;
+  background-color: white;
+  border-bottom-left-radius: 0.5vw;
+  border-bottom-right-radius: 0.5vw;
+}
+
+.listSubsItem {
+  background-color: white;
+  width: 100%;
+  font-size: 100%;
+  word-break: break-all;
+  margin-top: 0 ;
+}
+
+.listSubsItemText {
+  font-size: 50%;
+  color: gray;
+}

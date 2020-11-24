@@ -10,7 +10,7 @@ export const ProtectedRoute = ({component: Component, ...rest}) => {
         <Route
           {...rest}
           render={props => authService.isAuthenticated() ? (
-            <div className="root">
+            <div className="root-container">
               <div className="panelDiv">
                   <Panel menuList={rest.menuList} history={props.history}/>
               </div>

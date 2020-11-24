@@ -1,86 +1,57 @@
 .recommendationBox {
-  border-radius: 10px;
   margin-top: 1rem;
   background-color: #242847;
-  width: 100%;
-}
-
-
-.generalClass {
-  margin: 10rem;
+  max-width: 100%;
   border-radius: 10px;
-  padding:  0.1rem ;
+  border: 3px solid #434769;
+
 }
 
-.scoreGridValue {
+.topGrid {
   border-radius: 10px;
-  padding-right: 1.5rem;
+  padding:  1rem 0.5rem 0.5rem 0rem ;
+  border-radius: 10px;
 }
 
-.scoreBoxValue{
-  border-radius: 50%;
-  height: 3.7rem;
-  width: 3.7rem;
-  text-align: center;
-  align-items: center;
+.topGridContainer {
+  background-color: #8c8fa9;
+  max-width: 100%;
+  padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+  border-radius: 10px;
+}
+
+.titleGridValue {
+
+}
+
+.titleBoxValue {
+  font-size: 2.5vw;
+  font-weight: bold;
+  font-family: Verdana;
+  color: white;
+  overflow-wrap: break-word;
+  margin-top: 0.2rem;
+
+}
+
+.imageGrid{
   margin: auto;
-  float: right;
-}
-
-.generalClassImage{
-  margin: 10px;
   border-radius: 10px;
-  padding:  0.5rem ;
-  margin: auto;
+  padding:  0.5rem 0.3rem  0.5rem 0.3rem ;
   text-align: center;
   align-items: center;
   justify: center;
-}
+  width: 10%;
+  background-color: transparent;
 
-.generalClass2 {
-  border-radius: 50%;
-  height: 3.7rem;
-  width: 3.7rem;
-  font-size: 10;
-  margin: auto;
-}
-
-.generalClass3 {
-  color: white;
-  font-size: 1.4rem;
-  font-family: Verdana;
-  padding-top: 1rem;
-}
-
-.generalClass4 {
-  font-size: 1.2rem;
-  font-family: Verdana;
-  color: #B3B8E0;
-}
-
-.generalClass5 {
-  font-size: 1rem;
-  font-family: Verdana;
-  color: #B3B8E0;
 }
 
 .thumbnailSpace {
   max-width: 80%;
   max-height: 80%;
-  background-color: white;
-}
-
-.titleGridValue {
-}
-
-.titleBoxValue {
-  font-size: 1.7rem;
-  font-weight: bold;
-  font-family: Verdana;
-  color: #B3B8E0;
-  word-break: break-all;
-  margin-top: 0.2rem;
-
+  min-width: 80%;
+  min-height: 80%;
+  background-color: transparent;
 }
 
 .levelGridValue {
@@ -89,10 +60,10 @@
 }
 
 .levelBoxValue {
-  font-size: 1.2rem;
+  font-size: 1.5vw;
   font-family: Verdana;
   font-weight: bold;
-  color: #B3B8E0;
+  color: white;
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
 }
@@ -102,10 +73,14 @@
   width: 95%;
 }
 
+.scoreGridValue {
+  width: 10%;
+}
+
 .userNameBoxValue {
-  font-size: 1rem;
+  font-size: 1.2vw;
   font-family: Verdana;
-  color: #B3B8E0;
+  color: white;
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
 }
@@ -117,28 +92,20 @@
 }
 
 .timeGridBox {
-  font-size: 1rem;
+  font-size: 1.2vw;
   font-family: Verdana;
   color: #B3B8E0;
   text-align: right;
 }
 
 .categoriesStyle {
-  margin: 10px;
+  margin: 1vw;
   border-radius: 5px;
-  padding:  0.1rem ;
+  padding:  0.5vw ;
   background-color: #B3B8E0;
 }
 
 .cardInfoGrid{
-}
-
-.boxClass{
-  border-radius: 50px;
-  height: 3.7rem;
-  width: 3.7rem;
-  font-size: 10;
-  background-color: gray;
 }
 
 .specificCard {

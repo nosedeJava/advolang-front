@@ -5,7 +5,6 @@ import './ListRecommendations.css';
 export function ListRecommendations(props) {
 
   const listContent = props.recommendations.map((recommendation, i) => {
-    if(recommendation.thumbnail === "") recommendation.thumbnail = "/img/default.png";
     return <Recommendation key={"recommendation-" + i} recom={recommendation} />
   });
 

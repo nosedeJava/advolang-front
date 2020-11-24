@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react';
 import './SpecificRecommendation.css';
-import { Grid, Box, Typography, Button, Avatar, Divider, ButtonBase } from '@material-ui/core';
+import { Grid, Box, Button, Avatar, Divider, ButtonBase } from '@material-ui/core';
 import {useParams} from "react-router-dom";
-
 import HoverRating from './RatingRecommendation';
 import FormDialog from './ReportDialog';
 import ListCategories from '../recommendationComponent/ListCategories';
 import {ResourceController} from './ResourceController.js';
-import {calcProm, getRecommendationScoreColor, adaptJavaDate, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
-import {CheckValidYoutubeURL, CheckMimeType, getYoutubeVideoId} from '../Auxiliar/CheckMedia.js';
+import {calcProm, adaptJavaDate, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
 import {ShowSuccessMessage, ShowWarningMessage} from '../Auxiliar/Swal.js';
 import { useHistory } from "react-router-dom";
-import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentDidMountPost, componentDidMountGetAzure, userInfoAzure, recomInfoAzure} from '../../services/Petitions.js';
+import {componentDidMountListGet, componentDidMountPost, userInfoAzure, recomInfoAzure} from '../../services/Petitions.js';
 import {getLocalStorageObject} from '../Auxiliar/ObjectTools.js';
 import RequestService from "../../services/RequestService";
 import Swal from 'sweetalert2';
+import {DefaultLoading} from '../loadingComponent/Loading';
+import {Score} from '../recommendationComponent/Score';
 
 function SpecificRecommendation(props) {
 
@@ -46,13 +46,6 @@ function SpecificRecommendation(props) {
   const [creator_current_recom_object, setCreator_current_recom_object] = React.useState([]);
   const [userProfile, setUserProfile] = React.useState();
 
-
-  const [divText, setDivText] = React.useState()
-
-
-  const [state, setState] = React.useState()
-
-
   const url_petitions_list = [
 
     {
@@ -67,32 +60,13 @@ function SpecificRecommendation(props) {
     }
   ]
 
-  const handler = (e) =>{
-    console.log(e)
-  }
-
   const componentDidMount = async () => {
-    recomInfoAzure(setLoadingCurrentRecom, setCurrentRecom, '/api/'+lang+'/recommendations/'+current_id,setThumb, setRecObject, setDivText);
+    recomInfoAzure(setLoadingCurrentRecom, setCurrentRecom, '/api/'+lang+'/recommendations/'+current_id,setThumb, setRecObject);
     componentDidMountListGet(url_petitions_list);
     userInfoAzure(setLoadingCreator_current_recom_object, setCreator_current_recom_object, '/api/users/' + creator_current_recom_username, setUserProfile);
-
-    /*var invocation = new XMLHttpRequest();
-    var url = 'https://yts.mx/api/v2/list_movies.json';
-
-    invocation.open('GET', url, true);
-    invocation.onreadystatechange = handler;
-    invocation.send();*/
-
-
-  }
-
-  const alerts = (p) => {
-    alert(JSON.stringify(p))
-    setState(p.data)
   }
 
   useEffect(() => {
-
       componentDidMount();
       window.scrollTo(0, 0);
   }, []);
@@ -118,19 +92,13 @@ function SpecificRecommendation(props) {
       }
 
       componentDidMountPost(setLoadingScorePost, afterScorePost, '/api/scores/add', newScore)
-
     }
     else{
       scoreObject.value = value;
       componentDidMountPost(setLoadingScorePost, afterScoreUpdate, '/api/scores/value/update', scoreObject)
     }
-
   }
 
-  function callback(bool){
-    alert(bool)
-    //continúa
-  }
 
   const handleSave = async () =>{
     // Confirmation
@@ -160,128 +128,126 @@ function SpecificRecommendation(props) {
 
   const handleSpecificUser = () => {
     history.push("/users/"+creator_current_recom_username)
-    //redirigir a specific user
 
-  }
-
-  const typesRec = () => {
-    alert(CheckMimeType("PP.txt"))
-    CheckValidYoutubeURL("https://www.youtube.com/watch?v=8yvEYKRF5zzzA&list=8yvEYKRF5zzzA&start_radio=1", callback);
-  }
-
-  const alertAns = (ans) => {
-    alert(ans)
-  }
-
-  const checkURL = () => {
-    CheckValidYoutubeURL("https://www.youtube.com/watch?v=8yvEYKRF5IA&list=RD8yvEYKRF5IA&start_radio=1", alertAns)
   }
 
 
   if (loadingCurrentRecom || loadingScorePost || loadingAllScoresValue || loadingCreator_current_recom_object  ) {
-    return <h2>Loading...</h2>;
+    return <DefaultLoading isActive={true} />
   }
 
   return (
     <div className="specificRecommendationDiv">
       <Grid container id="specificRecommendation" className="specificRecommendationGrid" spacing={0} direction="row" >
         <Grid item className="gridPostContainer">
-          <Box boxShadow={3} borderRadius="borderRadius" className="postBoxClass" >
+          <Box boxShadow={3} className="postBoxClass" >
 
-            <Grid container className="headerRecomGrid" >
+            <Grid container className="headerRecomGrid" spacing={5} direction="column" >
 
-              {/* Uso de la imagen relacionada a la recomendación. */}
-              <Grid item className="imageRecomGrid">
-                <div className="imageRecomDiv">
-                  <Avatar variant="square" alt="post image" src={thumb} style={{ height: 'auto', width: 'auto', backgroundColor: "white" }} />
-                </div>
-              </Grid>
+              <Grid item className="topRecomItem">
 
-              <Grid item className="infoRecomGrid">
-                <Grid container className="infoRecomGridContainer">
+                <Grid container className="topRecomItemGridFirstTop" direction="row">
 
-                  {/*Uso del titulo de la recomendación. */}
-                  <Grid item className="recomTitleGrid">
-                    <Box className="recomTitleBox">
-                      {currentRecom.title}
-                    </Box>
+                  {/* Uso de la imagen relacionada a la recomendación. */}
+                  <Grid item className="imageRecomGrid">
+                    <div className="imageRecomDiv">
+                      <Avatar variant="square" alt="post image" src={thumb} style={{ height: 'auto', width: 'auto', backgroundColor: "white" }} />
+                    </div>
                   </Grid>
 
-                  {/* Uso de la fecha de publicación. */}
+                  <Grid item className="infoRecomGrid">
+                    <Grid container className="infoRecomGridContainer">
 
-                    <Grid item className="recomDateGrid">
-                      <Box className="recomDateBox">
-                        {calculatePublication(adaptJavaDate(currentRecom.creationDate))}
-                      </Box>
-                    </Grid>
-
-                    {/* Rating de la publicación. */}
-                    <Grid item className="recomRaitingItemGrid">
-
-                      <Grid container className="recomRaitingItemContainer" >
-
-                        <Grid item >
-                          <Box className="ratingGrid">
-                            <HoverRating className="hooverRating" startValues={calcProm(allTotalScore)} selectedMatch={handleRating} />
-                          </Box>
-                        </Grid>
-
-                        {/* Uso del score asociado a la recomendación. */}
-                        <Grid item className="recomScoreGrid">
-                          <Box borderRadius="50%" className="scoreBox" style={{ backgroundColor: getRecommendationScoreColor(calcProm(allTotalScore)) }}>
-                            <Typography className="scoreFont" >
-                              {calcProm(allTotalScore)}
-                            </Typography>
-                          </Box>
-                        </Grid>
+                      {/*Uso del titulo de la recomendación. */}
+                      <Grid item className="recomTitleGrid">
+                        <Box className="recomTitleBox">
+                          {currentRecom.title}
+                        </Box>
                       </Grid>
+
+                      {/* Uso de la fecha de publicación. */}
+
+                      <Grid item className="recomDateGrid">
+                        <Box className="recomDateBox">
+                          {calculatePublication(adaptJavaDate(currentRecom.creationDate))}
+                        </Box>
+                      </Grid>
+
+                      {/* Rating de la publicación. */}
+                      <Grid item className="recomRaitingItemGrid">
+
+                        <Grid container direction="row" className="recomRaitingItemContainer" >
+
+                          <Grid item className="hooverStarScoreGrid">
+                            <Box className="hooverRatingBox">
+                              <HoverRating className="hooverRating" startValues={calcProm(allTotalScore)} selectedMatch={handleRating} />
+                            </Box>
+                          </Grid>
+
+                            {/* Uso del score asociado a la recomendación. */}
+                          <Grid item className="recomScoreGrid">
+                            <Box className="scoreBox">
+                              <Score scoresList={allTotalScore}/>
+                            </Box>
+                          </Grid>
+
+                        </Grid>
+
+                      </Grid>
+                    </Grid>
                   </Grid>
                 </Grid>
-              </Grid>
-              {/* Uso de la descripción dada a una recomendación en especifico. */}
-              <Grid item className="recomDescription">
-                <Box borderRadius="borderRadius" className="descripBoxClass">
-                  {currentRecom.description}
-                </Box>
-              </Grid>
-            </Grid>
 
+              </Grid>
+
+            {/* Uso de la descripción dada a una recomendación en especifico. */}
+            <Grid item className="recomDescription">
+              <Box borderRadius="borderRadius" className="descripBoxClass">
+                {currentRecom.description}
+              </Box>
+            </Grid>
             {/* Uso del enlace relacionado a la recomendación.*/}
             <Grid item className="recomRecourseGrid">
               <Box className="recomRecourseBox" align="center">
                 <ResourceController resource={recObject} resourceType = {currentRecom.resourceType} postImage={thumb} />
               </Box>
-
             </Grid>
 
-            <Grid item >
-              <Box className="footerPostBox" >
-                <Grid container className="footerPostContainer" direction="row" spacing={1}>
-                  <Grid item>
-                    <Button variant="contained" color="primary" onClick={handleSave}>Save</Button>
-                  </Grid>
+          </Grid>
 
-                  <Grid item>
-                    <FormDialog />
-                  </Grid>
+          </Box>
+          <Box className="recomFooterGeneralPost">
+            <Box className="footerPostBox" >
+              <Grid container className="footerPostContainer" direction="row" spacing={1}>
+                <Grid item>
+                  <Button variant="contained" color="primary" onClick={handleSave}>Save</Button>
                 </Grid>
-              </Box>
-            </Grid>
+
+                <Grid item>
+                  <FormDialog />
+                </Grid>
+              </Grid>
+            </Box>
           </Box>
         </Grid>
 
+
         {/* Usuario creador*/}
-        <Grid container item xs={4} direction="row" className="gridUserContainerMain">
+        <Grid item className="gridUserContainerMain" align = "center" justify = "center" alignItems = "center">
+
           <Grid container spacing={0} direction="column" className="gridUserContainer">
+
             <Grid item className="userFirstGrid">
               <ButtonBase className="specificUserButtonBase" onClick={handleSpecificUser}>
+
                 <Box boxShadow={3} borderRadius="borderRadius" className="userConatainerBox" >
-                  <Grid container className="usersSubContainer" spacing={0} direction="column">
+
+                  <Grid container className="usersSubContainer" spacing={0} direction="column" align = "center" justify = "center" alignItems = "center">
 
                     {/* Aquí uso el nombre de usuario y el enlace a la imagen de perfil.*/}
-                    <Grid item className="userProfileGrid">
+                    <Grid item className="userProfileGrid" align = "center" justify = "center" alignItems = "center">
                       <div className="userImageDiv">
-                        <Avatar variant="square" alt={creator_current_recom_object.username} src={userProfile} style={{ height: '100%', width: '100%' }} />
+                        <Avatar variant="square" alt={creator_current_recom_object.username} src={userProfile} style={{ height: 'auto', width: 'auto' }} />
                       </div>
                     </Grid>
 
@@ -303,7 +269,9 @@ function SpecificRecommendation(props) {
                   </Grid>
                 </Box>
               </ButtonBase>
+
             </Grid>
+            <br />
 
             {/* Uso de las categorias asociadas a la recomendación.*/}
             <Grid item className="categoriesGrid">

@@ -63,8 +63,9 @@ function SpecificUser(){
 
   return (
       <div className="specificUserDiv">
-        <Grid container className="specificUserGridContainer">
-          <Grid item className="specificProfileItem">
+        <Grid container className="specificUserGridContainer" direction="row">
+
+          <Grid item className="specificProfileItem" align = "center" justify = "center" alignItems = "center">
             <Box className="specificProfileBox">
               <Grid container className="specificProfileContainer" spacing={0} direction="column">
                 <Grid item className="specificProfileGridImage">
@@ -95,7 +96,7 @@ function SpecificUser(){
 
                     <Grid item className="specificUserDescGrid">
                       <Box className="specificUserDescBox">
-                        {"user.description"}
+                        {user.description}
                       </Box>
                     </Grid>
 

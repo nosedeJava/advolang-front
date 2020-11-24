@@ -1,0 +1,68 @@
+.sponsorPostGeneralBox {
+  width: 100%;
+  padding-top: 1vw;
+}
+
+.sponsorPostButtonBase {
+  width: 100%;
+}
+
+.sponsorPostCard {
+  width: 100%;
+  border-radius: 2;
+}
+
+.thumbanilPostCardMedia {
+  border-radius: 2;
+  height: 20vh;
+}
+
+.sponsorPostCardContent {
+  text-align: left;
+  overflow-wrap: break-word;
+  background-color: #B0B5BF;
+
+}
+
+.sponsorPostCardTittleBox {
+  font-size: 1.2vw;
+  font-weight: bold;
+  color: black;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.sponsorPostCardCreatorBox {
+  font-size: 1.05vw;
+  font-weight: lighter;
+  color: black;
+  padding-top: 5%;
+}
+
+.sponsorPostCardFooter {
+  background-color: #3C4961;
+  width: 100%;
+  padding: 0 5% 3% 5%;
+
+}
+
+.sponsorPostCardPromoBox {
+  vertical-align: middle;
+  width: 100%
+}
+
+.sponsorPostCardPromoGrid {
+  vertical-align: middle;
+  max-width: 80%;
+
+}
+
+.sponsorPostCardItemText {
+  font-size: 0.9vw;
+  font-weight: lighter;
+  color: white;
+}
+
+.sponsorPostCardItemIcon {
+  font-size: 1vw;
+}

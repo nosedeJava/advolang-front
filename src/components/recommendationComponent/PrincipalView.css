@@ -1,8 +1,30 @@
 .mainDiv{
-    margin: 0 auto;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    margin-bottom: 2rem;
+  margin: 0 auto;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  display: inline-flex;
+}
+
+.trendsSectionItem {
+  max-width: 18%;
+  height: 100%;
+  float: left;
+  padding-left: 1vw;
+}
+
+.trendsSectionDiv {
+  width: 100%;
+}
+
+.postsSectionItem {
+  justify-content: center;
+  align-items: center;
+  max-width: 64%;
+}
+
+.subscriptionAndRecomSectionItem {
+  float: right;
+  max-width: 18%;
+  padding-right: 1vw;
 }

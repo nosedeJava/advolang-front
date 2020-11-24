@@ -58,7 +58,10 @@ export const getRecommendationScores = (values) => {
 /* Retorna el color correspondiente al valor del score */
 export const getRecommendationScoreColor = (scoreValue) => {
 
-  return scoreValue > 3.8 ? "#418525" : scoreValue < 2.8 ? "#C77938" : "#C7B117";
+  return (
+    scoreValue > 3.8 ? "radial-gradient(circle, rgba(141,251,63,1) 0%, rgba(35,154,46,1) 100%)"
+    : scoreValue < 2.8 ? "radial-gradient(circle, rgba(133,9,9,1) 0%, rgba(247,41,6,1) 100%)"
+    : "radial-gradient(circle, rgba(255,210,17,0.9794117476091999) 0%, rgba(255,220,107,1) 100%)");
 }
 
 /* Retorna verdadero o falso dependiendo si el usuario dado (id) ya realizó la votación sobre una recomendación dada (id) */

@@ -21,10 +21,10 @@ function FilterSection(props) {
   const submitFilter = () => props.renderFilterFunction(search, level, categories);
 
   return (
-      <Grid container spacing={1} className="mainFilterGrid" direction="column" >
+      <Grid container spacing={0} className="mainFilterGrid" direction="column" >
         <Grid item xs={1} />
           <Grid className="filterGridStyle" >
-            <Box border={2} borderColor="primary.main" className="filterStyle" borderRadius="borderRadius" >
+            <Box className="filterStyle" borderRadius="borderRadius" >
               <Grid container spacing={1} direction="row" className="filterSectionGrid" >
                 <TextField id="outlined-basic" label="Search" variant="outlined" className="separation" style={{ width: "20rem" }}
                   InputProps={{
