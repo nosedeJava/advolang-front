@@ -33,14 +33,13 @@ export default function ListRecommendationService(props) {
     }
 
     useEffect(() => {
-      mountPetitions()
-
+      mountPetitions();
     }, []);
 
     if(props.lang && props.lang !== lang) {
-      setLang(props.lang)
-      setLoading(true)
-      mountPetitions()
+      setLang(props.lang);
+      setLoading(true);
+      mountPetitions();
     }
 
 
