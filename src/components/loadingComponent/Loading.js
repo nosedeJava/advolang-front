@@ -1,7 +1,6 @@
 import React from 'react';
 import './Loading.css';
 import LoadingOverlay from 'react-loading-overlay';
-import { TouchBallLoading } from 'react-loadingg';
 
 export function DefaultLoading(props){
 
@@ -22,7 +21,6 @@ export function LoadingTouchBall(){
 
   return (
     <div>
-      <TouchBallLoading />
     </div>
   );
 }
