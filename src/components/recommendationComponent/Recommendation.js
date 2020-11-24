@@ -3,29 +3,24 @@ import './Recommendation.css';
 import { Grid, Box, Card, CardMedia, Typography, ButtonBase} from '@material-ui/core';
 import ListCategories from './ListCategories'
 import { useHistory } from "react-router-dom";
-import {calcProm, adaptJavaDate, calculatePublication, getRecommendationScores, getRecommendationScoreColor} from '../Auxiliar/AuxiliarTools.js';
+import {adaptJavaDate, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
 import {componentDidMountGet, componentDidMountGetAzure} from '../../services/Petitions.js';
 import {LoadingTouchBall} from '../loadingComponent/Loading';
+import {redirectToSpecificRecom} from '../Auxiliar/Redirect';
+import {Score} from './Score';
 
 function Recommendation(props) {
 
   let history = useHistory();
-  let recomScoreList = getRecommendationScores(props.recom.id);
-
-  let recomScoreListSize = recomScoreList.length;
-  let score = recomScoreListSize !== 0 ? calcProm(recomScoreList) : 0.0;
-  let colorScore = recomScoreListSize === 0 ? "gray" : getRecommendationScoreColor(score);
 
   /* Load values */
   const[loadScoresList, setLoadScoresList] = React.useState(false);
   const[loadThumb, setLoadThumb] = React.useState(false);
 
   /* Petitions values */
+  const[recomThumb, setRecomThumb] = React.useState("/img/default.png");
   const[scoresList, setScoresList] = React.useState([]);
 
-  const setRecomThumb = (newThumbValue) => {
-    props.recom.thumbnail = newThumbValue;
-  }
 
   const componentDidMount = () => {
     if (props.recom.thumbnail !== "/img/default.png") {
@@ -40,8 +35,7 @@ function Recommendation(props) {
   }, []);
 
   const handleRedirectSpecific = () => {
-    localStorage.setItem("recommendation-id", props.recom.id);
-    history.push(`/spanish/${props.recom.creator}/recommendations/${props.recom.id}`)
+    redirectToSpecificRecom(props.recom.language, props.recom.creator, props.recom.id, history)
   }
 
   if (loadThumb || loadScoresList) {
@@ -56,18 +50,18 @@ function Recommendation(props) {
 
             <Grid container className="cardInfoGrid">
 
-              <ButtonBase  className="specificCard" onClick={handleRedirectSpecific}  >
+              <ButtonBase  className="specificCard" onClick={handleRedirectSpecific}>
 
                 <Grid item xs={2} className="imageGrid" container spacing={0} direction="column">
                   <Card className="thumbnailSpace">
                     <CardMedia
                         component="img"
-                        image={props.recom.thumbnail}
+                        image={recomThumb}
                     />
                   </Card>
                 </Grid>
 
-                <Grid item xs={9} className="topGrid" justify="flex-end">
+                <Grid item xs={9} className="topGrid" >
 
                   <Grid container className="topGridContainer" >
 
@@ -93,15 +87,7 @@ function Recommendation(props) {
 
                 </Grid>
 
-                <Grid item className="scoreGridValue" >
-                  <Box className="scoreBoxValue" style={{ background:  getRecommendationScoreColor(calcProm(scoresList)) }}>
-                    <div className="scoreTypographyDiv">
-                      <Typography className="scoreTypography" align="center" style={{fontWeight: 500, fontSize: "1.2vw"}} >
-                        {calcProm(scoresList)}
-                      </Typography>
-                    </div>
-                  </Box>
-                </Grid>
+                <Score scoresList={scoresList} />
 
               </ButtonBase>
 

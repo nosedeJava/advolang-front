@@ -9,8 +9,8 @@ import {SponsorRecom} from '../sponsorComponent/Sponsor';
 import { Grid} from '@material-ui/core';
 
 export default function PrincipalView(props) {
+
     const [viewType, setViewType] = React.useState(props.type);
-    const [lang, setLang] = React.useState(props.language?props.language:"none");
     const [title, setTitle] = React.useState('');
     const [difficulty, setDifficulty] = React.useState('');
     const [categories, setCategories] = React.useState([]);
@@ -18,9 +18,7 @@ export default function PrincipalView(props) {
     const changeViewType = (newType) => {
         setViewType(newType)
     }
-    const changeLang = (newLang) => {
-        setLang(newLang)
-    }
+
     const changeTofilterView = (title, difficulty, categories) => {
         setTitle(title);
         setDifficulty(difficulty);
@@ -30,6 +28,8 @@ export default function PrincipalView(props) {
     const FilterView = () => {
         return <ListRecommendationService filtered title={title} difficulty={difficulty} categories={categories} />
     }
+
+
 
     return (
       <Grid container className="mainDiv" spacing={0} direction="row">
@@ -45,14 +45,14 @@ export default function PrincipalView(props) {
         <Grid item className="postsSectionItem">
 
           <div className="postsSectionDiv">
-              {viewType === "lang" && <SpecificLanguage language={lang} />}
-              <FilterSection renderFilterFunction={changeTofilterView} lang={lang}/>
+              {viewType === "lang" && <SpecificLanguage language={props.language} />}
+              <FilterSection renderFilterFunction={changeTofilterView} lang={props.language}/>
               {viewType === "main" && <ListRecommendationService main />}
               {viewType === "saved" && <ListRecommendationService saved />}
               {viewType === "reported" && <ListRecommendationService reported />}
               {viewType === "self" && <ListRecommendationService self />}
               {viewType === "filtered" && FilterView()}
-              {viewType === "lang" && <ListRecommendationService lang={lang} />}
+              {viewType === "lang" && <ListRecommendationService lang={props.language} />}
           </div>
 
         </Grid>
@@ -64,7 +64,7 @@ export default function PrincipalView(props) {
           </div>
 
           <br />
-          
+
           <div className="sponsorRecomsSectionDiv">
             <SponsorRecom />
           </div>

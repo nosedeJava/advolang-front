@@ -1,7 +1,7 @@
 .recommendationBox {
   margin-top: 1rem;
   background-color: #242847;
-  width: 100%;
+  max-width: 100%;
   border-radius: 10px;
   border: 3px solid #434769;
 
@@ -15,7 +15,7 @@
 
 .topGridContainer {
   background-color: #8c8fa9;
-  width: 80%;
+  max-width: 100%;
   padding: 0.5rem 0.8rem 0.5rem 0.8rem;
   border-radius: 10px;
 }
@@ -25,11 +25,11 @@
 }
 
 .titleBoxValue {
-  font-size: 1.7rem;
+  font-size: 2.5vw;
   font-weight: bold;
   font-family: Verdana;
   color: white;
-  word-break: break-all;
+  overflow-wrap: break-word;
   margin-top: 0.2rem;
 
 }
@@ -54,60 +54,13 @@
   background-color: transparent;
 }
 
-.scoreGridValue {
-  border-radius: 10px;
-  width: 10%;
-}
-
-.scoreBoxValue{
-  border-radius: 50%;
-  width: 5vw;
-  height: 5vw;
-  text-align: center;
-  align-items: center;
-  margin: auto;
-  float: left;
-  animation: colorChange 5s infinite alternate linear;
-}
-
-@keyframes colorChange {
-  from { /* radial-gradient(farthest-corner at top right, ..) */
-    background-position:left top;
-    background-size:200% 100%;
-
-  }
-  49.9% {
-    background-position:left top;
-  }
-  50% { /* radial-gradient(farthest-corner at top center, ..) */
-    background-size:100% 100%;
-  }
-  50.1% {
-    background-position:right top;
-  }
-  to { /* radial-gradient(farthest-corner at top left, ..) */
-    background-position:right top;
-    background-size:200% 100%;
-  }
-}
-
-.scoreTypographyDiv {
-  margin-top: 30%;
-
-}
-
-.scoreTypography {
-  color: white;
-  font-family: Verdana;
-}
-
 .levelGridValue {
   background-color: transparent;
   width: 95%;
 }
 
 .levelBoxValue {
-  font-size: 1.2rem;
+  font-size: 1.5vw;
   font-family: Verdana;
   font-weight: bold;
   color: white;
@@ -121,7 +74,7 @@
 }
 
 .userNameBoxValue {
-  font-size: 1rem;
+  font-size: 1.2vw;
   font-family: Verdana;
   color: white;
   margin-top: 0.3rem;
@@ -135,7 +88,7 @@
 }
 
 .timeGridBox {
-  font-size: 1rem;
+  font-size: 1.2vw;
   font-family: Verdana;
   color: #B3B8E0;
   text-align: right;

@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 function Languages(props) {
     const classes = useStyles();
     let history = useHistory();
-    let langs = ["Spanish", "English", "Italian", "Portuguese", "French", "German", "Russian", "Japanese"];
+    let langs = ["spanish", "english", "italian", "portuguese", "french", "german", "russian", "japanese"];
     const redirectSpecificLanguage = (lang) => {
 
         history.push(`/${lang}/recommendations`);
@@ -37,7 +37,7 @@ function Languages(props) {
                                             component="img"
                                             alt={lang}
                                             height="150"
-                                            image={"/img/" + lang.toLowerCase() + ".png"}
+                                            image={"/img/" + lang + ".png"}
                                             title={lang}
                                         />
                                         <CardContent style={{ "backgroundColor": "#454555" }}>

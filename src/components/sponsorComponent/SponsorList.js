@@ -7,7 +7,7 @@ export function SponsorList(props) {
 
   const size =  props.sponsorRecoms.length;
   const sponsorsRecomsList = props.sponsorRecoms.map((recom, i) => (
-    <Box>
+    <Box className="itemListSponsorPostBox" key={"sponsPost-"+i}>
 
       <SponsorPost sponPost={recom} />
         {

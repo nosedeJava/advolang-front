@@ -39,7 +39,9 @@ export function ResourceController(props) {
           src={url}
           frameBorder="0"
           type={type}
-          allowFullScreen="allowfullscreen">
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          >
         </iframe>
       </Box>
     );

@@ -9,8 +9,8 @@ export function TrendList(props) {
   const trendsList = props.trends.map((trend, i) => {
 
     return (
-      <div >
-          <TrendPost key={"trend-" + i} trend={trend} />
+      <div key={"trend-" + i}>
+          <TrendPost trend={trend} />
           {
             i !== size-1 && <Divider />
           }

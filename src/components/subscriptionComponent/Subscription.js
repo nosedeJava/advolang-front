@@ -2,10 +2,8 @@ import React, { useEffect } from 'react';
 import './Subscription.css';
 import { componentDidMountGet } from '../../services/Petitions.js';
 import {SubscriptionList} from './SubscriptionList';
-import {Box, Divider} from '@material-ui/core';
 
-
-export function Subscription() {
+export function Subscription(props) {
 
   const user = JSON.parse(localStorage.getItem('user'));
 
@@ -28,7 +26,7 @@ export function Subscription() {
   }
   return (
 
-    <div>
+    <div className="subsGeneralDiv">
       <SubscriptionList subscriptions={subscriptions} />
     </div>
 

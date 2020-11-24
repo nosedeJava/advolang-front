@@ -60,8 +60,12 @@ export default function HoverRating(props) {
         onChangeActive={(event, newHover) => {
           setHover(newHover);
         }}
+        size="medium"
       />
-    {value !== null && <Box ml={2}>{labels(hover !== -1 ? hover : value)}</Box>}
+      <span>  </span>
+      <Box className="hooverTextBox">
+        {value !== null && <Box>{labels(hover !== -1 ? hover : value)}</Box>}
+      </Box>
     </div>
   );
 }
