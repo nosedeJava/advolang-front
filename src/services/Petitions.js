@@ -101,7 +101,7 @@ export const userInfoAzure = async (setLoading, setCurrentObject, url, setProfil
 }
 
 /* Load specific recommendation component info */
-export const recomInfoAzure = async (setLoading, setCurrentObject, url, setProfileImage, setRecObject, setDivText)  => {
+export const recomInfoAzure = async (setLoading, setCurrentObject, url, setProfileImage, setRecObject)  => {
 
   try{
 

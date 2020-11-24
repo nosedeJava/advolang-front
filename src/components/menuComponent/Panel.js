@@ -1,6 +1,6 @@
 import React from 'react';
 import './Panel.css';
-import Toolbar from '@material-ui/core/Toolbar';
+import {Toolbar, Box} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import {SideBarMenu} from './SideBarMenu';
 
@@ -14,9 +14,9 @@ export function Panel (props){
               minHeight: '10vh'
           }}>
               <SideBarMenu side="left" menuList={props.menuList} history={props.history} />
-              <Typography variant="h6" noWrap>
+              <Box>
                   Advolang
-              </Typography>
+              </Box>
           </Toolbar>
       </div>
     );

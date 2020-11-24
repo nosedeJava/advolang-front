@@ -1,7 +1,7 @@
 import React from 'react';
+import './RatingRecommendation.css';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
-import './RatingRecommendation.css';
 
 
 const labels = (value)=>{

@@ -1,6 +1,6 @@
 .sponsorPostGeneralBox {
   width: 100%;
-  padding: 5%;
+  padding-top: 1vw;
 }
 
 .sponsorPostButtonBase {
@@ -10,7 +10,6 @@
 .sponsorPostCard {
   width: 100%;
   border-radius: 2;
-
 }
 
 .thumbanilPostCardMedia {
@@ -21,6 +20,8 @@
 .sponsorPostCardContent {
   text-align: left;
   overflow-wrap: break-word;
+  background-color: #B0B5BF;
+
 }
 
 .sponsorPostCardTittleBox {
@@ -39,7 +40,7 @@
 }
 
 .sponsorPostCardFooter {
-  background-color: darkgray;
+  background-color: #3C4961;
   width: 100%;
   padding: 0 5% 3% 5%;
 

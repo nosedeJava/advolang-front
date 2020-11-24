@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
 import './SpecificRecommendation.css';
-import { Grid, Box, Typography, Button, Avatar, Divider, ButtonBase } from '@material-ui/core';
+import { Grid, Box, Button, Avatar, Divider, ButtonBase } from '@material-ui/core';
 import {useParams} from "react-router-dom";
-
 import HoverRating from './RatingRecommendation';
 import FormDialog from './ReportDialog';
 import ListCategories from '../recommendationComponent/ListCategories';
 import {ResourceController} from './ResourceController.js';
-import {calcProm, getRecommendationScoreColor, adaptJavaDate, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
-import {CheckValidYoutubeURL, CheckMimeType, getYoutubeVideoId} from '../Auxiliar/CheckMedia.js';
+import {calcProm, adaptJavaDate, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
 import {ShowSuccessMessage, ShowWarningMessage} from '../Auxiliar/Swal.js';
 import { useHistory } from "react-router-dom";
-import {componentDidMountListGet, componentDidMountGetWithAzureAfter, componentDidMountPost, componentDidMountGetAzure, userInfoAzure, recomInfoAzure} from '../../services/Petitions.js';
+import {componentDidMountListGet, componentDidMountPost, userInfoAzure, recomInfoAzure} from '../../services/Petitions.js';
 import {getLocalStorageObject} from '../Auxiliar/ObjectTools.js';
 import RequestService from "../../services/RequestService";
 import Swal from 'sweetalert2';
@@ -48,13 +46,6 @@ function SpecificRecommendation(props) {
   const [creator_current_recom_object, setCreator_current_recom_object] = React.useState([]);
   const [userProfile, setUserProfile] = React.useState();
 
-
-  const [divText, setDivText] = React.useState()
-
-
-  const [state, setState] = React.useState()
-
-
   const url_petitions_list = [
 
     {
@@ -69,20 +60,13 @@ function SpecificRecommendation(props) {
     }
   ]
 
-  const handler = (e) =>{
-    console.log(e)
-  }
-
   const componentDidMount = async () => {
-    recomInfoAzure(setLoadingCurrentRecom, setCurrentRecom, '/api/'+lang+'/recommendations/'+current_id,setThumb, setRecObject, setDivText);
+    recomInfoAzure(setLoadingCurrentRecom, setCurrentRecom, '/api/'+lang+'/recommendations/'+current_id,setThumb, setRecObject);
     componentDidMountListGet(url_petitions_list);
     userInfoAzure(setLoadingCreator_current_recom_object, setCreator_current_recom_object, '/api/users/' + creator_current_recom_username, setUserProfile);
-
   }
 
-
   useEffect(() => {
-
       componentDidMount();
       window.scrollTo(0, 0);
   }, []);
@@ -108,19 +92,13 @@ function SpecificRecommendation(props) {
       }
 
       componentDidMountPost(setLoadingScorePost, afterScorePost, '/api/scores/add', newScore)
-
     }
     else{
       scoreObject.value = value;
       componentDidMountPost(setLoadingScorePost, afterScoreUpdate, '/api/scores/value/update', scoreObject)
     }
-
   }
 
-  function callback(bool){
-    alert(bool)
-    //continúa
-  }
 
   const handleSave = async () =>{
     // Confirmation
@@ -255,17 +233,21 @@ function SpecificRecommendation(props) {
 
 
         {/* Usuario creador*/}
-        <Grid container item xs={4} direction="row" className="gridUserContainerMain">
+        <Grid item className="gridUserContainerMain" align = "center" justify = "center" alignItems = "center">
+
           <Grid container spacing={0} direction="column" className="gridUserContainer">
+
             <Grid item className="userFirstGrid">
               <ButtonBase className="specificUserButtonBase" onClick={handleSpecificUser}>
+
                 <Box boxShadow={3} borderRadius="borderRadius" className="userConatainerBox" >
-                  <Grid container className="usersSubContainer" spacing={0} direction="column">
+
+                  <Grid container className="usersSubContainer" spacing={0} direction="column" align = "center" justify = "center" alignItems = "center">
 
                     {/* Aquí uso el nombre de usuario y el enlace a la imagen de perfil.*/}
-                    <Grid item className="userProfileGrid">
+                    <Grid item className="userProfileGrid" align = "center" justify = "center" alignItems = "center">
                       <div className="userImageDiv">
-                        <Avatar variant="square" alt={creator_current_recom_object.username} src={userProfile} style={{ height: '100%', width: '100%' }} />
+                        <Avatar variant="square" alt={creator_current_recom_object.username} src={userProfile} style={{ height: 'auto', width: 'auto' }} />
                       </div>
                     </Grid>
 
@@ -287,7 +269,9 @@ function SpecificRecommendation(props) {
                   </Grid>
                 </Box>
               </ButtonBase>
+
             </Grid>
+            <br />
 
             {/* Uso de las categorias asociadas a la recomendación.*/}
             <Grid item className="categoriesGrid">

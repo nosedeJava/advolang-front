@@ -84,10 +84,11 @@ function Recommendation(props) {
                     </Grid>
 
                   </Grid>
-
                 </Grid>
 
-                <Score scoresList={scoresList} />
+                <Grid item className="scoreGridValue" >
+                  <Score scoresList={scoresList} />
+                </Grid>
 
               </ButtonBase>
 
