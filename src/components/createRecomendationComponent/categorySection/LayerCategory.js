@@ -19,7 +19,7 @@ export default function LayerCategory(props){
             value: category.toLowerCase(),
             popularity: 0
         }
-        RequestService.post("/api/category", newCategory)
+        RequestService.post("/api/spanish/categories", newCategory)
             .then(response => console.log(response.status))
             .catch(error => {
                 if (error.response){

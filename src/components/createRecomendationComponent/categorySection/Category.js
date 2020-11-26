@@ -16,7 +16,7 @@ export default function Category(){
     const dispatch = useDispatch();
 
     useEffect(() => {
-        RequestService.get('/api/categoryList')
+        RequestService.get('/api/spanish/categories')
             .then(response => setCategories(response.data))
             .catch(error => {
                 if(error.response){
