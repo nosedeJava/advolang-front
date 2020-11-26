@@ -73,10 +73,9 @@ export default function Content(props){
             .then(() => window.location.reload())
             .catch(error => {
                 if (error.response){
-                    alert(`${error.message}`)
                     console.log(error.response.status)
                 }else {
-                    alert('Server error')
+                    console.log(error.response.status)
                 }
             })
     }
