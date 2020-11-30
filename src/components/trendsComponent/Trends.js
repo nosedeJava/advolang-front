@@ -39,9 +39,9 @@ export function Trends() {
           <Box className="trendsIconTittleBox">
             <Icon icon={crownIcon} className="trendsCrownIcon" />
           </Box>
-
         </Box>
       </Box>
+      <Divider style={{backgroundColor: 'white'}} />
       <TrendList trends={recommendations}/>
     </Box>
 

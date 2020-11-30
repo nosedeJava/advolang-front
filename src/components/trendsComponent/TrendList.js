@@ -1,6 +1,6 @@
 import React from 'react';
 import './TrendList.css';
-import {Box, Divider} from '@material-ui/core';
+import {Box} from '@material-ui/core';
 import {TrendPost} from './TrendPost';
 
 export function TrendList(props) {
@@ -11,9 +11,7 @@ export function TrendList(props) {
     return (
       <div key={"trend-" + i}>
           <TrendPost trend={trend} />
-          {
-            i !== size-1 && <Divider />
-          }
+
       </div>
     );
   });
@@ -21,7 +19,7 @@ export function TrendList(props) {
   return (
 
     <Box className="trendListContainer">
-          {trendsList}
+      {trendsList}
     </Box>
 
   );

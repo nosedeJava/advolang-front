@@ -2,8 +2,10 @@
   margin: 0 auto;
   width: 100%;
   overflow: hidden;
-  margin-bottom: 2rem;
+  padding-bottom: 2rem;
   display: inline-flex;
+  background-color: #292a2b;
+
 }
 
 .trendsSectionItem {

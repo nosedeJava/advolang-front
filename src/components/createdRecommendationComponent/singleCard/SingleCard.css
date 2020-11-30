@@ -1,40 +1,82 @@
-.my-recommendation-card{
-    width: 240px !important;
-    height: 320px !important;
-    border-radius: 15px !important;
-    box-shadow: 0 0 20px;
+.createdRecomCard {
+    border-radius: 1.5vw !important;
+    box-shadow: 0 0 1vw;
     display: flex !important;
     flex-direction: column;
     border: none !important;
-    margin: 10px;
-}
-
-.my-recommendation-card img{
-    width: 100%;
-    height: 140px;
-    display: flex;
-    flex-direction: column;
-}
-
-.my-recommendation-card .recommendation{
-    display: flex;
-    flex-direction: column;
+    margin: 1vw;
+    background-color: white;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    width: 25%;
+    height: 45vh;
+    cursor: pointer;
 }
 
-.my-recommendation-card h1{
-    padding: 10px;
-    margin: 0;
-    color: #282c34;
+.createdRecomDiv {
+  width:100%;
+  height: 45vh;
+  background-color: black;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+  display: inline-block;
+
 }
 
-.my-recommendation-card .footer{
-    width: 100%;
-    display: flex;
-    flex: auto;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
+.createdRecomImage {
+  width:100%;
+  height:auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.createdRecomInfo {
+  background-color: #DEE1E7;
+  margin: 0 auto;
+}
+
+.createdRecomTitle {
+  font-weight: bolder;
+  font-size: 1.5vw;
+  color: black;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+  padding: 0 1vw 0 1vw;
+  word-wrap: break-word;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  vertical-align:middle;
+}
+
+.createdRecomDate {
+  margin-top: 2%;
+  font-size: 0.9vw;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: right;
+  padding: 0 1vw 0 1vw;
+  word-wrap: break-word;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  vertical-align: middle;
+}
+
+.createdRecomCard:hover  {
+  opacity:0.6;
 }
