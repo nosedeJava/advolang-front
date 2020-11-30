@@ -1,0 +1,124 @@
+.savedRecomButtonBase {
+  width: 95%;
+}
+
+.savedRecomCardBox {
+  position: relative;
+  border-radius: 1vw;
+  width: 100%;
+  color: #5357ce;
+}
+
+.savedRecomCard {
+  border-radius: 1.5vw;
+  max-width: 100%;
+
+}
+
+.savedRecomCardContent {
+  position: relative;
+  z-index: 1;
+  border-radius: 1vw;
+  max-width: 100%;
+
+}
+
+.savedRecomCardContent:before {
+  content: close-quote;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  width: 100.1%;
+  height: 100%;
+  clip-path: polygon(0% 100%, 0% 35%, 0.3% 33%, 1% 31%, 1.5% 30%, 2% 29%, 2.5% 28.4%, 3% 27.9%, 3.3% 27.6%, 5% 27%,95% 0%,100% 0%, 100% 100%);
+  border-radius: 0.8vw;
+  background: linear-gradient(
+            	to right,
+            	#462523 0,
+                   	#cb9b51 22%,
+            	#f6e27a 45%,
+            	#f6f2c0 50%,
+            	#f6e27a 55%,
+            	#cb9b51 78%,
+            	#462523 100%
+            	);
+
+  background-size: 400% 400%;
+
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  -webkit-animation: colorMovement 30s ease infinite;
+  -moz-animation: colorMovement 30s ease infinite;
+  animation: colorMovement 15s ease infinite;
+}
+
+@-webkit-keyframes colorMovement {
+    0%{background-position:92% 0%}
+    50%{background-position:9% 100%}
+    100%{background-position:92% 0%}
+}
+@-moz-keyframes colorMovement {
+    0%{background-position:92% 0%}
+    50%{background-position:9% 100%}
+    100%{background-position:92% 0%}
+}
+@keyframes colorMovement {
+    0%{background-position:92% 0%}
+    50%{background-position:9% 100%}
+    100%{background-position:92% 0%}
+}
+
+
+.savedRecomCardContentTitle {
+  font-family: "Scope One";
+  font-weight: bolder;
+  font-size: 1.3vw;
+  color: black;
+  display: block;
+  max-width: 13vw;
+  max-height: 12vh;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+  padding: 0 1vw 0 1vw;
+  word-wrap: break-word;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  vertical-align:middle;
+}
+
+.savedRecomCardCreator {
+  font-family: "Trade Winds";
+  font-size: 1vw;
+  font-weight: lighter;
+  color: silver;
+  opacity: 1;
+  word-wrap: break-word;
+  max-width: 13vw;
+  max-height: 10vh;
+  overflow: hidden;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+
+
+}
+.savedRecomCardDate {
+  font-family: "Scope One";
+  color: #fff;
+  opacity: 0.72;
+  font-size: 1vw;
+  padding: 0 0.5vw;
+  border-radius: 12;
+
+}

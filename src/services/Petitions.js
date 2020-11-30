@@ -100,7 +100,7 @@ export const userInfoAzure = async (setLoading, setCurrentObject, url, setProfil
   }
 }
 
-/* Load specific recommendation component info */
+/* Load specific recommendation component info (recommendation resource)*/
 export const recomInfoAzure = async (setLoading, setCurrentObject, url, setProfileImage, setRecObject)  => {
 
   try{
@@ -128,4 +128,21 @@ export const recomInfoAzure = async (setLoading, setCurrentObject, url, setProfi
   catch(error) {
     console.log(error)
   }
+}
+
+export const getUserThumbByUsername = async (setLoading, url, setProfileImage) => {
+
+  try{
+    setLoading(true)
+    const res = await RequestService.get(url);
+    const user = JSON.parse(JSON.stringify(res.data));
+    const imageRes = await AzureService.getFile(user.profileImage, user.username);
+    setProfileImage(imageRes.config.url)
+    setLoading(false);
+  }
+
+  catch(error) {
+    console.log(error)
+  }
+
 }

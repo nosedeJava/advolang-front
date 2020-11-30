@@ -5,7 +5,8 @@
 }
 
 .sponsorTittleBox {
-  background-color: #6E6D6C;
+  background-image: url("/asfalt-light.png");
+  background-color: black;
   font-weight: bold;
   max-width: 100%;
   color: white;
@@ -17,6 +18,14 @@
   padding: 10%;
   border-top-left-radius: 0.5vw;
   border-top-right-radius: 0.5vw;
+}
+
+.DodeBox {
+  width: 0.3vw;
+  height: 0.3vw;
+  padding-top: 2.5vw;
+  padding-right: 8vw;
+  margin-right: 1vw;
 }
 
 .sponsorPaper {

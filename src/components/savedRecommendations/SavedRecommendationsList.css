@@ -1,0 +1,23 @@
+.savedListContentDiv{
+  align-items: center;
+  max-width: 90%;
+  margin-top: 5vh;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+
+.savedRecomsListContainer {
+  overflow-x: auto;
+  white-space: nowrap;
+  display: flex;
+  margin: 0 auto;
+  width: fit-content;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+}
+
+.savedRecomGridItem {
+  float: left;
+  width: 95%;
+}

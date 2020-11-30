@@ -1,40 +1,50 @@
 .trendContainer {
   width: 90%;
   height: 100%;
-  border: 0.3vw solid #e4e2e0;
+  border: 0.3vw solid #5B5B5A;
   float: right;
   margin-top: 40%;
-  border-top-left-radius: 0.8vw;
-  border-top-right-radius: 0.8vw;
+  border-radius: 0.8vw;
   padding: 1%;
+  background-color: #5B5B5A;
 }
 
 .trendsBasicTopBox {
   width: 100%;
-  background-color: lightGray;
+  background-color: #F4C529;
+  background-image: url("/egg-shell.png");
   border-top-left-radius: 0.4vw;
   border-top-right-radius: 0.4vw;
+  filter: brightness(102%);
+  margin: 0.1vw 0.05vw 0 0.05vw;
 }
 
 .trendsGeneralTittleBox {
   padding: 5%;
   display: inline-flex;
   min-width: 60%;
+  vertical-align: middle;
+  margin: 0;
+  position: relative;
 }
 
 .trendsTextTittleBox {
-  font-size: 90%;
+  font-size: 1.3vw;
   font-weight: bold;
   word-break: break-all;
-  color: white;
+  color: black;
   padding: 2%;
+  align-self: center;
 }
 
 .trendsIconTittleBox {
   padding: 1%;
+  vertical-align: middle;
 }
 
 .trendsCrownIcon {
-  color: gold;
-  font-size: 130%;
+  color: #e4e2e0;
+  font-size: 1.7vw;
+  align-self: center;
+  position: absolute;
 }

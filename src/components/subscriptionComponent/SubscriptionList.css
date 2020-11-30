@@ -3,11 +3,12 @@
 }
 
 .subsListSubheader {
-  color: black;
-  font-size: 100%;
+  color: white;
+  font-size: 1.3vw;
   font-weight: bold;
   width: 83%;
-  background-color: lightGreen;
+  background-color: #5d7a6e;
+  background-image: url("/natural-paper.png");
   word-break: break-all;
   float: left;
   padding: 5% 5% 5% 7%;

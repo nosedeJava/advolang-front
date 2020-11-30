@@ -54,13 +54,15 @@ export function SponsorPost(props) {
               props.sponPost.promo &&
 
               <Box className="sponsorPostCardPromoBox">
-                <Grid container direction="row" spacing={1} alignItems="center" className="sponsorPostCardPromoGrid" >
+                <Grid container direction="row" spacing={0} alignItems="center" className="sponsorPostCardPromoGrid" >
                   <Grid item className="sponsorPostCardItemText">
                   {"Promoted"}
                   </Grid>
                   <Grid item className="sponsorPostCardItemIcon">
-                    <BeenhereIcon />
-                  </Grid>
+                    <div className="sponsorPostCardItemIconDiv">
+                    <BeenhereIcon style={{ fontSize: "2vw", color:"silver" }}/>
+                    </div>
+                </Grid>
               </Grid>
               </Box>
             }

@@ -3,6 +3,7 @@ import './Sponsor.css';
 import { componentDidMountGet } from '../../services/Petitions.js';
 import {Box, Divider, Paper} from '@material-ui/core';
 import {SponsorList} from './SponsorList';
+import {Dodecahedron} from './figures/Dodecahedron';
 
 
 export function SponsorRecom() {
@@ -28,7 +29,10 @@ export function SponsorRecom() {
   return (
     <Box className="sponsorRecomsBox">
       <Box className="sponsorTittleBox">
-        {"Recommendations for you"}
+        <div>{"Recommendations for you"}</div>
+        <Box className="DodeBox">
+          <Dodecahedron />
+        </Box>
       </Box>
       <Paper className="sponsorPaper" variant="outlined" square>
         <SponsorList sponsorRecoms={recommendations} />
