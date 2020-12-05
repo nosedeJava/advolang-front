@@ -5,6 +5,8 @@ import {Box, Divider} from '@material-ui/core';
 import {TrendList} from './TrendList';
 import { Icon} from '@iconify/react';
 import crownIcon from '@iconify-icons/mdi/crown';
+import {cylonLoading} from '../loadingComponent/Loading';
+
 
 export function Trends() {
 
@@ -12,15 +14,15 @@ export function Trends() {
   const [recommendations, setRecommendations] = React.useState([]);
 
   useEffect(() => {
-    componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
-
+    componentDidMountGet(setLoading, setRecommendations, '/api/recommendations/10');
   }, []);
 
   if (loading) {
     return (
-      <div style = {{backgroundColor: 'yellow', lineHeight: 2 }}>
-       Loading .......
-
+      <div style = {{backgroundColor: 'transparent', width:"10vw"}}>
+        <div  className="divLoad">
+          {cylonLoading()}
+        </div>
       </div>
     );
 

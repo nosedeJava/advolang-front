@@ -1,5 +1,7 @@
 .generalDiv {
-  background-color: #242847;
+  background-color: transparent;
+  width: auto;
+  max-width: 99%;
   min-height: 90vh;
   height: 100%;
 }

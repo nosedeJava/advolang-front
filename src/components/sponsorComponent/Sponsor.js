@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import './Sponsor.css';
 import { componentDidMountGet } from '../../services/Petitions.js';
-import {Box, Divider, Paper} from '@material-ui/core';
+import {Box, Paper} from '@material-ui/core';
 import {SponsorList} from './SponsorList';
 import {Dodecahedron} from './figures/Dodecahedron';
+import {cylonLoading} from '../loadingComponent/Loading';
 
 
 export function SponsorRecom() {
@@ -12,15 +13,16 @@ export function SponsorRecom() {
   const [recommendations, setRecommendations] = React.useState([]);
 
   useEffect(() => {
-    componentDidMountGet(setLoading, setRecommendations, '/api/recommendations');
+    componentDidMountGet(setLoading, setRecommendations, '/api/recommendations/suggestion/'+JSON.parse(localStorage.getItem('user')).id);
 
   }, []);
 
   if (loading) {
     return (
-      <div style = {{backgroundColor: 'yellow', lineHeight: 2 }}>
-       Loading .......
-
+      <div style = {{backgroundColor: 'transparent', width:"10vw"}}>
+        <div  className="divLoad">
+          {cylonLoading()}
+        </div>
       </div>
     );
 

@@ -7,7 +7,7 @@ import FormDialog from './ReportDialog';
 import ListCategories from '../recommendationComponent/ListCategories';
 import {ResourceController} from './ResourceController.js';
 import {calcProm, adaptJavaDate, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
-import {ShowSuccessMessage, ShowWarningMessage} from '../Auxiliar/Swal.js';
+import {ShowSuccessMessage} from '../Auxiliar/Swal.js';
 import { useHistory } from "react-router-dom";
 import {componentDidMountListGet, componentDidMountPost, userInfoAzure, recomInfoAzure} from '../../services/Petitions.js';
 import {getLocalStorageObject} from '../Auxiliar/ObjectTools.js';
@@ -80,7 +80,7 @@ function SpecificRecommendation(props) {
 
   const afterScoreUpdate = (data) => {
     setAllTotalScore(data)
-    ShowSuccessMessage("Awesome", "Successfully score update")
+    ShowSuccessMessage("Awesome", "Successfully score update: "+scoreObject.value)
   }
 
   const handleRating = (value) =>{
@@ -132,9 +132,13 @@ function SpecificRecommendation(props) {
   }
 
 
-  if (loadingCurrentRecom || loadingScorePost || loadingAllScoresValue || loadingCreator_current_recom_object  ) {
-    return <DefaultLoading isActive={true} />
-  }
+  if (loadingCurrentRecom || loadingAllScoresValue || loadingCreator_current_recom_object) {
+    return(
+      <div className="loadingDiv">
+       <DefaultLoading isActive={true} />
+      </div>
+     );
+   }
 
   return (
     <div className="specificRecommendationDiv">

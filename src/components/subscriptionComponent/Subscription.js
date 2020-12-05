@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './Subscription.css';
 import { componentDidMountGet } from '../../services/Petitions.js';
 import {SubscriptionList} from './SubscriptionList';
+import {cylonLoading} from '../loadingComponent/Loading';
 
 export function Subscription(props) {
 
@@ -17,9 +18,10 @@ export function Subscription(props) {
 
   if (loading) {
     return (
-      <div style = {{backgroundColor: 'red', lineHeight: 2 }}>
-       Loading .......
-
+      <div style = {{backgroundColor: 'transparent', width:"10vw"}}>
+        <div  className="divLoad">
+          {cylonLoading()}
+        </div>
       </div>
     );
 
