@@ -6,7 +6,7 @@ import {ListRecommendations} from '../recommendationComponent/ListRecommendation
 import RecomPagination from '../Pagination/RecomPagination';
 import ListCategories from '../recommendationComponent/ListCategories';
 import {componentDidMountListGet, userInfoAzure} from '../../services/Petitions.js';
-
+import {DefaultLoading} from '../loadingComponent/Loading';
 
 function SpecificUser(){
 
@@ -58,7 +58,11 @@ function SpecificUser(){
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   if (loadingUser || loadingPosts ) {
-    return <h2>Loading...</h2>;
+    return(
+      <div className="loadingDiv">
+       <DefaultLoading isActive={true} />
+      </div>
+     );
   }
 
   return (

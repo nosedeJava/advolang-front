@@ -37,8 +37,8 @@ function SpecificLanguage(props) {
 
                 </Grid>
                 <Grid item xs={1} justuf className="generalClassImage" spacing={1} direction="column">
-                    <Box pl={3}>
-                        <Card className="thumbnailSpace">
+                    <Box className="thumbnailSpace">
+                        <Card>
                             <CardMedia
                                 component="img"
                                 image={"/img/" + language + ".png"}
@@ -47,13 +47,13 @@ function SpecificLanguage(props) {
                     </Box>
                 </Grid>
                 <Grid item xs={2}>
-                    <Typography variant="h5" component="h2" style={{ "color": "#242847", fontSize: "2.2rem" }}>
+                    <Typography variant="h5" component="h2" style={{ "color": "lightgray", fontSize: "2vw" }}>
                         {props.language}
                     </Typography>
                 </Grid>
-                <Grid item xs={3}>
-                    <Box pt={1}>
-                        <Button variant={isSub?"outlined":"contained"} color="primary" onClick={async () => await isSubscribedHandler()}>
+                <Grid item xs={3} classNmae="buttonStyleBox"  >
+                    <Box mt={0.5} pl={0.5}>
+                        <Button variant={isSub?"outlined":"contained"} color="primary" size="small" onClick={async () => await isSubscribedHandler()}>
                             {isSub?"unsubscribe":"subscribe"}
                         </Button>
                     </Box>

@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
 import './Recommendation.css';
-import { Grid, Box, Card, CardMedia, Typography, ButtonBase} from '@material-ui/core';
+import { Grid, Box, Card, CardMedia, ButtonBase} from '@material-ui/core';
 import ListCategories from './ListCategories'
 import { useHistory } from "react-router-dom";
 import {adaptJavaDate, calculatePublication} from '../Auxiliar/AuxiliarTools.js';
 import {componentDidMountGet, componentDidMountGetAzure} from '../../services/Petitions.js';
-import {LoadingTouchBall} from '../loadingComponent/Loading';
 import {redirectToSpecificRecom} from '../Auxiliar/Redirect';
 import {Score} from './Score';
+import {cylonLoading} from '../loadingComponent/Loading';
 
 function Recommendation(props) {
 
@@ -39,7 +39,11 @@ function Recommendation(props) {
   }
 
   if (loadThumb || loadScoresList) {
-    return <LoadingTouchBall />;
+    return (
+      <div  className="divLoad">
+        {cylonLoading()}
+      </div>
+    );
   }
 
   return (
@@ -51,7 +55,6 @@ function Recommendation(props) {
             <Grid container className="cardInfoGrid">
 
               <ButtonBase  className="specificCard" onClick={handleRedirectSpecific}>
-
                 <Grid item xs={2} className="imageGrid" container spacing={0} direction="column">
                   <Card className="thumbnailSpace">
                     <CardMedia

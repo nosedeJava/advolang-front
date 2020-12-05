@@ -1,3 +1,9 @@
+.loadingDiv {
+  margin: 0 auto;
+  align-self: center;
+  height: 100%;
+}
+
 .specificRecommendationDiv {
   background-color: #616363;
   min-height: 90vh;

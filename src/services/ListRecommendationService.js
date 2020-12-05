@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { ListRecommendations } from '../components/recommendationComponent/ListRecommendations';
 import { componentDidMountGet } from './Petitions.js';
-import ReactLoading from "react-loading";
+import {cylonLoading} from '../components/loadingComponent/Loading';
 
 export default function ListRecommendationService(props) {
 
@@ -46,8 +46,7 @@ export default function ListRecommendationService(props) {
     if (loading) {
       return (
         <div style = {{backgroundColor: 'yellow', lineHeight: 2 }}>
-          <ReactLoading type="cylon" color="blue" />
-
+          <cylonLoading />
         </div>
       );
     }
